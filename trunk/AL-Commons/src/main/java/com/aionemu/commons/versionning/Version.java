@@ -99,7 +99,7 @@ public class Version
 	{
 		String version = attrs.getValue("Implementation-Version");
 		
-		if (version != null)
+		if(version != null)
 			this.version = version;
 		else 
 			this.version = "-1";
