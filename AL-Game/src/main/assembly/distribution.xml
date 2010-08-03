@@ -35,11 +35,11 @@
 			<outputDirectory>gameserver/config/</outputDirectory>
 		</fileSet>
 		<fileSet>
-			<directory>config/</directory>
+			<directory>data/</directory>
 			<outputDirectory>gameserver/data/</outputDirectory>
 		</fileSet>
 		<fileSet>
-			<directory>config/</directory>
+			<directory>sql/</directory>
 			<outputDirectory>gameserver/sql/</outputDirectory>
 		</fileSet>
 	</fileSets>
