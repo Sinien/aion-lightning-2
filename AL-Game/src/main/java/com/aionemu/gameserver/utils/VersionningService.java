@@ -26,40 +26,85 @@ import com.aionemu.gameserver.GameServer;
 
 /**
  * @author lord_rex
- * 
+ *    l2j-free versionning for Maven, thanks Noctarius
  */
 public class VersionningService
 {
 	private static final Logger		log			= Logger.getLogger(VersionningService.class);
-	private static final Version	commons		= new Version(AEInfos.class);
-	private static final Version	gameserver	= new Version(GameServer.class);
 	
-	private static String getVersionInfo(Version version)
+	private static final VersionInfo	commons		= new VersionInfo(AEInfos.class);
+	private static final VersionInfo	game		= new VersionInfo(GameServer.class);
+	
+	public static String getCommonsVersion()
 	{
-		return String.format("%-6s", version.getVersion());
+		return commons.getBuildVersion();
 	}
-
-	private static String getRevisionInfo(Version version)
+	
+	public static String getGameVersion()
 	{
-		return String.format("%-6s", version.getRevision());
+		return game.getBuildVersion();
 	}
-
-	private static String getDateInfo(Version version)
+	
+	public static String getCommonsRevision()
 	{
-		return String.format("[ %4s ]", new Date(version.getDate()));
+		return commons.getBuildRevision();
+	}
+	
+	public static String getGameRevision()
+	{
+		return game.getBuildRevision();
+	}
+	
+	public static Date getCommonsDate()
+	{
+		return commons.getBuildDate();
+	}
+	
+	public static Date getGameDate()
+	{
+		return game.getBuildDate();
+	}
+	
+	private static final class VersionInfo extends Version
+	{
+		private final String	version;
+		private final String	revision;
+		private final Date		buildDate;
+
+		public VersionInfo(Class<?> c)
+		{
+			super(c);
+			
+			this.version = String.format("%-6s", getVersion());
+			this.revision = String.format("%-6s", getRevision());
+			this.buildDate = new Date(getDate());
+		}
+
+		public String getBuildVersion() 
+		{
+			return version;
+		}
+
+		public String getBuildRevision() 
+		{
+			return revision;
+		}
+		
+		public Date getBuildDate() 
+		{
+			return buildDate;
+		}
 	}
 
 	public static String[] getFullVersionInfo()
 	{
 		return new String[] { 
-			"Commons Version: " + getVersionInfo(commons),
-			"Commons Revision: " + getRevisionInfo(commons),
-			"Commons Build Date: " + getDateInfo(commons), 
-			"GS Version: " + getVersionInfo(gameserver),
-			"GS Revision: " + getRevisionInfo(gameserver),
-			"GS Build Date: " + getDateInfo(gameserver),
-			"..................................................",
-			".................................................."
+			"Commons Version: " + getCommonsVersion(),
+			"Commons Revision: " + getCommonsRevision(),
+			"Commons Build Date: " + getCommonsDate(), 
+			"GS Version: " + getGameVersion(),
+			"GS Revision: " + getGameRevision(),
+			"GS Build Date: " + getGameDate(),
 		};
 	}
 

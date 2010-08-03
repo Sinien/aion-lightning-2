@@ -18,10 +18,7 @@ package com.aionemu.gameserver.network.aion.clientpackets;
 
 import java.util.List;
 
-import com.aionemu.commons.versionning.Version;
-import com.aionemu.gameserver.GameServer;
 import com.aionemu.gameserver.configs.main.GSConfig;
-import com.aionemu.gameserver.model.ChatType;
 import com.aionemu.gameserver.model.account.Account;
 import com.aionemu.gameserver.model.account.PlayerAccountData;
 import com.aionemu.gameserver.model.gameobjects.Item;
@@ -40,7 +37,6 @@ import com.aionemu.gameserver.network.aion.serverpackets.SM_INFLUENCE_RATIO;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_INVENTORY_INFO;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ITEM_COOLDOWN;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_MACRO_LIST;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_MESSAGE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_PLAYER_ID;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_PLAYER_SPAWN;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_PRICES;
@@ -64,6 +60,8 @@ import com.aionemu.gameserver.services.PlayerService;
 import com.aionemu.gameserver.services.PunishmentService;
 import com.aionemu.gameserver.services.StigmaService;
 import com.aionemu.gameserver.services.TeleportService;
+import com.aionemu.gameserver.utils.PacketSendUtility;
+import com.aionemu.gameserver.utils.VersionningService;
 import com.aionemu.gameserver.utils.rates.Rates;
 import com.aionemu.gameserver.world.World;
 
@@ -79,8 +77,6 @@ public class CM_ENTER_WORLD extends AionClientPacket
 	 * Object Id of player that is entering world
 	 */
 	private int					objectId;
-	
-	private static final String serverMessage;
 		
 	/**
 	 * Constructs new instance of <tt>CM_ENTER_WORLD </tt> packet
@@ -90,17 +86,6 @@ public class CM_ENTER_WORLD extends AionClientPacket
 	public CM_ENTER_WORLD(int opcode)
 	{
 		super(opcode);
-	}
-	
-	static
-	{
-		String buffer = "Welcome to " + GSConfig.SERVER_NAME + " server.\nPowered by aion-unique software developed by www.aion-unique.org team.\n";
-		buffer += "Copyright 2010. ";
-		if(GSConfig.SERVER_MOTD_DISPLAYREV)
-			buffer += "Server Revision: " + String.format("%-6s", new Version(GameServer.class).getRevision());
-		
-		serverMessage = buffer;
-		buffer = null;
 	}
 
 	/**
@@ -224,8 +209,8 @@ public class CM_ENTER_WORLD extends AionClientPacket
 			sendPacket(new SM_PRICES(player.getPrices()));
 			sendPacket(new SM_ABYSS_RANK(player.getAbyssRank()));
 
-			sendPacket(new SM_MESSAGE(0, null, serverMessage,
-				ChatType.ANNOUNCEMENTS));
+			for(String message : getWelcomeMessage())
+				PacketSendUtility.sendMessage(player, message);
 
 			if(player.isInPrison())
 				PunishmentService.updatePrisonStatus(player);
@@ -271,4 +256,12 @@ public class CM_ENTER_WORLD extends AionClientPacket
 		}
 	}
 
+	private String[] getWelcomeMessage() 
+	{
+		return new String[] {
+				"Welcome to " + GSConfig.SERVER_NAME + ", powered by Aion Lightning revision " + VersionningService.getGameRevision(),
+				"This software is under GPL. See our website for more info: http://www.aionlightning.com",
+				"And remember, our source is based on Aion Unique."
+		};
+	}
 }
