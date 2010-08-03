@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+	This file is part of aion-unique <aion-unique.org>.
+
+	aion-unique is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	aion-unique is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
+	
+	Aerdina
+
+ -->
+<spawns>
+	<!-- Crusader (Monster Normal lvl:20) (from client spawn)-->
+	<spawn map="310030000" npcid="211624" pool="5" interval="295">
+		<object x="263.86084" y="220.83083" z="211.26419" h="114"/>
+		<object x="281.62323" y="221.17667" z="206.22906" h="10"/>
+		<object x="266.4739" y="229.88438" z="213.32286" h="41"/>
+		<object x="244.4517" y="206.49638" z="204.71986" h="43"/>
+		<object x="255.81107" y="228.54057" z="214.16483" h="120"/>
+	</spawn>
+	<!-- Draconute Vaegir (Monster Normal lvl:20) (from client spawn)-->
+	<spawn map="310030000" npcid="211625" pool="2" interval="295">
+		<object x="261.31998" y="233.972" z="215.46255" h="61"/>
+		<object x="256.96524" y="223.81828" z="212.32732" h="90"/>
+	</spawn>
+</spawns>

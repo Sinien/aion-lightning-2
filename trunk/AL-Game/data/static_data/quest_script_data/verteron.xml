@@ -1,0 +1,248 @@
+<quest_scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="quest_script_data.xsd">
+	<!--
+  ~ This file is part of aion-unique.
+  ~
+  ~ aion-unique is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ aion-unique is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+	<!-- http://www.aionarmory.com/search.aspx?browse=4.3.2#quests:0+2+1 -->
+	<!-- TODO: 	[Spend Coin] Iron (Mage and Priest) -->
+	<!-- TODO: 	[Spend Coin] Iron (Warrior and Scout) -->
+	<!-- A Favor for Gaione -->
+	<monster_hunt start_npc_id="203190" id="1201">
+		<monster_infos var_id="0" npc_id="210268" max_kill="9"/>
+	</monster_hunt>
+	<!-- An Honest Merchant -->
+	<item_collecting start_npc_id="203101" end_npc_id="203097" id="1132"/>
+	<!-- Guardian Tog -->
+	<monster_hunt start_npc_id="203190" id="1135">
+		<monster_infos var_id="0" npc_id="210268" max_kill="9"/>
+	</monster_hunt>
+	<!-- Lobnite Hunt -->
+	<monster_hunt start_npc_id="203096" id="1133">
+		<monster_infos var_id="0" npc_id="210264" max_kill="11"/>
+		<monster_infos var_id="0" npc_id="210265" max_kill="11"/>
+	</monster_hunt>
+	<!-- Polluted Fountainhead -->
+	<monster_hunt start_npc_id="203102" id="1134">
+		<monster_infos var_id="0" npc_id="210203" max_kill="10"/>
+		<monster_infos var_id="0" npc_id="210204" max_kill="10"/>
+		<monster_infos var_id="1" npc_id="210063" max_kill="10"/>
+		<monster_infos var_id="1" npc_id="210064" max_kill="10"/>
+	</monster_hunt>
+	<!-- TODO: Summons to the Citadel -->
+	<!-- TODO: Undelivered Armor -->
+	<!-- TODO: [Event] Fei's Blessing -->
+	<!-- TODO: [Event] Lato's Blessing -->
+	<!-- [Manastone] New Manastones for Old -->
+	<item_collecting start_npc_id="203332" id="1161"/>
+	<!-- [Manastone] New Manastones for Old (II) -->
+	<item_collecting start_npc_id="203332" id="1187"/>
+	<!-- A Father's Letter -->
+	<report_to start_npc_id="790000" end_npc_id="203125" id="1150"/>
+	<!-- A Mother's Worry -->
+	<report_to start_npc_id="203110" end_npc_id="203123" id="1138"/>
+	<!-- Abandoned Scarecrow -->
+	<report_to start_npc_id="203123" end_npc_id="730001" id="1140"/>
+	<!-- Ancient Lobnite Fossil -->
+	<item_collecting start_npc_id="203111" action_item_id="700108" id="1137"/>
+	<!-- Collecting Kukuru -->
+	<item_collecting start_npc_id="203124" id="1145"/>
+	<!-- TODO: Danger From Above -->
+	<!-- Decorative Weapons -->
+	<item_collecting id="1136" start_npc_id="203100" action_item_id="700116"/>
+	<!-- Belbua is Missing -->
+	<item_collecting start_npc_id="203125" id="1151"/>
+	<!-- TODO: Belbua's Treasure script -->
+	<!-- Delicate Mandrake script. TODO: Needed timer.-->
+	<!-- TODO: Masked Loiterers -->
+	<!-- Nola's Request -->
+	<monster_hunt start_npc_id="730001" id="1143">
+		<monster_infos var_id="0" npc_id="210698" max_kill="15"/>
+		<monster_infos var_id="0" npc_id="210077" max_kill="15"/>
+	</monster_hunt>
+	<!-- Odella Recipe -->
+	<item_collecting id="1152" start_npc_id="203132" end_npc_id="203130"/>
+	<!-- Pumpkin Season -->
+	<item_collecting id="1144" start_npc_id="730001" end_npc_id="203130" action_item_id="700109"/>
+	<!-- The Forest Outlaw -->
+	<monster_hunt start_npc_id="203124" id="1139">
+		<monster_infos var_id="0" npc_id="210138" max_kill="9"/>
+		<monster_infos var_id="0" npc_id="210139" max_kill="9"/>
+		<monster_infos var_id="1" npc_id="210140" max_kill="5"/>
+	</monster_hunt>
+	<!-- The Writing on the Wall -->
+	<report_to start_npc_id="203339" end_npc_id="203098" item_id="182200559" id="1198"/>
+	<!-- An Unwanted Dagger -->
+	<report_to start_npc_id="203133" end_npc_id="203100" item_id="182203101" id="1142"/>
+	<!-- Feeding Hianu -->
+	<report_to start_npc_id="203130" end_npc_id="203150" item_id="182200527" id="1153"/>
+	<!-- TODO: Hunting Lepharist Revolutionaries -->
+	<!-- Lostes the Braggart -->
+	<item_collecting start_npc_id="203154" id="1148"/>
+	<!-- Supplies for the Watch -->
+	<report_to start_npc_id="203096" end_npc_id="203126" item_id="182200520" id="1147"/>
+	<!-- Gaphyrk's Love handled by script-->
+	<!-- TODO: Krall Book -->
+	<!-- 1014 Odium in the Dukaki Settlement handled by script -->
+	<!-- Retrieving Supplies -->
+	<item_collecting start_npc_id="203126" action_item_id="700117" id="1155"/>
+	<!-- Secret Trade -->
+	<item_collecting start_npc_id="203137" id="1208"/>
+	<!-- Stolen Jewelry -->
+	<item_collecting start_npc_id="203127" id="1160"/>
+	<!-- Stolen Village Seal handled by script -->
+	<!-- The Potion Maker's Mistake -->
+	<report_to start_npc_id="203131" end_npc_id="203149" item_id="182200536" id="1164"/>
+	<!-- Village Seal Found handled by script-->
+	<!-- TODO: A Special Omelette -->
+	<!-- An Antidote for Roseino -->
+	<report_to start_npc_id="203103" end_npc_id="203155" item_id="182200542" id="1171"/>
+	<!-- Collecting Poison Sacs -->
+	<item_collecting start_npc_id="203151" id="1159"/>
+	<!-- Contaminated Samples -->
+	<item_collecting start_npc_id="203148" id="1166"/>
+	<!-- Frillneck Hunt handled by script -->
+	<!-- Headless Stone Statue handled by script -->
+	<!-- http://www.aionarmory.com/search.aspx?browse=4.3.2#quests:50+2+1 -->
+	<!-- Lightningfoot Tuka -->
+	<monster_hunt start_npc_id="203126" id="1169">
+		<monster_infos var_id="0" npc_id="210317" max_kill="1"/>
+	</monster_hunt>
+	<!-- TODO: Missing Poppy -->
+	<!-- Pilgrim in Trouble -->
+	<item_collecting start_npc_id="203162" id="1167"/>
+	<!-- Soporific Mushroom -->
+	<item_collecting start_npc_id="203163" action_item_id="700114" id="1168"/>
+	<!-- A Hungry Abex -->
+	<item_collecting start_npc_id="203153" id="1213"/>
+	<!-- TODO: Alteno's Wedding Ring -->
+	<!-- TODO: Arachna Antidote -->
+	<!-- Gift to a Pilgrim -->
+	<report_to start_npc_id="203141" end_npc_id="203163" item_id="182200537" id="1165"/>
+	<!-- Ribbit Blood -->
+	<item_collecting start_npc_id="203155" id="1174"/>
+	<!-- Slaying Slimes -->
+	<monster_hunt start_npc_id="203155" id="1173">
+		<monster_infos var_id="0" npc_id="210121" max_kill="12"/>
+		<monster_infos var_id="0" npc_id="210122" max_kill="12"/>
+		<monster_infos var_id="0" npc_id="210123" max_kill="12"/>
+	</monster_hunt>
+	<!-- Trandila's Eggs handled by script-->
+	<!-- A Foolish Gamble -->
+	<item_collecting start_npc_id="203110" end_npc_id="203146" action_item_id="700115" id="1172"/>
+	<!-- Dispelling Ancient Spirits -->
+	<monster_hunt start_npc_id="203158" id="1179">
+		<monster_infos var_id="0" npc_id="210343" max_kill="10"/>
+		<monster_infos var_id="0" npc_id="211099" max_kill="10"/>
+		<monster_infos var_id="0" npc_id="211135" max_kill="10"/>
+		<monster_infos var_id="0" npc_id="211153" max_kill="10"/>
+		<monster_infos var_id="0" npc_id="211960" max_kill="10"/>
+		<monster_infos var_id="0" npc_id="211961" max_kill="10"/>
+	</monster_hunt>
+	<!-- Eninte's Request -->
+	<report_to start_npc_id="203161" end_npc_id="203893" item_id="182200560" id="1199"/>
+	<!-- Eninte -->
+	<monster_hunt start_npc_id="203893" id="1200">
+		<monster_infos var_id="0" npc_id="210743" max_kill="1"/>
+	</monster_hunt>
+	<!-- Feed a Cold -->
+	<item_collecting start_npc_id="203157" id="1210"/>
+	<!-- TEST: Give and Take -->
+	<item_collecting start_npc_id="203153" end_npc_id="203157" id="1214"/>
+	<!-- Kalgolem's Essence -->
+	<item_collecting start_npc_id="203158" id="1176"/>
+	<!-- Mysterious Stones -->
+	<item_collecting start_npc_id="203156" end_npc_id="203157" action_item_id="700006" id="1177"/>
+	<!-- Poisoned Plumas -->
+	<monster_hunt start_npc_id="203156" id="1175">
+		<monster_infos var_id="0" npc_id="210344" max_kill="9"/>
+	</monster_hunt>
+	<!-- TODO: Source of the Pollution -->
+	<!-- Swamp Plant Samples -->
+	<item_collecting start_npc_id="203155" action_item_id="700113" id="1178"/>
+	<!-- TODO: [Group] Persistent Krall -->
+	<!-- TODO: Ancient Stone Fragment -->
+	<!-- TODO: Held Sacred -->
+	<!-- TODO: Mark of Vengeance -->
+	<!-- TODO: Spirit Of Nature -->
+	<!-- [Coin] Dampening Spirits -->
+	<monster_hunt start_npc_id="203179" id="1196">
+		<monster_infos var_id="0" npc_id="210086" max_kill="14"/>
+		<monster_infos var_id="1" npc_id="210711" max_kill="8"/>
+	</monster_hunt>
+	<!-- TODO: [Group] Culling Krall -->
+	<!-- TODO: Flying Reconnaissance -->
+	<!-- TODO: Krall Desecration -->
+	<!--  Numonerk's Demand Note handled by script -->
+	<!-- TODO: Verteron Reinforcements -->
+	<!-- TODO: [Group] Krall Conspiracy -->
+	<!-- TODO: [Group] Reducing Tursin Strength -->
+	<!-- TODO: A Nest of Lepharists -->
+	<!-- TODO: A Secret Delivery -->
+	<!-- http://www.aionarmory.com/search.aspx?browse=4.3.2#quests:100+2+1 -->
+	<!-- TODO: [Group] Tursin Assassination -->
+	<!-- TODO: Sealing the Abyss Gate -->
+	<!-- TODO: [Group] Persistent Krall -->
+	<!-- TODO: Ancient Stone Fragment -->
+	<!-- Can't Please Everyone -->
+	<item_collecting start_npc_id="203172" id="1215"/>
+	<!-- TODO: Held Sacred -->
+	<!-- Investigating Wind Spirits -->
+	<report_to start_npc_id="203165" end_npc_id="203097" id="1184"/>
+	<!-- TODO: Mark of Vengeance -->
+	<!-- Potcrab Pincers -->
+	<item_collecting start_npc_id="203166" id="1204"/>
+	<!-- Potcrab, the Headache -->
+	<item_collecting start_npc_id="203166" id="1189"/>
+	<!-- TODO: Spirit Of Nature -->
+	<!-- The Wriggot Menace -->
+	<item_collecting start_npc_id="730012" id="1186"/>
+	<!-- Tribute to the Temple -->
+	<report_to start_npc_id="203157" end_npc_id="203178" item_id="182200548" id="1180"/>
+	<!-- Unquiet Spirits -->
+	<monster_hunt start_npc_id="203178" id="1185">
+		<monster_infos var_id="0" npc_id="210080" max_kill="6"/>
+	</monster_hunt>
+	<!-- Wriggot Resurgence -->
+	<item_collecting start_npc_id="730012" id="1203"/>
+	<!-- TODO: [Group] Culling Krall -->
+	<!-- An Urgent Letter -->
+	<report_to start_npc_id="203099" end_npc_id="203183" item_id="182200555" id="1191"/>
+	<!-- Flotsam -->
+	<monster_hunt start_npc_id="203184" id="1217">
+		<monster_infos var_id="0" npc_id="210299" max_kill="12"/>
+		<monster_infos var_id="0" npc_id="210085" max_kill="12"/>
+	</monster_hunt>
+	<!-- TODO: Flying Reconnaissance -->
+	<!-- TODO: Krall Desecration -->
+	<!-- Message From Morai -->
+	<report_to start_npc_id="203164" end_npc_id="203167" id="1188"/>
+	<!-- TODO: Numonerk's Demand Note -->
+	<!-- Saving the Snappers -->
+	<monster_hunt start_npc_id="203169" id="1216">
+		<monster_infos var_id="0" npc_id="210112" max_kill="12"/>
+	</monster_hunt>
+	<!-- Shipwreck Revolutionaries -->
+	<item_collecting start_npc_id="203183" id="1190"/>
+	<!-- TODO: Verteron Reinforcements -->
+	<!-- TODO: [Group] Krall Conspiracy -->
+	<!-- TODO: [Group] Reducing Tursin Strength -->
+	<!-- TODO: A Nest of Lepharists -->
+	<!-- TODO: A Secret Delivery -->
+	<!-- Lepharist Treasure Box -->
+	<item_collecting start_npc_id="203172" action_item_id="700283" id="1219"/>
+	<!-- http://www.aionarmory.com/search.aspx?browse=4.3.2#quests:100+2+1 -->
+	<!-- TODO: [Group] Tursin Assassination -->
+	<!-- TODO: Sealing the Abyss Gate -->
+</quest_scripts>
