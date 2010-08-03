@@ -136,7 +136,7 @@
 		<repository>
 			<id>central aionlight</id>
 			<name>aionlight repo</name>
-			<url>http://aionlight.googlecode.com/svn/repo/</url>
+			<url>http://aionlightning.googlecode.com/svn/repo/</url>
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
