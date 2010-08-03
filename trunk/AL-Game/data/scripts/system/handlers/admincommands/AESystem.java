@@ -23,9 +23,9 @@ import com.aionemu.gameserver.ShutdownHook;
 import com.aionemu.gameserver.ShutdownHook.ShutdownMode;
 import com.aionemu.gameserver.configs.administration.AdminConfig;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
-import com.aionemu.gameserver.utils.AEVersions;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
+import com.aionemu.gameserver.utils.VersionningService;
 import com.aionemu.gameserver.utils.chathandlers.AdminCommand;
 
 /**
@@ -67,7 +67,7 @@ public class AESystem extends AdminCommand
 			PacketSendUtility.sendMessage(admin, "System Informations at: " + AEInfos.getRealTime().toString());
 			
 			// Version Infos
-			for(String line : AEVersions.getFullVersionInfo())
+			for(String line : VersionningService.getFullVersionInfo())
 				PacketSendUtility.sendMessage(admin, line);
 			
 			// OS Infos
