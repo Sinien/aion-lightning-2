@@ -1,0 +1,1 @@
+ALTER TABLE `inventory` ADD `fusionedItem` INT(11) NOT NULL DEFAULT '0' AFTER `itemSkin` ;

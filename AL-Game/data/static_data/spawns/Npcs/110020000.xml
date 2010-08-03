@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+	This file is part of aion-unique <aion-unique.org>.
+
+	aion-unique is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	aion-unique is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
+	
+	Kaisinel
+	@author Bargna,zdead
+ -->
+<spawns>
+	<!-- Peidolas (NPC Normal lvl:50)-->
+	<spawn map="110020000" npcid="798511" pool="1" interval="105">
+		<object x="2150.1" y="1570.1" z="1205.5" h="74"/>
+	</spawn>
+	<!-- Niotia (NPC Normal lvl:50)-->
+	<spawn map="110020000" npcid="798512" pool="1" interval="105">
+		<object x="2145.6" y="1577.2" z="1205.5" h="74"/>
+	</spawn>
+	<!-- Niotia (NPC Normal lvl:50)-->
+	<spawn map="110020000" npcid="798600" pool="1" interval="105">
+		<object x="2177.9" y="1590.9" z="1206.1" h="74"/>
+	</spawn>
+</spawns>
