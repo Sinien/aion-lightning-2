@@ -12,13 +12,13 @@
 		<dependencySet>
 			<outputDirectory>loginserver/</outputDirectory>
 			<includes>
-				<include>AionLightning:AL-Login</include>
+				<include>AionLightning:al-login</include>
 			</includes>
 		</dependencySet>
 		<dependencySet>
 			<outputDirectory>loginserver/libs/</outputDirectory>
 			<excludes>
-				<exclude>AionLightning:AL-Login</exclude>
+				<exclude>AionLightning:al-login</exclude>
 			</excludes>
 		</dependencySet>
 	</dependencySets>
