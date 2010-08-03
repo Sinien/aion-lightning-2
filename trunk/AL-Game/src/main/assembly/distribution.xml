@@ -12,13 +12,13 @@
 		<dependencySet>
 			<outputDirectory>gameserver/</outputDirectory>
 			<includes>
-				<include>AionLightning:AL-Game</include>
+				<include>AionLightning:al-game</include>
 			</includes>
 		</dependencySet>
 		<dependencySet>
 			<outputDirectory>gameserver/libs/</outputDirectory>
 			<excludes>
-				<exclude>AionLightning:AL-Game</exclude>
+				<exclude>AionLightning:al-game</exclude>
 			</excludes>
 		</dependencySet>
 	</dependencySets>
