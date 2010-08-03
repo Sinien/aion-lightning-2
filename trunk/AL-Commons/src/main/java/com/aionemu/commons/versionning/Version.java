@@ -57,10 +57,11 @@ public class Version
 
 			Attributes attrs = jarFile.getManifest().getMainAttributes();
 
+			setVersion(attrs);
+			
 			setRevision(attrs);
 
 			setDate(attrs);
-
 		}
 		catch(IOException e)
 		{
@@ -93,15 +94,15 @@ public class Version
 			log.error("Error, " + e);
 		}
 	}
-	
+
 	public void setVersion(Attributes attrs) 
 	{
 		String version = attrs.getValue("Implementation-Version");
 		
-		if(version != null)
+		if (version != null)
 			this.version = version;
-		else
-			this.version = "Unown Version Number.";
+		else 
+			this.version = "-1";
 	}
 
 	public String getVersion() 
@@ -116,7 +117,7 @@ public class Version
 		if(revision != null)
 			this.revision = revision;
 		else
-			this.revision = "Unknown Revision Number.";
+			this.revision = "-1";
 	}
 
 	public String getRevision()
