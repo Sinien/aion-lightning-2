@@ -35,11 +35,11 @@
 			<outputDirectory>loginserver/config/</outputDirectory>
 		</fileSet>
 		<fileSet>
-			<directory>config/</directory>
+			<directory>data/</directory>
 			<outputDirectory>loginserver/data/</outputDirectory>
 		</fileSet>
 		<fileSet>
-			<directory>config/</directory>
+			<directory>sql/</directory>
 			<outputDirectory>loginserver/sql/</outputDirectory>
 		</fileSet>
 	</fileSets>
