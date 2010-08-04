@@ -201,7 +201,11 @@ public class TradeService
 			// 1) don't allow to sell fake items;
 			if(item == null)
 				return false;
-
+			if(!item.getItemTemplate().isTradeable())
+			{
+				log.warn("[AUDIT] Trade exploit, tried to trade untradeble item: " + player.getName());
+				return false;
+			}
 			if(item.getItemCount() - tradeItem.getCount() == 0)
 			{
 				inventory.removeFromBag(item, true); // need to be here to avoid exploit by sending packet with many
