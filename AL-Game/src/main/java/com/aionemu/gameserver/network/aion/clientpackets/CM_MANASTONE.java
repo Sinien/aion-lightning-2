@@ -38,6 +38,7 @@ public class CM_MANASTONE extends AionClientPacket
 	private int actionType;
 	private int stoneUniqueId;
 	private int targetItemUniqueId;
+	private int supplementUniqueId;
 	
 	/**
 	 * @param opcode
@@ -58,7 +59,7 @@ public class CM_MANASTONE extends AionClientPacket
 			case 1:
 			case 2:
 				stoneUniqueId = readD();
-				readD();
+				supplementUniqueId = readD();
 				break;
 			case 3:
 				slotNum = readC();
@@ -88,7 +89,8 @@ public class CM_MANASTONE extends AionClientPacket
 				}
 				if(manastone != null && targetItem != null && action.canAct(player, manastone, targetItem))
 				{
-					action.act(player, manastone, targetItem);
+					Item supplement = player.getInventory().getItemByObjId(supplementUniqueId);
+					action.act(player, manastone, targetItem, supplement);
 				}
 				break;
 			case 3: // remove manastone
