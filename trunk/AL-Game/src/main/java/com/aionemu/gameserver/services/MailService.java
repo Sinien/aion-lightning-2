@@ -233,14 +233,27 @@ public class MailService
 		/**
 		 * Calculate kinah
 		 */
-		senderInventory.decreaseKinah(finalAttachedKinahCount);
+		if (senderInventory.getKinahItem().getItemCount() > finalAttachedKinahCount)
+			senderInventory.decreaseKinah(finalAttachedKinahCount);
+		else
+		{
+			log.warn("[AUDIT]Mail kinah exploit: " + sender.getObjectId());
+			return;
+		}
 
 		if(attachedItem != null)
 			if(!DAOManager.getDAO(InventoryDAO.class).store(attachedItem, recipientCommonData.getPlayerObjId()))
 				return;
 
 		int finalMailCommission = 10 + kinahMailCommission + itemMailCommission;
-		senderInventory.decreaseKinah(finalMailCommission);
+		
+		if (senderInventory.getKinahItem().getItemCount() > finalMailCommission)
+			senderInventory.decreaseKinah(finalMailCommission);
+		else
+		{
+			log.warn("[AUDIT]Mail kinah exploit: " + sender.getObjectId());
+			return;
+		}
 		
 		/**
 		 * Send mail update packets
