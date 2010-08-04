@@ -77,6 +77,8 @@
 			<xs:enumeration value="USEITEM" />
 			<xs:enumeration value="PORTAL" />
 			<xs:enumeration value="NON_ATTACKABLE" />
+			<xs:enumeration value="ARTIFACT" />
+			<xs:enumeration value="ARTIFACT_PROTECTOR" />
 		</xs:restriction>
 	</xs:simpleType>
 	
