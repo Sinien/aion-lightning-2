@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>AionLightning</groupId>
+  <artifactId>al-main</artifactId>
+  <version>1.0.0</version>
+  <name>${project.artifactId}-${project.version}</name>
+  <packaging>pom</packaging>
+  <build>
+    <defaultGoal>compile</defaultGoal>
+  </build>
+  <modules>
+    <module>al-commons</module>
+    <module>al-game</module>
+    <module>al-login</module>
+  </modules>
+</project>
