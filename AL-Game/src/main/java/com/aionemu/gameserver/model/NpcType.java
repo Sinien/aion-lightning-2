@@ -35,7 +35,11 @@ public enum NpcType
 	/** Action item **/
 	USEITEM(38),
 	/** Portals **/
-	PORTAL(38);
+	PORTAL(38),
+	/** Artifact **/
+	ARTIFACT(38),
+	/** High Protector **/
+	ARTIFACT_PROTECTOR(0);
 	
 	private int someClientSideId;
 	
