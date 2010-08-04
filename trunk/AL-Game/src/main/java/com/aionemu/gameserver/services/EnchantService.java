@@ -106,7 +106,7 @@ public class EnchantService
 	 * @param parentItem
 	 * @param targetItem
 	 */
-	public static boolean enchantItem(Player player, Item parentItem, Item targetItem)
+	public static boolean enchantItem(Player player, Item parentItem, Item targetItem, Item supplementItem)
 	{
 		int enchantStoneLevel = parentItem.getItemTemplate().getLevel();
 		int targetItemLevel = targetItem.getItemTemplate().getLevel();
@@ -145,6 +145,55 @@ public class EnchantService
 		if(extraSuccess > 0)
 		{
 			success += extraSuccess * 5;
+		}
+
+		if(supplementItem != null)
+		{
+			int supplementUseCount = 1;
+			int addsuccessRate = 10;
+			int supplementId = supplementItem.getItemTemplate().getTemplateId();
+			int enchantstoneLevel = parentItem.getItemTemplate().getLevel();
+			int enchantitemLevel = targetItem.getEnchantLevel() + 1;
+			
+			//lesser supplements
+			if(supplementId == 166100000 || supplementId == 166100003 || supplementId == 166100006)
+				addsuccessRate = 10;
+			//supplements
+			if(supplementId == 166100001 || supplementId == 166100004 || supplementId == 166100007)
+				addsuccessRate = 15;
+			//greater supplements
+			if(supplementId == 166100002 || supplementId == 166100005 || supplementId == 166100008)
+				addsuccessRate = 20;
+
+			if(enchantstoneLevel > 30 && enchantstoneLevel < 41)
+				supplementUseCount = 5;			
+			
+			if(enchantstoneLevel > 40 && enchantstoneLevel < 51)
+				supplementUseCount = 10;
+			
+			if(enchantstoneLevel > 50 && enchantstoneLevel < 61)
+				supplementUseCount = 25;
+			
+			if(enchantstoneLevel > 60 && enchantstoneLevel < 71)
+				supplementUseCount = 55;
+			
+			if(enchantstoneLevel > 70 && enchantstoneLevel < 81)
+				supplementUseCount = 85;
+			
+			if(enchantstoneLevel > 80 && enchantstoneLevel < 91)
+				supplementUseCount = 115;
+			
+			if(enchantstoneLevel > 90)
+				supplementUseCount = 145;
+
+
+			if(enchantitemLevel > 10)
+				supplementUseCount = supplementUseCount * 2;
+
+			player.getInventory().removeFromBagByObjectId(supplementItem.getObjectId(), supplementUseCount);
+
+			//Add successRate
+			success = success + addsuccessRate;			
 		}
 
 		if(success >= 95)
@@ -217,7 +266,7 @@ public class EnchantService
 	 * @param parentItem
 	 * @param targetItem
 	 */
-	public static boolean socketManastone(Player player, Item parentItem, Item targetItem)
+	public static boolean socketManastone(Player player, Item parentItem, Item targetItem, Item supplementItem)
 	{
 		boolean result = false;
 		int successRate = 76;
@@ -244,6 +293,70 @@ public class EnchantService
 
 		if(stoneCount >= 6)
 			successRate = EnchantsConfig.MSPERCENT5;
+
+		if(supplementItem != null)
+		{
+			int supplementUseCount = 1;
+			int addsuccessRate = 10;
+			int supplementId = supplementItem.getItemTemplate().getTemplateId();
+			int manastoneId = parentItem.getItemTemplate().getTemplateId();
+			int manastoneLevel = parentItem.getItemTemplate().getLevel();
+			int manastoneCount = targetItem.getItemStones().size() + 1;
+			
+			//lesser supplements
+			if(supplementId == 166100000 || supplementId == 166100003 || supplementId == 166100006)
+				addsuccessRate = 10;
+			//supplements
+			if(supplementId == 166100001 || supplementId == 166100004 || supplementId == 166100007)
+				addsuccessRate = 15;
+			//greater supplements
+			if(supplementId == 166100002 || supplementId == 166100005 || supplementId == 166100008)
+				addsuccessRate = 20;
+			
+			//basic formula by manastone level
+			if(manastoneLevel > 30)
+				supplementUseCount = supplementUseCount + 1;
+
+			if(manastoneLevel > 40)
+				supplementUseCount = supplementUseCount + 1;
+
+			if(manastoneLevel > 50)
+				supplementUseCount = supplementUseCount + 1;
+			
+			//manastone attacks and crit strike use more supplements
+			if(manastoneId == 167000230 || manastoneId == 167000235)
+				supplementUseCount = 5;
+
+			if(manastoneId == 167000294 || manastoneId == 167000267 || manastoneId == 167000299)
+				supplementUseCount = 5;
+
+			if(manastoneId == 167000331)
+				supplementUseCount = 10;
+				
+			if(manastoneId == 167000358 || manastoneId == 167000363)
+				supplementUseCount = 15;
+
+			if(manastoneId == 167000550)
+				supplementUseCount = 20;			
+
+			if(manastoneId == 167000454 || manastoneId == 167000427 || manastoneId == 167000459)
+				supplementUseCount = 25;
+
+			if(manastoneId == 167000491)
+				supplementUseCount = 50;
+
+			if(manastoneId == 167000518 || manastoneId == 167000522)
+				supplementUseCount = 75;
+
+			//supplementUseCount * manastoneCount
+			if(stoneCount > 0)
+				supplementUseCount = supplementUseCount * manastoneCount;
+
+			player.getInventory().removeFromBagByObjectId(supplementItem.getObjectId(), supplementUseCount);
+
+			//Add successRate
+			successRate = successRate + addsuccessRate;			
+		}
 
 		if(Rnd.get(0, 100) < successRate)
 			result = true;

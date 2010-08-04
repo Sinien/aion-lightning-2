@@ -53,8 +53,14 @@ public class EnchantItemAction extends AbstractItemAction
 	@Override
 	public void act(final Player player, final Item parentItem, final Item targetItem)
 	{
+		act(player, parentItem, targetItem, null);
+	}
+
+	//necessary overloading to not change AbstractItemAction
+	public void act(final Player player, final Item parentItem, final Item targetItem, final Item supplementItem)
+	{
 		PacketSendUtility.sendPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(),
-			parentItem.getObjectId(), parentItem.getItemTemplate().getTemplateId(), 5000, 0, 0));
+		parentItem.getObjectId(), parentItem.getItemTemplate().getTemplateId(), 5000, 0, 0));
 		player.getController().cancelTask(TaskId.ITEM_USE);
 		player.getController().addNewTask(TaskId.ITEM_USE,
 		ThreadPoolManager.getInstance().schedule(new Runnable(){
@@ -65,13 +71,13 @@ public class EnchantItemAction extends AbstractItemAction
 				int itemId = parentItem.getItemTemplate().getTemplateId();
 				if(itemId > 166000000 && itemId < 167000000)
 				{
-					boolean result = EnchantService.enchantItem(player, parentItem, targetItem);
+					boolean result = EnchantService.enchantItem(player, parentItem, targetItem, supplementItem);
 					PacketSendUtility.sendPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(), parentItem
 						.getObjectId(), parentItem.getItemTemplate().getTemplateId(), 0, result ? 1 : 2, 0));
 				}
 				else
 				{
-					boolean result = EnchantService.socketManastone(player, parentItem, targetItem);
+					boolean result = EnchantService.socketManastone(player, parentItem, targetItem, supplementItem);
 					PacketSendUtility.sendPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(), parentItem
 						.getObjectId(), parentItem.getItemTemplate().getTemplateId(), 0, result ? 1 : 2, 0));
 				}
