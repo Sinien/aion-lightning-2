@@ -23,7 +23,7 @@ package com.aionemu.gameserver.model.gameobjects.player;
  * @author SoulKeeper, srx47, alexa026
  */
 
-public class PlayerAppearance
+public class PlayerAppearance implements Cloneable
 {
 
 	/**
@@ -1130,4 +1130,23 @@ public class PlayerAppearance
 		this.height = height;
 	}
 
+	/**
+	 * Allow to copy the object
+	 * @author Divinity
+	 */
+	public Object clone()
+	{
+		Object newObject = null;
+		
+		try
+		{
+			newObject = super.clone();
+		}
+		catch(CloneNotSupportedException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return newObject;
+	}
 }

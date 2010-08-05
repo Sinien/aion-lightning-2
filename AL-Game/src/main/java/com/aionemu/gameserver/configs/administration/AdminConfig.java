@@ -56,6 +56,9 @@ public class AdminConfig
 	@Property(key = "gameserver.administration.command.announcements", defaultValue = "3")
 	public static int	COMMAND_ANNOUNCEMENTS;
 	
+	@Property(key = "gameserver.administration.command.appearance", defaultValue = "3")
+	public static int	COMMAND_APPEARANCE;
+	
 	@Property(key = "gameserver.administration.command.ban", defaultValue = "3")
 	public static int	COMMAND_BAN;
 	
