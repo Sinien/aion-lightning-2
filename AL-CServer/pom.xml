@@ -144,6 +144,17 @@
 			</releases>
 		</repository>
 		<repository>
+			<id>central repo4</id>
+			<name>repo4</name>
+			<url>http://repository.jboss.org/maven2</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+		<repository>
 			<id>central aionlight</id>
 			<name>aionlight repo</name>
 			<url>http://aionlightning.googlecode.com/svn/repo/</url>
@@ -164,7 +175,7 @@
 		<dependency>
 			<groupId>org.jboss.netty</groupId>
 			<artifactId>netty</artifactId>
-			<version>3.2.0B1</version>
+			<version>3.2.0.BETA1</version>
 		</dependency>
 	</dependencies>
 </project>
