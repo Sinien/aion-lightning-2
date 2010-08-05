@@ -22,6 +22,7 @@ import java.util.TreeSet;
 
 import com.aionemu.gameserver.dataholders.DataManager;
 import com.aionemu.gameserver.model.items.GodStone;
+import com.aionemu.gameserver.model.items.ItemMask;
 import com.aionemu.gameserver.model.items.ItemStorage;
 import com.aionemu.gameserver.model.items.ManaStone;
 import com.aionemu.gameserver.model.templates.item.EquipType;
@@ -390,6 +391,15 @@ public class Item extends AionObject
 	public boolean isSoulBound()
 	{
 		return isSoulBound;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean isTradeable()
+	{
+		return (getItemMask() & ItemMask.TRADEABLE) == ItemMask.TRADEABLE && !isSoulBound;
 	}
 
 	public void setSoulBound(boolean isSoulBound)
