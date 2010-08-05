@@ -25,6 +25,8 @@ import com.aionemu.gameserver.controllers.movement.ActionObserver;
 import com.aionemu.gameserver.controllers.movement.ActionObserver.ObserverType;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.skillengine.model.Effect;
+import com.aionemu.gameserver.skillengine.model.Skill;
+import com.aionemu.gameserver.skillengine.model.SkillType;
 
 /**
  * @author ATracer
@@ -43,13 +45,13 @@ public class OneTimeBoostSkillAttackEffect extends BufEffect
 		super.startEffect(effect);
 		
 		final int stopCount = count;
-		ActionObserver observer = new ActionObserver(ObserverType.ATTACK){
+		ActionObserver observer = new ActionObserver(ObserverType.SKILLUSE){
 
 			private int count = 0;
 			@Override
-			public void attack(Creature creature)
+			public void skilluse(Skill skill)
 			{
-				if(count < stopCount)
+				if( (count < stopCount) && (skill.getSkillTemplate().getType() == SkillType.PHYSICAL) )
 					count++;
 				
 				if(count == stopCount)
