@@ -158,7 +158,7 @@ public class ExchangeService
 			return;
 		
 		// Check Trade Hack
-		if (!item.getItemTemplate().isTradeable())
+		if (!item.isTradeable())
 			return;
 			
 		if(itemCount < 1)

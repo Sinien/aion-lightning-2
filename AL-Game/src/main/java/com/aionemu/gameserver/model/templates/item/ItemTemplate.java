@@ -580,15 +580,6 @@ public class ItemTemplate extends VisibleObjectTemplate
 	 * 
 	 * @return
 	 */
-	public boolean isTradeable()
-	{
-		return (getMask() & ItemMask.TRADEABLE) == ItemMask.TRADEABLE;
-	}
-	
-	/**
-	 * 
-	 * @return
-	 */
 	public boolean isUndeletableQuestItem()
 	{
 		return (getMask() & ItemMask.UNDELETABLE_QUEST_ITEMS) == ItemMask.UNDELETABLE_QUEST_ITEMS;
