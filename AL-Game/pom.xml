@@ -18,6 +18,12 @@
 			<testResource>
 				<directory>src/test/resources</directory>
 			</testResource>
+			<testResource>
+				<directory>data/scripts/system/handlers</directory>
+			</testResource>
+			<testResource>
+				<directory>data/scripts/system/database</directory>
+			</testResource>
 		</testResources>
 		<plugins>
 			<plugin>
