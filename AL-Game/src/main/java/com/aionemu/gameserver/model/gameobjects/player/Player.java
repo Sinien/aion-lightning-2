@@ -26,7 +26,6 @@ import org.apache.log4j.Logger;
 import javolution.util.FastMap;
 
 import com.aionemu.commons.database.dao.DAOManager;
-import com.aionemu.gameserver.configs.administration.AdminConfig;
 import com.aionemu.gameserver.configs.main.PeriodicSaveConfig;
 import com.aionemu.gameserver.controllers.FlyController;
 import com.aionemu.gameserver.controllers.PlayerController;
@@ -1040,7 +1039,7 @@ public class Player extends Creature
 	
 	public boolean isGM()
 	{
-		return getAccessLevel() == AdminConfig.GM_LEVEL;
+		return getAccessLevel() > 0;
 	}
 	
 	/**
