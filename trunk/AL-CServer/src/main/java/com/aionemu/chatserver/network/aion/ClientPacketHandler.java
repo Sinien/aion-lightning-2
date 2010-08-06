@@ -25,19 +25,12 @@ import com.aionemu.chatserver.network.aion.clientpackets.CM_CHANNEL_REQUEST;
 import com.aionemu.chatserver.network.aion.clientpackets.CM_PLAYER_AUTH;
 import com.aionemu.chatserver.network.netty.handler.ClientChannelHandler;
 import com.aionemu.chatserver.network.netty.handler.ClientChannelHandler.State;
-import com.aionemu.chatserver.service.BroadcastService;
-import com.aionemu.chatserver.service.ChatService;
-import com.google.inject.Inject;
 
 /**
  * @author ATracer
  */
 public class ClientPacketHandler extends AbstractPacketHandler
 {
-	@Inject
-	private BroadcastService broadcastService;
-	@Inject
-	private ChatService chatService;
 	
 	@SuppressWarnings("unused")
 	private static final Logger	log	= Logger.getLogger(ClientPacketHandler.class);
@@ -49,7 +42,7 @@ public class ClientPacketHandler extends AbstractPacketHandler
 	 * @param channelHandler
 	 * @return AbstractClientPacket
 	 */
-	public AbstractClientPacket handle(ChannelBuffer buf, ClientChannelHandler channelHandler)
+	public static AbstractClientPacket handle(ChannelBuffer buf, ClientChannelHandler channelHandler)
 	{
 		byte opCode = buf.readByte();
 		State state = channelHandler.getState();
@@ -61,7 +54,7 @@ public class ClientPacketHandler extends AbstractPacketHandler
 				switch (opCode)
 				{
 					case 0x05:
-						clientPacket = new CM_PLAYER_AUTH(buf, channelHandler, chatService);
+						clientPacket = new CM_PLAYER_AUTH(buf, channelHandler);
 						break;
 					default:
 						//unknownPacket(opCode, state.toString());
@@ -71,10 +64,10 @@ public class ClientPacketHandler extends AbstractPacketHandler
 				switch (opCode)
 				{
 					case 0x10:
-						clientPacket = new CM_CHANNEL_REQUEST(buf, channelHandler, chatService);
+						clientPacket = new CM_CHANNEL_REQUEST(buf, channelHandler);
 						break;
 					case 0x18:
-						clientPacket = new CM_CHANNEL_MESSAGE(buf, channelHandler, broadcastService);
+						clientPacket = new CM_CHANNEL_MESSAGE(buf, channelHandler);
 					default:
 						//unknownPacket(opCode, state.toString());
 				}

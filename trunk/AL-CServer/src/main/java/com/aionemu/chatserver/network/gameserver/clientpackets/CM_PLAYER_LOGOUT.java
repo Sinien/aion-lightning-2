@@ -32,12 +32,9 @@ public class CM_PLAYER_LOGOUT extends AbstractGameClientPacket
 
 	private int					playerId;
 
-	private ChatService			chatService;
-
-	public CM_PLAYER_LOGOUT(ChannelBuffer buf, GameChannelHandler gameChannelHandler, ChatService chatService)
+	public CM_PLAYER_LOGOUT(ChannelBuffer buf, GameChannelHandler gameChannelHandler)
 	{
 		super(buf, gameChannelHandler, 0x02);
-		this.chatService = chatService;
 	}
 
 	@Override
@@ -49,7 +46,7 @@ public class CM_PLAYER_LOGOUT extends AbstractGameClientPacket
 	@Override
 	protected void runImpl()
 	{
-		chatService.playerLogout(playerId);
+		ChatService.getInstance().playerLogout(playerId);
 		log.info("Player logout " + playerId);
 	}
 }

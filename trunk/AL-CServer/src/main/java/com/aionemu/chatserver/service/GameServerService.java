@@ -36,7 +36,7 @@ public class GameServerService
 	 * @param password
 	 * @return
 	 */
-	public GsAuthResponse registerGameServer(GameChannelHandler gameChannelHandler, byte gameServerId,
+	public static GsAuthResponse registerGameServer(GameChannelHandler gameChannelHandler, byte gameServerId,
 		byte[] defaultAddress, String password)
 	{
 		GAMESERVER_ID = gameServerId;
@@ -47,7 +47,7 @@ public class GameServerService
 	 * 
 	 * @return
 	 */
-	private GsAuthResponse passwordConfigAuth(String password)
+	private static GsAuthResponse passwordConfigAuth(String password)
 	{
 		if (password.equals(Config.GAME_SERVER_PASSWORD))
 			return GsAuthResponse.AUTHED;

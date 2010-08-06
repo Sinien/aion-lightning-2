@@ -47,12 +47,9 @@ public class CM_CS_AUTH extends AbstractGameClientPacket
 	 */
 	private byte[]				defaultAddress;
 
-	private GameServerService	gameServerService;
-
-	public CM_CS_AUTH(ChannelBuffer buf, GameChannelHandler gameChannelHandler, GameServerService gameServerService)
+	public CM_CS_AUTH(ChannelBuffer buf, GameChannelHandler gameChannelHandler)
 	{
 		super(buf, gameChannelHandler, 0x00);
-		this.gameServerService = gameServerService;
 	}
 
 	@Override
@@ -67,7 +64,7 @@ public class CM_CS_AUTH extends AbstractGameClientPacket
 	@Override
 	protected void runImpl()
 	{
-		GsAuthResponse resp = gameServerService.registerGameServer(gameChannelHandler, gameServerId, defaultAddress,
+		GsAuthResponse resp = GameServerService.registerGameServer(gameChannelHandler, gameServerId, defaultAddress,
 			password);
 
 		switch (resp)

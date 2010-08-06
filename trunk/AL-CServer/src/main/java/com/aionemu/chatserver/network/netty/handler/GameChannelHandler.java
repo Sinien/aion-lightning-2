@@ -29,7 +29,6 @@ import org.jboss.netty.channel.MessageEvent;
 import com.aionemu.chatserver.network.gameserver.AbstractGameClientPacket;
 import com.aionemu.chatserver.network.gameserver.AbstractGameServerPacket;
 import com.aionemu.chatserver.network.gameserver.GameServerPacketHandler;
-import com.google.inject.Inject;
 
 /**
  * @author ATracer
@@ -42,11 +41,6 @@ public class GameChannelHandler extends AbstractChannelHandler
 	private static final Logger				log	= Logger.getLogger(GameChannelHandler.class);
 
 	/**
-	 * Packet handler for game channel
-	 */
-	private final GameServerPacketHandler	gameServerPacketHandler;
-
-	/**
 	 * Current state of channel
 	 */
 	private State							state;
@@ -55,10 +49,9 @@ public class GameChannelHandler extends AbstractChannelHandler
 	 * 
 	 * @param gameServerPacketHandler
 	 */
-	@Inject
-	public GameChannelHandler(GameServerPacketHandler gameServerPacketHandler)
+
+	public GameChannelHandler()
 	{
-		this.gameServerPacketHandler = gameServerPacketHandler;
 	}
 
 	@Override
@@ -78,9 +71,9 @@ public class GameChannelHandler extends AbstractChannelHandler
 		/**
 		 * Packet is frame decoded and decrypted at this stage Here packet will be read and submitted to execution
 		 */
-		AbstractGameClientPacket gameServerPacket = gameServerPacketHandler
+		AbstractGameClientPacket gameServerPacket = GameServerPacketHandler
 			.handle((ChannelBuffer) e.getMessage(), this);
-		log.info("Received packet: " + gameServerPacket);
+		log.debug("Received packet: " + gameServerPacket);
 		if (gameServerPacket != null && gameServerPacket.read())
 		{
 			gameServerPacket.run();
@@ -96,7 +89,7 @@ public class GameChannelHandler extends AbstractChannelHandler
 		ChannelBuffer cb = ChannelBuffers.buffer(ByteOrder.LITTLE_ENDIAN, 2 * 8192);
 		packet.write(this, cb);
 		channel.write(cb);
-		log.info("Sent packet: " + packet);
+		log.debug("Sent packet: " + packet);
 	}
 
 	public static enum State

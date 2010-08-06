@@ -25,12 +25,10 @@ import org.jboss.netty.channel.Channels;
 import org.jboss.netty.handler.execution.ExecutionHandler;
 import org.jboss.netty.handler.execution.OrderedMemoryAwareThreadPoolExecutor;
 
-import com.aionemu.chatserver.network.gameserver.GameServerPacketHandler;
 import com.aionemu.chatserver.network.netty.coder.GameServerPacketDecoder;
 import com.aionemu.chatserver.network.netty.coder.GameServerPacketEncoder;
 import com.aionemu.chatserver.network.netty.coder.PacketFrameDecoder;
 import com.aionemu.chatserver.network.netty.handler.GameChannelHandler;
-import com.google.inject.Inject;
 
 /**
  * @author ATracer
@@ -42,17 +40,10 @@ public class LoginToGamePipelineFactory implements ChannelPipelineFactory
 	private static final int						TOTAL_MEMORY		= 134217728;
 	private static final int						TIMEOUT				= 100;
 
-	private final GameServerPacketHandler			gameServerPacketHandler;
 	private OrderedMemoryAwareThreadPoolExecutor	pipelineExecutor;
 
-	/**
-	 * 
-	 * @param gameServerPacketHandler
-	 */
-	@Inject
-	public LoginToGamePipelineFactory(GameServerPacketHandler gameServerPacketHandler)
+	public LoginToGamePipelineFactory()
 	{
-		this.gameServerPacketHandler = gameServerPacketHandler;
 		pipelineExecutor = new OrderedMemoryAwareThreadPoolExecutor(THREADS_MAX, MEMORY_PER_CHANNEL, TOTAL_MEMORY,
 			TIMEOUT, TimeUnit.MILLISECONDS, Executors.defaultThreadFactory());
 	}
@@ -74,7 +65,7 @@ public class LoginToGamePipelineFactory implements ChannelPipelineFactory
 		pipeline.addLast("packetencoder", new GameServerPacketEncoder());
 
 		pipeline.addLast("executor", new ExecutionHandler(pipelineExecutor));
-		pipeline.addLast("handler", new GameChannelHandler(gameServerPacketHandler));
+		pipeline.addLast("handler", new GameChannelHandler());
 
 		return pipeline;
 	}

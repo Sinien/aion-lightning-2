@@ -40,19 +40,15 @@ public class CM_CHANNEL_MESSAGE extends AbstractClientPacket
 	private int					channelId;
 	private byte[]				content;
 
-	private BroadcastService	broadcastService;
-
 	/**
 	 * 
 	 * @param channelBuffer
 	 * @param gameChannelHandler
 	 * @param opCode
 	 */
-	public CM_CHANNEL_MESSAGE(ChannelBuffer channelBuffer, ClientChannelHandler gameChannelHandler,
-		BroadcastService broadcastService)
+	public CM_CHANNEL_MESSAGE(ChannelBuffer channelBuffer, ClientChannelHandler gameChannelHandler)
 	{
 		super(channelBuffer, gameChannelHandler, 0x18);
-		this.broadcastService = broadcastService;
 	}
 
 	@Override
@@ -72,7 +68,7 @@ public class CM_CHANNEL_MESSAGE extends AbstractClientPacket
 	{
 		Channel channel = Channels.getChannelById(channelId);
 		Message message = new Message(channel, content, clientChannelHandler.getChatClient());
-		broadcastService.broadcastMessage(message);
+		BroadcastService.getInstance().broadcastMessage(message);
 	}
 
 	@Override

@@ -17,10 +17,9 @@
 package com.aionemu.chatserver;
 
 import com.aionemu.chatserver.configs.Config;
-import com.aionemu.chatserver.utils.guice.ServiceInjectionModule;
+import com.aionemu.chatserver.network.netty.NettyServer;
 import com.aionemu.commons.services.LoggingService;
 import com.aionemu.commons.utils.AEInfos;
-import com.google.inject.Guice;
 
 /**
  * @author ATracer
@@ -35,7 +34,7 @@ public class ChatServer
         LoggingService.init();      
 		Config.load();
         
-        Guice.createInjector(new ServiceInjectionModule());		
+        new NettyServer();	
 
         AEInfos.printAllInfos();
     }

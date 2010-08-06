@@ -31,8 +31,6 @@ import com.aionemu.chatserver.model.channel.Channels;
 import com.aionemu.chatserver.network.aion.serverpackets.SM_PLAYER_AUTH_RESPONSE;
 import com.aionemu.chatserver.network.netty.handler.ClientChannelHandler;
 import com.aionemu.chatserver.network.netty.handler.ClientChannelHandler.State;
-import com.google.inject.Inject;
-
 /**
  * @author ATracer
  */
@@ -42,9 +40,11 @@ public class ChatService
 	
 	private Map<Integer, ChatClient>	players	= new ConcurrentHashMap<Integer, ChatClient>();
 	
-	@Inject
-	private BroadcastService broadcastService;
 	
+	public static final ChatService getInstance()
+	{
+		return SingletonHolder.instance;
+	}
 	/**
 	 * Player registered from server side
 	 * 
@@ -107,7 +107,7 @@ public class ChatService
 				channelHandler.sendPacket(new SM_PLAYER_AUTH_RESPONSE());
 				channelHandler.setState(State.AUTHED);
 				channelHandler.setChatClient(chatClient);
-				broadcastService.addClient(chatClient);
+				BroadcastService.getInstance().addClient(chatClient);
 			}
 		}
 	}
@@ -137,7 +137,7 @@ public class ChatService
 		if(chatClient != null)
 		{
 			players.remove(playerId);
-			broadcastService.removeClient(chatClient);
+			BroadcastService.getInstance().removeClient(chatClient);
 			if(chatClient.getChannelHandler() != null)
 				chatClient.getChannelHandler().close();
 			else
@@ -145,4 +145,9 @@ public class ChatService
 		}		
 	}
 
+	@SuppressWarnings("synthetic-access")
+	private static class SingletonHolder
+	{
+		protected static final ChatService instance = new ChatService();
+	}
 }

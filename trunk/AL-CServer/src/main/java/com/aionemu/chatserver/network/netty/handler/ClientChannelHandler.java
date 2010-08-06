@@ -30,7 +30,6 @@ import com.aionemu.chatserver.model.ChatClient;
 import com.aionemu.chatserver.network.aion.AbstractClientPacket;
 import com.aionemu.chatserver.network.aion.AbstractServerPacket;
 import com.aionemu.chatserver.network.aion.ClientPacketHandler;
-import com.google.inject.Inject;
 
 /**
  * @author ATracer
@@ -39,16 +38,12 @@ public class ClientChannelHandler extends AbstractChannelHandler
 {
 	private static final Logger			log	= Logger.getLogger(ClientChannelHandler.class);
 
-	private final ClientPacketHandler	clientPacketHandler;
-
 	private State						state;
 
 	private ChatClient					chatClient;
 
-	@Inject
-	public ClientChannelHandler(ClientPacketHandler clientPacketHandler)
+	public ClientChannelHandler()
 	{
-		this.clientPacketHandler = clientPacketHandler;
 	}
 
 	@Override
@@ -67,13 +62,13 @@ public class ClientChannelHandler extends AbstractChannelHandler
 	{
 		super.messageReceived(ctx, e);
 
-		AbstractClientPacket clientPacket = clientPacketHandler.handle((ChannelBuffer) e.getMessage(), this);
+		AbstractClientPacket clientPacket = ClientPacketHandler.handle((ChannelBuffer) e.getMessage(), this);
 		if (clientPacket != null && clientPacket.read())
 		{
 			clientPacket.run();
 		}
 		if(clientPacket != null)
-			log.info("Received packet: " + clientPacket);
+			log.debug("Received packet: " + clientPacket);
 	}
 
 	/**
@@ -85,7 +80,7 @@ public class ClientChannelHandler extends AbstractChannelHandler
 		ChannelBuffer cb = ChannelBuffers.buffer(ByteOrder.LITTLE_ENDIAN, 2 * 8192);
 		packet.write(this, cb);
 		channel.write(cb);
-		log.info("Sent packet: " + packet);
+		log.debug("Sent packet: " + packet);
 	}
 
 	/**

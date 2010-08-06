@@ -25,9 +25,6 @@ import com.aionemu.chatserver.network.gameserver.clientpackets.CM_PLAYER_AUTH;
 import com.aionemu.chatserver.network.gameserver.clientpackets.CM_PLAYER_LOGOUT;
 import com.aionemu.chatserver.network.netty.handler.GameChannelHandler;
 import com.aionemu.chatserver.network.netty.handler.GameChannelHandler.State;
-import com.aionemu.chatserver.service.ChatService;
-import com.aionemu.chatserver.service.GameServerService;
-import com.google.inject.Inject;
 
 /**
  * @author ATracer
@@ -37,11 +34,6 @@ public class GameServerPacketHandler extends AbstractPacketHandler
 	@SuppressWarnings("unused")
 	private static final Logger	log	= Logger.getLogger(GameServerPacketHandler.class);
 
-	@Inject
-	private GameServerService	gameServerService;
-	@Inject
-	private ChatService			chatService;
-
 	/**
 	 * Reads one packet from ChannelBuffer
 	 * 
@@ -49,7 +41,7 @@ public class GameServerPacketHandler extends AbstractPacketHandler
 	 * @param channelHandler
 	 * @return AbstractGameClientPacket
 	 */
-	public AbstractGameClientPacket handle(ChannelBuffer buf, GameChannelHandler channelHandler)
+	public static AbstractGameClientPacket handle(ChannelBuffer buf, GameChannelHandler channelHandler)
 	{
 		byte opCode = buf.readByte();
 		State state = channelHandler.getState();
@@ -62,7 +54,7 @@ public class GameServerPacketHandler extends AbstractPacketHandler
 				switch (opCode)
 				{
 					case 0x00:
-						gamePacket = new CM_CS_AUTH(buf, channelHandler, gameServerService);
+						gamePacket = new CM_CS_AUTH(buf, channelHandler);
 						break;
 					default:
 						unknownPacket(opCode, state.toString());
@@ -74,10 +66,10 @@ public class GameServerPacketHandler extends AbstractPacketHandler
 				switch (opCode)
 				{
 					case 0x01:
-						gamePacket = new CM_PLAYER_AUTH(buf, channelHandler, chatService);
+						gamePacket = new CM_PLAYER_AUTH(buf, channelHandler);
 						break;
 					case 0x02:
-						gamePacket = new CM_PLAYER_LOGOUT(buf, channelHandler, chatService);
+						gamePacket = new CM_PLAYER_LOGOUT(buf, channelHandler);
 						break;
 					default:
 						unknownPacket(opCode, state.toString());
