@@ -216,19 +216,22 @@ public class Npc extends Creature
 	@Override
 	protected boolean isEnemyNpc(Npc visibleObject)
 	{
-		return false;//TODO
+		return ((DataManager.TRIBE_RELATIONS_DATA.isAggressiveRelation(getTribe(),visibleObject.getTribe())) || (DataManager.TRIBE_RELATIONS_DATA.isHostileRelation(getTribe(),visibleObject.getTribe())));
 	}
 
 	@Override
 	protected boolean isEnemyPlayer(Player visibleObject)
 	{
-		return true;//TODO
+		return (!((DataManager.TRIBE_RELATIONS_DATA.isSupportRelation(getTribe(),visibleObject.getTribe())) || (DataManager.TRIBE_RELATIONS_DATA.isFriendlyRelation(getTribe(),visibleObject.getTribe()))) );
 	}
 	
 	@Override
 	protected boolean isEnemySummon(Summon visibleObject)
 	{
-		return true;//TODO
+		Player player = visibleObject.getMaster();
+		if (player != null)
+			return (!((DataManager.TRIBE_RELATIONS_DATA.isSupportRelation(getTribe(),player.getTribe())) || (DataManager.TRIBE_RELATIONS_DATA.isFriendlyRelation(getTribe(),player.getTribe()))) );
+		return true;
 	}
 	
 	@Override
