@@ -171,6 +171,12 @@
 			<groupId>AionLightning</groupId>
 			<artifactId>al-commons</artifactId>
 			<version>${project.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>gnu</groupId>
+					<artifactId>trove</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.netty</groupId>
