@@ -520,6 +520,10 @@
 			<xs:enumeration value="READY_ROOM_2"/>
 			<xs:enumeration value="AUXILLARY_POWER"/>
 			<xs:enumeration value="PRIMARY_ARMORY"/>
+			<!--Nochsana-->
+			<xs:enumeration value="NOCHSANA_FORTRESS_GATE"/>
+			<xs:enumeration value="NOCHSANA_TRAINING_CAMP"/>
+			<xs:enumeration value="NOCHSANA_TRAINING_FORTRESS"/>
 		</xs:restriction>
 	</xs:simpleType>
 </xs:schema>
