@@ -52,6 +52,7 @@ public class ServerPacketsOpcodes
 		addPacketOpcode(SM_ABYSS_RANK.class, 0x0B, idSet);// 1.9
 		addPacketOpcode(SM_FRIEND_UPDATE.class, 0x0C, idSet);
 		addPacketOpcode(SM_PETITION.class, 0x0D, idSet);// 1.9
+		addPacketOpcode(SM_RECIPE_DELETE.class, 0x0E, idSet); // 1.9
 		addPacketOpcode(SM_LEARN_RECIPE.class, 0x0F, idSet);// 1.9
 		addPacketOpcode(SM_FLY_TIME.class, 0x10, idSet);// 1.9
 		addPacketOpcode(SM_DELETE.class, 0x12, idSet);// 1.9

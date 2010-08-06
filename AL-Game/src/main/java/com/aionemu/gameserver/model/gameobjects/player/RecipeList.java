@@ -25,6 +25,7 @@ import com.aionemu.gameserver.dataholders.DataManager;
 import com.aionemu.gameserver.model.DescriptionId;
 import com.aionemu.gameserver.model.templates.recipe.RecipeTemplate;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_LEARN_RECIPE;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_RECIPE_DELETE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 
@@ -49,12 +50,22 @@ public class RecipeList
 	public void addRecipe(Player player, RecipeTemplate recipeTemplate)
 	{
 		int recipeId = recipeTemplate.getId();
-		if (!player.getRecipeList().isRecipePresent(recipeId))
+		if (!recipeList.contains(recipeId))
 		{
 			recipeList.add(recipeId);
 			DAOManager.getDAO(PlayerRecipesDAO.class).addRecipe(player.getObjectId(), recipeId);
 			PacketSendUtility.sendPacket(player, new SM_LEARN_RECIPE(recipeId));
 			PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.CRAFT_RECIPE_LEARN(new DescriptionId(recipeTemplate.getNameid())));
+		}
+	}
+
+	public void deleteRecipe(Player player, int recipeId)
+	{
+		if (recipeList.contains(recipeId))
+		{
+			recipeList.remove(recipeId);
+			DAOManager.getDAO(PlayerRecipesDAO.class).deleteRecipe(player.getObjectId(), recipeId);
+			PacketSendUtility.sendPacket(player, new SM_RECIPE_DELETE(recipeId));
 		}
 	}
 

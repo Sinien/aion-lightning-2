@@ -16,12 +16,14 @@
  */
 package mysql5;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
 
 import com.aionemu.commons.database.DB;
+import com.aionemu.commons.database.DatabaseFactory;
 import com.aionemu.commons.database.IUStH;
 import com.aionemu.commons.database.ParamReadStH;
 import com.aionemu.gameserver.dao.PlayerRecipesDAO;
@@ -35,6 +37,7 @@ public class MySQL5PlayerRecipesDAO extends PlayerRecipesDAO
 {
 	private static final String SELECT_QUERY = "SELECT `recipe_id` FROM player_recipes WHERE `player_id`=?";
 	private static final String ADD_QUERY = "INSERT INTO player_recipes (`player_id`, `recipe_id`) VALUES (?, ?)";
+	private static final String DELETE_QUERY = "DELETE FROM player_recipes WHERE `player_id`=? AND `recipe_id`=?";
 	
 	@Override
 	public RecipeList load(final int playerId)
@@ -71,6 +74,32 @@ public class MySQL5PlayerRecipesDAO extends PlayerRecipesDAO
 				ps.execute();
 			}
 		});
+	}
+
+	public boolean deleteRecipe(final int playerId, final int recipeId)
+	{
+
+		Connection con = null;
+		
+		try
+		{
+			con = DatabaseFactory.getConnection();
+			PreparedStatement stmt = con.prepareStatement(DELETE_QUERY);
+			
+			stmt.setInt(1, playerId);
+			stmt.setInt(2, recipeId);
+			stmt.execute();
+			stmt.close();
+		}
+		catch(SQLException e)
+		{
+			log.error(e);
+		}
+		finally
+		{
+			DatabaseFactory.close(con);
+		}
+		return true;
 	}
 
 	@Override

@@ -16,8 +16,11 @@
  */
 package com.aionemu.gameserver.questEngine.handlers;
 
+import com.aionemu.gameserver.dataholders.DataManager;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
+import com.aionemu.gameserver.model.templates.quest.QuestItems;
+import com.aionemu.gameserver.model.templates.quest.QuestWorkItems;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_DIALOG_WINDOW;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_QUEST_ACCEPTED;
 import com.aionemu.gameserver.questEngine.QuestEngine;
@@ -37,6 +40,12 @@ public class QuestHandler
 	private final Integer questId;
 
 	protected QuestEngine		qe;
+	
+	/**
+	 * If quest Aborted or finish this items deleted.
+	 */
+
+	protected int[] deletebleItems;
 	/**
 	 * @param questId
 	 */
@@ -46,6 +55,31 @@ public class QuestHandler
 		this.qe = QuestEngine.getInstance();
 	}
 	
+	public void deleteQuestItems(QuestEnv env)
+	{
+		QuestWorkItems qwi = DataManager.QUEST_DATA.getQuestById(env.getQuestId()).getQuestWorkItems();
+		
+		Player player = env.getPlayer();
+		if(qwi != null)
+		{
+			for(QuestItems qi : qwi.getQuestWorkItem())
+			{
+				if(qi != null)
+				{	
+					long count = player.getInventory().getItemCountByItemId(qi.getItemId());
+					if(count > 0)
+						player.getInventory().removeFromBagByItemId(qi.getItemId(), count);					
+				}
+			}
+		}
+		for (int itemId : deletebleItems)
+		{
+			long count = player.getInventory().getItemCountByItemId(itemId);
+			if(count > 0)
+				player.getInventory().removeFromBagByItemId(itemId, count);	
+		}
+	}
+
 	public synchronized void updateQuestStatus(Player player, QuestState qs)
 	{
 		PacketSendUtility.sendPacket(player, new SM_QUEST_ACCEPTED(questId, qs.getStatus(), qs.getQuestVars().getQuestVars()));
@@ -166,6 +200,11 @@ public class QuestHandler
 	}
 	
 	public boolean onQuestFinishEvent(QuestEnv questEnv)
+	{
+		return false;
+	}
+
+	public boolean onQuestAbortEvent(QuestEnv questEnv)
 	{
 		return false;
 	}
