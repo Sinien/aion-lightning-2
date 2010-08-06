@@ -22,6 +22,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
 
+import org.apache.log4j.Logger;
+
 import com.aionemu.commons.database.DB;
 import com.aionemu.commons.database.DatabaseFactory;
 import com.aionemu.commons.database.IUStH;
@@ -35,6 +37,8 @@ import com.aionemu.gameserver.model.gameobjects.player.RecipeList;
  */
 public class MySQL5PlayerRecipesDAO extends PlayerRecipesDAO
 {
+	private static final Logger log = Logger.getLogger(MySQL5PlayerRecipesDAO.class);
+	
 	private static final String SELECT_QUERY = "SELECT `recipe_id` FROM player_recipes WHERE `player_id`=?";
 	private static final String ADD_QUERY = "INSERT INTO player_recipes (`player_id`, `recipe_id`) VALUES (?, ?)";
 	private static final String DELETE_QUERY = "DELETE FROM player_recipes WHERE `player_id`=? AND `recipe_id`=?";
