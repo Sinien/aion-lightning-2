@@ -34,7 +34,6 @@ import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
 import com.aionemu.chatserver.configs.Config;
 import com.aionemu.chatserver.network.netty.pipeline.LoginToClientPipeLineFactory;
 import com.aionemu.chatserver.network.netty.pipeline.LoginToGamePipelineFactory;
-import com.google.inject.Inject;
 
 /**
  * @author ATracer
@@ -53,17 +52,10 @@ public class NettyServer
 
 	private ChannelFactory						loginToGameChannelFactory;
 
-	/**
-	 * 
-	 * @param loginToClientPipeLineFactory
-	 * @param loginToGamePipelineFactory
-	 */
-	@Inject
-	public NettyServer(LoginToClientPipeLineFactory loginToClientPipeLineFactory,
-		LoginToGamePipelineFactory loginToGamePipelineFactory)
+	public NettyServer()
 	{
-		this.loginToClientPipeLineFactory = loginToClientPipeLineFactory;
-		this.loginToGamePipelineFactory = loginToGamePipelineFactory;
+		this.loginToClientPipeLineFactory = new LoginToClientPipeLineFactory();
+		this.loginToGamePipelineFactory = new LoginToGamePipelineFactory();
 		initialize();
 	}
 

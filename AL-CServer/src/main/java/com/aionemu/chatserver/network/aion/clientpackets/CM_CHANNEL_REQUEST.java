@@ -37,19 +37,15 @@ public class CM_CHANNEL_REQUEST extends AbstractClientPacket
 	private int					channelIndex;
 	private byte[]				channelIdentifier;
 
-	private ChatService			chatService;
-
 	/**
 	 * 
 	 * @param channelBuffer
 	 * @param gameChannelHandler
 	 * @param opCode
 	 */
-	public CM_CHANNEL_REQUEST(ChannelBuffer channelBuffer, ClientChannelHandler gameChannelHandler,
-		ChatService chatService)
+	public CM_CHANNEL_REQUEST(ChannelBuffer channelBuffer, ClientChannelHandler gameChannelHandler)
 	{
 		super(channelBuffer, gameChannelHandler, 0x10);
-		this.chatService = chatService;
 	}
 
 	@Override
@@ -74,7 +70,7 @@ public class CM_CHANNEL_REQUEST extends AbstractClientPacket
 //			e.printStackTrace();
 //		}
 		ChatClient chatClient = clientChannelHandler.getChatClient();
-		Channel channel = chatService.registerPlayerWithChannel(chatClient, channelIndex, channelIdentifier);
+		Channel channel = ChatService.getInstance().registerPlayerWithChannel(chatClient, channelIndex, channelIdentifier);
 		if (channel != null)
 		{
 			clientChannelHandler.sendPacket(new SM_CHANNEL_RESPONSE(chatClient, channel));

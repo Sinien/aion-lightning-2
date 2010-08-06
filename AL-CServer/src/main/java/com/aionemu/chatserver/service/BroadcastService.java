@@ -31,8 +31,18 @@ import com.aionemu.chatserver.network.netty.handler.ClientChannelHandler;
  */
 public class BroadcastService
 {
-	private Map<Integer, ChatClient> clients = new ConcurrentHashMap<Integer, ChatClient>();
+	private Map<Integer, ChatClient> clients;
 	
+	public static final BroadcastService getInstance()
+	{
+		return SingletonHolder.instance;
+	}
+	
+	private BroadcastService()
+	{
+		clients = new ConcurrentHashMap<Integer, ChatClient>();
+	}
+
 	/**
 	 * 
 	 * @param client
@@ -75,4 +85,9 @@ public class BroadcastService
 		cch.sendPacket(new SM_CHANNEL_MESSAGE(message));
 	}
 	
+	@SuppressWarnings("synthetic-access")
+	private static class SingletonHolder
+	{
+		protected static final BroadcastService instance = new BroadcastService();
+	}
 }

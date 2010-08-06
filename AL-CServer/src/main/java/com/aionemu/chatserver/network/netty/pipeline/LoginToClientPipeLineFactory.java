@@ -25,12 +25,10 @@ import org.jboss.netty.channel.Channels;
 import org.jboss.netty.handler.execution.ExecutionHandler;
 import org.jboss.netty.handler.execution.OrderedMemoryAwareThreadPoolExecutor;
 
-import com.aionemu.chatserver.network.aion.ClientPacketHandler;
 import com.aionemu.chatserver.network.netty.coder.LoginPacketDecoder;
 import com.aionemu.chatserver.network.netty.coder.LoginPacketEncoder;
 import com.aionemu.chatserver.network.netty.coder.PacketFrameDecoder;
 import com.aionemu.chatserver.network.netty.handler.ClientChannelHandler;
-import com.google.inject.Inject;
 
 /**
  * @author ATracer
@@ -45,12 +43,8 @@ public class LoginToClientPipeLineFactory implements ChannelPipelineFactory
 
 	private OrderedMemoryAwareThreadPoolExecutor	pipelineExecutor;
 
-	private final ClientPacketHandler				clientPacketHandler;
-
-	@Inject
-	public LoginToClientPipeLineFactory(ClientPacketHandler clientPacketHandler)
+	public LoginToClientPipeLineFactory()
 	{
-		this.clientPacketHandler = clientPacketHandler;
 		this.pipelineExecutor = new OrderedMemoryAwareThreadPoolExecutor(THREADS_MAX, MEMORY_PER_CHANNEL, TOTAL_MEMORY,
 			TIMEOUT, TimeUnit.MILLISECONDS, Executors.defaultThreadFactory());
 	}
@@ -71,7 +65,7 @@ public class LoginToClientPipeLineFactory implements ChannelPipelineFactory
 		pipeline.addLast("packetdecoder", new LoginPacketDecoder());
 		pipeline.addLast("packetencoder", new LoginPacketEncoder());
 		pipeline.addLast("executor", new ExecutionHandler(pipelineExecutor));
-		pipeline.addLast("handler", new ClientChannelHandler(clientPacketHandler));
+		pipeline.addLast("handler", new ClientChannelHandler());
 
 		return pipeline;
 	}

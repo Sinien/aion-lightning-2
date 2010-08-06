@@ -31,7 +31,7 @@ public abstract class AbstractPacketHandler
 	 * @param id
 	 * @param state
 	 */
-	protected void unknownPacket(int id, String state)
+	protected static void unknownPacket(int id, String state)
 	{
 		log.warn(String.format("Unknown packet received from Game server: 0x%02X state=%s", id, state));
 	}

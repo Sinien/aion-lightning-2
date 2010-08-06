@@ -39,12 +39,9 @@ public class CM_PLAYER_AUTH extends AbstractGameClientPacket
 	
 	private String				playerLogin;
 
-	private ChatService			chatService;
-
-	public CM_PLAYER_AUTH(ChannelBuffer buf, GameChannelHandler gameChannelHandler, ChatService chatService)
+	public CM_PLAYER_AUTH(ChannelBuffer buf, GameChannelHandler gameChannelHandler)
 	{
 		super(buf, gameChannelHandler, 0x01);
-		this.chatService = chatService;
 	}
 
 	@Override
@@ -60,7 +57,7 @@ public class CM_PLAYER_AUTH extends AbstractGameClientPacket
 		ChatClient chatClient = null;
 		try
 		{
-			chatClient = chatService.registerPlayer(playerId, playerLogin);
+			chatClient = ChatService.getInstance().registerPlayer(playerId, playerLogin);
 		}
 		catch (NoSuchAlgorithmException e)
 		{
