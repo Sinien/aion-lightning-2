@@ -172,14 +172,14 @@ public class AionConnection extends AConnection
 		return true;
 	}
 
-	private FIFORunnableQueue<Runnable> _packetQueue;
+	private FIFORunnableQueue<Runnable> packetQueue;
 	
 	public FIFORunnableQueue<Runnable> getPacketQueue()
 	{
-		if (_packetQueue == null)
-			_packetQueue = new FIFORunnableQueue<Runnable>() {};
+		if (packetQueue == null)
+			packetQueue = new FIFORunnableQueue<Runnable>() {};
 		
-		return _packetQueue;
+		return packetQueue;
 	}
 
 	/**

@@ -27,19 +27,19 @@ import com.aionemu.gameserver.taskmanager.AbstractIterativePeriodicTaskManager;
  *
  * Supports PlayerGroup and PlayerAlliance movement updating. 
  */
-public final class GroupUpdater extends AbstractIterativePeriodicTaskManager<Player>
+public final class GroupAllianceUpdater extends AbstractIterativePeriodicTaskManager<Player>
 {
 	private static final class SingletonHolder
 	{
-		private static final GroupUpdater INSTANCE	= new GroupUpdater();
+		private static final GroupAllianceUpdater INSTANCE	= new GroupAllianceUpdater();
 	}
 
-	public static GroupUpdater getInstance()
+	public static GroupAllianceUpdater getInstance()
 	{
 		return SingletonHolder.INSTANCE;
 	}
 	
-	public GroupUpdater()
+	public GroupAllianceUpdater()
 	{
 		super(2000);
 	}
