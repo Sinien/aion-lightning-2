@@ -19,6 +19,9 @@ package com.aionemu.gameserver.questEngine.handlers.template;
 import com.aionemu.gameserver.dataholders.DataManager;
 import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
+import com.aionemu.gameserver.model.templates.quest.CollectItem;
+import com.aionemu.gameserver.model.templates.quest.CollectItems;
+import com.aionemu.gameserver.model.templates.quest.QuestItems;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_DIALOG_WINDOW;
 import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.handlers.models.WorkOrdersData;
@@ -50,6 +53,27 @@ public class WorkOrders extends QuestHandler
 	{
 		qe.setNpcQuestData(workOrdersData.getStartNpcId()).addOnQuestStart(workOrdersData.getId());
 		qe.setNpcQuestData(workOrdersData.getStartNpcId()).addOnTalkEvent(workOrdersData.getId());
+		qe.addOnQuestAbort(workOrdersData.getId());
+		qe.addOnQuestFinish(workOrdersData.getId());
+		int i=0;
+		CollectItems collectItems = DataManager.QUEST_DATA.getQuestById(workOrdersData.getId()).getCollectItems();
+		int count = 0;
+		if (collectItems != null)
+		{
+			count = collectItems.getCollectItem().size();
+		}
+		deletebleItems = new int[count+workOrdersData.getGiveComponent().size()];
+		for (QuestItems questItem : workOrdersData.getGiveComponent())
+		{
+			this.deletebleItems[i++] = questItem.getItemId();
+		}
+		if (collectItems != null)
+		{
+			for (CollectItem item : collectItems.getCollectItem())
+			{
+				this.deletebleItems[i++] = item.getItemId();
+			}
+		}
 	}
 
 	@Override
@@ -90,6 +114,7 @@ public class WorkOrders extends QuestHandler
 				{
 					//TODO: Random rewards
 					qs.setStatus(QuestStatus.COMPLETE);
+					abortQuest(env);
 					qs.setCompliteCount(qs.getCompliteCount() + 1);
 					updateQuestStatus(player, qs);
 					PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 0));
@@ -98,5 +123,23 @@ public class WorkOrders extends QuestHandler
 			}
 		}
 		return false;
+	}
+	
+	public boolean onQuestFinishEvent(QuestEnv env)
+	{
+		deleteQuestItems(env);
+		return true;
+	}
+
+	public boolean onQuestAbortEvent(QuestEnv env)
+	{
+		abortQuest(env);
+		return true;
+	}
+	
+	private void abortQuest(QuestEnv env)
+	{
+		env.getPlayer().getRecipeList().deleteRecipe(env.getPlayer(), workOrdersData.getRecipeId());
+		deleteQuestItems(env);
 	}
 }

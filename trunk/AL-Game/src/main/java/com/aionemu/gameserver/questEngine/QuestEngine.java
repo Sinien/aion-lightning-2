@@ -77,7 +77,8 @@ public class QuestEngine
 	private TIntObjectHashMap<List<QuestDrop>>			questDrop= new TIntObjectHashMap<List<QuestDrop>>();
 	private TIntArrayList								questOnQuestFinish= new TIntArrayList();
 	private List<Integer>								questOnQuestTimerEnd= new ArrayList<Integer>();
-	
+	private TIntArrayList								questOnQuestAbort= new TIntArrayList();
+
 	private final NpcQuestData 							emptyNpcQuestData 	= new NpcQuestData();
 	
 	public static final QuestEngine getInstance()
@@ -260,6 +261,16 @@ public class QuestEngine
 		}
 	}
 	
+	public void onQuestAbort(QuestEnv env)
+	{
+		for (int index=0 ; index<questOnQuestAbort.size(); index++)
+		{
+			QuestHandler questHandler = getQuestHandlerByQuestId(questOnQuestFinish.get(index));
+			if(questHandler != null)
+				questHandler.onQuestAbortEvent(env);
+		}
+	}
+
 	public void onQuestTimerEnd(QuestEnv env)
 	{
 		for(int questId : questOnQuestTimerEnd)
@@ -282,6 +293,7 @@ public class QuestEngine
 
 		qs.setStatus(QuestStatus.NONE);
 		
+		this.onQuestAbort(new QuestEnv(null, player, questId, 0));
 		//remove all worker list item if abandoned
 		QuestWorkItems qwi = questData.getQuestById(questId).getQuestWorkItems();
 		
@@ -414,6 +426,12 @@ public class QuestEngine
 	{
 		if(!questOnQuestFinish.contains(questId))
 			questOnQuestFinish.add(questId);
+	}
+	
+	public void addOnQuestAbort(int questId)
+	{
+		if(!questOnQuestAbort.contains(questId))
+			questOnQuestAbort.add(questId);
 	}
 	
 	public void addOnQuestTimerEnd(int questId)

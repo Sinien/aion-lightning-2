@@ -1,5 +1,5 @@
 /*
- * This file is part of aion-unique <aionu-unique.org>.
+ * This file is part of aion-unique <aion-unique.org>.
  *
  *  aion-unique is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -14,26 +14,29 @@
  *  You should have received a copy of the GNU General Public License
  *  along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.aionemu.gameserver.dao;
+package com.aionemu.gameserver.network.aion.serverpackets;
 
-import com.aionemu.commons.database.dao.DAO;
-import com.aionemu.gameserver.model.gameobjects.player.RecipeList;
+import java.nio.ByteBuffer;
+
+import com.aionemu.gameserver.network.aion.AionConnection;
+import com.aionemu.gameserver.network.aion.AionServerPacket;
 
 /**
- * @author lord_rex
+ * @author MrPoke and lord_rex
  *
  */
-public abstract class PlayerRecipesDAO implements DAO
+public class SM_RECIPE_DELETE extends AionServerPacket
 {
-	@Override
-	public String getClassName()
+	private int recipeId;
+	
+	public SM_RECIPE_DELETE(int recipeId)
 	{
-		return PlayerRecipesDAO.class.getName();	
+		this.recipeId = recipeId;
 	}
-
-	public abstract RecipeList load(final int playerId);
 	
-	public abstract boolean addRecipe(final int playerId, final int recipeId);
-	
-	public abstract boolean deleteRecipe(final int playerId, final int recipeId);
+	@Override
+	protected void writeImpl(AionConnection con, ByteBuffer buf)
+	{
+		writeD(buf, recipeId);
+	}
 }
