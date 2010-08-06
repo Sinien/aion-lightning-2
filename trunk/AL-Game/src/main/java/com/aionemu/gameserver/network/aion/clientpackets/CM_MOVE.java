@@ -26,7 +26,7 @@ import com.aionemu.gameserver.model.gameobjects.state.CreatureState;
 import com.aionemu.gameserver.model.gameobjects.stats.StatEnum;
 import com.aionemu.gameserver.network.aion.AionClientPacket;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_MOVE;
-import com.aionemu.gameserver.taskmanager.tasks.GroupUpdater;
+import com.aionemu.gameserver.taskmanager.tasks.GroupAllianceUpdater;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.stats.StatFunctions;
 import com.aionemu.gameserver.world.World;
@@ -204,7 +204,7 @@ public class CM_MOVE extends AionClientPacket
 		
 		if (player.isInGroup() || player.isInAlliance())
 		{
-			GroupUpdater.getInstance().startTask(player);
+			GroupAllianceUpdater.getInstance().startTask(player);
 		}
 		
 		float distance = playerZ - z;
