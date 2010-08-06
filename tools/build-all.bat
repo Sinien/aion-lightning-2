@@ -49,6 +49,7 @@ call :execute-maven %ECLIPSE_CLEAN% %CLEAN%
 call :execute-maven-inside al-commons %COMPILE% %INSTALL% %DEPLOY%
 call :execute-maven-inside al-game %COMPILE% %ASSEMBLY_ASSEMBLY%
 call :execute-maven-inside al-login %COMPILE% %ASSEMBLY_ASSEMBLY%
+call :execute-maven-inside al-cserver %COMPILE% %ASSEMBLY_ASSEMBLY%
 call :execute-maven %ECLIPSE_ECLIPSE% %ECLIPSE_M2ECLIPSE%
 cd tools
 

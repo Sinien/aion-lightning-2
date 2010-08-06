@@ -14,5 +14,6 @@
     <module>al-commons</module>
     <module>al-game</module>
     <module>al-login</module>
+    <module>al-cserver</module>
   </modules>
 </project>
