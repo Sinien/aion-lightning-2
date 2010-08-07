@@ -46,7 +46,7 @@ public class _3933ClassPreceptorConsent extends QuestHandler
 		qe.setNpcQuestData(203705).addOnTalkEvent(questId);		//Jumentis
 		qe.setNpcQuestData(203706).addOnTalkEvent(questId);		//Charnas
 		qe.setNpcQuestData(203707).addOnTalkEvent(questId);		//Thrasymedes
-		qe.setNpcQuestData(203752).addOnTalkEvent(questId);		//Jucléas
+		qe.setNpcQuestData(203752).addOnTalkEvent(questId);		//Jucleas
 		qe.setNpcQuestData(203701).addOnTalkEvent(questId);		//Lavirintos
 	}
 
