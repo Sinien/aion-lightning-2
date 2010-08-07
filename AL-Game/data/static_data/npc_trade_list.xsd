@@ -21,6 +21,7 @@
 		<xs:attribute name="count" type="xs:int" />
 		<xs:attribute name="name" type="xs:string" />
 		<xs:attribute name="npc_id" type="xs:int" />
+		<xs:attribute name="sell_price_rate" type="xs:int" />
 	</xs:complexType>
 
 </xs:schema>
