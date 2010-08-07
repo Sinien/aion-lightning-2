@@ -58,6 +58,9 @@ public class TradeListTemplate
 	@XmlElement(name = "tradelist")
 	protected List<TradeTab> tradeTablist;
 	
+	@XmlAttribute(name = "sell_price_rate")
+	protected int sellPriceRate = 100;
+	
 	/**
 	 * 
 	 * @return List<TradeTab>
@@ -92,7 +95,13 @@ public class TradeListTemplate
 		return abyss;
 	}
 
-
+	/**
+	 * @return the sellPriceRate
+	 */
+	public int getSellPriceRate()
+	{
+		return sellPriceRate;
+	}
 
 	/**
      * <p>Java class for anonymous complex type.

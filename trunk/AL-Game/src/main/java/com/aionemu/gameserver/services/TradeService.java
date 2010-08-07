@@ -16,9 +16,7 @@
  */
 package com.aionemu.gameserver.services;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -37,9 +35,7 @@ import com.aionemu.gameserver.model.templates.TradeListTemplate.TradeTab;
 import com.aionemu.gameserver.model.templates.goods.GoodsList;
 import com.aionemu.gameserver.model.trade.TradeItem;
 import com.aionemu.gameserver.model.trade.TradeList;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_ABYSS_RANK;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_DELETE_ITEM;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_INVENTORY_UPDATE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_UPDATE_ITEM;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.world.World;
@@ -72,10 +68,12 @@ public class TradeService
 		}
 
 		Storage inventory = player.getInventory();
-		Item kinahItem = inventory.getKinahItem();
+
+		Npc npc = (Npc) World.getInstance().findAionObject(tradeList.getSellerObjId());
+		int tradeModifier = tradeListData.getTradeListTemplate(npc.getNpcId()).getSellPriceRate();
 
 		// 1. check kinah
-		if(!tradeList.calculateBuyListPrice(player))
+		if(!tradeList.calculateBuyListPrice(player, tradeModifier))
 			return false;
 
 		// 2. check free slots, need to check retail behaviour
@@ -85,7 +83,6 @@ public class TradeService
 
 		long tradeListPrice = tradeList.getRequiredKinah();
 
-		List<Item> addedItems = new ArrayList<Item>();
 		for(TradeItem tradeItem : tradeList.getTradeItems())
 		{
 			long count = ItemService.addItem(player, tradeItem.getItemTemplate().getTemplateId(), tradeItem.getCount());
@@ -98,8 +95,6 @@ public class TradeService
 			}
 		}
 		inventory.decreaseKinah(tradeListPrice);
-		PacketSendUtility.sendPacket(player, new SM_UPDATE_ITEM(kinahItem));
-		PacketSendUtility.sendPacket(player, new SM_INVENTORY_UPDATE(addedItems));
 		// TODO message
 		return true;
 	}
@@ -119,7 +114,6 @@ public class TradeService
 			PacketSendUtility.sendMessage(player, "Some items are not allowed to be selled from this npc");
 			return false;
 		}
-
 		Storage inventory = player.getInventory();
 		int freeSlots = inventory.getLimit() - inventory.getAllItems().size() + 1;
 		AbyssRank rank = player.getAbyssRank();
@@ -132,7 +126,6 @@ public class TradeService
 		if(freeSlots < tradeList.size())
 			return false; // TODO message
 
-		List<Item> addedItems = new ArrayList<Item>();
 		for(TradeItem tradeItem : tradeList.getTradeItems())
 		{
 			long count = ItemService.addItem(player, tradeItem.getItemTemplate().getTemplateId(), tradeItem.getCount());
@@ -151,8 +144,6 @@ public class TradeService
 			player.getInventory().removeFromBagByItemId(itemId, requiredItems.get(itemId));
 		}
 
-		PacketSendUtility.sendPacket(player, new SM_ABYSS_RANK(rank));
-		PacketSendUtility.sendPacket(player, new SM_INVENTORY_UPDATE(addedItems));
 		// TODO message
 		return true;
 	}
@@ -201,12 +192,13 @@ public class TradeService
 			// 1) don't allow to sell fake items;
 			if(item == null)
 				return false;
-			if(!item.isTradeable())
+
+			if (item.getItemCount() - tradeItem.getCount() < 0)
 			{
-				log.warn("[AUDIT] Trade exploit, tried to trade untradeble item: " + player.getName());
+				log.warn("[AUDIT] Trade exploit, sell item count big: " + player.getName());
 				return false;
 			}
-			if(item.getItemCount() - tradeItem.getCount() == 0)
+			else if(item.getItemCount() - tradeItem.getCount() == 0)
 			{
 				inventory.removeFromBag(item, true); // need to be here to avoid exploit by sending packet with many
 														// items with same unique ids

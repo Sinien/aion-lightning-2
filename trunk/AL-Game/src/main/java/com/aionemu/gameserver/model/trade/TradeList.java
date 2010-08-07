@@ -80,7 +80,7 @@ public class TradeList
 	/**
 	 * @return price TradeList sum price
 	 */
-	public boolean calculateBuyListPrice(Player player)
+	public boolean calculateBuyListPrice(Player player, int modifier)
 	{
 		long availableKinah = player.getInventory().getKinahItem().getItemCount();
 		requiredKinah = 0;
@@ -88,9 +88,11 @@ public class TradeList
 		
 		for(TradeItem tradeItem : tradeItems)
 		{
-			requiredKinah += player.getPrices().getKinahForBuy(tradeItem.getItemTemplate().getPrice()) * tradeItem.getCount();
+			requiredKinah += player.getPrices().getKinahForBuy(tradeItem.getItemTemplate().getPrice()) * tradeItem.getCount()*modifier/100;
 		}
 		
+		requiredKinah = player.getPrices().getKinahForBuy(requiredKinah);
+
 		return availableKinah >= requiredKinah;
 	}
 	

@@ -26,6 +26,7 @@ import com.aionemu.gameserver.ai.events.Event;
 import com.aionemu.gameserver.ai.npcai.DummyAi;
 import com.aionemu.gameserver.controllers.attack.AttackResult;
 import com.aionemu.gameserver.controllers.attack.AttackUtil;
+import com.aionemu.gameserver.dataholders.DataManager;
 import com.aionemu.gameserver.model.ChatType;
 import com.aionemu.gameserver.model.EmotionType;
 import com.aionemu.gameserver.model.TaskId;
@@ -196,6 +197,8 @@ public class NpcController extends CreatureController<Npc>
 	{
 
 		Npc npc = getOwner();
+		if (!MathUtil.isInRange(npc, player, 10))
+			return;
 		int targetObjectId = npc.getObjectId();
 
 		if(QuestEngine.getInstance().onDialog(new QuestEnv(npc, player, questId, dialogId)))
@@ -203,9 +206,10 @@ public class NpcController extends CreatureController<Npc>
 		switch(dialogId)
 		{
 			case 2:
+				int tradeModifier = DataManager.TRADE_LIST_DATA.getTradeListTemplate(npc.getNpcId()).getSellPriceRate();
 				PacketSendUtility.sendPacket(player, new SM_TRADELIST(npc,
 					TradeService.getTradeListData().getTradeListTemplate(npc.getNpcId()),
-					player.getPrices().getVendorBuyModifier()));
+					player.getPrices().getVendorBuyModifier()*tradeModifier/100));
 				break;
 			case 3:
 				PacketSendUtility.sendPacket(player, new SM_SELL_ITEM(targetObjectId, player.getPrices().getVendorSellModifier()));
