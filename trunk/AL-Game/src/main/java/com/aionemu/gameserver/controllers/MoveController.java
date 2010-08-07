@@ -190,18 +190,31 @@ public class MoveController
 		if(dist > this.distance)
 		{
 			isStopped = false;
-
-
-			float x2 = (float) (((targetX - ownerX)/dist) * speed * 0.5) ;
-			float y2 = (float) (((targetY - ownerY)/dist) * speed * 0.5) ;
-			float z2 = (float) (((targetZ - ownerZ)/dist) * speed * 0.5) ; 
+			
+			float x2;
+			float y2;
+			float z2;
+			float mod = 1;
+			if (dist < speed*0.5)
+			{
+				x2 = (targetX - ownerX);
+				y2 = (targetY - ownerY);
+				z2 = (targetZ - ownerZ);
+			}
+			else
+			{
+				x2 = (float) (((targetX - ownerX)/dist) * speed * 0.5) ;
+				y2 = (float) (((targetY - ownerY)/dist) * speed * 0.5) ;
+				z2 = (float) (((targetZ - ownerZ)/dist) * speed * 0.5) ;
+				mod = 0.5f;
+			}
 
 			byte heading2 = (byte) (Math.toDegrees(Math.atan2(y2, x2))/3) ;
 
 			if(directionChanged)
 			{
 				PacketSendUtility.broadcastPacket(owner, new SM_MOVE(owner.getObjectId(),	ownerX, ownerY, ownerZ,
-					(float) (x2 / 0.5) , (float) (y2 / 0.5) , 0 , heading2, MovementType.MOVEMENT_START_KEYBOARD));
+					(float) (x2 / mod) , (float) (y2 / mod) , (float) (z2 / mod) , heading2, MovementType.MOVEMENT_START_KEYBOARD));
 				directionChanged = false;
 			}
 
