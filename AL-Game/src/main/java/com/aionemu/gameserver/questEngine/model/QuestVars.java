@@ -23,7 +23,7 @@ package com.aionemu.gameserver.questEngine.model;
 
 public class QuestVars
 {
-	private Integer[]	questVars	= new Integer[6];
+	private Integer[]	questVars	= new Integer[5];
 
 	public QuestVars()
 	{
@@ -58,13 +58,10 @@ public class QuestVars
 	public int getQuestVars()
 	{
 		int var = 0;
-		var |= questVars[5];
-		for(int i = 4; i >= 0; i--)
+		var |= questVars[4];
+		for(int i = 3; i >= 0; i--)
 		{
-			if(var == 4)
-				var <<= 0x02;
-			else
-				var <<= 0x06;
+					var <<= 0x06;
 			var |= questVars[i];
 		}
 		return var;
@@ -72,14 +69,8 @@ public class QuestVars
 	
 	public void setVar(int var)
 	{
-		for(int i = 0; i < 6; i++)
+		for(int i = 0; i < 5; i++)
 		{
-			if(i == 5)
-			{
-				questVars[i] = (var & 0x03);
-				var >>= 0x02;
-			} 
-			else
 			{
 				questVars[i] = (var & 0x3F);
 				var >>= 0x06;
