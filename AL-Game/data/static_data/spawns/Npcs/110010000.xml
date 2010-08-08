@@ -627,7 +627,7 @@
 	</spawn>
 	<!-- Lityerses (NPC Normal lvl:10)-->
 	<spawn map="110010000" npcid="203845" pool="1" interval="295">
-		<object x="1875.05930" y="2207.31600" z="529.00000" h="75"/>
+		<object x="1875.0593" y="2207.316" z="527.9075" h="76"/>
 	</spawn>
 	<!-- Losadis (NPC Normal lvl:40)-->
 	<spawn map="110010000" npcid="203806" pool="1" interval="295">
