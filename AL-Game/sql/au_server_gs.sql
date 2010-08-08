@@ -459,3 +459,22 @@ CREATE TABLE IF NOT EXISTS `petitions` (
   `status` enum('PENDING','IN_PROGRESS','REPLIED') NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for `tasks`
+-- ----------------------------
+DROP TABLE IF EXISTS `tasks`;
+CREATE TABLE `tasks` (
+  `id` int(5) NOT NULL,
+  `task` varchar(50) NOT NULL,
+  `type` enum('FIXED_IN_TIME') NOT NULL,
+  `last_activation` timestamp NOT NULL DEFAULT '2010-01-01 00:00:00',
+  `startTime` varchar(8) NOT NULL,
+  `delay` int(10) NOT NULL,
+  `param` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of tasks
+-- ----------------------------
