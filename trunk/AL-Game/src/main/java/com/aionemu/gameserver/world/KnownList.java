@@ -40,21 +40,21 @@ public class KnownList implements Iterable<VisibleObject>
 	 */
 
 	// how far player will see visible object
-	private static final float						VisibilityDistance			= 95;
-	
+	private static final float					visibilityDistance	= 95;
+
 	// maxZvisibleDistance
-	private static final float						maxZvisibleDistance 		= 95;
+	private static final float					maxZvisibleDistance	= 95;
 
 	/**
 	 * Owner of this KnownList.
 	 */
-	protected final VisibleObject						owner;
+	protected final VisibleObject				owner;
 	/**
 	 * List of objects that this KnownList owner known
 	 */
-	protected final Map<Integer, VisibleObject>	knownObjects	= new FastMap<Integer, VisibleObject>().shared();
-	
-	private long									lastUpdate;
+	protected final Map<Integer, VisibleObject>	knownObjects		= new FastMap<Integer, VisibleObject>().shared();
+
+	private long								lastUpdate;
 
 	/**
 	 * COnstructor.
@@ -173,16 +173,16 @@ public class KnownList implements Iterable<VisibleObject>
 			return;
 
 		FastList<MapRegion> list = owner.getActiveRegion().getNeighbours();
-		for (FastList.Node<MapRegion> n = list.head(), end = list.tail(); (n = n.getNext()) != end;)
+		for(FastList.Node<MapRegion> n = list.head(), end = list.tail(); (n = n.getNext()) != end;)
 		{
 			MapRegion r = n.getValue();
 			FastMap<Integer, VisibleObject> objects = r.getObjects();
-			for (FastMap.Entry<Integer, VisibleObject> e = objects.head(), mapEnd = objects.tail(); (e = e.getNext()) != mapEnd;)
+			for(FastMap.Entry<Integer, VisibleObject> e = objects.head(), mapEnd = objects.tail(); (e = e.getNext()) != mapEnd;)
 			{
 				VisibleObject newObject = e.getValue();
 				if(newObject == owner || newObject == null)
 					continue;
-				
+
 				if(!checkObjectInRange(owner, newObject))
 					continue;
 
@@ -200,10 +200,10 @@ public class KnownList implements Iterable<VisibleObject>
 
 	protected boolean checkObjectInRange(VisibleObject owner, VisibleObject newObject)
 	{
-		//check if Z distance is greater than maxZvisibleDistance		
+		// check if Z distance is greater than maxZvisibleDistance
 		if(Math.abs(owner.getZ() - newObject.getZ()) > maxZvisibleDistance)
-			return false;				
+			return false;
 
-			return MathUtil.isInRange(owner, newObject, VisibilityDistance);
+		return MathUtil.isInRange(owner, newObject, visibilityDistance);
 	}
 }
