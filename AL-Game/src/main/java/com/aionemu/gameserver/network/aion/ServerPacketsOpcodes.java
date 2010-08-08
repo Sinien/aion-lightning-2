@@ -119,6 +119,7 @@ public class ServerPacketsOpcodes
 		addPacketOpcode(SM_EMOTION_LIST.class, 0x6D, idSet);// 1.9
 		addPacketOpcode(SM_TARGET_UPDATE.class, 0x6F, idSet);// 1.9
 		addPacketOpcode(SM_LEGION_UPDATE_SELF_INTRO.class, 0x75, idSet);// 1.9
+		addPacketOpcode(SM_RIFT_STATUS.class, 0x76, idSet); // 1.9
 		addPacketOpcode(SM_QUEST_ACCEPTED.class, 0x78, idSet);// 1.9
 		addPacketOpcode(SM_QUEST_LIST.class, 0x79, idSet); // 1.9
 		addPacketOpcode(SM_PING_RESPONSE.class, 0x7C, idSet);// 1.9
@@ -144,9 +145,8 @@ public class ServerPacketsOpcodes
 		addPacketOpcode(SM_MAIL_SERVICE.class, 0x9F, idSet);// 1.9
 		addPacketOpcode(SM_PRIVATE_STORE.class, 0xA2, idSet);
 		addPacketOpcode(SM_ABYSS_RANK_UPDATE.class, 0xA4, idSet);// testing
-		addPacketOpcode(SM_GROUP_LOOT.class, 0xA5, idSet);		
+		addPacketOpcode(SM_GROUP_LOOT.class, 0xA5, idSet);
 		addPacketOpcode(SM_MAY_LOGIN_INTO_GAME.class, 0xA7, idSet);// 1.9
-		addPacketOpcode(SM_RIFT_STATUS.class, 0xA8, idSet); // testing
 		addPacketOpcode(SM_PONG.class, 0xAA, idSet);// 1.9
 		addPacketOpcode(SM_PLAYER_ID.class, 0xAB, idSet);// 1.9
 		addPacketOpcode(SM_KISK_UPDATE.class, 0xAC, idSet);// 1.9
