@@ -16,8 +16,6 @@
  */
 package com.aionemu.gameserver.model.siege;
 
-import java.util.Iterator;
-
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_INFLUENCE_RATIO;
 import com.aionemu.gameserver.services.SiegeService;
@@ -97,11 +95,8 @@ public class Influence
 	{
 		SM_INFLUENCE_RATIO pkt = new SM_INFLUENCE_RATIO();
 		
-		Player player;
-		Iterator<Player> iter = World.getInstance().getPlayersIterator();
-		while (iter.hasNext())
+		for(Player player : World.getInstance().getAllPlayers())
 		{
-			player = iter.next();
 			PacketSendUtility.sendPacket(player, pkt);
 		}
 	}

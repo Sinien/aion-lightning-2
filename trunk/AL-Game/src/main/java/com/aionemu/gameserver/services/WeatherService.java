@@ -19,7 +19,6 @@ package com.aionemu.gameserver.services;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -239,10 +238,8 @@ public class WeatherService
 	{
 		if(player == null)
 		{
-			for(Iterator<Player> playerIterator = World.getInstance().getPlayersIterator(); playerIterator.hasNext();)
+			for(Player currentPlayer : World.getInstance().getAllPlayers())
 			{
-				Player currentPlayer = playerIterator.next();
-				
 				if(!currentPlayer.isSpawned())
 					continue;
 				

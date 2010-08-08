@@ -16,8 +16,6 @@
  */
 package admincommands;
 
-import java.util.Iterator;
-
 import com.aionemu.gameserver.configs.administration.AdminConfig;
 import com.aionemu.gameserver.model.Race;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
@@ -52,7 +50,6 @@ public class AnnounceFaction extends AdminCommand
 		}
 		else
 		{
-			Iterator<Player> iter = World.getInstance().getPlayersIterator();
 			String message = null;
 			
 			if (params[0].equals("ely"))
@@ -67,12 +64,8 @@ public class AnnounceFaction extends AdminCommand
 			// Add the last without the end space
 			message += params[params.length-1];
 			
-			Player player = null;
-			
-			while (iter.hasNext())
+			for(Player player : World.getInstance().getAllPlayers())
 			{
-				player = iter.next();
-				
 				if (player.getCommonData().getRace() == Race.ELYOS && params[0].equals("ely"))
 					PacketSendUtility.sendSysMessage(player, message);
 				else if (player.getCommonData().getRace() == Race.ASMODIANS && params[0].equals("asmo"))

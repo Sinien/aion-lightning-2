@@ -16,8 +16,6 @@
  */
 package com.aionemu.gameserver.services;
 
-import java.util.Iterator;
-
 import javolution.util.FastMap;
 
 import org.apache.log4j.Logger;
@@ -139,11 +137,9 @@ public class SiegeService
 	
 	private void broadcast(SM_SIEGE_LOCATION_INFO pkt)
 	{
-		Iterator<Player> iter = World.getInstance().getPlayersIterator();
-		
-		while(iter.hasNext())
+		for(Player player : World.getInstance().getAllPlayers())
 		{
-			PacketSendUtility.sendPacket(iter.next(), pkt);
+			PacketSendUtility.sendPacket(player, pkt);
 		}
 
 	}

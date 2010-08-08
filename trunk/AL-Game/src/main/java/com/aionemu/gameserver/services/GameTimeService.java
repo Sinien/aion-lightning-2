@@ -16,8 +16,6 @@
  */
 package com.aionemu.gameserver.services;
 
-import java.util.Iterator;
-
 import org.apache.log4j.Logger;
 
 import com.aionemu.gameserver.ai.events.Event;
@@ -56,11 +54,9 @@ public class GameTimeService
 			public void run()
 			{
 				log.info("Sending current game time to all players");
-				Iterator<Player> iterator = World.getInstance().getPlayersIterator();
-				while(iterator.hasNext())
+				for(Player player : World.getInstance().getAllPlayers())
 				{
-					Player next = iterator.next();
-					PacketSendUtility.sendPacket(next, new SM_GAME_TIME());
+					PacketSendUtility.sendPacket(player, new SM_GAME_TIME());
 				}
 			}
 		}, GAMETIME_UPDATE, GAMETIME_UPDATE);
@@ -74,10 +70,8 @@ public class GameTimeService
 	 */
 	public void sendDayTimeChangeEvents(DayTime dayTime)
 	{
-		Iterator<AionObject> it = World.getInstance().getObjectsIterator();
-		while(it.hasNext())
+		for(AionObject obj : World.getInstance().getAllObjects())
 		{
-			AionObject obj = it.next();
 			if(obj instanceof Npc)
 			{
 				((Npc) obj).getAi().handleEvent(Event.DAYTIME_CHANGE);

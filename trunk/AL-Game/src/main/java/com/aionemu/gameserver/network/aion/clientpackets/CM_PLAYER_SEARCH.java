@@ -17,7 +17,6 @@
 package com.aionemu.gameserver.network.aion.clientpackets;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import com.aionemu.gameserver.configs.main.CustomConfig;
@@ -85,8 +84,6 @@ public class CM_PLAYER_SEARCH extends AionClientPacket
 	{
 		Player activePlayer = getConnection().getActivePlayer();
 
-		Iterator<Player> it = World.getInstance().getPlayersIterator();
-
 		List<Player> matches = new ArrayList<Player>(MAX_RESULTS);
 
 		if(activePlayer != null && activePlayer.getLevel() < 10)
@@ -94,9 +91,10 @@ public class CM_PLAYER_SEARCH extends AionClientPacket
 			sendPacket(SM_SYSTEM_MESSAGE.LEVEL_NOT_ENOUGH_FOR_SEARCH("10"));
 			return;
 		}
-		while(it.hasNext() && matches.size() < MAX_RESULTS)
+		for(Player player : World.getInstance().getAllPlayers())
 		{
-			Player player = it.next();
+			if(matches.size() < MAX_RESULTS)
+				return;
 			if(!player.isSpawned())
 				continue;
 			else if(player.getFriendList().getStatus() == Status.OFFLINE)
