@@ -131,7 +131,7 @@
 			<telelocation loc_id="126" teleportid="134001" price="1200"/>
 		</locations>
 	</teleporter_template>
-	<teleporter_template npc_id="798450" name="Severin" teleportId="220" type="FLIGHT">
+	<teleporter_template npc_id="798450" name="Gruntvi" teleportId="220" type="FLIGHT">
 		<locations>
 			<telelocation loc_id="63" teleportid="129001" price="880"/>
 		</locations>

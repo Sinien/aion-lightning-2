@@ -182,7 +182,6 @@ public class AdminConfig
 	@Property(key = "gameserver.administration.command.siege", defaultValue = "3")
 	public static int	COMMAND_SIEGE;
 
-	
 	@Property(key = "gameserver.administration.command.spawnnpc", defaultValue = "3")
 	public static int	COMMAND_SPAWNNPC;
 
