@@ -78,7 +78,7 @@
 	</spawn>
 	<!-- Andreas (NPC Normal lvl:40)-->
 	<spawn map="110010000" npcid="798303" pool="1" interval="295">
-		<object x="1810.69760" y="2133.33000" z="527.92970" h="70"/>
+		<object x="1810.6976" y="2133.33" z="527.9297" h="36"/>
 	</spawn>
 	<!-- Andu (NPC Normal lvl:3)-->
 	<spawn map="110010000" npcid="798391" pool="1" interval="295">
@@ -137,8 +137,8 @@
 		<object x="1936.53160" y="1768.76300" z="576.75860" h="98"/>
 	</spawn>
 	<!-- Bella (NPC Normal lvl:40)-->
-	<spawn map="110010000" npcid="203860" pool="1" interval="295">
-		<object x="1810.18930" y="2131.40940" z="530.00000" h="33"/>
+	<spawn map="110010000" npcid="203860" pool="1" interval="295">  
+		<object x="1811.8394" y="2123.7034" z="529.0868" h="25"/>
 	</spawn>
 	<!-- Bellasia (NPC Normal lvl:40)-->
 	<spawn map="110010000" npcid="203766" pool="1" interval="295">
@@ -201,8 +201,9 @@
 		<object x="1871.02820" y="1481.60740" z="805.51780" h="33"/>
 	</spawn>
 	<!-- Codinaus (NPC Normal lvl:47)-->
-	<spawn map="110010000" npcid="203863" pool="1" interval="295">
+	<spawn map="110010000" npcid="203863" pool="2" interval="295">
 		<object x="1869.02470" y="2065.38720" z="519.15310" h="57"/>
+		<object x="1860.9253" y="2090.2463" z="517.907" h="100"/>
 	</spawn>
 	<!-- Coeus (NPC Normal lvl:40)-->
 	<spawn map="110010000" npcid="203898" pool="1" interval="295">
@@ -406,7 +407,7 @@
 	</spawn>
 	<!-- Hikarunerk (NPC Normal lvl:45)-->
 	<spawn map="110010000" npcid="798378" pool="1" interval="295">
-		<object x="1869.88660" y="2067.38230" z="517.90730" h="34"/>
+		<object x="1869.8866" y="2067.3823" z="517.9072" h="53"/>
 	</spawn>
 	<!-- Himeira (NPC Normal lvl:40)-->
 	<spawn map="110010000" npcid="203796" pool="1" interval="295">
@@ -498,7 +499,7 @@
 	</spawn>
 	<!-- Kadmos (NPC Normal lvl:50)-->
 	<spawn map="110010000" npcid="203866" pool="1" interval="295">
-		<object x="1800.25210" y="2117.41900" z="528.13860" h="4"/>
+		<object x="1801.1094" y="2117.772" z="527.9299" h="8"/>
 	</spawn>
 	<!-- Kaisinel's Teleport Statue-->
 	<spawn map="110010000" npcid="730265" pool="1" interval="300">
@@ -526,7 +527,7 @@
 	</spawn>
 	<!-- Kierunerk (NPC Normal lvl:15)-->
 	<spawn map="110010000" npcid="798024" pool="1" interval="295">
-		<object x="1803.77040" y="2114.45750" z="528.99866" h="24"/>
+		<object x="1804.0829" y="2114.77" z="527.92975" h="20"/>
 	</spawn>
 	<!-- Kinthia (NPC Normal lvl:10)-->
 	<spawn map="110010000" npcid="798310" pool="1" interval="295">
@@ -534,7 +535,7 @@
 	</spawn>
 	<!-- Koruchinerk (NPC Normal lvl:45)-->
 	<spawn map="110010000" npcid="798321" pool="1" interval="295">
-		<object x="1750.74260" y="2119.86230" z="517.90700" h="100"/>
+		<object x="1750.7426" y="2119.8623" z="517.907" h="51"/>
 	</spawn>
 	<!-- Kreon (NPC Normal lvl:40)-->
 	<spawn map="110010000" npcid="203765" pool="1" interval="295">
@@ -558,7 +559,7 @@
 	</spawn>
 	<!-- Kuruminerk (NPC Normal lvl:45)-->
 	<spawn map="110010000" npcid="798322" pool="1" interval="295">
-		<object x="1856.94410" y="2068.37960" z="517.90690" h="58"/>
+		<object x="1856.9441" y="2068.3796" z="517.90686" h="110"/>
 	</spawn>
 	<!-- Laitos (NPC Normal lvl:10)-->
 	<spawn map="110010000" npcid="203867" pool="1" interval="295">
@@ -578,7 +579,7 @@
 	</spawn>
 	<!-- Lapis (NPC Normal lvl:40)-->
 	<spawn map="110010000" npcid="203858" pool="1" interval="295">
-		<object x="1806.10220" y="2134.84060" z="527.92990" h="110"/>
+		<object x="1811.9181" y="2130.4688" z="529.084" h="100"/>
 	</spawn>
 	<!-- Latri (NPC Junk lvl:20)-->
 	<spawn map="110010000" npcid="203894" pool="1" interval="295">
@@ -690,7 +691,7 @@
 	</spawn>
 	<!-- Mara (NPC Normal lvl:10)-->
 	<spawn map="110010000" npcid="203861" pool="1" interval="295">
-		<object x="1808.45780" y="2135.86990" z="529.00000" h="96"/>
+		<object x="1815.5935" y="2129.1934" z="529.08405" h="75"/>
 	</spawn>
 	<!-- Margela (sells costumes) -->
 	<spawn map="110010000" npcid="798411" pool="1" interval="105">
@@ -734,7 +735,7 @@
 	</spawn>
 	<!-- Mino (NPC Normal lvl:40)-->
 	<spawn map="110010000" npcid="203856" pool="1" interval="295">
-		<object x="1806.07900" y="2119.59200" z="530.00000" h="70"/>
+		<object x="1806.1927" y="2119.4355" z="529.0841" h="75"/>
 	</spawn>
 	<!-- Minyae (NPC Normal lvl:47)-->
 	<spawn map="110010000" npcid="203829" pool="1" interval="295">
@@ -786,7 +787,7 @@
 	</spawn>
 	<!-- Mustapino (NPC Normal lvl:10)-->
 	<spawn map="110010000" npcid="203859" pool="1" interval="295">
-		<object x="1811.06840" y="2136.04800" z="529.00000" h="100"/>
+		<object x="1813.9058" y="2130.1511" z="529.08405" h="83"/>
 	</spawn>
 	<!-- Myrtil (NPC Normal lvl:40)-->
 	<spawn map="110010000" npcid="203849" pool="1" interval="295">
@@ -866,7 +867,7 @@
 	</spawn>
 	<!-- Peperinrinerk (NPC Normal lvl:45)-->
 	<spawn map="110010000" npcid="798319" pool="1" interval="295">
-		<object x="1856.11180" y="2067.16380" z="517.90700" h="111"/>
+		<object x="1856.1118" y="2067.1638" z="517.907" h="110"/>
 	</spawn>
 	<!-- Perena (NPC Normal lvl:40)-->
 	<spawn map="110010000" npcid="203809" pool="1" interval="295">
@@ -934,7 +935,7 @@
 	</spawn>
 	<!-- Ruoshinerk (NPC Normal lvl:15)-->
 	<spawn map="110010000" npcid="798021" pool="1" interval="295">
-		<object x="1793.15860" y="2093.15620" z="527.92944" h="65"/>
+		<object x="1793.1586" y="2093.1562" z="527.9295" h="60"/>
 	</spawn>
 	<!-- Sabotes (NPC Normal lvl:10)-->
 	<spawn map="110010000" npcid="203781" pool="1" interval="295">
@@ -983,6 +984,10 @@
 	<!-- Soana (NPC Normal lvl:40)-->
 	<spawn map="110010000" npcid="203815" pool="1" interval="295">
 		<object x="1953.90340" y="1539.10910" z="590.36470" h="60"/>
+	</spawn>
+	<!-- Steel Beard -->
+	<spawn map="110010000" npcid="748006" pool="1" interval="295">  
+		<object x="1856.3099" y="2069.5618" z="517.9069" h="10"/>
 	</spawn>
 	<!-- Studies on Balaur Ruins (Object Normal lvl:1)-->
 	<spawn map="110010000" npcid="730096" pool="1" interval="295">
