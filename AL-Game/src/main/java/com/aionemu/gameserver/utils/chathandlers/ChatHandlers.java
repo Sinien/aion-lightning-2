@@ -19,10 +19,10 @@ package com.aionemu.gameserver.utils.chathandlers;
 
 import java.io.File;
 
+import javolution.util.FastList;
+
 import com.aionemu.commons.scripting.scriptmanager.ScriptManager;
 import com.aionemu.gameserver.GameServerError;
-
-import javolution.util.FastList;
 
 /**
  * This class is managing a list of all chat handlers.

@@ -16,7 +16,7 @@
  */
 package com.aionemu.gameserver.world.container;
 
-import java.util.Iterator;
+import java.util.Collection;
 import java.util.Map;
 
 import javolution.util.FastMap;
@@ -30,7 +30,7 @@ import com.aionemu.gameserver.world.exceptions.DuplicateAionObjectException;
  * @author -Nemesiss-
  * 
  */
-public class PlayerContainer implements Iterable<Player>
+public class PlayerContainer
 {
 	/**
 	 * Map<ObjectId,Player>
@@ -89,12 +89,8 @@ public class PlayerContainer implements Iterable<Player>
 		return playersByName.get(name);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public Iterator<Player> iterator()
+	public Collection<Player> getPlayers()
 	{
-		return playersById.values().iterator();
+		return playersById.values();
 	}
 }

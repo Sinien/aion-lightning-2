@@ -17,8 +17,6 @@
  */
 package admincommands;
 
-import java.util.Iterator;
-
 import com.aionemu.gameserver.configs.administration.AdminConfig;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.utils.PacketSendUtility;
@@ -79,11 +77,9 @@ public class Announce extends AdminCommand
 		}
 		message += params[1];
 		
-		Iterator<Player> iter = World.getInstance().getPlayersIterator();
-		
-		while(iter.hasNext())
+		for(Player player : World.getInstance().getAllPlayers())
 		{
-			PacketSendUtility.sendSysMessage(iter.next(), message);
+			PacketSendUtility.sendSysMessage(player, message);
 		}
 	}
 }

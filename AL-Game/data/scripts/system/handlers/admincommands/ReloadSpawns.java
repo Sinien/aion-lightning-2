@@ -16,8 +16,6 @@
  */
 package admincommands;
 
-import java.util.Iterator;
-
 import com.aionemu.gameserver.configs.administration.AdminConfig;
 import com.aionemu.gameserver.model.gameobjects.AionObject;
 import com.aionemu.gameserver.model.gameobjects.Gatherable;
@@ -56,10 +54,8 @@ public class ReloadSpawns extends AdminCommand
 		}
 		
 		// despawn all
-		Iterator<AionObject> it = World.getInstance().getObjectsIterator(); 
-		while(it.hasNext())
+		for(AionObject obj : World.getInstance().getAllObjects())
 		{
-			AionObject obj = it.next();
 			if(obj instanceof Npc || obj instanceof Gatherable || obj instanceof StaticObject)
 			{
 				((VisibleObject) obj).getController().delete();

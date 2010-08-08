@@ -16,8 +16,6 @@
  */
 package com.aionemu.gameserver.services;
 
-import java.util.Iterator;
-
 import org.apache.log4j.Logger;
 
 import com.aionemu.gameserver.model.gameobjects.player.Player;
@@ -58,11 +56,8 @@ public class DebugService
 	{
 		log.info("Starting analysis of world players at " + System.currentTimeMillis());
 
-		Iterator<Player> playersIterator = World.getInstance().getPlayersIterator();
-		while(playersIterator.hasNext())
+		for(Player player : World.getInstance().getAllPlayers())
 		{
-			Player player = playersIterator.next();
-
 			/**
 			 * Check connection
 			 */

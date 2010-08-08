@@ -17,7 +17,6 @@
 package com.aionemu.gameserver.services;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
@@ -113,13 +112,11 @@ public class PetitionService
 	
 	private void broadcastMessageToGM(Player sender, int petitionId)
 	{
-		Iterator<Player> players = World.getInstance().getPlayersIterator();
-		while(players.hasNext())
+		for(Player player : World.getInstance().getAllPlayers()) 
 		{
-			Player p = players.next();
-			if(p.getAccessLevel() > 0)
+			if(player.getAccessLevel() > 0)
 			{
-				PacketSendUtility.sendSysMessage(p, "New Support Petition from: " + sender.getName() + " (#" + petitionId + ")");
+				PacketSendUtility.sendSysMessage(player, "New Support Petition from: " + sender.getName() + " (#" + petitionId + ")");
 			}
 		}
 	}

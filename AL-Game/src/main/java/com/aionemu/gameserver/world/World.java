@@ -16,7 +16,7 @@
  */
 package com.aionemu.gameserver.world;
 
-import java.util.Iterator;
+import java.util.Collection;
 import java.util.Map;
 
 import javolution.util.FastMap;
@@ -114,24 +114,14 @@ public class World
 			IDFactory.getInstance().releaseId(object.getObjectId());
 	}
 
-	/**
-	 * Returns Players iterator.
-	 * 
-	 * @return Players iterator.
-	 */
-	public Iterator<Player> getPlayersIterator()
+	public Collection<Player> getAllPlayers()
 	{
-		return allPlayers.iterator();
+		return allPlayers.getPlayers();
 	}
 
-	/**
-	 * Returns AionObjects iterator.
-	 * 
-	 * @return AionObjects iterator.
-	 */
-	public Iterator<AionObject> getObjectsIterator()
+	public Collection<AionObject> getAllObjects()
 	{
-		return allObjects.values().iterator();
+		return allObjects.values();
 	}
 
 	/**

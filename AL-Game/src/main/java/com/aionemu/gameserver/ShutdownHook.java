@@ -16,8 +16,6 @@
  */
 package com.aionemu.gameserver;
 
-import java.util.Iterator;
-
 import org.apache.log4j.Logger;
 
 import com.aionemu.commons.utils.ExitCode;
@@ -82,12 +80,8 @@ public class ShutdownHook extends Thread
 	{
 		try
 		{
-			Iterator<Player> onlinePlayers = World.getInstance().getPlayersIterator();
-			if(!onlinePlayers.hasNext())
-				return;
-			while(onlinePlayers.hasNext())
+			for(Player player : World.getInstance().getAllPlayers())
 			{
-				Player player = onlinePlayers.next();
 				if(player != null && player.getClientConnection() != null)
 					player.getClientConnection().sendPacket(SM_SYSTEM_MESSAGE.SERVER_SHUTDOWN(seconds));
 			}
@@ -102,12 +96,8 @@ public class ShutdownHook extends Thread
 	{
 		try
 		{
-			Iterator<Player> onlinePlayers = World.getInstance().getPlayersIterator();
-			if(!onlinePlayers.hasNext())
-				return;
-			while(onlinePlayers.hasNext())
+			for(Player player : World.getInstance().getAllPlayers())
 			{
-				Player player = onlinePlayers.next();
 				if(player != null && player.getClientConnection() != null)
 					player.getController().setInShutdownProgress(status);
 			}
@@ -124,17 +114,15 @@ public class ShutdownHook extends Thread
 		{
 			try
 			{
-				if(World.getInstance().getPlayersIterator().hasNext())
-				{
-					log.info("Runtime is " + mode.getText() + " in " + i + " seconds.");
-					sendShutdownMessage(i);
-					sendShutdownStatus(ShutdownConfig.SAFE_REBOOT);
-				}
-				else
+				if(World.getInstance().getAllPlayers().size() == 0)
 				{
 					log.info("Runtime is " + mode.getText() + " now ...");
 					break; // fast exit.
 				}
+				
+				log.info("Runtime is " + mode.getText() + " in " + i + " seconds.");
+				sendShutdownMessage(i);
+				sendShutdownStatus(ShutdownConfig.SAFE_REBOOT);
 
 				if(i > interval)
 				{
@@ -142,7 +130,7 @@ public class ShutdownHook extends Thread
 				}
 				else
 				{
-					sleep(i * 1000);
+					sleep(1000);
 				}
 			}
 			catch(InterruptedException e)
@@ -155,14 +143,11 @@ public class ShutdownHook extends Thread
 		LoginServer.getInstance().gameServerDisconnected();
 
 		// Disconnect all players.
-		Iterator<Player> onlinePlayers;
-		onlinePlayers = World.getInstance().getPlayersIterator();
-		while(onlinePlayers.hasNext())
+		for(Player player : World.getInstance().getAllPlayers())
 		{
-			Player activePlayer = onlinePlayers.next();
 			try
 			{
-				PlayerService.playerLoggedOut(activePlayer);
+				PlayerService.playerLoggedOut(player);
 			}
 			catch(Exception e)
 			{

@@ -18,7 +18,6 @@ package com.aionemu.gameserver.services;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.Future;
@@ -93,11 +92,8 @@ public class AnnouncementService
 				@Override
 				public void run()
 				{
-					final Iterator<Player> iter = World.getInstance().getPlayersIterator();
-					while (iter.hasNext())
+					for(final Player player : World.getInstance().getAllPlayers())
 					{
-						Player player = iter.next();
-						
 						if (announce.getFaction().equalsIgnoreCase("ALL"))
 							if (announce.getChatType() == ChatType.SHOUT || announce.getChatType() == ChatType.GROUP_LEADER)
 								PacketSendUtility.sendPacket(player, new SM_MESSAGE(1, "Automatic Announce", announce.getAnnounce(), announce.getChatType()));
