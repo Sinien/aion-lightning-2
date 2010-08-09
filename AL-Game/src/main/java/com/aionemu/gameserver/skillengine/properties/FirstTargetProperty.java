@@ -23,6 +23,8 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
 import com.aionemu.gameserver.model.gameobjects.Creature;
+import com.aionemu.gameserver.model.gameobjects.Monster;
+import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.Summon;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.skillengine.model.Skill;
@@ -64,6 +66,35 @@ public class FirstTargetProperty
 			case TARGETORME:
 				if(skill.getFirstTarget() == null)
 					skill.setFirstTarget(skill.getEffector());
+				else if (skill.getFirstTarget() instanceof Monster)
+				{
+					Monster monsterEffected = (Monster)skill.getFirstTarget();
+					Player playerEffector = (Player)skill.getEffector();
+					if ( monsterEffected.isEnemy(playerEffector) )
+						skill.setFirstTarget(skill.getEffector());
+				}
+				else if ( (skill.getFirstTarget() instanceof Player) && (skill.getEffector() instanceof Player) )
+				{
+					Player playerEffected = (Player)skill.getFirstTarget();
+					Player playerEffector = (Player)skill.getEffector();
+					if ( playerEffected.getCommonData().getRace().getRaceId() != playerEffector.getCommonData().getRace().getRaceId() )
+						skill.setFirstTarget(skill.getEffector());
+				}
+				else if (skill.getFirstTarget() instanceof Npc)
+				{
+					Npc npcEffected = (Npc)skill.getFirstTarget();
+					Player playerEffector = (Player)skill.getEffector();
+					if ( npcEffected.isEnemy(playerEffector) )
+						skill.setFirstTarget(skill.getEffector());
+				}
+				else if ( (skill.getFirstTarget() instanceof Summon) && (skill.getEffector() instanceof Player) )
+				{
+					Summon summon = (Summon)skill.getFirstTarget();
+					Player playerEffected = summon.getMaster();
+					Player playerEffector = (Player)skill.getEffector();
+					if ( playerEffected.getCommonData().getRace().getRaceId() != playerEffector.getCommonData().getRace().getRaceId() )
+						skill.setFirstTarget(skill.getEffector());
+				}
 				break;
 			case TARGET:
 				if(skill.getFirstTarget() == null)
