@@ -144,6 +144,14 @@ public class Effect
 	{
 		return skillTemplate.getSkillId();
 	}
+	
+	/**
+	 * @return the SkillSetException
+	 */
+	public int getSkillSetException()
+	{
+		return skillTemplate.getSkillSetException();
+	}
 
 	/**
 	 * @return the stack

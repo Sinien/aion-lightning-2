@@ -177,6 +177,48 @@ public class EffectController
 			}
 		}
 	}
+	
+	/**
+	 * Removes the effect by SkillSetException Number.
+	 * 
+	 * @param SkillSetException Number
+	 */
+	public void removeEffectBySetNumber(final int setNumber)
+	{
+		for(Effect effect : abnormalEffectMap.values())
+		{
+			if(effect.getSkillSetException() == setNumber)
+			{
+				effect.endEffect();
+				abnormalEffectMap.remove(effect.getStack());
+			}
+		}
+		for(Effect effect : passiveEffectMap.values())
+		{
+			if(effect.getSkillSetException() == setNumber)
+			{
+				effect.endEffect();
+				passiveEffectMap.remove(effect.getStack());
+			}
+		}
+		for(Effect effect : noshowEffects.values())
+		{
+			if(effect.getSkillSetException() == setNumber)
+			{
+				effect.endEffect();
+				noshowEffects.remove(effect.getStack());
+			}
+		}
+	}
+	
+	/**
+	 * Removes the effect with SkillSetException Reserved Number (aka 1).
+	 * 
+	 */
+	public void removeEffectWithSetNumberReserved()
+	{
+		removeEffectBySetNumber(1);
+	}
 
 	/**
 	 * 

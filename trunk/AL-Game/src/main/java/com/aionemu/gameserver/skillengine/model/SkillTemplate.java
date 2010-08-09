@@ -82,6 +82,8 @@ public class SkillTemplate
     protected int chainSkillProb;
     @XmlAttribute(name = "cancel_rate")
     protected int cancelRate;
+	@XmlAttribute(name = "skillset_exception")
+    protected int skillSetException;
 
     /**
 	 * @return the initProperties
@@ -319,6 +321,13 @@ public class SkillTemplate
 	 */
 	public int getCancelRate() {
 		return cancelRate;
+	}
+	
+	/**
+	 * @return skillSetException
+	 */
+	public int getSkillSetException() {
+		return skillSetException;
 	}
     
 	public boolean hasResurrectEffect()
