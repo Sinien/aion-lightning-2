@@ -71,7 +71,7 @@ public class ShutdownTask extends TaskFromDBHandler
 		Collection<Player> players = World.getInstance().getAllPlayers();
 		
 		for (Player player : players)
-			PacketSendUtility.sendSysMessage((Player) player, "Automatic Task: The server will shutdown in " + warnCountDown + " seconds ! Please find a peace place and disconnect your character.");
+			PacketSendUtility.sendSysMessage(player, "Automatic Task: The server will shutdown in " + warnCountDown + " seconds ! Please find a peace place and disconnect your character.");
 		
 		ThreadPoolManager.getInstance().schedule(new Runnable()
 		{

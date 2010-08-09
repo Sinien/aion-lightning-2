@@ -214,7 +214,7 @@ public class MoveController
 			if(directionChanged)
 			{
 				PacketSendUtility.broadcastPacket(owner, new SM_MOVE(owner.getObjectId(),	ownerX, ownerY, ownerZ,
-					(float) (x2 / mod) , (float) (y2 / mod) , (float) (z2 / mod) , heading2, MovementType.MOVEMENT_START_KEYBOARD));
+					(x2 / mod) , (y2 / mod) , (z2 / mod) , heading2, MovementType.MOVEMENT_START_KEYBOARD));
 				directionChanged = false;
 			}
 

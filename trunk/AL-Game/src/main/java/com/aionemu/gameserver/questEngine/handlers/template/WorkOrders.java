@@ -125,12 +125,14 @@ public class WorkOrders extends QuestHandler
 		return false;
 	}
 	
+	@Override
 	public boolean onQuestFinishEvent(QuestEnv env)
 	{
 		deleteQuestItems(env);
 		return true;
 	}
 
+	@Override
 	public boolean onQuestAbortEvent(QuestEnv env)
 	{
 		abortQuest(env);

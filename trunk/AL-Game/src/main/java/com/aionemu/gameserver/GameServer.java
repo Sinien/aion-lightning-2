@@ -166,7 +166,6 @@ public class GameServer
 
 		Runtime.getRuntime().addShutdownHook(ShutdownHook.getInstance());
 
-		// gs.injector.getInstance(com.aionemu.gameserver.utils.chathandlers.ChatHandlers.class);
 		onStartup();
 	}
 
@@ -176,7 +175,6 @@ public class GameServer
 	private void startServers()
 	{	
 		ServerCfg aion = new ServerCfg(NetworkConfig.GAME_BIND_ADDRESS, NetworkConfig.GAME_PORT, "Game Connections", new GameConnectionFactoryImpl());
-		//ServerCfg login = new ServerCfg(NetworkConfig.LOGIN_ADDRESS.getHostName(), NetworkConfig.LOGIN_ADDRESS.getPort(), "Login Connections", new LoginConnectionFactoryImpl());
 		NioServer nioServer = new NioServer(1, ThreadPoolManager.getInstance(), aion);
 
 		LoginServer loginServer = LoginServer.getInstance();

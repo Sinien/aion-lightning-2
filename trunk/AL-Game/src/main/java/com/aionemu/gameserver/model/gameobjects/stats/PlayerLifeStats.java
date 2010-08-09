@@ -386,7 +386,7 @@ public class PlayerLifeStats extends CreatureLifeStats<Player>
 			return;
 		}
 		
-		PacketSendUtility.sendPacket((Player)owner, new SM_ATTACK_STATUS((Player)owner, type, 0, value));
+		PacketSendUtility.sendPacket((Player)owner, new SM_ATTACK_STATUS(owner, type, 0, value));
 		PacketSendUtility.broadcastPacket(owner, new SM_ATTACK_STATUS(owner, 0));	
 	}
 

@@ -16,8 +16,6 @@
  */
 package com.aionemu.gameserver.controllers;
 
-import org.apache.log4j.Logger;
-
 import com.aionemu.gameserver.model.EmotionType;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.state.CreatureState;
@@ -31,9 +29,6 @@ import com.aionemu.gameserver.utils.PacketSendUtility;
  */
 public class FlyController
 {
-	@SuppressWarnings("unused")
-	private static final Logger	log	= Logger.getLogger(FlyController.class);
-
 	private Player player;
 
 	public FlyController(Player player)
@@ -41,9 +36,6 @@ public class FlyController
 		this.player = player;
 	}
 
-	/**
-	 * 
-	 */
 	public void onStopGliding()
 	{
 		if(player.isInState(CreatureState.GLIDING))

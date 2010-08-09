@@ -38,6 +38,7 @@ public class OnTalkEvent extends QuestEvent
 
 	protected List<QuestVar>	var;
 
+	@Override
 	public boolean operate(QuestEnv env)
 	{
 		if(conditions == null || conditions.checkConditionOfSet(env))
