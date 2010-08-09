@@ -84,11 +84,7 @@ public class ArmsfusionService
 		
 		firstItem.setFusionedItem(secondItem.getItemTemplate().getTemplateId());
 		
-		DAOManager.getDAO(InventoryDAO.class).store(firstItem, player.getObjectId());
-		
 		player.getInventory().removeFromBagByObjectId(secondItemUniqueId, 1);
-		
-		PacketSendUtility.sendPacket(player, new SM_DELETE_ITEM(secondItemUniqueId));
 		
 		PacketSendUtility.sendPacket(player, new SM_UPDATE_ITEM(firstItem));
 		
@@ -112,8 +108,6 @@ public class ArmsfusionService
 		}
 	
 		weaponToBreak.setFusionedItem(0);
-		
-		DAOManager.getDAO(InventoryDAO.class).store(weaponToBreak, player.getObjectId());
 		
 		PacketSendUtility.sendPacket(player, new SM_UPDATE_ITEM(weaponToBreak));
 		

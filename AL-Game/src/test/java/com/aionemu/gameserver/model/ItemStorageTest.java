@@ -46,7 +46,7 @@ public class ItemStorageTest
 		{
 			ItemTemplate template = new ItemTemplate();
 			template.setItemId(i);
-			Item item = new Item(i, template, 3, false, 2);
+			Item item = new Item(0, i, template, 3, false, 2);
 			itemList.add(item);
 		}
 	}

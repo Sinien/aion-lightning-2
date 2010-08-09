@@ -20,14 +20,14 @@ import com.aionemu.gameserver.model.alliance.PlayerAllianceEvent;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.group.GroupEvent;
 import com.aionemu.gameserver.services.AllianceService;
-import com.aionemu.gameserver.taskmanager.AbstractIterativePeriodicTaskManager;
+import com.aionemu.gameserver.taskmanager.AbstractFIFOPeriodicTaskManager;
 
 /**
  * @author Sarynth
  *
  * Supports PlayerGroup and PlayerAlliance movement updating. 
  */
-public final class GroupAllianceUpdater extends AbstractIterativePeriodicTaskManager<Player>
+public final class GroupAllianceUpdater extends AbstractFIFOPeriodicTaskManager<Player>
 {
 	private static final class SingletonHolder
 	{
@@ -52,9 +52,6 @@ public final class GroupAllianceUpdater extends AbstractIterativePeriodicTaskMan
 		
 		if (player.isInAlliance())
 			AllianceService.getInstance().updateAllianceUIToEvent(player, PlayerAllianceEvent.MOVEMENT);
-		
-		// Remove task from list. It will be re-added if player moves again.
-		this.stopTask(player);
 	}
 	
 	@Override

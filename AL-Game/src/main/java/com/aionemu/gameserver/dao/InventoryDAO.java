@@ -56,7 +56,7 @@ public abstract class InventoryDAO implements IDFactoryAwareDAO
 	/**
 	 * @param item
 	 */
-	public abstract boolean store(Item item, int playerId);
+	public abstract boolean store(Item item);
 
 	/**
 	 * @param playerId

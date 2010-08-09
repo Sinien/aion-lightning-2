@@ -27,6 +27,7 @@ import com.aionemu.gameserver.model.items.ItemStorage;
 import com.aionemu.gameserver.model.items.ManaStone;
 import com.aionemu.gameserver.model.templates.item.EquipType;
 import com.aionemu.gameserver.model.templates.item.ItemTemplate;
+import com.aionemu.gameserver.taskmanager.tasks.ItemUpdater;
 
 /**
  * @author ATracer
@@ -35,6 +36,7 @@ public class Item extends AionObject
 {	
 	private long itemCount = 1;
 
+	private int ownerId = 0;
 	private int itemColor = 0;
 
 	private ItemTemplate	itemTemplate;
@@ -59,6 +61,7 @@ public class Item extends AionObject
 	private int fusionedItemId;
 
 	/**
+	 * @param ownerId
 	 * @param objId
 	 * @param itemTemplate
 	 * @param itemCount
@@ -68,15 +71,16 @@ public class Item extends AionObject
 	 * This constructor should be called from ItemService
 	 * for newly created items and loadedFromDb
 	 */
-	public Item(int objId, ItemTemplate itemTemplate, long itemCount, boolean isEquipped, int equipmentSlot)
+	public Item(int ownerId, int objId, ItemTemplate itemTemplate, long itemCount, boolean isEquipped, int equipmentSlot)
 	{
 		super(objId);
-
+		this.ownerId = ownerId;
 		this.itemTemplate = itemTemplate;
 		this.itemCount = itemCount;
 		this.isEquipped = isEquipped;
 		this.equipmentSlot = equipmentSlot;
 		this.persistentState = PersistentState.NEW;
+		ItemUpdater.getInstance().add(this);
 	}
 
 	/**
@@ -88,11 +92,11 @@ public class Item extends AionObject
 	 * 
 	 * This constructor should be called only from DAO while loading from DB
 	 */
-	public Item(int objId, int itemId, long itemCount, int itemColor, boolean isEquipped, boolean isSoulBound,int equipmentSlot, int itemLocation,
+	public Item(int ownerId, int objId, int itemId, long itemCount, int itemColor, boolean isEquipped, boolean isSoulBound,int equipmentSlot, int itemLocation,
 		int enchant, int itemSkin, int fusionedItem)
 	{
 		super(objId);
-
+		this.ownerId = ownerId;
 		this.itemTemplate = DataManager.ITEM_DATA.getItemTemplate(itemId);
 		this.itemCount = itemCount;
 		this.itemColor = itemColor;
@@ -103,6 +107,22 @@ public class Item extends AionObject
 		this.enchantLevel = enchant;
 		this.fusionedItemId = fusionedItem;
 		this.itemSkinTemplate = DataManager.ITEM_DATA.getItemTemplate(itemSkin);
+	}
+
+	/**
+	 * @return the ownerId
+	 */
+	public int getOwnerId()
+	{
+		return ownerId;
+	}
+
+	/**
+	 * @param ownerId the ownerId to set
+	 */
+	public void setOwnerId(int ownerId)
+	{
+		this.ownerId = ownerId;
 	}
 
 	@Override
@@ -355,6 +375,8 @@ public class Item extends AionObject
 	 */
 	public void setPersistentState(PersistentState persistentState)
 	{
+		if (persistentState != PersistentState.UPDATED)
+			ItemUpdater.getInstance().add(this);
 		switch(persistentState)
 		{
 			case DELETED:

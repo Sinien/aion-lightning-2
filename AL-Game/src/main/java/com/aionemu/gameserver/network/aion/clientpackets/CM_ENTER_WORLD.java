@@ -123,7 +123,10 @@ public class CM_ENTER_WORLD extends AionClientPacket
 			 */
 			Player player2 = World.getInstance().findPlayer(player.getObjectId());
 			if (player2 != null)
+			{
+				player2.onLoggedOut();
 				World.getInstance().removeObject(player2);
+			}
 			World.getInstance().storeObject(player);
 
 			StigmaService.onPlayerLogin(player);

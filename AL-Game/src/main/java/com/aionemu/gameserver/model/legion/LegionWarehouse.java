@@ -31,6 +31,7 @@ public class LegionWarehouse extends Storage
 		super(StorageType.LEGION_WAREHOUSE);
 		this.legion = legion;
 		this.setLimit(legion.getWarehouseSlots());
+		this.setOwnerId(legion.getLegionId());
 	}
 
 	/**

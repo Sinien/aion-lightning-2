@@ -25,7 +25,6 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import org.apache.log4j.Logger;
 
 import com.aionemu.commons.database.dao.DAOManager;
-import com.aionemu.gameserver.dao.InventoryDAO;
 import com.aionemu.gameserver.dao.MailDAO;
 import com.aionemu.gameserver.dao.PlayerDAO;
 import com.aionemu.gameserver.model.gameobjects.Item;
@@ -199,6 +198,7 @@ public class MailService
 				else if(senderItem.getItemCount() > attachedItemCount)
 				{
 					attachedItem = ItemService.newItem(senderItem.getItemTemplate().getTemplateId(), attachedItemCount);
+					
 					senderItem.decreaseItemCount(attachedItemCount);
 					PacketSendUtility.sendPacket(sender, new SM_UPDATE_ITEM(senderItem));
 
@@ -240,10 +240,6 @@ public class MailService
 			log.warn("[AUDIT]Mail kinah exploit: " + sender.getObjectId());
 			return;
 		}
-
-		if(attachedItem != null)
-			if(!DAOManager.getDAO(InventoryDAO.class).store(attachedItem, recipientCommonData.getPlayerObjId()))
-				return;
 
 		int finalMailCommission = 10 + kinahMailCommission + itemMailCommission;
 		

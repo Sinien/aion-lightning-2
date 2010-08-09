@@ -221,6 +221,7 @@ public class PlayerService
 		 * Account warehouse should be already loaded in account
 		 */
 		Storage accWarehouse = account.getAccountWarehouse();
+		
 		player.setStorage(accWarehouse, StorageType.ACCOUNT_WAREHOUSE);
 		
 		Storage inventory = DAOManager.getDAO(InventoryDAO.class).loadStorage(player, StorageType.CUBE);

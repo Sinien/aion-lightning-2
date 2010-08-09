@@ -222,10 +222,8 @@ public class TradeService
 				return false;
 		}
 
-		Item kinahItem = inventory.getKinahItem();
 		kinahReward = player.getPrices().getKinahForSell(kinahReward);
 		inventory.increaseKinah(kinahReward);
-		PacketSendUtility.sendPacket(player, new SM_UPDATE_ITEM(kinahItem));
 
 		return true;
 	}

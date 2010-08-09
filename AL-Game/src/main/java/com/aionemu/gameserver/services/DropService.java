@@ -31,6 +31,7 @@ import com.aionemu.commons.database.dao.DAOManager;
 import com.aionemu.commons.utils.Rnd;
 import com.aionemu.gameserver.configs.main.CustomConfig;
 import com.aionemu.gameserver.dao.DropListDAO;
+import com.aionemu.gameserver.dataholders.DataManager;
 import com.aionemu.gameserver.model.DescriptionId;
 import com.aionemu.gameserver.model.EmotionType;
 import com.aionemu.gameserver.model.alliance.PlayerAllianceMember;
@@ -38,7 +39,6 @@ import com.aionemu.gameserver.model.drop.DropItem;
 import com.aionemu.gameserver.model.drop.DropList;
 import com.aionemu.gameserver.model.drop.DropTemplate;
 import com.aionemu.gameserver.model.gameobjects.DropNpc;
-import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.state.CreatureState;
@@ -287,9 +287,8 @@ public class DropService
 		{
 			long currentDropItemCount = requestedItem.getCount();
 			int itemId = requestedItem.getDropTemplate().getItemId();
-
-			Item item = ItemService.newItem(itemId, 1);
-			ItemQuality quality = item.getItemTemplate().getItemQuality(); 			
+			
+			ItemQuality quality = DataManager.ITEM_DATA.getItemTemplate(itemId).getItemQuality();		
 
 			if(!requestedItem.isDistributeItem() && !requestedItem.isFreeForAll())
 			{	
@@ -533,7 +532,8 @@ public class DropService
 	 */	
 	private void winningRollActions(Player player, int itemId, int npcId)
 	{
-		PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.STR_MSG_LOOT_GET_ITEM_ME(new DescriptionId(ItemService.newItem(itemId, 1).getNameID())));
+		int nameId = DataManager.ITEM_DATA.getItemTemplate(itemId).getNameId();
+		PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.STR_MSG_LOOT_GET_ITEM_ME(new DescriptionId(nameId)));
 		
 		if(player.isInGroup())
 		{	
@@ -541,7 +541,7 @@ public class DropService
 			{
 				if(!player.equals(member))
 				PacketSendUtility.sendPacket(member, SM_SYSTEM_MESSAGE.STR_MSG_LOOT_GET_ITEM_OTHER(player.getName(),
-						new DescriptionId(ItemService.newItem(itemId, 1).getNameID())));
+						new DescriptionId(nameId)));
 			}
 		}
 		if(player.isInAlliance())
@@ -551,7 +551,7 @@ public class DropService
 				Player member = allianceMember.getPlayer();
 				if(!player.equals(member))
 					PacketSendUtility.sendPacket(member, SM_SYSTEM_MESSAGE.STR_MSG_LOOT_GET_ITEM_OTHER(player.getName(),
-							new DescriptionId(ItemService.newItem(itemId, 1).getNameID())));
+							new DescriptionId(nameId)));
 			}
 		}
 		return;
