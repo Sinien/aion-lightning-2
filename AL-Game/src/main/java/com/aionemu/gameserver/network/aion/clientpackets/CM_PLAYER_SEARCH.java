@@ -39,7 +39,7 @@ public class CM_PLAYER_SEARCH extends AionClientPacket
 	/**
 	 * The max number of players to return as results
 	 */
-	public static final int	MAX_RESULTS	= 125;
+	public static final int	MAX_RESULTS	= 124;
 
 	private String			name;
 	private int				region;
@@ -93,7 +93,7 @@ public class CM_PLAYER_SEARCH extends AionClientPacket
 		}
 		for(Player player : World.getInstance().getAllPlayers())
 		{
-			if(matches.size() < MAX_RESULTS)
+			if(matches.size() > MAX_RESULTS)
 				return;
 			if(!player.isSpawned())
 				continue;
