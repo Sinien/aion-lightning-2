@@ -58,6 +58,7 @@ public class PlayerGameStats extends CreatureGameStats<Player>
 	}
 
 
+	@Override
 	public void recomputeStats()
 	{
 		super.recomputeStats();

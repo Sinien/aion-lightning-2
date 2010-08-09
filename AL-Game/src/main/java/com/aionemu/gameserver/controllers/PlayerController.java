@@ -435,6 +435,7 @@ public class PlayerController extends CreatureController<Player>
 	/**
 	 * Cancel current skill and remove cooldown
 	 */
+	@Override
 	public void cancelCurrentSkill()
 	{
 		Player player = getOwner();
@@ -659,14 +660,6 @@ public class PlayerController extends CreatureController<Player>
 	}
 
 	/**
-	 * 
-	 */
-	public void ban()
-	{
-		// sp.getTeleportService().teleportTo(this.getOwner(), 510010000, 256f, 256f, 49f, 0);
-	}
-
-	/**
 	 * Check water level (start drowning) and map death level (die)
 	 */
 	public void checkWaterLevel()
@@ -711,6 +704,4 @@ public class PlayerController extends CreatureController<Player>
 	{
 		return ItemService.addItems(getOwner(), Collections.singletonList(new QuestItems(itemId, count)));
 	}
-
-
 }

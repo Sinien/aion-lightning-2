@@ -1,4 +1,4 @@
-/**
+/*
  * This file is part of aion-lightning <aion-lightning.com>.
  *
  *  aion-lightning is free software: you can redistribute it and/or modify
@@ -14,7 +14,6 @@
  *  You should have received a copy of the GNU General Public License
  *  along with aion-lightning.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.aionemu.gameserver.model.tasks;
 
 import java.sql.Timestamp;
@@ -23,7 +22,6 @@ import java.sql.Timestamp;
  * @author Divinity
  * 
  */
-
 public class TaskFromDB
 {
 	private int					id;

@@ -133,7 +133,7 @@ public class PvpService
 		
 		// Apply lost AP to defeated player
 		final int apLost = StatFunctions.calculatePvPApLost(victim, winner);
-		final int apActuallyLost = (int)(apLost * playerDamage / totalDamage);
+		final int apActuallyLost = (apLost * playerDamage / totalDamage);
 		
 		if (apActuallyLost > 0)
 			victim.getCommonData().addAp(-apActuallyLost);

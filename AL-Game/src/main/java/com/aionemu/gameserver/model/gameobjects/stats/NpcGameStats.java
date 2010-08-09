@@ -97,6 +97,7 @@ public class NpcGameStats extends CreatureGameStats<Npc>
 			initStat(StatEnum.ATTACK_RANGE, 2000);
 	}
 
+	@Override
 	public void recomputeStats()
 	{
 		super.recomputeStats();

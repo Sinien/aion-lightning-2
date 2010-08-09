@@ -890,6 +890,7 @@ public class Equipment
 	{
 		RequestResponseHandler responseHandler = new RequestResponseHandler(player){
 
+			@Override
 			public void acceptRequest(Creature requester, Player responder)
 			{
 				PacketSendUtility.broadcastPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(), item
@@ -918,6 +919,7 @@ public class Equipment
 				}, 5100);
 			}
 
+			@Override
 			public void denyRequest(Creature requester, Player responder)
 			{
 				PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.SOUL_BOUND_ITEM_CANCELED(new DescriptionId(item

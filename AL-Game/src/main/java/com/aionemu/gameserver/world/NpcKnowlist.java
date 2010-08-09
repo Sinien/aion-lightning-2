@@ -33,6 +33,7 @@ public class NpcKnowlist extends KnownList
 	/**
 	 * Do KnownList update.
 	 */
+	@Override
 	public void doUpdate()
 	{
 		if (owner.getActiveRegion().isMapRegionActive())

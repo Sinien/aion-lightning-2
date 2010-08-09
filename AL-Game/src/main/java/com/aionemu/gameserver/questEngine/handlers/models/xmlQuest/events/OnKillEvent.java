@@ -55,6 +55,7 @@ public class OnKillEvent extends QuestEvent
 		return this.monsterInfos;
 	}
 
+	@Override
 	public boolean operate(QuestEnv env)
 	{
 		if(monsterInfos == null || !(env.getVisibleObject() instanceof Npc))

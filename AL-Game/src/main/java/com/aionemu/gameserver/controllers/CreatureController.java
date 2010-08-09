@@ -117,7 +117,7 @@ public abstract class CreatureController<T extends Creature> extends VisibleObje
 			int cancelRate = skill.getSkillTemplate().getCancelRate();
 			int conc = getOwner().getGameStats().getCurrentStat(StatEnum.CONCENTRATION)/10;
 			float maxHp = getOwner().getGameStats().getCurrentStat(StatEnum.MAXHP);
-			float cancel = (cancelRate - conc)+(((float)damage)/maxHp*50);
+			float cancel = (cancelRate - conc)+((damage)/maxHp*50);
 			if(Rnd.get(100) < cancel)
 				cancelCurrentSkill();
 		}

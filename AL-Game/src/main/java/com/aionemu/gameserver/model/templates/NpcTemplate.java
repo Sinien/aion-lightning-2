@@ -226,6 +226,7 @@ public class NpcTemplate extends VisibleObjectTemplate
 	/**
 	 * @return the state
 	 */
+	@Override
 	public int getState()
 	{
 		return state;
