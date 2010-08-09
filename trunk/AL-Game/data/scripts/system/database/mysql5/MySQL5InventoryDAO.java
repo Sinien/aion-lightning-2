@@ -25,7 +25,6 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.aionemu.commons.database.DB;
 import com.aionemu.commons.database.DatabaseFactory;
 import com.aionemu.gameserver.dao.InventoryDAO;
 import com.aionemu.gameserver.model.gameobjects.Item;
@@ -43,12 +42,13 @@ public class MySQL5InventoryDAO extends InventoryDAO
 {
 	private static final Logger log = Logger.getLogger(MySQL5InventoryDAO.class);
 
-	public static final String SELECT_QUERY = "SELECT `itemUniqueId`, `itemId`, `itemCount`, `itemColor`, `isEquiped`, `isSoulBound`, `slot`, `enchant`, `itemSkin`, `fusionedItem` FROM `inventory` WHERE `itemOwner`=? AND `itemLocation`=? AND `isEquiped`=?";
-	public static final String INSERT_QUERY = "INSERT INTO `inventory` (`itemUniqueId`, `itemId`, `itemCount`, `itemColor`, `itemOwner`, `isEquiped`, isSoulBound, `slot`, `itemLocation`, `enchant`, `itemSkin`, `fusionedItem`) VALUES(?,?,?,?,?,?,?,?,?,?, ?,?)";
-	public static final String UPDATE_QUERY = "UPDATE inventory SET  itemCount=?, itemColor=?, itemOwner=?, isEquiped=?, isSoulBound=?, slot=?, itemLocation=?, enchant=?, itemSkin=?, fusionedItem=? WHERE itemUniqueId=?";
-	public static final String DELETE_QUERY = "DELETE FROM inventory WHERE itemUniqueId=?";
-	public static final String DELETE_CLEAN_QUERY = "DELETE FROM inventory WHERE itemOwner=? AND (itemLocation=0 OR itemLocation=1)";
-	public static final String SELECT_ACCOUNT_QUERY = "SELECT `account_id` FROM `players` WHERE `id`=?";
+	private static final String SELECT_QUERY 			= "SELECT `itemUniqueId`, `itemId`, `itemCount`, `itemColor`, `isEquiped`, `isSoulBound`, `slot`, `enchant`, `itemSkin`, `fusionedItem` FROM `inventory` WHERE `itemOwner`=? AND `itemLocation`=? AND `isEquiped`=?";
+	private static final String SELECT_QUERY2			= "SELECT itemUniqueId FROM inventory";
+	private static final String INSERT_QUERY 			= "INSERT INTO `inventory` (`itemUniqueId`, `itemId`, `itemCount`, `itemColor`, `itemOwner`, `isEquiped`, isSoulBound, `slot`, `itemLocation`, `enchant`, `itemSkin`, `fusionedItem`) VALUES(?,?,?,?,?,?,?,?,?,?, ?,?)";
+	private static final String UPDATE_QUERY 			= "UPDATE inventory SET  itemCount=?, itemColor=?, itemOwner=?, isEquiped=?, isSoulBound=?, slot=?, itemLocation=?, enchant=?, itemSkin=?, fusionedItem=? WHERE itemUniqueId=?";
+	private static final String DELETE_QUERY 			= "DELETE FROM inventory WHERE itemUniqueId=?";
+	private static final String DELETE_CLEAN_QUERY 		= "DELETE FROM inventory WHERE itemOwner=? AND (itemLocation=0 OR itemLocation=1)";
+	private static final String SELECT_ACCOUNT_QUERY 	= "SELECT `account_id` FROM `players` WHERE `id`=?";
 
 	@Override
 	public Storage loadStorage(Player player, StorageType storageType)
@@ -62,6 +62,7 @@ public class MySQL5InventoryDAO extends InventoryDAO
 		{
 			playerId = getPlayerAccountId(playerId);
 		}
+		inventory.setOwnerId(playerId);
 
 		final int owner = playerId;
 		Connection con = null;
@@ -85,7 +86,7 @@ public class MySQL5InventoryDAO extends InventoryDAO
 				int enchant = rset.getInt("enchant");
 				int itemSkin = rset.getInt("itemSkin");
 				int fusionedItem = rset.getInt("fusionedItem");
-				Item item = new Item(itemUniqueId, itemId, itemCount, itemColor, isEquiped == 1, isSoulBound == 1,slot, storage, enchant, itemSkin,fusionedItem);
+				Item item = new Item(playerId, itemUniqueId, itemId, itemCount, itemColor, isEquiped == 1, isSoulBound == 1,slot, storage, enchant, itemSkin,fusionedItem);
 				item.setPersistentState(PersistentState.UPDATED);
 				inventory.onLoadHandler(item);
 			}
@@ -108,17 +109,16 @@ public class MySQL5InventoryDAO extends InventoryDAO
 	{
 		final Equipment equipment = new Equipment(player);
 		
-		int playerId = player.getObjectId();
+		final int playerId = player.getObjectId();
 		final int storage = 0;
 		final int equipped = 1;
-		final int owner = playerId;
 
 		Connection con = null;
 		try
 		{
 			con = DatabaseFactory.getConnection();
 			PreparedStatement stmt = con.prepareStatement(SELECT_QUERY);
-			stmt.setInt(1, owner);
+			stmt.setInt(1, playerId);
 			stmt.setInt(2, storage);
 			stmt.setInt(3, equipped);
 			ResultSet rset = stmt.executeQuery();
@@ -133,7 +133,7 @@ public class MySQL5InventoryDAO extends InventoryDAO
 				int enchant = rset.getInt("enchant");
 				int itemSkin = rset.getInt("itemSkin");
 				int fusionedItem = rset.getInt("fusionedItem");
-				Item item = new Item(itemUniqueId, itemId, itemCount, itemColor, true, isSoulBound == 1, slot, storage, enchant, itemSkin,fusionedItem);
+				Item item = new Item(playerId, itemUniqueId, itemId, itemCount, itemColor, true, isSoulBound == 1, slot, storage, enchant, itemSkin,fusionedItem);
 				item.setPersistentState(PersistentState.UPDATED);
 				equipment.onLoadHandler(item);
 			}
@@ -152,19 +152,18 @@ public class MySQL5InventoryDAO extends InventoryDAO
 	}
 
 	@Override
-	public List<Item> loadEquipment(int playerId)
+	public List<Item> loadEquipment(final int playerId)
 	{
 		final List<Item> items = new ArrayList<Item>();
 		final int storage = 0;
 		final int equipped = 1;
-		final int owner = playerId;
 
 		Connection con = null;
 		try
 		{
 			con = DatabaseFactory.getConnection();
 			PreparedStatement stmt = con.prepareStatement(SELECT_QUERY);
-			stmt.setInt(1, owner);
+			stmt.setInt(1, playerId);
 			stmt.setInt(2, storage);
 			stmt.setInt(3, equipped);
 			ResultSet rset = stmt.executeQuery();
@@ -179,7 +178,7 @@ public class MySQL5InventoryDAO extends InventoryDAO
 				int enchant = rset.getInt("enchant");
 				int itemSkin = rset.getInt("itemSkin");
 				int fusionedItem = rset.getInt("fusionedItem");
-				Item item = new Item(itemUniqueId, itemId, itemCount, itemColor, true, isSoulBound == 1, slot, storage, enchant, itemSkin,fusionedItem);
+				Item item = new Item(playerId, itemUniqueId, itemId, itemCount, itemColor, true, isSoulBound == 1, slot, storage, enchant, itemSkin,fusionedItem);
 				items.add(item);
 			}
 			rset.close();
@@ -227,7 +226,6 @@ public class MySQL5InventoryDAO extends InventoryDAO
 	@Override
 	public boolean store(Player player)
 	{
-		int playerId = player.getObjectId();
 		
 		List<Item> allPlayerItems = player.getDirtyItemsToUpdate();
 
@@ -235,7 +233,7 @@ public class MySQL5InventoryDAO extends InventoryDAO
 		for(Item item : allPlayerItems)
 		{
 			if(item != null)
-				resultSuccess = store(item, playerId);
+				resultSuccess = store(item);
 		} 
 		return resultSuccess;
 	}
@@ -246,22 +244,17 @@ public class MySQL5InventoryDAO extends InventoryDAO
 	 * @return true if storing succeeded
 	 */
 	@Override
-	public boolean store(final Item item, int ownerId)
+	public boolean store(final Item item)
 	{
 		boolean result = false;
-
-		if(item.getItemLocation() == StorageType.ACCOUNT_WAREHOUSE.getId())
-		{
-			ownerId = getPlayerAccountId(ownerId);
-		}
 
 		switch(item.getPersistentState())
 		{
 			case NEW:
-				result = insertItem(item, ownerId);
+				result = insertItem(item);
 				break;
 			case UPDATE_REQUIRED:
-				result = updateItem(item, ownerId);
+				result = updateItem(item);
 				break;
 			case DELETED:
 				result = deleteItem(item);
@@ -276,7 +269,7 @@ public class MySQL5InventoryDAO extends InventoryDAO
 	 * @param playerId
 	 * @return
 	 */
-	private boolean insertItem(final Item item, final int ownerId)
+	private boolean insertItem(final Item item)
 	{
 		Connection con = null;
 		try
@@ -287,7 +280,7 @@ public class MySQL5InventoryDAO extends InventoryDAO
 			stmt.setInt(2, item.getItemTemplate().getTemplateId());
 			stmt.setLong(3, item.getItemCount());
 			stmt.setInt(4, item.getItemColor());
-			stmt.setInt(5, ownerId);
+			stmt.setInt(5, item.getOwnerId());
 			stmt.setBoolean(6, item.isEquipped());
 			stmt.setInt(7, item.isSoulBound() ? 1 : 0);
 			stmt.setInt(8, item.getEquipmentSlot());
@@ -314,7 +307,7 @@ public class MySQL5InventoryDAO extends InventoryDAO
 	 * @param item
 	 * @return
 	 */
-	private boolean updateItem(final Item item,  final int ownerId)
+	private boolean updateItem(final Item item)
 	{
 		Connection con = null;
 		try
@@ -323,7 +316,7 @@ public class MySQL5InventoryDAO extends InventoryDAO
 			PreparedStatement stmt = con.prepareStatement(UPDATE_QUERY);
 			stmt.setLong(1, item.getItemCount());
 			stmt.setInt(2, item.getItemColor());
-			stmt.setInt(3, ownerId);
+			stmt.setInt(3, item.getOwnerId());
 			stmt.setBoolean(4, item.isEquipped());
 			stmt.setInt(5, item.isSoulBound() ? 1 : 0);
 			stmt.setInt(6, item.getEquipmentSlot());
@@ -404,21 +397,25 @@ public class MySQL5InventoryDAO extends InventoryDAO
 	@Override
 	public int[] getUsedIDs() 
 	{
-		PreparedStatement statement = DB.prepareStatement("SELECT itemUniqueId FROM inventory", ResultSet.TYPE_SCROLL_INSENSITIVE,
-			ResultSet.CONCUR_READ_ONLY);
-
+		Connection con = null;
 		try
 		{
-			ResultSet rs = statement.executeQuery();
-			rs.last();
-			int count = rs.getRow();
-			rs.beforeFirst();
+			con = DatabaseFactory.getConnection();
+			PreparedStatement stmt = con.prepareStatement(SELECT_QUERY2, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet rset = stmt.executeQuery();
+			rset.last();
+			int count = rset.getRow();
+			rset.beforeFirst();
 			int[] ids = new int[count];
 			for(int i = 0; i < count; i++)
 			{
-				rs.next();
-				ids[i] = rs.getInt("itemUniqueId");
+				rset.next();
+				ids[i] = rset.getInt("itemUniqueId");
 			}
+			
+			rset.close();
+			stmt.close();
+			
 			return ids;
 		}
 		catch(SQLException e)
@@ -427,19 +424,15 @@ public class MySQL5InventoryDAO extends InventoryDAO
 		}
 		finally
 		{
-			DB.close(statement);
+			DatabaseFactory.close(con);
 		}
 
 		return new int[0];
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public boolean supports(String s, int i, int i1)
 	{
 		return MySQL5DAOUtils.supports(s, i, i1);
 	}
-
 }

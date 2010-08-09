@@ -16,6 +16,7 @@
  */
 package mysql5;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,9 +28,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.aionemu.commons.database.DB;
-import com.aionemu.commons.database.IUStH;
-import com.aionemu.commons.database.ParamReadStH;
+import com.aionemu.commons.database.DatabaseFactory;
 import com.aionemu.commons.database.dao.DAOManager;
 import com.aionemu.gameserver.dao.ItemStoneListDAO;
 import com.aionemu.gameserver.dao.MailDAO;
@@ -49,54 +48,75 @@ public class MySQL5MailDAO extends MailDAO
 {
 	private static final Logger log = Logger.getLogger(MySQL5MailDAO.class);
 	
+	private static final String SELECT_QUERY 	= "SELECT * FROM mail WHERE mailRecipientId = ?";
+	private static final String SELECT_QUERY2 	= "SELECT * FROM inventory WHERE `itemOwner` = ? AND `itemLocation` = 127";
+	private static final String	SELECT_QUERY3	= "SELECT mailUniqueId FROM mail";
+	private static final String	INSERT_QUERY	= "INSERT INTO `mail` (`mailUniqueId`, `mailRecipientId`, `senderName`, `mailTitle`, `mailMessage`, `unread`, `attachedItemId`, `attachedKinahCount`, `express`, `recievedTime`) VALUES(?,?,?,?,?,?,?,?,?,?)";
+	private static final String	UPDATE_QUERY	= "UPDATE mail SET  unread=?, attachedItemId=?, attachedKinahCount=?, recievedTime=? WHERE mailUniqueId=?";
+	private static final String	DELETE_QUERY	= "DELETE FROM mail WHERE mailUniqueId=?";
+	private static final String	UPDATE_QUERY2	= "UPDATE players SET mailboxLetters=? WHERE name=?";
+	
 	@Override
 	public Mailbox loadPlayerMailbox(Player player)
 	{
 		final Mailbox mailbox = new Mailbox();
 		final int playerId = player.getObjectId();
 		
-		DB.select("SELECT * FROM mail WHERE mailRecipientId = ?", new ParamReadStH()
+		Connection con = null;
+		
+		try
 		{
-			@Override
-			public void setParams(PreparedStatement stmt) throws SQLException
-			{
-				stmt.setInt(1, playerId);
-			}
+			con = DatabaseFactory.getConnection();
+			PreparedStatement stmt = con.prepareStatement(SELECT_QUERY);
 			
-			@Override
-			public void handleRead(ResultSet rset) throws SQLException
+			stmt.setInt(1, playerId);
+			
+			ResultSet rset = stmt.executeQuery();
+			
+			List<Item> mailboxItems = loadMailboxItems(playerId);
+			while(rset.next())
 			{
-				List<Item> mailboxItems = loadMailboxItems(playerId);
-				while(rset.next())
+				int mailUniqueId = rset.getInt("mailUniqueId");
+				int recipientId = rset.getInt("mailRecipientId");
+				String senderName = rset.getString("senderName");
+				String mailTitle = rset.getString("mailTitle");
+				String mailMessage = rset.getString("mailMessage");
+				int unread = rset.getInt("unread");
+				int attachedItemId = rset.getInt("attachedItemId");
+				long attachedKinahCount = rset.getLong("attachedKinahCount");
+				int express = rset.getInt("express");
+				Timestamp recievedTime = rset.getTimestamp("recievedTime");
+				Item attachedItem = null;
+				if(attachedItemId != 0)
 				{
-					int mailUniqueId = rset.getInt("mailUniqueId");
-					int recipientId = rset.getInt("mailRecipientId");
-					String senderName = rset.getString("senderName");
-					String mailTitle = rset.getString("mailTitle");
-					String mailMessage = rset.getString("mailMessage");
-					int unread = rset.getInt("unread");
-					int attachedItemId = rset.getInt("attachedItemId");
-					long attachedKinahCount = rset.getLong("attachedKinahCount");
-					int express = rset.getInt("express");
-					Timestamp recievedTime = rset.getTimestamp("recievedTime");
-					Item attachedItem = null;
-					if(attachedItemId != 0)
-						for(Item item : mailboxItems)
-							if(item.getObjectId() == attachedItemId)
-							{
-								if(item.getItemTemplate().isArmor() || item.getItemTemplate().isWeapon())
-									DAOManager.getDAO(ItemStoneListDAO.class).load(Collections.singletonList(item));
-								
-								attachedItem = item;
-							}
+					for(Item item : mailboxItems)
+					{
+						if(item.getObjectId() == attachedItemId)
+						{
+							if(item.getItemTemplate().isArmor() || item.getItemTemplate().isWeapon())
+								DAOManager.getDAO(ItemStoneListDAO.class).load(Collections.singletonList(item));
 							
-					Letter letter = new Letter(mailUniqueId, recipientId, attachedItem, attachedKinahCount, mailTitle,
-						mailMessage, senderName, recievedTime, unread == 1, express == 1);
-					letter.setPersistState(PersistentState.UPDATED);
-					mailbox.putLetterToMailbox(letter);
+							attachedItem = item;
+						}
+					}
 				}
+				Letter letter = new Letter(mailUniqueId, recipientId, attachedItem, attachedKinahCount, mailTitle,
+					mailMessage, senderName, recievedTime, unread == 1, express == 1);
+				letter.setPersistState(PersistentState.UPDATED);
+				mailbox.putLetterToMailbox(letter);
 			}
-		});
+
+			rset.close();
+			stmt.close();
+		}
+		catch(SQLException e)
+		{
+			log.error(e);
+		}
+		finally
+		{
+			DatabaseFactory.close(con);
+		}
 		
 		return mailbox;
 	}
@@ -105,35 +125,45 @@ public class MySQL5MailDAO extends MailDAO
 	{
 		final List<Item> mailboxItems = new ArrayList<Item>();
 		
-		DB.select("SELECT * FROM inventory WHERE `itemOwner` = ? AND `itemLocation` = 127", new ParamReadStH()
+		Connection con = null;
+		
+		try
 		{
-			@Override
-			public void setParams(PreparedStatement stmt) throws SQLException
+			con = DatabaseFactory.getConnection();
+			PreparedStatement stmt = con.prepareStatement(SELECT_QUERY2);
+			
+			stmt.setInt(1, playerId);
+			
+			ResultSet rset = stmt.executeQuery();
+			
+			while(rset.next())
 			{
-				stmt.setInt(1, playerId);
+				int itemUniqueId = rset.getInt("itemUniqueId");
+				int itemId = rset.getInt("itemId");
+				long itemCount = rset.getLong("itemCount");
+				int itemColor = rset.getInt("itemColor");
+				int isEquiped = rset.getInt("isEquiped");
+				int isSoulBound = rset.getInt("isSoulBound");
+				int slot = rset.getInt("slot");
+				int enchant = rset.getInt("enchant");
+				int itemSkin = rset.getInt("itemSkin");
+				int fusionedItem = rset.getInt("fusionedItem");
+				Item item = new Item(playerId, itemUniqueId, itemId, itemCount, itemColor, isEquiped == 1, isSoulBound == 1, slot, StorageType.MAILBOX.getId(), enchant, itemSkin,fusionedItem);
+				item.setPersistentState(PersistentState.UPDATED);
+				mailboxItems.add(item);
 			}
 
-			@Override
-			public void handleRead(ResultSet rset) throws SQLException
-			{
-				while(rset.next())
-				{
-					int itemUniqueId = rset.getInt("itemUniqueId");
-					int itemId = rset.getInt("itemId");
-					long itemCount = rset.getLong("itemCount");
-					int itemColor = rset.getInt("itemColor");
-					int isEquiped = rset.getInt("isEquiped");
-					int isSoulBound = rset.getInt("isSoulBound");
-					int slot = rset.getInt("slot");
-					int enchant = rset.getInt("enchant");
-					int itemSkin = rset.getInt("itemSkin");
-					int fusionedItem = rset.getInt("fusionedItem");
-					Item item = new Item(itemUniqueId, itemId, itemCount, itemColor, isEquiped == 1, isSoulBound == 1, slot, StorageType.MAILBOX.getId(), enchant, itemSkin,fusionedItem);
-					item.setPersistentState(PersistentState.UPDATED);
-					mailboxItems.add(item);
-				}
-			}
-		});
+			rset.close();
+			stmt.close();
+		}
+		catch(SQLException e)
+		{
+			log.error(e);
+		}
+		finally
+		{
+			DatabaseFactory.close(con);
+		}
 		
 		return mailboxItems;
 	}
@@ -181,23 +211,35 @@ public class MySQL5MailDAO extends MailDAO
 			
 		final int fAttachedItemId = attachedItemId;
 		
-		return DB.insertUpdate("INSERT INTO `mail` (`mailUniqueId`, `mailRecipientId`, `senderName`, `mailTitle`, `mailMessage`, `unread`, `attachedItemId`, `attachedKinahCount`, `express`, `recievedTime`) VALUES(?,?,?,?,?,?,?,?,?,?)", new IUStH() {
-			@Override
-			public void handleInsertUpdate(PreparedStatement stmt) throws SQLException
-			{
-				stmt.setInt(1, letter.getObjectId());
-				stmt.setInt(2, letter.getRecipientId());
-				stmt.setString(3, letter.getSenderName());
-				stmt.setString(4, letter.getTitle());
-				stmt.setString(5, letter.getMessage());
-				stmt.setBoolean(6, letter.isUnread());
-				stmt.setInt(7, fAttachedItemId);
-				stmt.setLong(8, letter.getAttachedKinah());
-				stmt.setBoolean(9, letter.isExpress());
-				stmt.setTimestamp(10, time);
-				stmt.execute();
-			}
-		});
+		Connection con = null;
+		
+		try
+		{
+			con = DatabaseFactory.getConnection();
+			PreparedStatement stmt = con.prepareStatement(INSERT_QUERY);
+			
+			stmt.setInt(1, letter.getObjectId());
+			stmt.setInt(2, letter.getRecipientId());
+			stmt.setString(3, letter.getSenderName());
+			stmt.setString(4, letter.getTitle());
+			stmt.setString(5, letter.getMessage());
+			stmt.setBoolean(6, letter.isUnread());
+			stmt.setInt(7, fAttachedItemId);
+			stmt.setLong(8, letter.getAttachedKinah());
+			stmt.setBoolean(9, letter.isExpress());
+			stmt.setTimestamp(10, time);
+			stmt.execute();
+		}
+		catch(SQLException e)
+		{
+			log.error(e);
+		}
+		finally
+		{
+			DatabaseFactory.close(con);
+		}
+		
+		return true;
 	}
 	
 	private boolean updateLetter(final Timestamp time, final Letter letter)
@@ -208,65 +250,103 @@ public class MySQL5MailDAO extends MailDAO
 		
 		final int fAttachedItemId = attachedItemId;
 		
-		return DB.insertUpdate("UPDATE mail SET  unread=?, attachedItemId=?, attachedKinahCount=?, recievedTime=? WHERE mailUniqueId=?", new IUStH() {
-			@Override
-			public void handleInsertUpdate(PreparedStatement stmt) throws SQLException
-			{
-				stmt.setBoolean(1, letter.isUnread());
-				stmt.setInt(2, fAttachedItemId);
-				stmt.setLong(3, letter.getAttachedKinah());
-				stmt.setTimestamp(4, time);
-				stmt.setInt(5, letter.getObjectId());
-				stmt.execute();
-			}
-		});
+		Connection con = null;
+		
+		try
+		{
+			con = DatabaseFactory.getConnection();
+			PreparedStatement stmt = con.prepareStatement(UPDATE_QUERY);
+			
+			stmt.setBoolean(1, letter.isUnread());
+			stmt.setInt(2, fAttachedItemId);
+			stmt.setLong(3, letter.getAttachedKinah());
+			stmt.setTimestamp(4, time);
+			stmt.setInt(5, letter.getObjectId());
+			stmt.execute();
+		}
+		catch(SQLException e)
+		{
+			log.error(e);
+		}
+		finally
+		{
+			DatabaseFactory.close(con);
+		}
+		
+		return true;
 	}
 	
 	@Override
-	public boolean deleteLetter (final int letterId)
+	public boolean deleteLetter(final int letterId)
 	{
-		return DB.insertUpdate("DELETE FROM mail WHERE mailUniqueId=?", new IUStH() {
-			@Override
-			public void handleInsertUpdate(PreparedStatement stmt) throws SQLException
-			{
-				stmt.setInt(1, letterId);
-				stmt.execute();
-			}
-		});
+		Connection con = null;
+		
+		try
+		{
+			con = DatabaseFactory.getConnection();
+			PreparedStatement stmt = con.prepareStatement(DELETE_QUERY);
+			
+			stmt.setInt(1, letterId);
+			stmt.execute();
+		}
+		catch(SQLException e)
+		{
+			log.error(e);
+		}
+		finally
+		{
+			DatabaseFactory.close(con);
+		}
+		
+		return true;
 	}
 
 	@Override
 	public void updateOfflineMailCounter(final PlayerCommonData recipientCommonData)
 	{
-		DB.insertUpdate("UPDATE players SET mailboxLetters=? WHERE name=?", new IUStH(){
-			@Override
-			public void handleInsertUpdate(PreparedStatement stmt) throws SQLException
-			{
-				stmt.setInt(1, recipientCommonData.getMailboxLetters());				
-				stmt.setString(2, recipientCommonData.getName());
-				stmt.execute();
-			}
-		});
+		Connection con = null;
+		
+		try
+		{
+			con = DatabaseFactory.getConnection();
+			PreparedStatement stmt = con.prepareStatement(UPDATE_QUERY2);
+			
+			stmt.setInt(1, recipientCommonData.getMailboxLetters());				
+			stmt.setString(2, recipientCommonData.getName());
+			stmt.execute();
+		}
+		catch(SQLException e)
+		{
+			log.error(e);
+		}
+		finally
+		{
+			DatabaseFactory.close(con);
+		}
 	}
 
 	@Override
 	public int[] getUsedIDs() 
 	{
-		PreparedStatement statement = DB.prepareStatement("SELECT mailUniqueId FROM mail", ResultSet.TYPE_SCROLL_INSENSITIVE,
-			ResultSet.CONCUR_READ_ONLY);
-
+		Connection con = null;
 		try
 		{
-			ResultSet rs = statement.executeQuery();
-			rs.last();
-			int count = rs.getRow();
-			rs.beforeFirst();
+			con = DatabaseFactory.getConnection();
+			PreparedStatement stmt = con.prepareStatement(SELECT_QUERY3, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet rset = stmt.executeQuery();
+			rset.last();
+			int count = rset.getRow();
+			rset.beforeFirst();
 			int[] ids = new int[count];
 			for(int i = 0; i < count; i++)
 			{
-				rs.next();
-				ids[i] = rs.getInt("mailUniqueId");
+				rset.next();
+				ids[i] = rset.getInt("mailUniqueId");
 			}
+			
+			rset.close();
+			stmt.close();
+			
 			return ids;
 		}
 		catch(SQLException e)
@@ -275,7 +355,7 @@ public class MySQL5MailDAO extends MailDAO
 		}
 		finally
 		{
-			DB.close(statement);
+			DatabaseFactory.close(con);
 		}
 
 		return new int[0];

@@ -26,12 +26,10 @@ import com.aionemu.gameserver.controllers.movement.StartMovingListener;
 import com.aionemu.gameserver.dataholders.DataManager;
 import com.aionemu.gameserver.model.DescriptionId;
 import com.aionemu.gameserver.model.gameobjects.Gatherable;
-import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.templates.GatherableTemplate;
 import com.aionemu.gameserver.model.templates.gather.Material;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
-import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.services.RespawnService;
 import com.aionemu.gameserver.skillengine.task.GatheringTask;
 import com.aionemu.gameserver.utils.PacketSendUtility;
@@ -90,27 +88,10 @@ public class GatherableController extends VisibleObjectController<Gatherable>
 		
 		else
 		{		
-			
-			// need space in inventory
-			long storedMaterialCount = player.getInventory().getItemCountByItemId(material.getItemid());
-			// player doesn't have material in inventory
-			if(storedMaterialCount == 0)
+			if(player.getInventory().isFull())
 			{
-				if(player.getInventory().getNumberOfFreeSlots() == 0)
-				{
-					PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.EXTRACT_GATHER_INVENTORY_IS_FULL());
-					return;
-				}
-			}
-			// player already has material in inventory
-			else
-			{
-				Item materialItem = ItemService.newItem(material.getItemid(), 1);
-				if(storedMaterialCount >= materialItem.getItemTemplate().getMaxStackCount() && player.getInventory().getNumberOfFreeSlots() == 0)
-				{
-					PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.EXTRACT_GATHER_INVENTORY_IS_FULL());
-					return;
-				}
+				PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.EXTRACT_GATHER_INVENTORY_IS_FULL());
+				return;
 			}
 			
 			int gatherRate = 1; // 1x rates (probably make config later, if fixed to non-linear statistic probability)

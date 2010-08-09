@@ -32,8 +32,6 @@ import com.aionemu.gameserver.controllers.PlayerController;
 import com.aionemu.gameserver.controllers.ReviveController;
 import com.aionemu.gameserver.controllers.effect.PlayerEffectController;
 import com.aionemu.gameserver.dao.AbyssRankDAO;
-import com.aionemu.gameserver.dao.InventoryDAO;
-import com.aionemu.gameserver.dao.ItemStoneListDAO;
 import com.aionemu.gameserver.dao.PlayerDAO;
 import com.aionemu.gameserver.dao.PlayerQuestListDAO;
 import com.aionemu.gameserver.dao.PlayerSkillListDAO;
@@ -467,7 +465,6 @@ public class Player extends Creature
 		if(storageType == StorageType.ACCOUNT_WAREHOUSE)
 		{
 			this.accountWarehouse = storage;
-			accountWarehouse.setOwner(this);
 		}
 	}
 
@@ -674,9 +671,6 @@ public class Player extends Creature
 		getController().addTask(TaskId.PLAYER_UPDATE,
 		ThreadPoolManager.getInstance().scheduleAtFixedRate(
 			new GeneralUpdateTask(this), PeriodicSaveConfig.PLAYER_GENERAL * 1000, PeriodicSaveConfig.PLAYER_GENERAL * 1000));
-		getController().addTask(TaskId.INVENTORY_UPDATE,
-		ThreadPoolManager.getInstance().scheduleAtFixedRate(
-			new ItemUpdateTask(this), PeriodicSaveConfig.PLAYER_ITEMS * 1000, PeriodicSaveConfig.PLAYER_ITEMS * 1000));
 	}
 
 	/**
@@ -1304,31 +1298,6 @@ public class Player extends Creature
 			catch(Exception ex)
 			{
 				log.error("Exception during periodic saving of player " + player.getName() + " " 
-					+ ex.getCause() != null ? ex.getCause().getMessage() : "null");
-			}
-		}
-	}
-	
-	private class ItemUpdateTask implements Runnable
-	{
-		private Player	player;
-
-		private ItemUpdateTask(Player player)
-		{
-			this.player = player;
-		}
-
-		@Override
-		public void run()
-		{
-			try
-			{
-				DAOManager.getDAO(InventoryDAO.class).store(player);
-				DAOManager.getDAO(ItemStoneListDAO.class).save(player);
-			}
-			catch(Exception ex)
-			{
-				log.error("Exception during periodic saving of player items " + player.getName() + " "
 					+ ex.getCause() != null ? ex.getCause().getMessage() : "null");
 			}
 		}

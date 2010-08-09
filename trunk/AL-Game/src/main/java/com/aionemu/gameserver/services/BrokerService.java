@@ -31,7 +31,6 @@ import org.apache.log4j.Logger;
 
 import com.aionemu.commons.database.dao.DAOManager;
 import com.aionemu.gameserver.dao.BrokerDAO;
-import com.aionemu.gameserver.dao.InventoryDAO;
 import com.aionemu.gameserver.model.Race;
 import com.aionemu.gameserver.model.broker.BrokerItemMask;
 import com.aionemu.gameserver.model.broker.BrokerMessages;
@@ -333,8 +332,7 @@ public class BrokerService
 		Item boughtItem = player.getInventory().putToBag(item);
 
 		// create save task
-		BrokerOpSaveTask bost = new BrokerOpSaveTask(buyingItem, boughtItem, player.getInventory().getKinahItem(),
-			player.getObjectId());
+		BrokerOpSaveTask bost = new BrokerOpSaveTask(buyingItem);
 		saveManager.add(bost);
 
 		PacketSendUtility.sendPacket(player, new SM_INVENTORY_UPDATE(Collections.singletonList(boughtItem)));
@@ -439,8 +437,7 @@ public class BrokerService
 				break;
 		}
 
-		BrokerOpSaveTask bost = new BrokerOpSaveTask(newBrokerItem, itemToRegister, player.getInventory()
-			.getKinahItem(), player.getObjectId());
+		BrokerOpSaveTask bost = new BrokerOpSaveTask(newBrokerItem);
 		saveManager.add(bost);
 
 		PacketSendUtility.sendPacket(player, new SM_BROKER_REGISTRATION_SERVICE(newBrokerItem));
@@ -719,24 +716,6 @@ public class BrokerService
 	public static final class BrokerOpSaveTask implements Runnable
 	{
 		private BrokerItem	brokerItem;
-		private Item		item;
-		private Item		kinahItem;
-		private int			playerId;
-
-		/**
-		 * 
-		 * @param brokerItem
-		 * @param item
-		 * @param kinahItem
-		 * @param playerId
-		 */
-		private BrokerOpSaveTask(BrokerItem brokerItem, Item item, Item kinahItem, int playerId)
-		{
-			this.brokerItem = brokerItem;
-			this.item = item;
-			this.kinahItem = kinahItem;
-			this.playerId = playerId;
-		}
 
 		/**
 		 * @param brokerItem
@@ -751,10 +730,6 @@ public class BrokerService
 		{
 			if(brokerItem != null)
 				DAOManager.getDAO(BrokerDAO.class).store(brokerItem);
-			if(item != null)
-				DAOManager.getDAO(InventoryDAO.class).store(item, playerId);
-			if(kinahItem != null)
-				DAOManager.getDAO(InventoryDAO.class).store(kinahItem, playerId);
 		}
 	}
 

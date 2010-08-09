@@ -40,6 +40,8 @@ public class Storage
 	private static final Logger	log	= Logger.getLogger(Storage.class);
 
 	private Player owner;
+	
+	private int ownerId;
 
 	protected ItemStorage storage;
 
@@ -103,6 +105,22 @@ public class Storage
 	public void setOwner(Player owner)
 	{
 		this.owner = owner;
+	}
+
+	/**
+	 * @return the ownerId
+	 */
+	public int getOwnerId()
+	{
+		return ownerId;
+	}
+
+	/**
+	 * @param ownerId the ownerId to set
+	 */
+	public void setOwnerId(int ownerId)
+	{
+		this.ownerId = ownerId;
 	}
 
 	/**
@@ -175,7 +193,8 @@ public class Storage
 		else
 		{
 			storage.putToNextAvailableSlot(item);
-		}	
+		}
+		item.setOwnerId(ownerId);
 	}
 
 	/**
@@ -195,6 +214,7 @@ public class Storage
 			resultItem.setItemLocation(storageType);
 		}
 		setPersistentState(PersistentState.UPDATE_REQUIRED);
+		item.setOwnerId(ownerId);
 		return resultItem;
 	}
 

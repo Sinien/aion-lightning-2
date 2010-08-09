@@ -160,8 +160,8 @@ public class PrivateStoreService
 			/**
 			 * Decrease kinah for buyer and Increase kinah for seller
 			 */
-			decreaseKinahAmount(buyer, price);
-			increaseKinahAmount(seller, price);
+			buyer.getInventory().decreaseKinah(price);
+			seller.getInventory().increaseKinah(price);
 
 			List<Item> newItems = new ArrayList<Item>();
 			for(TradeItem tradeItem : tradeList.getTradeItems())
@@ -276,28 +276,6 @@ public class PrivateStoreService
 	private static long getKinahAmount(Player player)
 	{
 		return player.getInventory().getKinahItem().getItemCount();
-	}
-
-	/**
-	 * This method will decrease the kinah amount of a player
-	 * 
-	 * @param player
-	 * @param price
-	 */
-	private static void decreaseKinahAmount(Player player, long price)
-	{
-		player.getInventory().decreaseKinah(price);
-	}
-
-	/**
-	 * This method will increase the kinah amount of a player
-	 * 
-	 * @param player
-	 * @param price
-	 */
-	private static void increaseKinahAmount(Player player, long price)
-	{
-		player.getInventory().increaseKinah(price);
 	}
 
 	/**

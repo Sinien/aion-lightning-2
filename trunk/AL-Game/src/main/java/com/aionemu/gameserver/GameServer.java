@@ -50,13 +50,13 @@ import com.aionemu.gameserver.services.ExchangeService;
 import com.aionemu.gameserver.services.GameTimeService;
 import com.aionemu.gameserver.services.GroupService;
 import com.aionemu.gameserver.services.MailService;
-import com.aionemu.gameserver.services.PeriodicSaveService;
 import com.aionemu.gameserver.services.PetitionService;
 import com.aionemu.gameserver.services.SiegeService;
 import com.aionemu.gameserver.services.WeatherService;
 import com.aionemu.gameserver.services.ZoneService;
 import com.aionemu.gameserver.spawnengine.SpawnEngine;
 import com.aionemu.gameserver.taskmanager.TaskManagerFromDB;
+import com.aionemu.gameserver.taskmanager.tasks.ItemUpdater;
 import com.aionemu.gameserver.taskmanager.tasks.PacketBroadcaster;
 import com.aionemu.gameserver.utils.DeadlockDetector;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
@@ -139,7 +139,7 @@ public class GameServer
 
 		ExchangeService.getInstance();
 
-		PeriodicSaveService.getInstance();
+		ItemUpdater.getInstance();
 		
 		PetitionService.getInstance();
 

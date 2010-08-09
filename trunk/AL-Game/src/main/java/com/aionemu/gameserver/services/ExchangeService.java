@@ -18,10 +18,7 @@ package com.aionemu.gameserver.services;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
-import com.aionemu.commons.database.dao.DAOManager;
-import com.aionemu.gameserver.dao.InventoryDAO;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.player.Storage;
@@ -33,7 +30,6 @@ import com.aionemu.gameserver.network.aion.serverpackets.SM_EXCHANGE_ADD_KINAH;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_EXCHANGE_CONFIRMATION;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_EXCHANGE_REQUEST;
 import com.aionemu.gameserver.restrictions.RestrictionsManager;
-import com.aionemu.gameserver.taskmanager.AbstractFIFOPeriodicTaskManager;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 
 /**
@@ -44,10 +40,6 @@ public class ExchangeService
 {
 
 	private Map<Integer, Exchange>		exchanges			= new HashMap<Integer, Exchange>();
-
-	private ExchangePeriodicTaskManager	saveManager;
-
-	private final int					DELAY_EXCHANGE_SAVE	= 5000;
 	
 	public static final ExchangeService getInstance()
 	{
@@ -59,7 +51,6 @@ public class ExchangeService
 	 */
 	private ExchangeService()
 	{
-		saveManager = new ExchangePeriodicTaskManager(DELAY_EXCHANGE_SAVE);
 	}
 
 	/**
@@ -281,9 +272,6 @@ public class ExchangeService
 
 		putItemToInventory(currentPartner, exchange1, exchange2);
 		putItemToInventory(activePlayer, exchange2, exchange1);
-
-		saveManager.add(new ExchangeOpSaveTask(exchange1.getActiveplayer().getObjectId(), exchange2.getActiveplayer()
-			.getObjectId(), exchange1.getItemsToUpdate(), exchange2.getItemsToUpdate()));
 	}
 
 	/**
@@ -323,7 +311,6 @@ public class ExchangeService
 			if(itemCount < itemInInventory.getItemCount())
 			{
 				inventory.decreaseItemCount(itemInInventory, itemCount);
-				exchange.addItemToUpdate(itemInInventory);
 			}
 			else
 			{
@@ -336,7 +323,6 @@ public class ExchangeService
 			}			
 		}
 		player.getInventory().decreaseKinah(exchange.getKinahCount());
-		exchange.addItemToUpdate(player.getInventory().getKinahItem());
 	}
 
 	/**
@@ -373,86 +359,14 @@ public class ExchangeService
 			itemToPut.setEquipmentSlot(0);
 			player.getInventory().putToBag(itemToPut);
 			ItemService.updateItem(player, itemToPut, true);
-			exchange2.addItemToUpdate(itemToPut);
 		}	
 		long kinahToExchange = exchange1.getKinahCount();
 		if(kinahToExchange > 0)
 		{
 			player.getInventory().increaseKinah(exchange1.getKinahCount());
-			exchange2.addItemToUpdate(player.getInventory().getKinahItem());
 		}	
 	}
-	
-	/**
-	 * Frequent running save task
-	 */
-	public static final class ExchangePeriodicTaskManager extends AbstractFIFOPeriodicTaskManager<ExchangeOpSaveTask>
-	{
-		private static final String	CALLED_METHOD_NAME	= "exchangeOperation()";
 
-		/**
-		 * @param period
-		 */
-		public ExchangePeriodicTaskManager(int period)
-		{
-			super(period);
-		}
-
-		@Override
-		protected void callTask(ExchangeOpSaveTask task)
-		{
-			task.run();
-		}
-
-		@Override
-		protected String getCalledMethodName()
-		{
-			return CALLED_METHOD_NAME;
-		}
-		
-		
-	}
-	
-	/**
-	 * This class is used for storing all items in one shot after any exchange operation
-	 */
-	public static final class ExchangeOpSaveTask implements Runnable
-	{
-		private int player1Id;
-		private int player2Id;
-		private Set<Item> player1Items;
-		private Set<Item> player2Items;
-
-		/**
-		 * 
-		 * @param player1Id
-		 * @param plaer2Id
-		 * @param player1Items
-		 * @param player2Items
-		 */
-		public ExchangeOpSaveTask(int player1Id, int player2Id, Set<Item> player1Items, Set<Item> player2Items)
-		{
-			this.player1Id = player1Id;
-			this.player2Id = player2Id;
-			this.player1Items = player1Items;
-			this.player2Items = player2Items;
-		}
-
-
-		@Override
-		public void run()
-		{
-			for(Item item : player1Items)
-			{
-				DAOManager.getDAO(InventoryDAO.class).store(item, player1Id);
-			}
-			
-			for(Item item : player2Items)
-			{
-				DAOManager.getDAO(InventoryDAO.class).store(item, player2Id);
-			}
-		}
-	}
 	@SuppressWarnings("synthetic-access")
 	private static class SingletonHolder
 	{

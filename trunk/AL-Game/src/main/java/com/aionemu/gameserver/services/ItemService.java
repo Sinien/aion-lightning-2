@@ -84,7 +84,7 @@ public class ItemService
 		}
 
 		//TODO if Item object will contain ownerId - item can be saved to DB before return
-		return new Item(IDFactory.getInstance().nextId(), itemTemplate, count, false, 0);
+		return new Item(0, IDFactory.getInstance().nextId(), itemTemplate, count, false, 0);
 	}
 
 	/**

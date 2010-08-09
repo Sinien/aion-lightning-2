@@ -14,8 +14,6 @@ import java.util.TreeMap;
 
 import org.apache.log4j.Logger;
 
-import com.aionemu.commons.database.dao.DAOManager;
-import com.aionemu.gameserver.dao.InventoryDAO;
 import com.aionemu.gameserver.model.DescriptionId;
 import com.aionemu.gameserver.model.EmotionType;
 import com.aionemu.gameserver.model.Race;
@@ -733,7 +731,6 @@ public class Equipment
 		{
 			equipment.remove(equippedItem.getEquipmentSlot());
 			PacketSendUtility.sendPacket(owner, new SM_DELETE_ITEM(equippedItem.getObjectId()));
-			DAOManager.getDAO(InventoryDAO.class).store(equippedItem, owner.getObjectId());
 		}
 		
 		PacketSendUtility.sendPacket(owner, new SM_UPDATE_ITEM(equippedItem));
