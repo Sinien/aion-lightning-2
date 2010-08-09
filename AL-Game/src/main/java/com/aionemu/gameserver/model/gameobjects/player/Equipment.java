@@ -355,7 +355,7 @@ public class Equipment
 				}//no break
 			case 1:
 				//check dual skill
-				if(itemInMainHand != null && !owner.getSkillList().isSkillPresent(19))
+				if(itemInMainHand != null &&( !owner.getSkillList().isSkillPresent(19) && !owner.getSkillList().isSkillPresent(360) ))
 				{
 					if(validateOnly)
 					{
