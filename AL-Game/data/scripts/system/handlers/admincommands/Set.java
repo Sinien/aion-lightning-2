@@ -72,8 +72,19 @@ public class Set extends AdminCommand {
 				return;
 			}
 
-			PlayerClass oldClass = admin.getPlayerClass();
-			setClass(admin, oldClass, newClass);	
+			PlayerClass oldClass = null;
+			Player player = null;
+			if (target != null)
+			{
+				player = target;
+				oldClass = target.getPlayerClass();
+			}
+			else
+			{
+				player = admin;
+				oldClass = admin.getPlayerClass();
+			}
+			setClass(player, oldClass, newClass);	
 		}
 		else if (params[0].equals("exp"))
 		{
