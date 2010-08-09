@@ -45,7 +45,7 @@ public class _3935ShoulderTheBurden extends QuestHandler
 		qe.setNpcQuestData(203316).addOnTalkEvent(questId);		//Ettamirel
 		qe.setNpcQuestData(203702).addOnTalkEvent(questId);		//Jupion
 		qe.setNpcQuestData(203329).addOnTalkEvent(questId);		//Elizar
-		qe.setNpcQuestData(203752).addOnTalkEvent(questId);		//Jucleas
+		qe.setNpcQuestData(203752).addOnTalkEvent(questId);		//Jucléas
 		qe.setNpcQuestData(203701).addOnTalkEvent(questId);		//Lavirintos
 	}
 
