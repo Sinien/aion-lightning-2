@@ -50,7 +50,7 @@ public class _3934TheQuestForTemplars extends QuestHandler
 		qe.setNpcQuestData(798364).addOnTalkEvent(questId);		//Belicanon
 		qe.setNpcQuestData(798365).addOnTalkEvent(questId);		//Mahelnu
 		qe.setNpcQuestData(798366).addOnTalkEvent(questId);		//Pater
-		qe.setNpcQuestData(203752).addOnTalkEvent(questId);		//Jucleas
+		qe.setNpcQuestData(203752).addOnTalkEvent(questId);		//Jucléas
 		qe.setNpcQuestData(203701).addOnTalkEvent(questId);		//Lavirintos
 	}
 	

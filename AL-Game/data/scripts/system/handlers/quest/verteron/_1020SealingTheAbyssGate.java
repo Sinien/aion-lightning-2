@@ -123,7 +123,7 @@ public class _1020SealingTheAbyssGate extends QuestHandler
 						return false;
 				}
 			case 700141:
-				if(var == 1 && player.getPlayerGroup() != null)
+				if( var == 1 )
 				{
 					final int targetObjectId = env.getVisibleObject().getObjectId();
 					PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, EmotionType.NEUTRALMODE2, 0, targetObjectId), true);
@@ -141,7 +141,7 @@ public class _1020SealingTheAbyssGate extends QuestHandler
 					}, 3000);
 					return true;
 				}
-				else if(var == 3)
+				else if( var == 3)
 				{
 					itemCount = player.getInventory().getItemCountByItemId(182200024);
 					if (itemCount >= 1)
@@ -164,7 +164,7 @@ public class _1020SealingTheAbyssGate extends QuestHandler
 				}
 				return false;
 			case 700551:
-				if(var == 2)
+				if( var == 2 )
 				{
 					itemCount = player.getInventory().getItemCountByItemId(182200024);
 					if (itemCount >= 1)
@@ -185,8 +185,8 @@ public class _1020SealingTheAbyssGate extends QuestHandler
 					}
 				}
 			case 700142:
-				if(var == 2)
-				{
+				if( var == 2)
+				{				
 				
 				final int targetObjectId = env.getVisibleObject().getObjectId();
 				PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, EmotionType.NEUTRALMODE2, 0, targetObjectId), true);

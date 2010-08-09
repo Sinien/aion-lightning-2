@@ -84,7 +84,7 @@ public class _1012MaskedLoiterers extends QuestHandler
 						if(var == 0)
 							return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1011);
 					case 10000:
-						if(var == 0)
+						if(var == 0 || var == 0)
 						{
 							qs.setQuestVarById(0, var + 1);
 							updateQuestStatus(player, qs);
@@ -95,7 +95,7 @@ public class _1012MaskedLoiterers extends QuestHandler
 						else if(var == 2)
 							return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1352);
 					case 10001:
-						if(var == 2)
+						if(var == 2 || var == 2)
 						{
 							qs.setQuestVarById(0, var + 1);
 							updateQuestStatus(player, qs);
@@ -103,28 +103,31 @@ public class _1012MaskedLoiterers extends QuestHandler
 								.getObjectId(), 10));
 							return true;
 						}
-					case 33:
-						if(var == 3)
+						else if(var == 3)
 						{
-							if(env.getDialogId() == 33)
+							long itemCount = player.getInventory().getItemCountByItemId(182200010);
+							if(itemCount >= 5)
 							{
-								if(QuestService.collectItemCheck(env, true))
+								if(env.getDialogId() == 33)
 								{
-									long itemCount = player.getInventory().getItemCountByItemId(182200010);
+									return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1694);
+								}
+								else
+								{
 									player.getInventory().removeFromBagByItemId(182200010, itemCount);
 									qs.setQuestVarById(0, var + 1);
 									qs.setStatus(QuestStatus.REWARD);
 									updateQuestStatus(player, qs);
-									return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 5);
+									PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject()
+										.getObjectId(), 10));
+									return true;
 								}
-								else
-									return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 2034);
 							}
+							else
+								return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1779);
 						}
-					case -1:
-						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1693);
+						return true;
 				}
-				return true;
 			}
 		}
 		else if(qs.getStatus() == QuestStatus.REWARD)
