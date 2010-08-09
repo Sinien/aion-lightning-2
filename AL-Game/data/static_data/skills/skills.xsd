@@ -49,6 +49,7 @@
 		<xs:attribute name="pvp_duration" type="xs:int" />
 		<xs:attribute name="chain_skill_prob" type="xs:int" use="optional" default="0"/>
 		<xs:attribute name="cancel_rate" type="xs:int" use="optional" default="0"/>
+		<xs:attribute name="skillset_exception" type="xs:int" use="optional" default="0"/>
 	</xs:complexType>
 
 	<xs:complexType name="Effects">

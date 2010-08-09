@@ -174,6 +174,8 @@ public class Skill
 		//start casting
 		effector.setCasting(this);
 		
+		checkSkillSetException();
+		
 		int skillDuration = skillTemplate.getDuration();
 		int currentStat = effector.getGameStats().getCurrentStat(StatEnum.BOOST_CASTING_TIME);
 		this.duration = skillDuration + Math.round(skillDuration * (100 - currentStat) / 100f);
@@ -419,6 +421,19 @@ public class Skill
 		return true;
 	}
 
+	private void checkSkillSetException()
+	{
+		int setNumber = skillTemplate.getSkillSetException();
+		if (effector instanceof Player)
+		{
+			Player player = (Player)effector;
+			if (setNumber != 0)
+				player.getEffectController().removeEffectBySetNumber(setNumber);
+			else
+				player.getEffectController().removeEffectWithSetNumberReserved();
+		}
+	}
+	
 	/**
 	 * @return the effectedList
 	 */

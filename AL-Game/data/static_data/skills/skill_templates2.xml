@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<skill_data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="skills.xsd">
+	<skill_template skill_id="173" name="STR_SKILL_WA_ShieldStance_G1" nameId="572707" stack="SKILL_WA_SHIELDSTANCE" lvl="1" skilltype="PHYSICAL" skillsubtype="BUFF" tslot="NOSHOW" activation="TOGGLE" cooldown="120" duration="0" cancel_rate="10" skillset_exception="1">
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="1"/>
+			<targetrange value="ONLYONE"/>
+			<targetrelation value="FRIEND"/>
+		</setproperties>
+		<effects>
+			<statboost effectid="101731" e="1" hoptype="SKILLLV" hopb="114">
+				<change stat="BLOCK" func="ADD" value="500"/>
+			</statboost>
+			<statboost effectid="101732" e="2">
+				<change stat="PHYSICAL_DEFENSE" func="PERCENT" value="10"/>
+			</statboost>
+			<statboost effectid="101734" e="3">
+				<change stat="STUN_RESISTANCE" func="ADD" value="500"/>
+			</statboost>
+		</effects>
+	</skill_template>
+	<skill_template skill_id="524" name="STR_SKILL_KN_HighShieldStance_G1" nameId="582701" stack="SKILL_KN_HIGHSHIELDSTANCE" lvl="1" skilltype="PHYSICAL" skillsubtype="BUFF" tslot="NOSHOW" activation="TOGGLE" cooldown="120" duration="0" cancel_rate="10" skillset_exception="1">
+        <setproperties>
+            <firsttarget value="ME"/>
+            <firsttargetrange value="1"/>
+            <targetrange value="ONLYONE"/>
+            <targetrelation value="FRIEND"/>
+        </setproperties>
+        <effects>
+            <statboost effectid="105241" e="1" hoptype="SKILLLV" hopb="368">
+                <change stat="BLOCK" func="ADD" value="1000"/>
+            </statboost>
+            <statboost effectid="101732" e="2">
+                <change stat="PHYSICAL_DEFENSE" func="PERCENT" value="15"/>
+            </statboost>
+            <statboost effectid="101733" e="3">
+                <change stat="ATTACK_SPEED" func="PERCENT" value="50"/>
+            </statboost>
+			<statboost effectid="101734" e="4">
+                <change stat="STUN_RESISTANCE" func="ADD" value="1000"/>
+            </statboost>
+			<statboost effectid="107031" e="5">
+                <change stat="STAGGER_RESISTANCE" func="ADD" value="1000"/>
+            </statboost>
+            <statboost effectid="107032" e="6">
+                <change stat="STUMBLE_RESISTANCE" func="ADD" value="1000"/>
+            </statboost>
+            <statboost effectid="107033" e="7" hoptype="SKILLLV">
+                <change stat="SPIN_RESISTANCE" func="ADD" value="1000"/>
+            </statboost>
+			<statboost effectid="107033" e="8" hoptype="SKILLLV">
+                <change stat="OPENAREIAL_RESISTANCE" func="ADD" value="1000"/>
+            </statboost>
+        </effects>
+    </skill_template>
+	<skill_template skill_id="1564" name="STR_SKILL_WI_FlameSeal_G1" nameId="581449" stack="SKILL_WI_FLAMESEAL" lvl="1" skilltype="MAGICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="100" duration="0" cancel_rate="20" skillset_exception="2">
+		<startconditions>
+			<mp value="102" delta="5"/>
+		</startconditions>
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="1"/>
+			<targetrange value="ONLYONE" maxcount="1"/>
+			<targetrelation value="FRIEND"/>
+		</setproperties>
+		<effects>
+			<statup duration="1800000" effectid="115641" e="1" hoptype="SKILLLV" hopb="367">
+				<change stat="BOOST_MAGICAL_SKILL" func="ADD" delta="2" value="40"/>
+			</statup>
+		</effects>
+		<actions>
+			<mpuse value="102" delta="5"/>
+		</actions>
+	</skill_template>
+	<skill_template skill_id="1565" name="STR_SKILL_WI_FlameSeal_G2" nameId="581455" stack="SKILL_WI_FLAMESEAL" lvl="2" skilltype="MAGICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="100" duration="0" cancel_rate="20" skillset_exception="2">
+		<startconditions>
+			<mp value="169" delta="4"/>
+		</startconditions>
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="1"/>
+			<targetrange value="ONLYONE" maxcount="1"/>
+			<targetrelation value="FRIEND"/>
+		</setproperties>
+		<effects>
+			<statup duration="1800000" effectid="115641" e="1" hoptype="SKILLLV" hopb="555">
+				<change stat="BOOST_MAGICAL_SKILL" func="ADD" delta="2" value="80"/>
+			</statup>
+		</effects>
+		<actions>
+			<mpuse value="169" delta="4"/>
+		</actions>
+	</skill_template>
+	<skill_template skill_id="1566" name="STR_SKILL_WI_FrozenSeal_G1" nameId="581457" stack="SKILL_WI_FROZENSEAL" lvl="1" skilltype="MAGICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="100" duration="0" cancel_rate="20" skillset_exception="2">
+		<startconditions>
+			<mp value="157" delta="3"/>
+		</startconditions>
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="1"/>
+			<targetrange value="ONLYONE" maxcount="1"/>
+			<targetrelation value="FRIEND"/>
+		</setproperties>
+		<effects>
+			<reflector value="20" delta="1" radius="30" duration="1800000" effectid="153" e="1" hoptype="SKILLLV" hopb="512"/>
+			<provoker skill_id="8471" provoke_type="ATTACKED" provoke_target="OPPONENT" prob2="100" duration="1800000" effectid="115662" e="2" element="WIND"/>
+		</effects>
+		<actions>
+			<mpuse value="157" delta="3"/>
+		</actions>
+	</skill_template>
+	<skill_template skill_id="1574" name="STR_SKILL_WI_WizardrySeal_G1" nameId="581503" stack="SKILL_WI_WIZARDRYSEAL" lvl="1" skilltype="MAGICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="100" duration="0" cancel_rate="20" skillset_exception="2">
+		<startconditions>
+			<mp value="87" delta="2"/>
+		</startconditions>
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="1"/>
+			<targetrange value="ONLYONE" maxcount="1"/>
+			<targetrelation value="FRIEND"/>
+		</setproperties>
+		<effects>
+			<statup duration="1800000" effectid="115741" e="1" hoptype="SKILLLV" hopb="290">
+				<change stat="REGEN_MP" func="ADD" delta="0" value="21"/>
+			</statup>
+			<statup duration="1800000" effectid="115742" e="2">
+				<change stat="FIRE_RESISTANCE" func="ADD" delta="0" value="20"/>
+			</statup>
+			<statup duration="1800000" effectid="115743" e="3" hoptype="SKILLLV">
+				<change stat="WATER_RESISTANCE" func="ADD" delta="0" value="20"/>
+			</statup>
+		</effects>
+		<actions>
+			<mpuse value="87" delta="2"/>
+		</actions>
+	</skill_template>
+	<skill_template skill_id="1575" name="STR_SKILL_WI_WizardrySeal_G2" nameId="581509" stack="SKILL_WI_WIZARDRYSEAL" lvl="2" skilltype="MAGICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="100" duration="0" cancel_rate="20" skillset_exception="2">
+		<startconditions>
+			<mp value="118" delta="4"/>
+		</startconditions>
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="1"/>
+			<targetrange value="ONLYONE" maxcount="1"/>
+			<targetrelation value="FRIEND"/>
+		</setproperties>
+		<effects>
+			<statup duration="1800000" effectid="115741" e="1" hoptype="SKILLLV" hopb="426">
+				<change stat="REGEN_MP" func="ADD" delta="0" value="33"/>
+			</statup>
+			<statup duration="1800000" effectid="115742" e="2">
+				<change stat="FIRE_RESISTANCE" func="ADD" delta="0" value="25"/>
+			</statup>
+			<statup duration="1800000" effectid="115743" e="3" hoptype="SKILLLV">
+				<change stat="WATER_RESISTANCE" func="ADD" delta="0" value="25"/>
+			</statup>
+		</effects>
+		<actions>
+			<mpuse value="118" delta="4"/>
+		</actions>
+	</skill_template>
+	<skill_template skill_id="1576" name="STR_SKILL_WI_WizardrySeal_G3" nameId="581511" stack="SKILL_WI_WIZARDRYSEAL" lvl="3" skilltype="MAGICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="100" duration="0" cancel_rate="20" skillset_exception="2">
+		<startconditions>
+			<mp value="163" delta="4"/>
+		</startconditions>
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="1"/>
+			<targetrange value="ONLYONE" maxcount="1"/>
+			<targetrelation value="FRIEND"/>
+		</setproperties>
+		<effects>
+			<statup duration="1800000" effectid="115741" e="1" hoptype="SKILLLV" hopb="586">
+				<change stat="REGEN_MP" func="ADD" delta="0" value="45"/>
+			</statup>
+			<statup duration="1800000" effectid="115742" e="2">
+				<change stat="FIRE_RESISTANCE" func="ADD" delta="0" value="30"/>
+			</statup>
+			<statup duration="1800000" effectid="115743" e="3" hoptype="SKILLLV">
+				<change stat="WATER_RESISTANCE" func="ADD" delta="0" value="30"/>
+			</statup>
+		</effects>
+		<actions>
+			<mpuse value="163" delta="4"/>
+		</actions>
+	</skill_template>
+	<skill_template skill_id="1586" name="STR_SKILL_WI_FrozenSeal_G2" nameId="584511" stack="SKILL_WI_FROZENSEAL" lvl="2" skilltype="MAGICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="100" duration="0" cancel_rate="20" skillset_exception="2">
+		<startconditions>
+			<mp value="206" delta="4"/>
+		</startconditions>
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="1"/>
+			<targetrange value="ONLYONE" maxcount="1"/>
+			<targetrelation value="FRIEND"/>
+		</setproperties>
+		<effects>
+			<reflector value="40" delta="1" radius="30" duration="1800000" effectid="153" e="1" hoptype="SKILLLV" hopb="672"/>
+			<provoker skill_id="8526" provoke_type="ATTACKED" provoke_target="OPPONENT" prob2="100" duration="1800000" effectid="115662" e="2" element="WIND"/>
+		</effects>
+		<actions>
+			<mpuse value="206" delta="4"/>
+		</actions>
+	</skill_template>
+	<skill_template skill_id="1590" name="STR_SKILL_WI_FlameSeal_G3" nameId="584527" stack="SKILL_WI_FLAMESEAL" lvl="3" skilltype="MAGICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="100" duration="0" cancel_rate="20" skillset_exception="2">
+		<startconditions>
+			<mp value="216" delta="3"/>
+		</startconditions>
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="1"/>
+			<targetrange value="ONLYONE" maxcount="1"/>
+			<targetrelation value="FRIEND"/>
+		</setproperties>
+		<effects>
+			<statup duration="1800000" effectid="115641" e="1" hoptype="SKILLLV" hopb="696">
+				<change stat="BOOST_MAGICAL_SKILL" func="ADD" delta="2" value="100"/>
+			</statup>
+		</effects>
+		<actions>
+			<mpuse value="216" delta="3"/>
+		</actions>
+	</skill_template>
+	<skill_template skill_id="1596" name="STR_SKILL_WI_WizardrySeal_G4" nameId="584541" stack="SKILL_WI_WIZARDRYSEAL" lvl="4" skilltype="MAGICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="100" duration="0" cancel_rate="20" skillset_exception="2">
+		<startconditions>
+			<mp value="214" delta="3"/>
+		</startconditions>
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="1"/>
+			<targetrange value="ONLYONE" maxcount="1"/>
+			<targetrelation value="FRIEND"/>
+		</setproperties>
+		<effects>
+			<statup duration="1800000" effectid="115741" e="1" hoptype="SKILLLV" hopb="733">
+				<change stat="REGEN_MP" func="ADD" delta="0" value="56"/>
+			</statup>
+			<statup duration="1800000" effectid="115742" e="2">
+				<change stat="FIRE_RESISTANCE" func="ADD" delta="0" value="35"/>
+			</statup>
+			<statup duration="1800000" effectid="115743" e="3" hoptype="SKILLLV">
+				<change stat="WATER_RESISTANCE" func="ADD" delta="0" value="35"/>
+			</statup>
+		</effects>
+		<actions>
+			<mpuse value="214" delta="3"/>
+		</actions>
+	</skill_template>
+	<skill_template skill_id="2210" name="STR_SKILL_WI_FrozenSeal_G3" nameId="591121" stack="SKILL_WI_FROZENSEAL" lvl="3" skilltype="MAGICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="100" duration="0" cancel_rate="20" skillset_exception="2">
+		<startconditions>
+			<mp value="267" delta="5"/>
+		</startconditions>
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="1"/>
+			<targetrange value="ONLYONE" maxcount="1"/>
+			<targetrelation value="FRIEND"/>
+		</setproperties>
+		<effects>
+			<reflector value="60" delta="1" radius="30" duration="1800000" effectid="153" e="1" hoptype="SKILLLV" hopb="780"/>
+			<provoker skill_id="8526" provoke_type="ATTACKED" provoke_target="OPPONENT" prob2="100" duration="1800000" effectid="115662" e="2" element="WIND"/>
+		</effects>
+		<actions>
+			<mpuse value="267" delta="5"/>
+		</actions>
+	</skill_template>
+</skill_data>
