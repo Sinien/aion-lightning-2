@@ -28,6 +28,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.locks.ReentrantLock;
 
+import javolution.text.TextBuilder;
+
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.log4j.Logger;
@@ -179,6 +181,7 @@ public final class RunnableStatsManager
 		}
 
 		private final Comparator<MethodStat>	comparator	= new Comparator<MethodStat>(){
+																@Override
 																public int compare(MethodStat o1, MethodStat o2)
 																{
 																	final Comparable c1 = getComparableValueOf(o1);
@@ -303,7 +306,7 @@ public final class RunnableStatsManager
 
 		for(int k = 0; k < methodStats.size(); k++)
 		{
-			StringBuilder sb = new StringBuilder();
+			TextBuilder sb = TextBuilder.newInstance();
 			sb.append("\t<entry ");
 
 			EnumSet<SortBy> set = EnumSet.allOf(SortBy.class);
@@ -336,6 +339,7 @@ public final class RunnableStatsManager
 			sb.append("/>");
 
 			lines.add(sb.toString());
+			TextBuilder.recycle(sb);
 		}
 
 		lines.add("</entries>");
@@ -358,7 +362,7 @@ public final class RunnableStatsManager
 		}
 	}
 
-	private static void appendAttribute(StringBuilder sb, SortBy sortBy, String value, int fillTo)
+	private static void appendAttribute(TextBuilder sb, SortBy sortBy, String value, int fillTo)
 	{
 		sb.append(sortBy.xmlAttributeName);
 		sb.append("=");
