@@ -474,7 +474,3 @@ CREATE TABLE `tasks` (
   `param` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Records of tasks
--- ----------------------------
