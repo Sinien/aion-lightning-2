@@ -20,6 +20,10 @@
 		along with aion-lightning.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
 	</description>
 	<url>http://www.aion-lightning.com/</url>
+	<issueManagement>
+		<system>Google Issue Manager</system>
+		<url>http://code.google.com/p/aionlightning/issues/list/</url>
+	</issueManagement>
 	<scm>
 		<connection>scm:svn:http://aionlightning.googlecode.com/svn/trunk/</connection>
 		<developerConnection>scm:svn:http://aionlightning.googlecode.com/svn/trunk/</developerConnection>
