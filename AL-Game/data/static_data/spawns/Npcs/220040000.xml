@@ -123,7 +123,7 @@
 	</spawn>
 	<!-- Beluslan Abyss Gate (Object Normal lvl:1)-->
 	<spawn map="220040000" npcid="730064" pool="1" interval="295">
-		<object x="330.91" y="342.42828" z="390.72156" h="0"/>
+		<object x="333.64923" y="341.68185" z="400.14023" h="0" staticid="143"/>
 	</spawn>
 	<!-- Benyar (NPC Elite lvl:50)-->
 	<spawn map="220040000" npcid="204735" pool="1" interval="295">

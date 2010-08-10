@@ -16,7 +16,8 @@
 	along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
 	
 	Altgard
-	@author Atomix
+	@author Atomix initial client import
+	@author Magenik Fix With 1.9 content
  -->
 <spawns>
 	<!--   (Object Normal lvl:3) (from client spawn)-->
@@ -33,9 +34,8 @@
 		<object staticid="571" x="2451.88280" y="2546.58910" z="316.12195" h="30"/>
 	</spawn>
 	<!-- Altgard Abyss Gate (Object Normal lvl:1)-->
-	<spawn map="220030000" npcid="700089" pool="2" interval="295">
-		<object x="2451.53000" y="2546.45000" z="317.13000" h="30"/>
-		<object x="1658.61000" y="1812.10000" z="365.50943" h="33"/>
+	<spawn map="220030000" npcid="730062" pool="1" interval="295">
+		<object x="1658.6061" y="1812.1017" z="373.9576" h="0" staticid="168"/>
 	</spawn>
 	<!-- Amitnir (NPC Normal lvl:10) fige -->
 	<spawn map="220030000" npcid="203614" pool="1" interval="295">
