@@ -376,6 +376,7 @@ public class Player extends Creature
 
 	public void setEquipment(Equipment equipment)
 	{
+		
 		this.equipment = equipment;
 	}
 

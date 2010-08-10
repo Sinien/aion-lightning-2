@@ -19,12 +19,11 @@ package com.aionemu.gameserver.services;
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 import org.apache.log4j.Logger;
 
 import com.aionemu.commons.database.dao.DAOManager;
+import com.aionemu.gameserver.dao.InventoryDAO;
 import com.aionemu.gameserver.dao.MailDAO;
 import com.aionemu.gameserver.dao.PlayerDAO;
 import com.aionemu.gameserver.model.gameobjects.Item;
@@ -53,8 +52,6 @@ public class MailService
 {
 	private static final Logger	log			= Logger.getLogger(MailService.class);
 
-	protected Queue<Player>		newPlayers;
-
 	public static final MailService getInstance()
 	{
 		return SingletonHolder.instance;
@@ -62,7 +59,6 @@ public class MailService
 
 	private MailService()
 	{
-		newPlayers	= new ConcurrentLinkedQueue<Player>();
 	}
 
 	/**
@@ -190,7 +186,7 @@ public class MailService
 					senderItem.setItemLocation(StorageType.MAILBOX.getId());
 
 					attachedItem = senderItem;
-
+					attachedItem.setOwnerId(recipientCommonData.getPlayerObjId());
 					itemMailCommission = Math.round((senderItem.getItemTemplate().getPrice() * attachedItem
 						.getItemCount())
 						* qualityPriceRate);
@@ -205,6 +201,7 @@ public class MailService
 					attachedItem.setEquipped(false);
 					attachedItem.setEquipmentSlot(0);
 					attachedItem.setItemLocation(StorageType.MAILBOX.getId());
+					attachedItem.setOwnerId(recipientCommonData.getPlayerObjId());
 
 					itemMailCommission = Math.round((attachedItem.getItemTemplate().getPrice() * attachedItem
 						.getItemCount())
@@ -240,6 +237,10 @@ public class MailService
 			log.warn("[AUDIT]Mail kinah exploit: " + sender.getObjectId());
 			return;
 		}
+
+		if(attachedItem != null) 
+			if(!DAOManager.getDAO(InventoryDAO.class).store(attachedItem)) 
+				return;
 
 		int finalMailCommission = 10 + kinahMailCommission + itemMailCommission;
 		

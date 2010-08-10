@@ -152,6 +152,7 @@ public class AccountService
 				Player player = new Player(new PlayerController(), playerCommonData, appereance);
 				Storage accWarehouse = DAOManager.getDAO(InventoryDAO.class).loadStorage(player, StorageType.ACCOUNT_WAREHOUSE);
 				ItemService.loadItemStones(accWarehouse.getStorageItems());
+				accWarehouse.setOwner(null);
 				account.setAccountWarehouse(accWarehouse);
 			}
 		}
