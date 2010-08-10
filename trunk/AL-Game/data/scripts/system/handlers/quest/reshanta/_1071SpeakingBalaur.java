@@ -21,11 +21,9 @@ import java.util.Collections;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
-import com.aionemu.gameserver.model.gameobjects.player.Storage;
 import com.aionemu.gameserver.model.templates.quest.QuestItems;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_DIALOG_WINDOW;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ITEM_USAGE_ANIMATION;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_UPDATE_ITEM;
 import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
@@ -153,13 +151,8 @@ public class _1071SpeakingBalaur extends QuestHandler
 					return false;
 
 				case 10010:
-					Storage inventory = player.getInventory();
-					Item KinahsItemPlayer = inventory.getKinahItem();
-					long KinahsPlayer = KinahsItemPlayer.getItemCount();
-					if(var == 1 && KinahsPlayer >= 20000)
+					if(var == 1 && player.getInventory().decreaseKinah(20000))
 					{
-						KinahsItemPlayer.decreaseItemCount(20000);
-						PacketSendUtility.sendPacket(player, new SM_UPDATE_ITEM(KinahsItemPlayer));
 						ItemService.addItems(player, Collections.singletonList(new QuestItems(182202001, 1)));
 						qs.setQuestVar(7);
 						updateQuestStatus(player, qs);

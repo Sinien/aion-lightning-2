@@ -18,13 +18,10 @@ package quest.sanctum;
 
 import java.util.Collections;
 
-import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
-import com.aionemu.gameserver.model.gameobjects.player.Storage;
 import com.aionemu.gameserver.model.templates.quest.QuestItems;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_DIALOG_WINDOW;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_UPDATE_ITEM;
 import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
@@ -107,14 +104,8 @@ public class _1901KrallicPotion extends QuestHandler
 									else if(var == 5)
 										return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 3057);
 								case 1438:
-									Storage inventory = player.getInventory();
-									Item KinahsItemPlayer = inventory.getKinahItem();
-									long KinahsPlayer = KinahsItemPlayer.getItemCount();
-									PacketSendUtility.sendMessage(player, Long.toString(KinahsPlayer));
-									if(KinahsPlayer >= 10000)
+									if(player.getInventory().decreaseKinah(10000))
 									{
-										KinahsItemPlayer.decreaseItemCount(10000);
-										PacketSendUtility.sendPacket(player, new SM_UPDATE_ITEM(KinahsItemPlayer));
 										qs.setQuestVarById(0, var + 1);
 										updateQuestStatus(player, qs);
 										PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env

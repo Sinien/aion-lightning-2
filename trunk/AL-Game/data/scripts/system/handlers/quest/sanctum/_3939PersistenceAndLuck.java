@@ -16,12 +16,9 @@
  */
 package quest.sanctum;
 
-import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
-import com.aionemu.gameserver.model.gameobjects.player.Storage;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_DIALOG_WINDOW;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_UPDATE_ITEM;
 import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
@@ -143,14 +140,8 @@ public class _3939PersistenceAndLuck extends QuestHandler
 								return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1352);
 							// Get HACTION_SETPRO2 in the eddit-HyperLinks.xml
 							case 10001:
-								Storage inventory = player.getInventory();
-								Item KinahsItemPlayer = inventory.getKinahItem();
-								long KinahsPlayer = KinahsItemPlayer.getItemCount();
-								PacketSendUtility.sendMessage(player, Long.toString(KinahsPlayer));
-								if(KinahsPlayer >= 3400000)
+								if(player.getInventory().decreaseKinah(3400000))
 								{
-									KinahsItemPlayer.decreaseItemCount(3400000);
-									PacketSendUtility.sendPacket(player, new SM_UPDATE_ITEM(KinahsItemPlayer));
 									qs.setQuestVarById(0, var + 1);
 									updateQuestStatus(player, qs);
 									PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));

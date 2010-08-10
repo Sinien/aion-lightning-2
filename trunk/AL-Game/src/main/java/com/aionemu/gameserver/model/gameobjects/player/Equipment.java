@@ -586,6 +586,7 @@ public class Equipment
 			log.warn("Duplicate equipped item in slot : " + item.getEquipmentSlot() + " " + owner.getObjectId());
 			return;
 		}
+		item.setOwnerId(owner.getObjectId());
 		equipment.put(item.getEquipmentSlot(), item);
 	}
 
