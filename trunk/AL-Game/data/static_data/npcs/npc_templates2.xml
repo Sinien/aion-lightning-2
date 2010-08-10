@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<npc_templates xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="npcs.xsd">
+	<npc_template hpgauge="3" tribe="GENERAL" srange="20" rank="NORMAL" npc_type="NON_ATTACKABLE" height="1.0" name="teleport statue" name_id="350737" level="3" npc_id="730264">
+        <stats power="11" accuracy="11" maxXp="104" mdef="11" pdef="11" crit="11" run_speed_fight="0.0" magic_accuracy="11" parry="11" block="100" evasion="11" fly_speed="0.0" run_speed="0.0" walk_speed="0.0" maxHp="121"/>
+    </npc_template>
+</npc_templates>
