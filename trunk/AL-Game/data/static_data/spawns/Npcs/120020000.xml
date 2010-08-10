@@ -16,7 +16,7 @@
 	along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
 	
 	Marchutan
-	@author Youli Spawn from KR PTS 2.0
+	@author Magenik(youli) Spawn from KR PTS 2.0
  -->
 <spawns>
 	<!-- Agehia (NPC Normal lvl:50)-->
@@ -85,7 +85,7 @@
 	</spawn>
 	<!-- Teleport Statue DC2 > DC1 (Object Normal lvl:3)-->
 	<spawn map="120020000" npcid="730269" pool="1" interval="105">
-		<object x="1559.3972" y="1429.6539" z="265.68488" h="70"/>
+		<object x="1559.2072" y="1429.3711" z="265.68488" h="0" staticid="12"/>
 	</spawn>
 	<!-- Unsul (NPC Normal lvl:45)-->
 	<spawn map="120020000" npcid="798712" pool="1" interval="105">

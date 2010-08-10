@@ -16,7 +16,8 @@
 	along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
 	
 	Pandaemonium
-	@author Atomix
+	@author Atomix Initial Import
+	@author Magenik 1.9 Spawn Fix (Retail info from PS) + StaticID For Mesh
  -->
 <spawns>
 	<!-- "Balaur Who Are They!" (Object Normal lvl:1)-->
@@ -25,11 +26,11 @@
 	</spawn>
 	<!-- Aerolink to Gelkmaros-->
 	<spawn map="120010000" npcid="730219" pool="1" interval="300">
-		<object x="940.0734" y="1120.8656" z="206.84805" h="6"/>
+		<object x="940.0734" y="1120.8656" z="206.84805" h="6" staticid="334"/>
 	</spawn>
 	<!-- Agamo (NPC Normal lvl:40)-->
 	<spawn map="120010000" npcid="204193" pool="1" interval="295">
-		<object x="1129.5427" y="1434.6251" z="209.0" h="18"/>
+		<object x="1129.5427" y="1434.6251" z="208.5819" h="20"/>
 	</spawn>
 	<!-- Aldbol (NPC Normal lvl:3)-->
 	<spawn map="120010000" npcid="204149" pool="1" interval="295">
@@ -513,7 +514,7 @@
 	</spawn>
 	<!-- Huron (NPC Normal lvl:40)-->
 	<spawn map="120010000" npcid="204274" pool="1" interval="295">
-		<object x="1275.0" y="1368.0" z="205.0" h="96"/>
+		<object x="1275.0" y="1368.0" z="204.46078" h="90"/>
 	</spawn>
 	<!-- Igsrun (NPC Normal lvl:10)-->
 	<spawn map="120010000" npcid="204184" pool="1" interval="295">
@@ -704,8 +705,8 @@
 		<object x="1478.8307" y="1431.8219" z="177.3169" h="30"/>
 	</spawn>
 	<!-- Mailbox (Object Normal lvl:1)-->
-	<spawn map="120010000" npcid="700000" pool="1" interval="295">
-		<object x="1299.17" y="1437.54" z="209.09" h="0"/>
+	<spawn map="120010000" npcid="700079" pool="1" interval="295">
+		<object x="1299.1714" y="1437.539" z="209.09082" h="83" staticid="622"/>
 	</spawn>
 	<!-- Makka (NPC Normal lvl:47)-->
 	<spawn map="120010000" npcid="204220" pool="1" interval="295">
@@ -724,8 +725,8 @@
 		<object x="1382.7769" y="1416.6766" z="210.0" h="90"/>
 	</spawn>
 	<!-- Marchutan's Teleport-->
-	<spawn map="120010000" npcid="730268" pool="1" interval="300">
-		<object x="1599.4058" y="1384.4724" z="193.12862" h="2"/>
+	<spawn map="120010000" npcid="730268" pool="1" interval="295">
+		<object x="1600.6393" y="1389.3303" z="193.12874" h="30" staticid="328"/>
 	</spawn>
 	<!-- Mareke (NPC Normal lvl:10)-->
 	<spawn map="120010000" npcid="204205" pool="1" interval="295">
@@ -786,11 +787,11 @@
 	</spawn>
 	<!-- Nekai (NPC Normal lvl:10)-->
 	<spawn map="120010000" npcid="204202" pool="1" interval="295">
-		<object x="1383.388" y="1385.4241" z="210.0" h="30"/>
+		<object x="1383.388" y="1385.4241" z="208.66238" h="29"/>
 	</spawn>
 	<!-- Nekorunerk (NPC Normal lvl:15)-->
 	<spawn map="120010000" npcid="798059" pool="1" interval="295">
-		<object x="1327.9479" y="1497.175" z="209.80017" h="90"/>
+		<object x="1327.9479" y="1497.175" z="209.80017" h="85"/>
 	</spawn>
 	<!-- Neusa (NPC Normal lvl:10)-->
 	<spawn map="120010000" npcid="204224" pool="1" interval="295">
@@ -822,7 +823,7 @@
 	</spawn>
 	<!-- Numitorem (NPC Normal lvl:47)-->
 	<spawn map="120010000" npcid="204095" pool="1" interval="295">
-		<object x="1218.7971" y="1518.7852" z="215.0" h="75"/>
+		<object x="1218.7971" y="1518.7852" z="213.96336" h="66"/>
 	</spawn>
 	<!-- Obelisk (Object Normal lvl:3)-->
 	<spawn map="120010000" npcid="700257" pool="1" interval="295">
@@ -906,7 +907,7 @@
 	</spawn>
 	<!-- Roskva (NPC Normal lvl:10)-->
 	<spawn map="120010000" npcid="204072" pool="1" interval="295">
-		<object x="1296.5032" y="1497.0983" z="209.81087" h="115"/>
+		<object x="1296.5032" y="1497.0983" z="209.81088" h="106"/>
 	</spawn>
 	<!-- Rudran (NPC Normal lvl:3)-->
 	<spawn map="120010000" npcid="798412" pool="1" interval="295">
@@ -1032,15 +1033,15 @@
 	</spawn>
 	<!-- Teleport Statue (NPC Normal lvl:1)-->
 	<spawn map="120010000" npcid="730017" pool="1" interval="295">
-		<object x="1599.2881" y="1413.9429" z="193.12872" h="120"/>
+		<object x="1600.4036" y="1413.0077" z="193.12868" h="0" staticid="611"/>
 	</spawn>
 	<!-- Teleport Statue (NPC Normal lvl:1)-->
 	<spawn map="120010000" npcid="730018" pool="1" interval="295">
-		<object x="1040.6" y="1482.5" z="213.5" h="105"/>
+		<object x="1033.9264" y="1474.1212" z="213.47789" h="105" staticid="610"/>
 	</spawn>
 	<!-- Teleport Statue (NPC Normal lvl:1)-->
 	<spawn map="120010000" npcid="730267" pool="1" interval="295">
-		<object x="1173.324" y="1168.1243" z="207.97894" h="0"/>
+		<object x="1176.1338" y="1170.0728" z="207.97896" h="0" staticid="327"/>
 	</spawn>
 	<!-- Teo (NPC Normal lvl:10)-->
 	<spawn map="120010000" npcid="204222" pool="1" interval="295">
@@ -1092,7 +1093,7 @@
 	</spawn>
 	<!-- Underground Arena Entrance (Object Normal lvl:1)-->
 	<spawn map="120010000" npcid="700368" pool="1" interval="295">
-		<object x="978.18" y="1556.51" z="210.55" h="0"/>
+		<object x="978.1827" y="1556.5114" z="210.55165" h="0" staticid="38"/>
 	</spawn>
 	<!-- Usener (NPC Normal lvl:40)-->
 	<spawn map="120010000" npcid="798317" pool="1" interval="295">
