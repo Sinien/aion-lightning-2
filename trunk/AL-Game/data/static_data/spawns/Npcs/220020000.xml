@@ -673,9 +673,8 @@
 		<object x="2354.9724" y="2220.2754" z="125.91287" h="5"/>
 	</spawn>
 	<!-- Morheim Abyss Gate (Object Normal lvl:1)-->
-	<spawn map="220020000" npcid="700183" pool="2" interval="295">
-		<object x="3034.68" y="878.88" z="364.13" h="75"/>
-		<object x="304.99" y="2349.9" z="546.48865" h="80"/>
+	<spawn map="220020000" npcid="730063" pool="1" interval="295">
+		<object x="304.9921" y="2349.9004" z="552.9986" h="0" staticid="325"/>
 	</spawn>
 	<!-- Morian (NPC Elite lvl:50)-->
 	<spawn map="220020000" npcid="204371" pool="1" interval="295">

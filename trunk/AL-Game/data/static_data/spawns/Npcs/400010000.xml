@@ -16,8 +16,8 @@
 	along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
 	
 	Reshanta
-	@author Atomix (initial import)
-	@author_fix Youli (Based on Retail Spawn from last client)
+	@author Atomix initial client import
+	@author Magenik Fix With 1.9 content
 	@contributors : HeTuLa
  -->
 <spawns>
@@ -75,7 +75,7 @@
 	</spawn>
 	<!-- Altgard Teleport Device (Object Normal lvl:1)-->
 	<spawn map="400010000" npcid="730076" pool="1" interval="295">
-		<object x="1090.32" y="2963.23" z="1638.98" h="0"/>
+		<object x="1090.3158" y="2963.2302" z="1638.976" h="0" staticid="996"/>
 	</spawn>
 	<!-- Ammu (NPC Elite lvl:53 Subtext: Shadow Executor)-->
 	<spawn map="400010000" npcid="278068" pool="1" interval="295">
@@ -159,7 +159,7 @@
 	</spawn>
 	<!-- Beluslan Teleport Device (Object Normal lvl:1)-->
 	<spawn map="400010000" npcid="730078" pool="1" interval="295">
-		<object x="953.91" y="2832.12" z="1639.48" h="0"/>
+		<object x="953.905" y="2832.1228" z="1639.4845" h="0" staticid="993"/>
 	</spawn>
 	<!-- Bephax (NPC Normal lvl:45 Subtext: Accessry Distributor)-->
 	<spawn map="400010000" npcid="278135" pool="1" interval="295">
@@ -864,7 +864,7 @@
 	</spawn>
 	<!-- Morheim Teleport Device (Object Normal lvl:1)-->
 	<spawn map="400010000" npcid="730077" pool="1" interval="295">
-		<object x="1059.59" y="2859.23" z="1636.41" h="0"/>
+		<object x="1059.5856" y="2859.2322" z="1636.4055" h="0" staticid="271"/>
 	</spawn>
 	<!-- Mossy Gate (Object Normal lvl:1)-->
 	<spawn map="400010000" npcid="700458" pool="1" interval="295">
