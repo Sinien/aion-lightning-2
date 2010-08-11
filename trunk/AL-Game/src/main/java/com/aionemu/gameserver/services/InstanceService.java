@@ -16,7 +16,6 @@
  */
 package com.aionemu.gameserver.services;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -82,10 +81,8 @@ public class InstanceService
 
 		log.info("Destroying instance:" + worldId + " " + instanceId);
 
-		Iterator<VisibleObject> it = instance.objectIterator();
-		while(it.hasNext())
+		for(VisibleObject obj : instance.getAllWorldMapObjects())
 		{
-			VisibleObject obj = it.next();
 			if(obj instanceof Player)
 			{			
 				Player player = (Player) obj;
@@ -127,10 +124,8 @@ public class InstanceService
 	 */
 	public static WorldMapInstance getRegisteredInstance(int worldId, int objectId)
 	{
-		Iterator<WorldMapInstance> iterator = World.getInstance().getWorldMap(worldId).iterator();
-		while(iterator.hasNext())
+		for(WorldMapInstance instance : World.getInstance().getWorldMap(worldId).getAllWorldMapInstances())
 		{
-			WorldMapInstance instance = iterator.next();
 			if(instance.isRegistered(objectId))
 				return instance;
 		}
@@ -252,15 +247,11 @@ public class InstanceService
 					destroyInstance(worldMapInstance);
 					return;
 				}
-				Iterator<Player> playerIterator = worldMapInstance.playerIterator();
 				int mapId = worldMapInstance.getMapId();
-				while(playerIterator.hasNext())
+				for(Player player : worldMapInstance.getAllWorldMapPlayers())
 				{
-					Player player = playerIterator.next();
-					if(player.isOnline() && player.getWorldId() == mapId)
-					{
-						return;
-					}
+					if(player.isOnline() && player.getWorldId() == mapId)	
+						return;	
 				}
 				destroyInstance(worldMapInstance);
 			}

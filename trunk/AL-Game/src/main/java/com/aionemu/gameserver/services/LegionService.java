@@ -18,8 +18,8 @@ package com.aionemu.gameserver.services;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
@@ -233,9 +233,9 @@ public class LegionService
 	 * 
 	 * @return
 	 */
-	public Iterator<Legion> getCachedLegionIterator()
+	public Collection<Legion> getCachedLegions()
 	{
-		return allCachedLegions.iterator();
+		return allCachedLegions.getLegions();
 	}
 
 	/**
@@ -1051,14 +1051,13 @@ public class LegionService
 		{
 			log.info("Legion ranking update task started");
 			long startTime = System.currentTimeMillis();
-			Iterator<Legion> legionsIterator = allCachedLegions.iterator();
+			Collection<Legion> legions = allCachedLegions.getLegions();
 			int legionsUpdated = 0;
 
 			setLegionRanking(DAOManager.getDAO(LegionDAO.class).loadLegionRanking());
 
-			while(legionsIterator.hasNext())
+			for(Legion legion : legions)
 			{
-				Legion legion = legionsIterator.next();
 				try
 				{
 					if(legionRanking.containsKey(legion.getLegionId()))

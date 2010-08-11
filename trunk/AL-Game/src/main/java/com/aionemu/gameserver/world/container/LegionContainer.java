@@ -16,7 +16,7 @@
  */
 package com.aionemu.gameserver.world.container;
 
-import java.util.Iterator;
+import java.util.Collection;
 import java.util.Map;
 
 import javolution.util.FastMap;
@@ -29,7 +29,7 @@ import com.aionemu.gameserver.world.exceptions.DuplicateAionObjectException;
  * 
  * @author Simple
  */
-public class LegionContainer implements Iterable<Legion>
+public class LegionContainer
 {
 	/**
 	 * Map<LegionId, Legion>
@@ -110,12 +110,8 @@ public class LegionContainer implements Iterable<Legion>
 		return legionsByName.containsKey(name.toLowerCase());
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public Iterator<Legion> iterator()
+	public Collection<Legion> getLegions()
 	{
-		return legionsById.values().iterator();
+		return legionsById.values();
 	}
 }
