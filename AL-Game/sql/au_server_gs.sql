@@ -463,8 +463,7 @@ CREATE TABLE IF NOT EXISTS `petitions` (
 -- ----------------------------
 -- Table structure for `tasks`
 -- ----------------------------
-DROP TABLE IF EXISTS `tasks`;
-CREATE TABLE `tasks` (
+CREATE TABLE IF NOT EXISTS `tasks` (
   `id` int(5) NOT NULL,
   `task` varchar(50) NOT NULL,
   `type` enum('FIXED_IN_TIME') NOT NULL,
