@@ -21,6 +21,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
+import javolution.text.TextBuilder;
+
 import com.aionemu.gameserver.model.gameobjects.stats.StatEnum;
 import com.aionemu.gameserver.model.gameobjects.stats.StatModifierPriority;
 
@@ -102,15 +104,20 @@ public abstract class StatModifier implements Comparable<StatModifier>
 	@Override
 	public String toString()
 	{
-		StringBuilder sb = new StringBuilder();
-		sb.append(this.getClass().getSimpleName()+",");
-		sb.append("i:"+id+",");
-		sb.append("s:"+name+",");
-		sb.append("b:"+bonus);
-		return sb.toString();
+		TextBuilder tb = TextBuilder.newInstance();
+		
+		tb.append(this.getClass().getSimpleName() + ",");
+		tb.append("i:"+id+",");
+		tb.append("s:"+name+",");
+		tb.append("b:"+bonus);	
+		
+		String toString = tb.toString();
+		TextBuilder.recycle(tb);
+		
+		return toString;
 	}
 	
-	public abstract int apply (int baseValue, int currentValue);
+	public abstract int apply(int baseValue, int currentValue);
 	
 	public abstract StatModifierPriority getPriority();
 }
