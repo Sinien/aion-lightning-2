@@ -16,8 +16,8 @@
  */
 package com.aionemu.gameserver.world;
 
+import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Future;
@@ -241,23 +241,18 @@ public class WorldMapInstance
 		return worldMapPlayers.containsKey(objId);
 	}
 	
-	/**
-	 * @return
-	 */
-	public Iterator<VisibleObject> objectIterator()
+	public Collection<VisibleObject> getAllWorldMapObjects()
 	{
-		return worldMapObjects.values().iterator();
+		return worldMapObjects.values();
 	}
 	
-	/**
-	 * @return
-	 */
-	public Iterator<Player> playerIterator()
+	public Collection<Player> getAllWorldMapPlayers()
 	{
-		return worldMapPlayers.values().iterator();
+		return worldMapPlayers.values();
 	}
 
-	public void registerGroup(PlayerGroup group) {
+	public void registerGroup(PlayerGroup group) 
+	{
 		registeredGroup = group;
 		register(group.getGroupId());
 	}

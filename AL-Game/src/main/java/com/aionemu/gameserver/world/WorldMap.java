@@ -16,7 +16,7 @@
  */
 package com.aionemu.gameserver.world;
 
-import java.util.Iterator;
+import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -211,8 +211,8 @@ public class WorldMap
 	/**
 	 * @return
 	 */
-	public Iterator<WorldMapInstance> iterator()
+	public Collection<WorldMapInstance> getAllWorldMapInstances()
 	{
-		return instances.values().iterator();
+		return instances.values();
 	}
 }

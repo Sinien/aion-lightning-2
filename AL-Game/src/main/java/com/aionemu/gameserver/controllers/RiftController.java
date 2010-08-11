@@ -16,8 +16,6 @@
  */
 package com.aionemu.gameserver.controllers;
 
-import java.util.Iterator;
-
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.VisibleObject;
@@ -148,16 +146,11 @@ public class RiftController extends NpcController
 	{
 		if(isMaster && getOwner().isSpawned())
 		{
-			WorldMapInstance worldInstance = getOwner().getPosition().getMapRegion().getParent();
-			Iterator<Player> playerIterator = worldInstance.playerIterator();
-			
-			while(playerIterator.hasNext())
+			WorldMapInstance worldInstance = getOwner().getPosition().getMapRegion().getParent();	
+			for(Player player : worldInstance.getAllWorldMapPlayers())
 			{
-				Player player = playerIterator.next();
-				if(player.isSpawned())
-				{
-					sendMessage(player);
-				}				
+				if(player.isSpawned())				
+					sendMessage(player);						
 			}
 		}
 	}
