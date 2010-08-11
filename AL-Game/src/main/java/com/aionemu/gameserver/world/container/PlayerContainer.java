@@ -35,7 +35,7 @@ public class PlayerContainer
 	/**
 	 * Map<ObjectId,Player>
 	 */
-	private final Map<Integer, Player>	playersById		= new FastMap<Integer, Player>().shared();
+	private final Map<Integer, Player>	playersById		= new FastMap<Integer, Player>(1000).shared();
 	/**
 	 * Map<Name,Player>
 	 */

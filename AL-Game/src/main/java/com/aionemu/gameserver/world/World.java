@@ -70,7 +70,7 @@ public class World
 	private World()
 	{
 		allPlayers	= new PlayerContainer();
-		allObjects	= new FastMap<Integer, AionObject>().shared();
+		allObjects	= new FastMap<Integer, AionObject>(100000).shared();
 		worldMaps	= new FastMap<Integer, WorldMap>().shared();
 
 		for(WorldMapTemplate template : DataManager.WORLD_MAPS_DATA)
