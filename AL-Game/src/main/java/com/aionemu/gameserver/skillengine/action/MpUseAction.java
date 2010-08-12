@@ -44,6 +44,9 @@ public class MpUseAction extends Action
 	{
 		Creature effector = skill.getEffector();
 		int valueWithDelta = value + delta * skill.getSkillLevel();
+		int changeMpPercent = skill.getChangeMpConsumption();
+		if (changeMpPercent != 0)
+			valueWithDelta = valueWithDelta + ( (int)(valueWithDelta/((int)(100/changeMpPercent))) );
 		
 		effector.getLifeStats().reduceMp(valueWithDelta);
 	}

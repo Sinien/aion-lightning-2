@@ -216,6 +216,8 @@
 				minOccurs="0" maxOccurs="1" />
 			<xs:element name="rebirth" type="RebirthEffect"
 				minOccurs="0" maxOccurs="1" />
+			<xs:element name="changemp" type="ChangeMpConsumptionEffect"
+				minOccurs="0" maxOccurs="1" />
 		</xs:sequence>
 		<xs:attribute name="food" type="xs:boolean"/>
 	</xs:complexType>
@@ -1075,6 +1077,15 @@
 		<xs:complexContent>
 			<xs:extension base="Effect">
 				<xs:attribute name="resurrect_percent" type="xs:int" />	
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="ChangeMpConsumptionEffect">
+		<xs:complexContent>
+			<xs:extension base="Effect">
+				<xs:attribute name="percent" type="xs:boolean" />
+				<xs:attribute name="value" type="xs:int" />
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
