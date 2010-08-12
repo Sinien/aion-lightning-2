@@ -29,6 +29,7 @@ import com.aionemu.gameserver.network.aion.serverpackets.SM_LEVEL_UPDATE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_MESSAGE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_QUESTION_WINDOW;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.services.TeleportService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.world.World;
@@ -61,9 +62,8 @@ public class BindpointController extends NpcController
 			{
 				if (responder.getCommonData().getBindPoint() != bindPointTemplate.getBindId())
 				{
-					if (responder.getInventory().getKinahItem().getItemCount()>= bindPointTemplate.getPrice())
+					if (ItemService.decreaseKinah(responder, bindPointTemplate.getPrice()))
 					{
-						responder.getInventory().decreaseKinah(bindPointTemplate.getPrice());
 						responder.getCommonData().setBindPoint(bindPointTemplate.getBindId());
 						TeleportService.sendSetBindPoint(responder);
 						PacketSendUtility.broadcastPacket(responder, new SM_LEVEL_UPDATE(responder.getObjectId(), 2, responder.getCommonData().getLevel()), true);

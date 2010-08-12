@@ -230,9 +230,7 @@ public class MailService
 		/**
 		 * Calculate kinah
 		 */
-		if (senderInventory.getKinahItem().getItemCount() > finalAttachedKinahCount)
-			senderInventory.decreaseKinah(finalAttachedKinahCount);
-		else
+		if (!ItemService.decreaseKinah(sender, finalAttachedKinahCount))
 		{
 			log.warn("[AUDIT]Mail kinah exploit: " + sender.getObjectId());
 			return;
@@ -331,7 +329,7 @@ public class MailService
 			}
 			case 1:
 			{
-				player.getInventory().increaseKinah(letter.getAttachedKinah());
+				ItemService.increaseKinah(player, (long)letter.getAttachedKinah());
 				PacketSendUtility.sendPacket(player, new SM_MAIL_SERVICE(letterId, attachmentType));
 				letter.removeAttachedKinah();
 				break;

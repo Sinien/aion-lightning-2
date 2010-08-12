@@ -34,7 +34,6 @@ import com.aionemu.gameserver.model.trade.TradePSItem;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_EMOTION;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_INVENTORY_UPDATE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_PRIVATE_STORE_NAME;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_UPDATE_ITEM;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 
 /**
@@ -160,8 +159,8 @@ public class PrivateStoreService
 			/**
 			 * Decrease kinah for buyer and Increase kinah for seller
 			 */
-			buyer.getInventory().decreaseKinah(price);
-			seller.getInventory().increaseKinah(price);
+			ItemService.decreaseKinah(buyer, price);
+			ItemService.increaseKinah(seller, price);
 
 			List<Item> newItems = new ArrayList<Item>();
 			for(TradeItem tradeItem : tradeList.getTradeItems())
@@ -207,7 +206,6 @@ public class PrivateStoreService
 	private static void decreaseItemFromPlayer(Player seller, Item item, TradeItem tradeItem)
 	{
 		seller.getInventory().decreaseItemCount(item, tradeItem.getCount());
-		PacketSendUtility.sendPacket(seller, new SM_UPDATE_ITEM(item));
 		PrivateStore store = seller.getStore();
 		store.getTradeItemById(item.getObjectId()).decreaseCount(tradeItem.getCount());
 	}

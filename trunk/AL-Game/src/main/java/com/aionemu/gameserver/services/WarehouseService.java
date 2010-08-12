@@ -73,13 +73,12 @@ public class WarehouseService
 					@Override
 					public void acceptRequest(Creature requester, Player responder)
 					{
-						if(player.getInventory().getKinahItem().getItemCount() < price)
+						if(!ItemService.decreaseKinah(responder, price))
 						{
 							PacketSendUtility.sendPacket(player, new SM_SYSTEM_MESSAGE(1300831));
 							return;
 						}
 						expand(responder);
-						player.getInventory().decreaseKinah(price);
 					}
 
 					@Override

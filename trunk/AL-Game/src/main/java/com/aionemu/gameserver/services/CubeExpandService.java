@@ -68,13 +68,12 @@ public class CubeExpandService
 				@Override
 				public void acceptRequest(Creature requester, Player responder)
 				{
-					if(price > player.getInventory().getKinahItem().getItemCount())
+					if(!ItemService.decreaseKinah(responder, price))
 					{
 						PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.CUBEEXPAND_NOT_ENOUGH_KINAH);
 						return;
 					}
 					expand(responder);
-					player.getInventory().decreaseKinah(price);
 				}
 
 				@Override

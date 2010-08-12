@@ -241,9 +241,9 @@ public class GroupService
 			for(Player groupMember : pg.getMembers())
 			{
 				if(groupMember.equals(player))
-					groupMember.getInventory().decreaseKinah(amount);
+					ItemService.decreaseKinah(groupMember, amount);
 				else
-					groupMember.getInventory().increaseKinah(reward);
+					ItemService.increaseKinah(groupMember, reward);
 			}
 		}
 	}

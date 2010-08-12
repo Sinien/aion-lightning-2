@@ -20,7 +20,6 @@ import com.aionemu.gameserver.configs.administration.AdminConfig;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.player.Storage;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_DELETE_ITEM;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_UPDATE_ITEM;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.Util;
@@ -90,7 +89,6 @@ public class Remove extends AdminCommand
 		if(itemsInBag <= itemCount)
 		{
 			bag.removeFromBag(item, true);
-			PacketSendUtility.sendPacket(target,new SM_DELETE_ITEM(item.getObjectId()));
 		}
 		else
 		{

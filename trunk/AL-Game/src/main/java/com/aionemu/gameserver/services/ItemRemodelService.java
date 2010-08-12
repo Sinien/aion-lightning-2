@@ -59,14 +59,6 @@ public class ItemRemodelService
 			return;
 		}
 		
-		// Check Kinah
-		if (player.getInventory().getKinahItem().getItemCount() < remodelCost)
-		{
-			PacketSendUtility.sendPacket(player,
-				SM_SYSTEM_MESSAGE.STR_CHANGE_ITEM_SKIN_NOT_ENOUGH_GOLD(new DescriptionId(keepItem.getItemTemplate().getNameId())));
-			return;
-		}
-		
 		// Check for using "Pattern Reshaper" (168100000)
 		if (extractItem.getItemTemplate().getTemplateId() == 168100000)
 		{
@@ -75,9 +67,15 @@ public class ItemRemodelService
 				PacketSendUtility.sendMessage(player, "That item does not have a remodeled skin to remove.");
 				return;
 			}
-			// Remove Money
-			player.getInventory().decreaseKinah(remodelCost);
 			
+			// Check Kinah
+			if (!ItemService.decreaseKinah(player, remodelCost))
+			{
+				PacketSendUtility.sendPacket(player,
+					SM_SYSTEM_MESSAGE.STR_CHANGE_ITEM_SKIN_NOT_ENOUGH_GOLD(new DescriptionId(keepItem.getItemTemplate().getNameId())));
+				return;
+			}
+
 			// Remove Pattern Reshaper
 			player.getInventory().decreaseItemCount(extractItem, 1);
 			

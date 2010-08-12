@@ -35,8 +35,6 @@ import com.aionemu.gameserver.model.templates.TradeListTemplate.TradeTab;
 import com.aionemu.gameserver.model.templates.goods.GoodsList;
 import com.aionemu.gameserver.model.trade.TradeItem;
 import com.aionemu.gameserver.model.trade.TradeList;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_DELETE_ITEM;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_UPDATE_ITEM;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.world.World;
 
@@ -90,7 +88,7 @@ public class TradeService
 			{
 				log.warn(String.format("CHECKPOINT: itemservice couldnt add all items on buy: %d %d %d %d", player
 					.getObjectId(), tradeItem.getItemTemplate().getTemplateId(), tradeItem.getCount(), count));
-				inventory.decreaseKinah(tradeListPrice);
+				ItemService.decreaseKinah(player, tradeListPrice);
 				return false;
 			}
 		}
@@ -203,9 +201,6 @@ public class TradeService
 				inventory.removeFromBag(item, true); // need to be here to avoid exploit by sending packet with many
 														// items with same unique ids
 				kinahReward += item.getItemTemplate().getPrice() * item.getItemCount();
-				
-				// TODO check retail packet here
-				PacketSendUtility.sendPacket(player, new SM_DELETE_ITEM(item.getObjectId()));
 			}
 			else if(item.getItemCount() - tradeItem.getCount() > 0)
 			{
@@ -213,7 +208,6 @@ public class TradeService
 				{
 					// TODO check retail packet here
 					kinahReward += item.getItemTemplate().getPrice() * tradeItem.getCount();
-					PacketSendUtility.sendPacket(player, new SM_UPDATE_ITEM(item));
 				}
 				else
 					return false;
@@ -223,7 +217,7 @@ public class TradeService
 		}
 
 		kinahReward = player.getPrices().getKinahForSell(kinahReward);
-		inventory.increaseKinah(kinahReward);
+		ItemService.increaseKinah(player, kinahReward);
 
 		return true;
 	}

@@ -129,7 +129,9 @@ public class ItemService
 		// To move kinah from inventory to warehouse and vise versa client using split item packet
 		if(itemToSplit.getItemTemplate().isKinah())
 		{
-			moveKinah(player, sourceStorage, splitAmount);
+			if(!ItemService.decreaseKinah(player, sourceStorage, splitAmount))
+				return;
+			ItemService.increaseKinah(player, destinationStorage, splitAmount);
 			return;
 		}
 
@@ -148,7 +150,6 @@ public class ItemService
 			itemsToUpdate.add(newItem);
 
 			sendStorageUpdatePacket(player, destinationStorageType, itemsToUpdate.get(0));
-			sendUpdateItemPacket(player, sourceStorageType, itemToSplit);
 		}		
 		else
 		{
@@ -156,44 +157,31 @@ public class ItemService
 		}
 	}
 
-
-	private static void moveKinah(Player player, Storage source, long splitAmount)
+	public static boolean decreaseKinah(Player player, long amount)
 	{
-		if(source.getKinahItem().getItemCount() < splitAmount)
-			return;
-
-		switch(source.getStorageType())
-		{
-			case 0:
-			{
-				Storage destination = player.getStorage(StorageType.ACCOUNT_WAREHOUSE.getId());
-				long chksum = (source.getKinahItem().getItemCount() - splitAmount) + (destination.getKinahItem().getItemCount() + splitAmount);
-
-				if(chksum != source.getKinahItem().getItemCount() + destination.getKinahItem().getItemCount())
-					return;
-
-				source.decreaseKinah(splitAmount);
-				destination.increaseKinah(splitAmount);
-				break;
-			}
-
-			case 2:
-			{
-				Storage destination = player.getStorage(StorageType.CUBE.getId());
-				long chksum = (source.getKinahItem().getItemCount() - splitAmount) + (destination.getKinahItem().getItemCount() + splitAmount);
-
-				if(chksum != source.getKinahItem().getItemCount() + destination.getKinahItem().getItemCount())
-					return;
-
-				source.decreaseKinah(splitAmount);
-				destination.increaseKinah(splitAmount);
-				break;
-			}
-			default:
-				break;
-		}
+		return decreaseKinah(player, player.getInventory(), amount);
 	}
 
+	public static boolean decreaseKinah(Player player, Storage storage, long amount)
+	{
+		boolean operationResult = storage.decreaseKinah(amount);
+		if(operationResult)
+		{
+			sendUpdateItemPacket(player, storage.getStorageType(), storage.getKinahItem());
+		}
+		return operationResult;
+	}
+	
+	public static void increaseKinah(Player player, Storage storage, long amount)
+	{
+		storage.increaseKinah(amount);
+		sendUpdateItemPacket(player, storage.getStorageType(), storage.getKinahItem());
+	}
+	
+	public static void increaseKinah(Player player, long amount)
+	{
+		increaseKinah(player, player.getInventory(), amount);
+	}
 	/**
 	 *  Used to merge 2 items in inventory
 	 *  
@@ -229,17 +217,12 @@ public class ItemService
 		{
 			destinationStorage.increaseItemCount(destinationItem, itemAmount);
 			sourceStorage.removeFromBag(sourceItem, true);
-
-			sendDeleteItemPacket(player, sourceStorageType, sourceItem.getObjectId());
-			sendUpdateItemPacket(player, destinationStorageType, destinationItem);
-
 		}
 		else if(sourceItem.getItemCount() > itemAmount)
 		{
 			sourceStorage.decreaseItemCount(sourceItem, itemAmount);
 			destinationStorage.increaseItemCount(destinationItem, itemAmount);
 
-			sendUpdateItemPacket(player, sourceStorageType, sourceItem);
 			sendUpdateItemPacket(player, destinationStorageType, destinationItem);
 		}
 		else return; // cant happen in theory, but...
@@ -317,7 +300,7 @@ public class ItemService
 
 		if (itemId == ItemId.KINAH.value())
 		{
-			inventory.increaseKinah(count);
+			increaseKinah(player, count);
 			return 0;
 		}
 		else
@@ -342,8 +325,6 @@ public class ItemService
 					inventory.increaseItemCount(existingItem, freeCount);
 					count -= freeCount;
 				}
-
-				updateItem(player, existingItem, false);
 			}
 
 			/**
@@ -646,9 +627,6 @@ public class ItemService
 	public static void socketGodstone(Player player, int weaponId, int stoneId)
 	{
 		long socketPrice = player.getPrices().getPriceForService(100000);
-		Item kinahItem = player.getInventory().getKinahItem();
-		if(kinahItem.getItemCount() < socketPrice)
-			return;
 		
 		Item weaponItem = player.getInventory().getItemByObjId(weaponId);
 		if ( weaponItem == null)
@@ -670,13 +648,13 @@ public class ItemService
 			return;
 		}
 		
+		if (!ItemService.decreaseKinah(player, socketPrice))
+			return;
 		weaponItem.addGodStone(godStoneItemId);
 		PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.STR_GIVE_ITEM_PROC_ENCHANTED_TARGET_ITEM(new DescriptionId(Integer.parseInt(weaponItem.getName()))));
 		player.getInventory().removeFromBagByObjectId(stoneId, 1);
 		
-		player.getInventory().decreaseKinah(socketPrice);
 		PacketSendUtility.sendPacket(player, new SM_UPDATE_ITEM(weaponItem));
-		PacketSendUtility.sendPacket(player, new SM_UPDATE_ITEM(kinahItem));
 	}
 	
 	public static boolean addItems(Player player, List<QuestItems> questItems)
@@ -712,6 +690,7 @@ public class ItemService
 		if(player.getStorage(StorageType.CUBE.getId()).getKinahItem() == null)
 		{
 			Item kinahItem = newItem(182400001, 0);
+			
 			player.getStorage(StorageType.CUBE.getId()).onLoadHandler(kinahItem);
 		}
 

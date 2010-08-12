@@ -95,7 +95,7 @@ public class CM_MANASTONE extends AionClientPacket
 				break;
 			case 3: // remove manastone
 				long price = player.getPrices().getPriceForService(500);
-				if (player.getInventory().getKinahItem().getItemCount() < price)
+				if (!ItemService.decreaseKinah(player, price))
 				{
 					PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.NOT_ENOUGH_KINAH(price));
 					return;
