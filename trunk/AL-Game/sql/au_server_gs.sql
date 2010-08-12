@@ -307,7 +307,7 @@ CREATE TABLE IF NOT EXISTS `legion_history` (
   `name` varchar(16) NOT NULL,
   PRIMARY KEY  (`id`),
   FOREIGN KEY (`legion_id`) REFERENCES `legions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- player_recipes
@@ -430,8 +430,8 @@ CREATE  TABLE IF NOT EXISTS `player_life_stats` (
   `hp` INT(11) NOT NULL DEFAULT 1 ,
   `mp` INT(11) NOT NULL DEFAULT 1 ,
   `fp` INT(11) NOT NULL DEFAULT 1 ,
-  PRIMARY KEY (`player_id`) )
-ENGINE = MyISAM DEFAULT CHARSET=UTF8;
+  PRIMARY KEY (`player_id`) 
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 -- ----------------------------
@@ -472,4 +472,4 @@ CREATE TABLE IF NOT EXISTS `tasks` (
   `delay` int(10) NOT NULL,
   `param` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
