@@ -71,6 +71,8 @@ public class Skill
 	private float y;
 	private float z;
 	
+	private int changeMpConsumptionValue;
+	
 	/**
 	 * Duration that depends on BOOST_CASTING_TIME
 	 */
@@ -168,6 +170,8 @@ public class Skill
 	{
 		if (!canUseSkill())
 			return;
+		
+		changeMpConsumptionValue = 0;
 		
 		effector.getObserveController().notifySkilluseObservers(this);
 		
@@ -432,6 +436,22 @@ public class Skill
 			else
 				player.getEffectController().removeEffectWithSetNumberReserved();
 		}
+	}
+	
+	/**
+	 * @param value is the changeMpConsumptionValue to set
+	 */
+	public void setChangeMpConsumption(int value)
+	{
+		changeMpConsumptionValue = value;
+	}
+	
+	/**
+	 * @return the changeMpConsumptionValue
+	 */
+	public int getChangeMpConsumption()
+	{
+		return changeMpConsumptionValue;
 	}
 	
 	/**
