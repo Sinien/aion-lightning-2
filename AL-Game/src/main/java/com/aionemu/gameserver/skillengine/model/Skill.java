@@ -144,12 +144,12 @@ public class Skill
 
 			if(effector instanceof Player)
 			{
-				if (!RestrictionsManager.canAffectBySkill((Player)effector, effected))
+				if ( (!RestrictionsManager.canAffectBySkill((Player)effector, effected)) && (skillTemplate.getSkillId() != 1968) )
 					effectedIter.remove();
 			}
 			else
 			{
-				if(effector.getEffectController().isAbnormalState(EffectId.CANT_ATTACK_STATE))					
+				if( (effector.getEffectController().isAbnormalState(EffectId.CANT_ATTACK_STATE)) && (skillTemplate.getSkillId() != 1968) )					
 					effectedIter.remove();
 			}
 		}

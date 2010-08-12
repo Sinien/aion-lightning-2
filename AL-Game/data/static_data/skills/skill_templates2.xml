@@ -313,4 +313,30 @@
             <changemp value="-50" percent="true" duration="15000" effectid="173" e="1" hoptype="SKILLLV" hopb="338"/>
         </effects>
     </skill_template>
+    <skill_template skill_id="1968" name="STR_SKILL_ALL_ShockReflect_G1" nameId="590013" stack="SKILL_ALL_SHOCKREFLECT" lvl="1" skilltype="MAGICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="600" duration="0" cancel_rate="20" chain_skill_prob="100">
+        <startconditions>
+            <mp value="81" delta="0"/>
+        </startconditions>
+        <setproperties>
+            <firsttarget value="ME"/>
+            <firsttargetrange value="1"/>
+            <targetrange value="ONLYONE"/>
+            <targetrelation value="FRIEND"/>
+        </setproperties>
+        <effects>
+			<dispel dispeltype="EFFECTID" e="1" element="FIRE" hoptype="SKILLLV" hopb="578">
+                <effectids>20000</effectids>
+				<effectids>20010</effectids>
+				<effectids>20011</effectids>
+				<effectids>20012</effectids>		
+				<effectids>20013</effectids>		
+            </dispel>
+			<statup duration="7000" effectid="119682" e="2">
+                <change stat="STUNLIKE_RESISTANCE" func="ADD" delta="0" value="1000"/>
+            </statup>
+        </effects>
+        <actions>
+            <mpuse value="81" delta="0"/>
+        </actions>
+    </skill_template>
 </skill_data>
