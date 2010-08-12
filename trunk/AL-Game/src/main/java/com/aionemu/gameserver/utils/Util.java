@@ -18,6 +18,8 @@ package com.aionemu.gameserver.utils;
 
 import java.nio.ByteBuffer;
 
+import javolution.text.TextBuilder;
+
 /**
  * @author -Nemesiss-
  * 
@@ -45,7 +47,7 @@ public class Util
 	 */
 	public static String toHex(ByteBuffer data)
 	{
-		StringBuilder result = new StringBuilder();
+		TextBuilder result = TextBuilder.newInstance();
 		int counter = 0;
 		int b;
 		while(data.hasRemaining())
@@ -73,7 +75,12 @@ public class Util
 			}
 			toText(data, result, rest);
 		}
-		return result.toString();
+		
+		String toString = result.toString();
+		
+		TextBuilder.recycle(result);
+		
+		return toString;
 	}
 
 	/**
@@ -89,7 +96,7 @@ public class Util
 	 * @param result
 	 * @param cnt
 	 */
-	private static void toText(ByteBuffer data, StringBuilder result, int cnt)
+	private static void toText(ByteBuffer data, TextBuilder result, int cnt)
 	{
 		int charPos = data.position() - cnt;
 		for(int a = 0; a < cnt; a++)

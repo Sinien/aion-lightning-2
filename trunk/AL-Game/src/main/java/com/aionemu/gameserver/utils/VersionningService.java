@@ -25,46 +25,46 @@ import com.aionemu.commons.versionning.Version;
 import com.aionemu.gameserver.GameServer;
 
 /**
- * @author lord_rex
- *    l2j-free versionning for Maven, thanks Noctarius
+ * @author lord_rex 
+ * 		l2j-free versionning for Maven, thanks Noctarius
  */
 public class VersionningService
 {
-	private static final Logger		log			= Logger.getLogger(VersionningService.class);
-	
-	private static final VersionInfo	commons		= new VersionInfo(AEInfos.class);
-	private static final VersionInfo	game		= new VersionInfo(GameServer.class);
-	
+	private static final Logger			log		= Logger.getLogger(VersionningService.class);
+
+	private static final VersionInfo	commons	= new VersionInfo(AEInfos.class);
+	private static final VersionInfo	game	= new VersionInfo(GameServer.class);
+
 	public static String getCommonsVersion()
 	{
 		return commons.getBuildVersion();
 	}
-	
+
 	public static String getGameVersion()
 	{
 		return game.getBuildVersion();
 	}
-	
+
 	public static String getCommonsRevision()
 	{
 		return commons.getBuildRevision();
 	}
-	
+
 	public static String getGameRevision()
 	{
 		return game.getBuildRevision();
 	}
-	
+
 	public static Date getCommonsDate()
 	{
 		return commons.getBuildDate();
 	}
-	
+
 	public static Date getGameDate()
 	{
 		return game.getBuildDate();
 	}
-	
+
 	private static final class VersionInfo extends Version
 	{
 		private final String	version;
@@ -74,23 +74,23 @@ public class VersionningService
 		public VersionInfo(Class<?> c)
 		{
 			super(c);
-			
+
 			this.version = String.format("%-6s", getVersion());
 			this.revision = String.format("%-6s", getRevision());
 			this.buildDate = new Date(getDate());
 		}
 
-		public String getBuildVersion() 
+		public String getBuildVersion()
 		{
 			return version;
 		}
 
-		public String getBuildRevision() 
+		public String getBuildRevision()
 		{
 			return revision;
 		}
-		
-		public Date getBuildDate() 
+
+		public Date getBuildDate()
 		{
 			return buildDate;
 		}
@@ -99,12 +99,12 @@ public class VersionningService
 	public static String[] getFullVersionInfo()
 	{
 		return new String[] { 
-			"Commons Version: " + getCommonsVersion(),
+			"Commons Version: " + getCommonsVersion(), 
 			"Commons Revision: " + getCommonsRevision(),
 			"Commons Build Date: " + getCommonsDate(), 
 			"GS Version: " + getGameVersion(),
-			"GS Revision: " + getGameRevision(),
-			"GS Build Date: " + getGameDate(),
+			"GS Revision: " + getGameRevision(), 
+			"GS Build Date: " + getGameDate()
 		};
 	}
 
