@@ -121,7 +121,7 @@ public final class ThreadPoolManager implements DisconnectionThreadPool
 		@Override
 		protected long getMaximumRuntimeInMillisecWithoutWarning()
 		{
-			return ThreadConfig.MAXIMUM_RUNTIME_IN_MILLISEC_WITHOUT_WARNING;
+			return MAXIMUM_RUNTIME_IN_MILLISEC_WITHOUT_WARNING;
 		}
 	}
 

@@ -46,9 +46,6 @@ public class GSConfig
 	@Property(key = "gameserver.mode", defaultValue = "1")
 	public static int		SERVER_MODE;
 	
-	@Property(key = "gameserver.motd.revision.display", defaultValue = "false")
-	public static boolean	SERVER_MOTD_DISPLAYREV;
-	
 	/**
 	 * Disable chat server connection
 	 */
