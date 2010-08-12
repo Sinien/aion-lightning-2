@@ -158,7 +158,7 @@ public class CraftSkillUpdateService
 			@Override
 			public void acceptRequest(Creature requester, Player responder)
 			{
-				if (responder.getInventory().decreaseKinah(price))
+				if (ItemService.decreaseKinah(responder, price))
 				{
 					responder.getSkillList().addSkill(responder, skillId, skillLevel+1, true);
 					responder.getRecipeList().autoLearnRecipe(responder, skillId, skillLevel+1);

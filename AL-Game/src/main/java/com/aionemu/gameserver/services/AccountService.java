@@ -161,7 +161,10 @@ public class AccountService
 		 * For new accounts - create empty account warehouse
 		 */
 		if(account.getAccountWarehouse() == null)
+		{
 			account.setAccountWarehouse(new Storage(StorageType.ACCOUNT_WAREHOUSE));
+			account.getAccountWarehouse().setOwnerId(account.getId());
+		}
 
 		return account;
 	}

@@ -565,7 +565,7 @@ public class DropService
 		DropNpc dropNpc = dropRegistrationMap.get(npcId);
 		
 		PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.STR_MSG_PAY_ACCOUNT_ME(highestValue));
-		player.getInventory().decreaseKinah(highestValue);
+		ItemService.decreaseKinah(player, highestValue);
 		
 		if(player.isInGroup())
 		{
@@ -575,7 +575,7 @@ public class DropService
 				{
 					PacketSendUtility.sendPacket(member, SM_SYSTEM_MESSAGE.STR_MSG_PAY_ACCOUNT_OTHER(player.getName(), highestValue));
 					long distributeKinah = highestValue / (dropNpc.getGroupSize() - 1);
-					member.getInventory().increaseKinah(distributeKinah);
+					ItemService.increaseKinah(member, distributeKinah);
 					PacketSendUtility.sendPacket(member, SM_SYSTEM_MESSAGE.STR_MSG_PAY_DISTRIBUTE(highestValue, dropNpc.getGroupSize() - 1, distributeKinah));
 				}
 			}

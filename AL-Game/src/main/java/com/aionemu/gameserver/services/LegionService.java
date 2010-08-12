@@ -572,8 +572,7 @@ public class LegionService
 			 */
 			Legion legion = new Legion(IDFactory.getInstance().nextId(), legionName);
 			legion.addLegionMember(activePlayer.getObjectId());
-			
-			activePlayer.getInventory().decreaseKinah(LegionConfig.LEGION_CREATE_REQUIRED_KINAH);
+			ItemService.decreaseKinah(activePlayer, LegionConfig.LEGION_CREATE_REQUIRED_KINAH);
 
 			/**
 			 * Create a LegionMember, add it to the legion and bind it to a Player
@@ -827,7 +826,7 @@ public class LegionService
 		if(legionRestrictions.canChangeLevel(activePlayer, kinahAmount))
 		{
 			Legion legion = activePlayer.getLegion();
-			activePlayer.getInventory().decreaseKinah(legion.getKinahPrice());
+			ItemService.decreaseKinah(activePlayer, legion.getKinahPrice());
 			changeLevel(legion, legion.getLegionLevel() + 1, false);
 			addHistory(legion, legion.getLegionLevel() + "", LegionHistoryType.LEVEL_UP);
 		}
@@ -946,8 +945,7 @@ public class LegionService
 				addHistory(legion, "", LegionHistoryType.EMBLEM_REGISTER);
 			else
 				addHistory(legion, "", LegionHistoryType.EMBLEM_MODIFIED);
-
-			activePlayer.getInventory().decreaseKinah(LegionConfig.LEGION_EMBLEM_REQUIRED_KINAH);
+			ItemService.decreaseKinah(activePlayer, LegionConfig.LEGION_EMBLEM_REQUIRED_KINAH);
 			legion.getLegionEmblem().setEmblem(emblemId, color_r, color_g, color_b);
 			updateMembersEmblem(legion);
 			PacketSendUtility.sendPacket(activePlayer, SM_SYSTEM_MESSAGE.LEGION_CHANGED_EMBLEM());

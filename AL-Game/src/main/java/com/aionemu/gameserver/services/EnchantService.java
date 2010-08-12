@@ -39,7 +39,6 @@ import com.aionemu.gameserver.model.templates.item.ArmorType;
 import com.aionemu.gameserver.model.templates.item.ItemQuality;
 import com.aionemu.gameserver.model.templates.item.ItemTemplate;
 import com.aionemu.gameserver.model.templates.item.WeaponType;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_DELETE_ITEM;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_STATS_INFO;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_UPDATE_ITEM;
@@ -94,7 +93,6 @@ public class EnchantService
 		int enchantItemId = 166000000 + enchantItemLevel;
 
 		inventory.removeFromBag(targetItem, true);
-		PacketSendUtility.sendPacket(player, new SM_DELETE_ITEM(targetItem.getObjectId()));
 
 		inventory.removeFromBagByObjectId(parentItem.getObjectId(), 1);
 

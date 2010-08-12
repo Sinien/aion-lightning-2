@@ -322,7 +322,7 @@ public class ExchangeService
 				PacketSendUtility.sendPacket(player, new SM_DELETE_ITEM(itemInInventory.getObjectId()));
 			}			
 		}
-		player.getInventory().decreaseKinah(exchange.getKinahCount());
+		ItemService.decreaseKinah(player, exchange.getKinahCount());
 	}
 
 	/**
@@ -363,7 +363,7 @@ public class ExchangeService
 		long kinahToExchange = exchange1.getKinahCount();
 		if(kinahToExchange > 0)
 		{
-			player.getInventory().increaseKinah(exchange1.getKinahCount());
+			ItemService.increaseKinah(player, kinahToExchange);
 		}	
 	}
 

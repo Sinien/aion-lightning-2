@@ -151,7 +151,7 @@ public class _1071SpeakingBalaur extends QuestHandler
 					return false;
 
 				case 10010:
-					if(var == 1 && player.getInventory().decreaseKinah(20000))
+					if(var == 1 && ItemService.decreaseKinah(player, 20000))
 					{
 						ItemService.addItems(player, Collections.singletonList(new QuestItems(182202001, 1)));
 						qs.setQuestVar(7);
@@ -159,8 +159,8 @@ public class _1071SpeakingBalaur extends QuestHandler
 						PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
 						return true;
 					}
-						else
-							return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1355);
+					else
+						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1355);
 				case 10011:
 					if(var == 1)
 					{

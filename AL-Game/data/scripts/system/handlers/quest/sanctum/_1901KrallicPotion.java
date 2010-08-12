@@ -104,7 +104,7 @@ public class _1901KrallicPotion extends QuestHandler
 									else if(var == 5)
 										return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 3057);
 								case 1438:
-									if(player.getInventory().decreaseKinah(10000))
+									if(ItemService.decreaseKinah(player, 10000))
 									{
 										qs.setQuestVarById(0, var + 1);
 										updateQuestStatus(player, qs);

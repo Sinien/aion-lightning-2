@@ -25,7 +25,6 @@ import com.aionemu.gameserver.model.PlayerClass;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.templates.item.ItemTemplate;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_DELETE_ITEM;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ITEM_USAGE_ANIMATION;
 import com.aionemu.gameserver.skillengine.model.learn.SkillClass;
 import com.aionemu.gameserver.skillengine.model.learn.SkillRace;
@@ -67,7 +66,6 @@ public class SkillLearnAction extends AbstractItemAction
 		//remove book from inventory (assuming its not stackable)
 		Item item = player.getInventory().getItemByObjId(parentItem.getObjectId());
 		player.getInventory().removeFromBag(item, true);
-		PacketSendUtility.sendPacket(player, new SM_DELETE_ITEM(parentItem.getObjectId()));	
 	}
 
 	private boolean validateConditions(Player player)

@@ -27,6 +27,7 @@ import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.PersistentState;
 import com.aionemu.gameserver.model.items.ItemStorage;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_DELETE_ITEM;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_DELETE_WAREHOUSE_ITEM;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_UPDATE_ITEM;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_UPDATE_WAREHOUSE_ITEM;
 import com.aionemu.gameserver.utils.PacketSendUtility;
@@ -143,12 +144,6 @@ public class Storage
 	public void increaseKinah(long amount)
 	{
 		kinahItem.increaseItemCount(amount);
-
-		if(storageType == StorageType.CUBE.getId())
-			PacketSendUtility.sendPacket(getOwner(), new SM_UPDATE_ITEM(kinahItem));
-
-		if (storageType == StorageType.ACCOUNT_WAREHOUSE.getId())
-			PacketSendUtility.sendPacket(getOwner(), new SM_UPDATE_WAREHOUSE_ITEM(kinahItem, storageType));
 		setPersistentState(PersistentState.UPDATE_REQUIRED);
 	}
 	/**
@@ -159,14 +154,6 @@ public class Storage
 	public boolean decreaseKinah(long amount)
 	{
 		boolean operationResult = kinahItem.decreaseItemCount(amount);
-		if(operationResult)
-		{
-			if(storageType == StorageType.CUBE.getId())
-				PacketSendUtility.sendPacket(getOwner(), new SM_UPDATE_ITEM(kinahItem));
-
-			if (storageType == StorageType.ACCOUNT_WAREHOUSE.getId())
-				PacketSendUtility.sendPacket(getOwner(), new SM_UPDATE_WAREHOUSE_ITEM(kinahItem, storageType));
-		}
 		setPersistentState(PersistentState.UPDATE_REQUIRED);
 		return operationResult;
 	}
@@ -230,9 +217,10 @@ public class Storage
 		if(operationResult && persist)
 		{
 			item.setPersistentState(PersistentState.DELETED);
+			sendDeleteItemPacket(item.getOwnerId());
 			deletedItems.add(item);
 			setPersistentState(PersistentState.UPDATE_REQUIRED);
-		}		
+		}
 	}
 
 
@@ -332,11 +320,11 @@ public class Storage
 		if(item.getItemCount() == 0)
 		{
 			storage.removeItemFromStorage(item);
-			PacketSendUtility.sendPacket(getOwner(), new SM_DELETE_ITEM(item.getObjectId()));
+			sendDeleteItemPacket(item.getObjectId());
 			deletedItems.add(item);
 		}
 		else
-			PacketSendUtility.sendPacket(getOwner(), new SM_UPDATE_ITEM(item));
+			sendUpdateItemPacket (item);
 		
 		setPersistentState(PersistentState.UPDATE_REQUIRED);
 		return count;
@@ -490,9 +478,25 @@ public class Storage
 	public void increaseItemCount(Item item, long count)
 	{
 		item.increaseItemCount(count);
+		sendUpdateItemPacket (item);
 		setPersistentState(PersistentState.UPDATE_REQUIRED);
 	}
 	
+	private void sendUpdateItemPacket (Item item)
+	{
+		if(storageType == StorageType.CUBE.getId())
+			PacketSendUtility.sendPacket(getOwner(), new SM_UPDATE_ITEM(item));
+		else
+			PacketSendUtility.sendPacket(getOwner(), new SM_UPDATE_WAREHOUSE_ITEM(item, storageType));
+	}
+
+	private void sendDeleteItemPacket(int itemObjId)
+	{
+		if(storageType == StorageType.CUBE.getId())
+			PacketSendUtility.sendPacket(getOwner(), new SM_DELETE_ITEM(itemObjId));
+		else
+			PacketSendUtility.sendPacket(getOwner(), new SM_DELETE_WAREHOUSE_ITEM(storageType, itemObjId));
+	}
 	/**
 	 *  Size of underlying storage
 	 *  

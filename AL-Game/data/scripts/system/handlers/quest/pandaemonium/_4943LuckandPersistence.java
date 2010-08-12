@@ -24,7 +24,6 @@ import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.templates.quest.QuestItems;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_DIALOG_WINDOW;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_UPDATE_ITEM;
 import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
@@ -151,11 +150,8 @@ public class _4943LuckandPersistence extends QuestHandler
 							// Get HACTION_SETPRO2 in the eddit-HyperLinks.xml
 							case 1354:
 								PacketSendUtility.sendMessage(player, String.valueOf(player.getInventory().getKinahItem().getItemCount()));
-								if(player.getInventory().getKinahItem().getItemCount() >= 3400000)
+								if(ItemService.decreaseKinah(player, 3400000))
 								{
-									player.getInventory().decreaseKinah(3400000);
-									PacketSendUtility.sendPacket(player, new SM_UPDATE_ITEM(player.getInventory().getKinahItem()));
-									
 									if(player.getInventory().getItemCountByItemId(182207123) == 0)
 									{
 										if(!ItemService.addItems(player, Collections.singletonList(new QuestItems(182207123, 1))))

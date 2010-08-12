@@ -25,7 +25,6 @@ import com.aionemu.gameserver.model.Race;
 import com.aionemu.gameserver.model.gameobjects.Kisk;
 import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
-import com.aionemu.gameserver.model.gameobjects.player.Storage;
 import com.aionemu.gameserver.model.gameobjects.state.CreatureState;
 import com.aionemu.gameserver.model.templates.BindPointTemplate;
 import com.aionemu.gameserver.model.templates.portal.ExitPoint;
@@ -175,15 +174,12 @@ public class TeleportService
 	 */
 	private static boolean checkKinahForTransportation(TeleportLocation location, Player player)
 	{
-		Storage inventory = player.getInventory();
-		
-		
 		// Possibly 20% cheaper flight costs due to 1.9 patch (?)
 		int basePrice = (int)(location.getPrice() * 0.8F);
 		
 		long transportationPrice = player.getPrices().getPriceForService(basePrice);
 
-		if(!inventory.decreaseKinah(transportationPrice))
+		if(!ItemService.decreaseKinah(player, transportationPrice))
 		{
 			PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.NOT_ENOUGH_KINAH(transportationPrice));
 			return false;

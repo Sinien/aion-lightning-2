@@ -54,6 +54,7 @@ import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.restrictions.RestrictionsManager;
 import com.aionemu.gameserver.services.CraftSkillUpdateService;
 import com.aionemu.gameserver.services.CubeExpandService;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.services.LegionService;
 import com.aionemu.gameserver.services.RespawnService;
 import com.aionemu.gameserver.services.TeleportService;
@@ -280,12 +281,11 @@ public class NpcController extends CreatureController<Npc>
 					@Override
 					public void acceptRequest(Creature requester, Player responder)
 					{
-						if(player.getInventory().getKinahItem().getItemCount() >= price)
+						if(ItemService.decreaseKinah(player, price))
 						{
 							PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.EXP(String.valueOf(expLost)));
 							PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.SOUL_HEALED());
 							player.getCommonData().resetRecoverableExp();
-							player.getInventory().decreaseKinah(price);
 						}
 						else
 						{

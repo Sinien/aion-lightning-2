@@ -328,7 +328,7 @@ public class BrokerService
 			getPlayerCache(player).setBrokerListCache(newCache);
 		}
 
-		player.getInventory().decreaseKinah(price);
+		ItemService.decreaseKinah(player, price);
 		Item boughtItem = player.getInventory().putToBag(item);
 
 		// create save task
@@ -417,8 +417,7 @@ public class BrokerService
 			return;
 		}
 
-		player.getInventory().decreaseKinah(registrationCommition);
-
+		ItemService.decreaseKinah(player, registrationCommition);
 		player.getInventory().removeFromBag(itemToRegister, false);
 		PacketSendUtility.sendPacket(player, new SM_DELETE_ITEM(itemToRegister.getObjectId()));
 
@@ -587,8 +586,7 @@ public class BrokerService
 			}
 		}
 
-		player.getInventory().increaseKinah(kinahCollect);
-
+		ItemService.increaseKinah(player, kinahCollect);
 		showSettledItems(player);
 
 		if(!itemsLeft)

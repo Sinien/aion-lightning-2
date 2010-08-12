@@ -34,7 +34,6 @@ import com.aionemu.gameserver.model.gameobjects.VisibleObject;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.player.PlayerCommonData;
 import com.aionemu.gameserver.model.gameobjects.player.SkillListEntry;
-import com.aionemu.gameserver.model.gameobjects.player.Storage;
 import com.aionemu.gameserver.model.templates.QuestTemplate;
 import com.aionemu.gameserver.model.templates.quest.CollectItem;
 import com.aionemu.gameserver.model.templates.quest.CollectItems;
@@ -75,7 +74,6 @@ public final class QuestService
 		if(qs == null || qs.getStatus() != QuestStatus.REWARD)
 			return false;
 		QuestTemplate	template = questsData.getQuestById(id);
-		Storage inventory = player.getInventory();
 		Rewards rewards = template.getRewards().get(reward);
 		List<QuestItems> questItems = new ArrayList<QuestItems>();
 		questItems.addAll(rewards.getRewardItem());
@@ -128,7 +126,7 @@ public final class QuestService
 		{
 			if(rewards.getGold() != null)
 			{
-				inventory.increaseKinah((player.getRates().getQuestKinahRate() * rewards.getGold()));
+				ItemService.increaseKinah(player, player.getRates().getQuestKinahRate() * rewards.getGold());
 			}
 			if(rewards.getExp() != null)
 			{

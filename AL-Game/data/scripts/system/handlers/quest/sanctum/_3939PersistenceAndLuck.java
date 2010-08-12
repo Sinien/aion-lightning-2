@@ -23,6 +23,7 @@ import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
 import com.aionemu.gameserver.questEngine.model.QuestStatus;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 
 /**
@@ -140,7 +141,7 @@ public class _3939PersistenceAndLuck extends QuestHandler
 								return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1352);
 							// Get HACTION_SETPRO2 in the eddit-HyperLinks.xml
 							case 10001:
-								if(player.getInventory().decreaseKinah(3400000))
+								if(ItemService.decreaseKinah(player, 3400000))
 								{
 									qs.setQuestVarById(0, var + 1);
 									updateQuestStatus(player, qs);
