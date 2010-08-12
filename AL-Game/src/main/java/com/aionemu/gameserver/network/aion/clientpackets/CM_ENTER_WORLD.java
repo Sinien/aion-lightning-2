@@ -263,7 +263,7 @@ public class CM_ENTER_WORLD extends AionClientPacket
 	{
 		return new String[] {
 				"Welcome to " + GSConfig.SERVER_NAME + ", powered by Aion Lightning revision " + VersionningService.getGameRevision(),
-				"This software is under GPL. See our website for more info: http://www.aionlightning.com",
+				"This software is under GPL. See our website for more info: http://www.aion-lightning.com",
 				"And remember, our source is based on Aion Unique."
 		};
 	}
