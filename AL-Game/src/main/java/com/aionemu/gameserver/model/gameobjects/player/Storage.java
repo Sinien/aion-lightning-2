@@ -217,7 +217,7 @@ public class Storage
 		if(operationResult && persist)
 		{
 			item.setPersistentState(PersistentState.DELETED);
-			sendDeleteItemPacket(item.getOwnerId());
+			sendDeleteItemPacket(item.getObjectId());
 			deletedItems.add(item);
 			setPersistentState(PersistentState.UPDATE_REQUIRED);
 		}
