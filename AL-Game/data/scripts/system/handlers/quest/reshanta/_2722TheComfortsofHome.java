@@ -1,4 +1,4 @@
-package quest.pandaemonium;
+package quest.reshanta;
 
 import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
