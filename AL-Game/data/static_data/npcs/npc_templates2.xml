@@ -3,4 +3,93 @@
 	<npc_template hpgauge="3" tribe="GENERAL" srange="20" rank="NORMAL" npc_type="NON_ATTACKABLE" height="1.0" name="teleport statue" name_id="350737" level="3" npc_id="730264">
         <stats power="11" accuracy="11" maxXp="104" mdef="11" pdef="11" crit="11" run_speed_fight="0.0" magic_accuracy="11" parry="11" block="100" evasion="11" fly_speed="0.0" run_speed="0.0" walk_speed="0.0" maxHp="121"/>
     </npc_template>
+	<npc_template npc_id="203901" level="45" name="telemachus" name_id="351700" npc_type="NON_ATTACKABLE" height="0.85" title_id="350503" rank="LEGENDARY" race="ELYOS" tribe="GUARD" srange="20" arange="2" arank="1000" hpgauge="27" state="6">
+		<stats maxMp="2057919" maxHp="6859729" maxXp="440709" block="139" parry="139" mdef="139" pdef="139" crit="139" power="139" evasion="139" accuracy="139" magic_accuracy="139" walk_speed="1.5" run_speed="6.0" run_speed_fight="7.0" fly_speed="0.0"/>
+		<equipment>
+			<item>114600312</item>
+			<item>111600321</item>
+			<item>113600313</item>
+			<item>100000046</item>
+			<item>112600306</item>
+			<item>110600341</item>
+		</equipment>
+	</npc_template>
+	<npc_template npc_id="203927" level="45" name="adelphie" name_id="351726" npc_type="NON_ATTACKABLE" height="1.0" title_id="350440" rank="NORMAL" race="ELYOS" tribe="GENERAL" srange="10" arange="2" arank="1000" hpgauge="3" state="85">
+		<stats maxMp="3564" maxHp="11878" maxXp="27751" block="77" parry="77" mdef="77" pdef="77" crit="77" power="77" evasion="77" accuracy="77" magic_accuracy="77" walk_speed="1.5" run_speed="6.0" run_speed_fight="7.0" fly_speed="0.0"/>
+		<equipment>
+			<item>114100294</item>
+			<item>111100277</item>
+			<item>113100276</item>
+			<item>112100256</item>
+			<item>110100294</item>
+		</equipment>
+	</npc_template>
+		<npc_template npc_id="203941" level="45" name="paion" name_id="351740" npc_type="NON_ATTACKABLE" height="1.2" rank="ELITE" race="ELYOS" tribe="GUARD" srange="15" arange="2" arank="1000" hpgauge="14" state="70">
+		<stats maxMp="38277" maxHp="127590" maxXp="44466" block="93" parry="93" mdef="93" pdef="93" crit="93" power="93" evasion="93" accuracy="93" magic_accuracy="93" walk_speed="1.5" run_speed="6.0" run_speed_fight="8.0" fly_speed="0.0"/>
+		<equipment>
+			<item>114500320</item>
+			<item>111500316</item>
+			<item>125000638</item>
+			<item>113500308</item>
+			<item>100000385</item>
+			<item>112500300</item>
+			<item>110500325</item>
+		</equipment>
+	</npc_template>
+	<npc_template npc_id="203943" level="45" name="turiel" name_id="351742" npc_type="NON_ATTACKABLE" height="1.0" rank="NORMAL" race="ELYOS" tribe="GENERAL" srange="10" arange="2" arank="1000" hpgauge="3" state="70">
+		<stats maxMp="3564" maxHp="11878" maxXp="27751" block="77" parry="77" mdef="77" pdef="77" crit="77" power="77" evasion="77" accuracy="77" magic_accuracy="77" walk_speed="1.5" run_speed="6.0" run_speed_fight="4.2" fly_speed="0.0"/>
+		<equipment>
+			<item>114100294</item>
+			<item>111100277</item>
+			<item>113100276</item>
+			<item>100000385</item>
+			<item>112100256</item>
+			<item>110100294</item>
+		</equipment>
+	</npc_template>
+	<npc_template npc_id="203961" level="45" name="nikias" name_id="351760" npc_type="NON_ATTACKABLE" height="1.0" title_id="350430" rank="NORMAL" race="ELYOS" tribe="GENERAL" srange="10" arange="2" arank="1000" hpgauge="3" state="6">
+		<stats maxMp="3564" maxHp="11878" maxXp="27751" block="77" parry="77" mdef="77" pdef="77" crit="77" power="77" evasion="77" accuracy="77" magic_accuracy="77" walk_speed="1.5" run_speed="6.0" run_speed_fight="4.2" fly_speed="0.0"/>
+		<equipment>
+			<item>114100294</item>
+			<item>111100277</item>
+			<item>113100276</item>
+			<item>112100256</item>
+			<item>110100294</item>
+		</equipment>
+	</npc_template>
+	<npc_template npc_id="203995" level="45" name="hylas" name_id="351784" npc_type="NON_ATTACKABLE" height="1.2" rank="ELITE" race="ELYOS" tribe="GUARD" srange="15" arange="2" arank="1000" hpgauge="14" state="85">
+		<stats maxMp="34798" maxHp="115991" maxXp="45329" block="93" parry="93" mdef="93" pdef="93" crit="93" power="93" evasion="93" accuracy="93" magic_accuracy="93" walk_speed="1.5" run_speed="6.0" run_speed_fight="8.0" fly_speed="0.0"/>
+		<equipment>
+			<item>114500320</item>
+			<item>111500316</item>
+			<item>125000638</item>
+			<item>113500308</item>
+			<item>100000065</item>
+			<item>112500300</item>
+			<item>110500325</item>
+		</equipment>
+	</npc_template>
+	<npc_template npc_id="204006" level="43" name="demokritos" name_id="351794" npc_type="NON_ATTACKABLE" height="1.2" rank="ELITE" race="ELYOS" tribe="GUARD" srange="10" arange="4" arank="1000" hpgauge="14" state="85">
+		<stats maxMp="27050" maxHp="90164" maxXp="40601" block="89" parry="89" mdef="89" pdef="89" crit="89" power="89" evasion="89" accuracy="89" magic_accuracy="89" walk_speed="1.5" run_speed="6.0" run_speed_fight="8.0" fly_speed="0.0"/>
+		<equipment>
+			<item>114300302</item>
+			<item>111300276</item>
+			<item>113300288</item>
+			<item>100200092</item>
+			<item>112300259</item>
+			<item>100200092</item>
+			<item>110300301</item>
+		</equipment>
+	</npc_template>
+	<npc_template npc_id="204014" level="45" name="ophelia" name_id="351802" npc_type="NON_ATTACKABLE" height="1.0" rank="NORMAL" race="ELYOS" tribe="GENERAL" srange="10" arange="2" arank="1000" hpgauge="3" state="70">
+		<stats maxMp="3564" maxHp="11878" maxXp="27751" block="77" parry="77" mdef="77" pdef="77" crit="77" power="77" evasion="77" accuracy="77" magic_accuracy="77" walk_speed="1.5" run_speed="6.0" run_speed_fight="4.2" fly_speed="0.0"/>
+		<equipment>
+			<item>114100294</item>
+			<item>111100277</item>
+			<item>113100276</item>
+			<item>100000385</item>
+			<item>112100256</item>
+			<item>110100294</item>
+		</equipment>
+	</npc_template>
 </npc_templates>
