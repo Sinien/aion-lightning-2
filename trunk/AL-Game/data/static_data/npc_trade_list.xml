@@ -1998,4 +1998,55 @@
     <tradelist_template npc_id="278012" name="lawusan" count="1">
         <tradelist id="365"/>
     </tradelist_template>
+	<!-- Abyss2 -->
+	<tradelist_template npc_id="278021" name="Bihugud" count="1">
+		<tradelist id="289"/>
+	</tradelist_template>
+	<tradelist_template npc_id="278007" name="siana" count="2">
+		<tradelist id="371"/>
+		<tradelist id="239"/>
+	</tradelist_template>
+	<tradelist_template npc_id="278008" name="koag" count="1">
+		<tradelist id="373"/>
+	</tradelist_template>
+	<!-- Abyss1 -->
+	<tradelist_template npc_id="278507" name="Denegos" count="2">
+		<tradelist id="397"/>
+		<tradelist id="239"/>
+	</tradelist_template>
+	<tradelist_template npc_id="278521" name="Tenoeril" count="1">
+		<tradelist id="289"/>
+	</tradelist_template>
+	<tradelist_template npc_id="278508" name="Zeth" count="2">
+		<tradelist id="155"/>
+		<tradelist id="705"/>
+	</tradelist_template>
+	<tradelist_template npc_id="278021" name="bihugud" count="1">
+		<tradelist id="372"/>
+	</tradelist_template>
+	<tradelist_template npc_id="278507" name="denegos" count="2">
+		<tradelist id="235"/>
+		<tradelist id="239"/>
+	</tradelist_template>
+	<tradelist_template npc_id="278508" name="zeth" count="1">
+		<tradelist id="234"/>
+	</tradelist_template>
+	<tradelist_template npc_id="278510" name="lucius" count="4">
+		<tradelist id="223"/>
+		<tradelist id="224"/>
+		<tradelist id="225"/>
+		<tradelist id="226"/>
+	</tradelist_template>
+	<tradelist_template npc_id="278511" name="minon" count="4">
+		<tradelist id="228"/>
+		<tradelist id="229"/>
+		<tradelist id="230"/>
+		<tradelist id="231"/>
+	</tradelist_template>
+	<tradelist_template npc_id="278512" name="flavius" count="4">
+		<tradelist id="227"/>
+	</tradelist_template>
+	<tradelist_template npc_id="278521" name="tenoeril" count="1">
+		<tradelist id="233"/>
+	</tradelist_template>
 </npc_trade_list>
