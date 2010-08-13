@@ -904,6 +904,10 @@
 	<spawn map="300040000" npcid="215280" pool="1" interval="14400">
 		<object x="1188.1594" y="1241.2809" z="142.61472" h="34"/>
 	</spawn>
+	<!-- Tahabata Gate -->
+    <spawn map="300040000" npcid="730211" pool="1" interval="295">
+        <object fly="0" staticid="0" x="293.13666" y="317.69165" z="132.23502" h="54"/>
+    </spawn>
 	<!-- Telepathy Controller (Monster Hero lvl:50)-->
 	<spawn map="300040000" npcid="214894" pool="1" interval="14400">
 		<object x="237.59645" y="420.79126" z="103.80612" h="24"/>
