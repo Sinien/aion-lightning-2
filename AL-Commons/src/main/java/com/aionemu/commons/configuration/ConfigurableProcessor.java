@@ -219,11 +219,8 @@ public class ConfigurableProcessor
 		if(value == null)
 		{
 			value = defaultValue;
-			if(log.isDebugEnabled())
-			{
-				log.debug("Using default value for field " + field.getName() + " of class "
+			log.warn("Using default value for field " + field.getName() + " of class "
 					+ field.getDeclaringClass().getName());
-			}
 		}
 
 		PropertyTransformer pt = PropertyTransformerFactory.newTransformer(field.getType(), property
