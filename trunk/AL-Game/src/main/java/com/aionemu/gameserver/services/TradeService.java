@@ -92,7 +92,7 @@ public class TradeService
 				return false;
 			}
 		}
-		inventory.decreaseKinah(tradeListPrice);
+		ItemService.decreaseKinah(player, tradeListPrice);
 		// TODO message
 		return true;
 	}
