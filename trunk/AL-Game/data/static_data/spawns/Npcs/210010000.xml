@@ -45,7 +45,7 @@
 	</spawn>
 	<!-- Baevrunerk (NPC Normal lvl:9)-->
 	<spawn map="210010000" npcid="798008" pool="1" interval="295">
-		<object x="839.7195" y="1257.1952" z="118.875" h="110"/>
+		<object x="839.7195" y="1257.1952" z="118.875" h="97"/>
 	</spawn>
 	<!-- Ben (NPC Normal lvl:10)-->
 	<spawn map="210010000" npcid="203073" pool="1" interval="295">
@@ -199,7 +199,7 @@
 	</spawn>
 	<!-- Minalinerk (NPC Normal lvl:9)-->
 	<spawn map="210010000" npcid="798007" pool="1" interval="295">
-		<object x="851.6706" y="1252.6691" z="118.83318" h="90"/>
+		<object x="851.6706" y="1252.6691" z="118.83318" h="80"/>
 	</spawn>
 	<!-- Mires (NPC Normal lvl:20)-->
 	<spawn map="210010000" npcid="203057" pool="1" interval="295">
