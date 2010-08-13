@@ -154,7 +154,7 @@
 	</portal>
 	<!-- Tahabata Abyss Gate -->
 	<portal npcid="730211" instance="true" minlevel="50" maxlevel="55" group="true">
-		<entrypoint mapid="300040000" x="1179" y="1223" z="145"/>
+		<entrypoint mapid="300040000" x="293.13666" y="317.69165" z="132.23502"/>
 		<exitpoint mapid="300040000" x="1188.80707" y="1241.4151" z="143.85065"/>
 	</portal>
 	<!-- QUEST PORTALS -->
