@@ -181,7 +181,6 @@ public class Storage
 		{
 			storage.putToNextAvailableSlot(item);
 		}
-		item.setOwnerId(ownerId);
 	}
 
 	/**
