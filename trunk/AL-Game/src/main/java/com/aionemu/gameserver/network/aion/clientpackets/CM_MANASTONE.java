@@ -102,7 +102,7 @@ public class CM_MANASTONE extends AionClientPacket
 				}
 				if(npc != null)
 				{
-					player.getInventory().decreaseKinah(price);
+					ItemService.decreaseKinah(player, price);
 					ItemService.removeManastone(player, targetItemUniqueId, slotNum);
 				}
 		}

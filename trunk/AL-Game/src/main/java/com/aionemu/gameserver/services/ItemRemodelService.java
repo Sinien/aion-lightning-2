@@ -132,7 +132,7 @@ public class ItemRemodelService
 		// -- SUCCESS --
 		
 		// Remove Money
-		player.getInventory().decreaseKinah(remodelCost);
+		ItemService.decreaseKinah(player, remodelCost);
 		
 		// Remove Item
 		player.getInventory().decreaseItemCount(extractItem, 1);
