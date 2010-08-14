@@ -243,7 +243,7 @@ public class MailService
 		int finalMailCommission = 10 + kinahMailCommission + itemMailCommission;
 		
 		if (senderInventory.getKinahItem().getItemCount() > finalMailCommission)
-			senderInventory.decreaseKinah(finalMailCommission);
+			ItemService.decreaseKinah(sender, finalMailCommission);
 		else
 		{
 			log.warn("[AUDIT]Mail kinah exploit: " + sender.getObjectId());

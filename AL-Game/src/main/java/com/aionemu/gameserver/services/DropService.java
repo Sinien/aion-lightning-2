@@ -589,7 +589,7 @@ public class DropService
 				{
 					PacketSendUtility.sendPacket(member, SM_SYSTEM_MESSAGE.STR_MSG_PAY_ACCOUNT_OTHER(player.getName(), highestValue));
 					long distributeKinah = highestValue / (dropNpc.getGroupSize() - 1);
-					member.getInventory().increaseKinah(distributeKinah);
+					ItemService.increaseKinah(member, distributeKinah);
 					PacketSendUtility.sendPacket(member, SM_SYSTEM_MESSAGE.STR_MSG_PAY_DISTRIBUTE(highestValue, dropNpc.getGroupSize() - 1, distributeKinah));
 				}
 			}
