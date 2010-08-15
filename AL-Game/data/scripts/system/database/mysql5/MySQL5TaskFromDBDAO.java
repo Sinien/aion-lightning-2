@@ -1,4 +1,4 @@
-/**
+/*
  * This file is part of aion-unique <aion-unique.org>.
  *
  * aion-unique is free software: you can redistribute it and/or modify
@@ -15,7 +15,6 @@
  * along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
  */
 package mysql5;
-
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -49,9 +48,6 @@ public class MySQL5TaskFromDBDAO extends TaskFromDBDAO
 	private static final String SELECT_ALL_QUERY	= "SELECT * FROM tasks ORDER BY id";
 	private static final String UPDATE_QUERY		= "UPDATE tasks SET last_activation = ? WHERE id = ?";
 	
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public ArrayList<TaskFromDB> getAllTasks()
 	{
@@ -64,12 +60,20 @@ public class MySQL5TaskFromDBDAO extends TaskFromDBDAO
 			con = DatabaseFactory.getConnection();
 			PreparedStatement stmt = con.prepareStatement(SELECT_ALL_QUERY);
 			
-			ResultSet resultSet = stmt.executeQuery();
+			ResultSet rset = stmt.executeQuery();
 			
-			while(resultSet.next())
-				result.add(new TaskFromDB(resultSet.getInt("id"), resultSet.getString("task"), resultSet.getString("type"), resultSet.getTimestamp("last_activation"), resultSet.getString("startTime"), resultSet.getInt("delay"), resultSet.getString("param")));
+			while(rset.next())
+				result.add(new TaskFromDB(
+					rset.getInt("id"), 
+					rset.getString("task"), 
+					rset.getString("type"), 
+					rset.getTimestamp("last_activation"), 
+					rset.getString("startTime"), 
+					rset.getInt("delay"), 
+					rset.getString("param")
+				));
 
-			resultSet.close();
+			rset.close();
 			stmt.close();
 		}
 		catch(SQLException e)
@@ -81,12 +85,9 @@ public class MySQL5TaskFromDBDAO extends TaskFromDBDAO
 			DatabaseFactory.close(con);
 		}
 				
-			return result;
-		}
+		return result;
+	}
 	
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public void setLastActivation(final int id)
 	{
@@ -111,9 +112,6 @@ public class MySQL5TaskFromDBDAO extends TaskFromDBDAO
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public boolean supports(String s, int i, int i1)
 	{

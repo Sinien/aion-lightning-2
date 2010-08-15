@@ -367,6 +367,7 @@ public final class RestrictionsManager
 		
 		return true;
 	}
+	
 	/**
 	 * Check whether player can use an item
 	 * @param player

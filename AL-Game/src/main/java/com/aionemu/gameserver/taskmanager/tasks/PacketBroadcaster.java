@@ -71,7 +71,6 @@ public final class PacketBroadcaster extends AbstractFIFOPeriodicTaskManager<Cre
 				((Player) creature).getController().updateNearbyQuestListImpl();
 			}
 		},
-		
 		UPDATE_PLAYER_FLY_TIME {
 			@Override
 			public void sendPacket(Creature creature)
@@ -79,7 +78,6 @@ public final class PacketBroadcaster extends AbstractFIFOPeriodicTaskManager<Cre
 				((Player) creature).getLifeStats().sendFpPacketUpdateImpl();
 			}
 		},
-
 		BROAD_CAST_EFFECTS {
 			@Override
 			public void sendPacket(Creature creature)
@@ -87,9 +85,7 @@ public final class PacketBroadcaster extends AbstractFIFOPeriodicTaskManager<Cre
 				creature.getEffectController().broadCastEffectsImp();
 			}
 		};
-
-		// TODO: more packets
-		
+		// TODO: more packets		
 
 		private final byte	MASK;
 

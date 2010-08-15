@@ -33,7 +33,6 @@ import com.aionemu.gameserver.world.World;
  */
 public class StaticObjectSpawnManager
 {
-
 	/**
 	 * 
 	 * @param spawnGroup
@@ -42,6 +41,7 @@ public class StaticObjectSpawnManager
 	public static void spawnGroup(SpawnGroup spawnGroup, int instanceIndex)
 	{
 		VisibleObjectTemplate objectTemplate = DataManager.ITEM_DATA.getItemTemplate(spawnGroup.getNpcid());
+		
 		if(objectTemplate == null)
 			return;
 		
