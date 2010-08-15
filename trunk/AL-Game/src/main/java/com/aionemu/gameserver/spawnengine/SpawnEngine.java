@@ -75,7 +75,6 @@ public class SpawnEngine
 	/** Counter counting number of gatherable spawns */
 	private int							gatherableCounter	= 0;
 
-	
 	public static final SpawnEngine getInstance()
 	{
 		return SingletonHolder.instance;
@@ -94,7 +93,6 @@ public class SpawnEngine
 	 */
 	public VisibleObject spawnObject(SpawnTemplate spawn, int instanceIndex)
 	{
-		
 		VisibleObjectTemplate template = null;
 		int objectId = spawn.getSpawnGroup().getNpcid();
 		NpcData	npcData = DataManager.NPC_DATA;
@@ -393,7 +391,6 @@ public class SpawnEngine
 	 */
 	public void spawnInstance(int worldId, int instanceIndex)
 	{
-
 		List<SpawnGroup> worldSpawns = DataManager.SPAWNS_DATA.getSpawnsForWorld(worldId);
 
 		if(worldSpawns == null || worldSpawns.size() == 0)

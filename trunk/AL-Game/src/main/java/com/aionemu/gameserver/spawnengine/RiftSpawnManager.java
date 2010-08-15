@@ -45,7 +45,6 @@ import com.aionemu.gameserver.world.World;
  */
 public class RiftSpawnManager
 {
-	
 	private static final Logger log = Logger.getLogger(RiftSpawnManager.class);
 	
 	private static final ConcurrentLinkedQueue<Npc> rifts = new ConcurrentLinkedQueue<Npc>();
@@ -61,9 +60,6 @@ public class RiftSpawnManager
 		spawnGroups.put(spawnGroup.getAnchor(), spawnGroup);
 	}
 
-	/**
-	 * 
-	 */
 	public static void startRiftPool()
 	{
 		ThreadPoolManager.getInstance().scheduleAtFixedRate(new Runnable(){

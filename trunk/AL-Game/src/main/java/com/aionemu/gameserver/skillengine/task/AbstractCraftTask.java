@@ -26,7 +26,6 @@ import com.aionemu.gameserver.model.gameobjects.player.Player;
  */
 public abstract class AbstractCraftTask extends AbstractInteractionTask
 {
-	
 	protected int successValue;
 	protected int failureValue;
 	protected int currentSuccessValue;

@@ -35,7 +35,6 @@ public abstract class AbstractInteractionTask
 	protected VisibleObject responder;
 	
 	/**
-	 * 
 	 * @param requestor
 	 * @param responder
 	 */
@@ -118,15 +117,14 @@ public abstract class AbstractInteractionTask
 	}
 	
 	/**
-	 * 
 	 * @return true or false
 	 */
 	public boolean isInProgress()
 	{
 		return task != null && !task.isCancelled();
 	}
+	
 	/**
-	 * 
 	 * @return true or false
 	 */
 	public boolean validateParticipants()

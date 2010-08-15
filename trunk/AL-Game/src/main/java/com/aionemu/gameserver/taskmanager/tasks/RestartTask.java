@@ -16,8 +16,6 @@
  */
 package com.aionemu.gameserver.taskmanager.tasks;
 
-import java.util.Collection;
-
 import org.apache.log4j.Logger;
 
 import com.aionemu.gameserver.ShutdownHook;
@@ -34,10 +32,7 @@ import com.aionemu.gameserver.world.World;
  */
 public class RestartTask extends TaskFromDBHandler
 {
-	/**
-	 * Logger for gameserver
-	 */
-	private static final	Logger						log	= Logger.getLogger(RestartTask.class);
+	private static final	Logger			log	= Logger.getLogger(RestartTask.class);
 	
 	private int				countDown;
 	private int				announceInterval;
@@ -68,13 +63,10 @@ public class RestartTask extends TaskFromDBHandler
 		announceInterval	= Integer.parseInt(params[1]);
 		warnCountDown		= Integer.parseInt(params[2]);
 		
-		Collection<Player> players = World.getInstance().getAllPlayers();
-		
-		for (Player player : players)
+		for(Player player : World.getInstance().getAllPlayers())
 			PacketSendUtility.sendSysMessage(player, "Automatic Task: The server will restart in " + warnCountDown + " seconds ! Please find a safe place and disconnect your character.");
 		
-		ThreadPoolManager.getInstance().schedule(new Runnable()
-		{
+		ThreadPoolManager.getInstance().schedule(new Runnable() {
 			@Override
 			public void run()
 			{

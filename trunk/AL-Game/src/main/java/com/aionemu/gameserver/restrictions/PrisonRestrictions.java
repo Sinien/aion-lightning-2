@@ -118,6 +118,7 @@ public class PrisonRestrictions extends AbstractRestrictions
 
 		return true;
 	}
+	
 	@Override
 	public boolean canUseItem(Player player)
 	{
