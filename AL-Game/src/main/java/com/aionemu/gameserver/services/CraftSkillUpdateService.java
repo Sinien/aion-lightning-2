@@ -18,7 +18,6 @@ package com.aionemu.gameserver.services;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -40,7 +39,6 @@ import com.aionemu.gameserver.utils.PacketSendUtility;
  * @author MrPoke, sphinx
  *
  */
-
 public class CraftSkillUpdateService
 {
 	private static final Logger	log			= Logger.getLogger(CraftSkillUpdateService.class);
@@ -187,10 +185,9 @@ public class CraftSkillUpdateService
 	 */
 	private static boolean isCraftingSkill(int skillId)
 	{
-		Iterator<Integer> it = craftingSkillIds.iterator();
-		while(it.hasNext())
+		for(int i : craftingSkillIds)
 		{
-			if(it.next() == skillId)
+			if(i == skillId)
 				return true;
 		}
 		return false;
@@ -204,10 +201,9 @@ public class CraftSkillUpdateService
 	{	
 		int mastered = 0;
 
-		Iterator<Integer> it = craftingSkillIds.iterator();
-		while(it.hasNext())
+		for(int i : craftingSkillIds)
 		{
-			int skillId = it.next();
+			int skillId = i;
 			int skillLvl = 0;
 			if (player.getSkillList().isSkillPresent(skillId))
 			{

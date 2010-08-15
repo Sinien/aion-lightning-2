@@ -17,7 +17,6 @@
 package com.aionemu.gameserver.services;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ScheduledFuture;
 
@@ -216,11 +215,9 @@ public class AllianceService
 					{
 						PlayerGroup group = inviter.getPlayerGroup();
 						playersToAdd.addAll(group.getMembers());
-						Iterator<Player> pIter = group.getMembers().iterator();
-						while (pIter.hasNext())
-						{
-							GroupService.getInstance().removePlayerFromGroup(pIter.next());
-						}
+						
+						for(Player member : group.getMembers())				
+							GroupService.getInstance().removePlayerFromGroup(member);				
 					}
 					else
 					{
@@ -245,11 +242,9 @@ public class AllianceService
 				{
 					PlayerGroup group = invited.getPlayerGroup();
 					playersToAdd.addAll(group.getMembers());
-					Iterator<Player> pIter = group.getMembers().iterator();
-					while (pIter.hasNext())
-					{
-						GroupService.getInstance().removePlayerFromGroup(pIter.next());
-					}
+					
+					for(Player member : group.getMembers())
+						GroupService.getInstance().removePlayerFromGroup(member);
 				}
 				else
 				{

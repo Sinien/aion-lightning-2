@@ -16,8 +16,6 @@
  */
 package com.aionemu.gameserver.services;
 
-import org.apache.log4j.Logger;
-
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
@@ -33,9 +31,6 @@ import com.aionemu.gameserver.utils.PacketSendUtility;
  */
 public class ArmsfusionService
 {
-	@SuppressWarnings("unused")
-	private static final Logger			log			= Logger.getLogger(ArmsfusionService.class);
-
 	public static void fusionWeapons(Player player, int firstItemUniqueId, int secondItemUniqueId, int price)
 	{
 		Item firstItem = player.getInventory().getItemByObjId(firstItemUniqueId);
