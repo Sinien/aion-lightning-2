@@ -30,6 +30,19 @@ import org.apache.log4j.Logger;
 public class AEInfos
 {
 	private static final Logger	log	= Logger.getLogger(AEInfos.class);
+	
+	/**
+	 * @param s
+	 */
+	public static void printSection(String s)
+	{
+		s = "=[ " + s + " ]";
+		
+		while(s.length() < 79)
+			s = "-" + s;
+		
+		System.out.println(s);
+	}
 
 	public static String[] getMemoryInfo()
 	{
