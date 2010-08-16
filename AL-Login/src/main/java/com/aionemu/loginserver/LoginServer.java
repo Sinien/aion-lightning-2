@@ -29,7 +29,6 @@ import com.aionemu.loginserver.network.IOServer;
 import com.aionemu.loginserver.network.ncrypt.KeyGen;
 import com.aionemu.loginserver.utils.DeadLockDetector;
 import com.aionemu.loginserver.utils.ThreadPoolManager;
-import com.aionemu.loginserver.utils.Util;
 
 /**
  * @author -Nemesiss-
@@ -52,7 +51,7 @@ public class LoginServer
 
 		Config.load();
 
-		Util.printSection("DataBase");
+		AEInfos.printSection("DataBase");
 		DatabaseFactory.init();
 		DAOManager.init();
 
@@ -66,7 +65,7 @@ public class LoginServer
          */
         try
         {
-        	Util.printSection("KeyGen");
+        	AEInfos.printSection("KeyGen");
             KeyGen.init();
         }
         catch (Exception e)
@@ -75,22 +74,22 @@ public class LoginServer
             System.exit(ExitCode.CODE_ERROR);
         }
 
-        Util.printSection("GSTable");
+        AEInfos.printSection("GSTable");
         GameServerTable.load();
-        Util.printSection("BannedIP");
+        AEInfos.printSection("BannedIP");
         BannedIpController.load();
 
         // TODO! flood protector
         // TODO! brute force protector
 
-        Util.printSection("IOServer");
+        AEInfos.printSection("IOServer");
         IOServer.getInstance().connect();
         Runtime.getRuntime().addShutdownHook(Shutdown.getInstance());
 
-        Util.printSection("System");
+        AEInfos.printSection("System");
         AEInfos.printAllInfos();
         
-        Util.printSection("LoginServerLog");
-        log.info("AE Login Server started in " + (System.currentTimeMillis() - start) / 1000 + " seconds.");
+        AEInfos.printSection("LoginServerLog");
+        log.info("Total Boot Time: " + (System.currentTimeMillis() - start) / 1000 + " seconds.");
     }
 }
