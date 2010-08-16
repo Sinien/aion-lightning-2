@@ -19,6 +19,8 @@ package com.aionemu.gameserver.services;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.player.Storage;
@@ -38,6 +40,7 @@ import com.aionemu.gameserver.utils.PacketSendUtility;
  */
 public class ExchangeService
 {
+	private static final Logger log = Logger.getLogger(ExchangeService.class);
 
 	private Map<Integer, Exchange>		exchanges			= new HashMap<Integer, Exchange>();
 	
@@ -51,6 +54,7 @@ public class ExchangeService
 	 */
 	private ExchangeService()
 	{
+		log.info("ExchangeService: Initialized.");
 	}
 
 	/**

@@ -19,7 +19,6 @@ package com.aionemu.gameserver.dataholders;
 import org.apache.log4j.Logger;
 
 import com.aionemu.gameserver.dataholders.loadingutils.XmlDataLoader;
-import com.aionemu.gameserver.utils.Util;
 
 /**
  * 
@@ -147,14 +146,8 @@ public final class DataManager
 
 	private DataManager()
 	{
-		Util.printSection("StaticDatas");
-		log.info("##### STATIC DATA [section beginning] #####");
-
 		this.loader = XmlDataLoader.getInstance();
-
-		long start = System.currentTimeMillis();
 		StaticData data = loader.loadStaticData();
-		long time = System.currentTimeMillis() - start;
 
 		WORLD_MAPS_DATA = data.worldMapsData;
 		PLAYER_EXPERIENCE_TABLE = data.playerExperienceTable;
@@ -186,16 +179,8 @@ public final class DataManager
 		NPC_SKILL_DATA = data.npcSkillData;
 		PET_SKILL_DATA = data.petSkillData;
 		SIEGE_LOCATION_DATA = data.siegeLocationData;
-		
-		// some sexy time message
-		long seconds = time / 1000;
-
-		String timeMsg = seconds > 0 ? seconds + " seconds" : time + " miliseconds";
-
-		log.info("##### [load time: " + timeMsg + "] #####");
-		log.info("##### STATIC DATA [section end] #####");
-
 	}
+	
 	@SuppressWarnings("synthetic-access")
 	private static class SingletonHolder
 	{

@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ScheduledFuture;
 
+import org.apache.log4j.Logger;
+
 import javolution.util.FastMap;
 
 import com.aionemu.gameserver.configs.main.GroupConfig;
@@ -52,6 +54,8 @@ import com.aionemu.gameserver.world.WorldType;
  */
 public class GroupService
 {
+	private static final Logger log = Logger.getLogger(GroupService.class);
+	
 	/**
 	 * Caching group members
 	 */
@@ -77,6 +81,8 @@ public class GroupService
 	{
 		groupMembers	= new FastMap<Integer, PlayerGroup>();
 		playerGroup		= new FastMap<Integer, ScheduledFuture<?>>();
+		
+		log.info("GroupService: Initialized.");
 	}
 
 
