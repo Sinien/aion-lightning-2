@@ -59,6 +59,7 @@ public class MailService
 
 	private MailService()
 	{
+		log.info("MailService: Initialized.");
 	}
 
 	/**

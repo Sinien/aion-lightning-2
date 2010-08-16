@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ScheduledFuture;
 
+import org.apache.log4j.Logger;
+
 import javolution.util.FastMap;
 
 import com.aionemu.gameserver.configs.main.GroupConfig;
@@ -54,6 +56,8 @@ import com.aionemu.gameserver.world.WorldType;
  */
 public class AllianceService
 {
+	private static final Logger log = Logger.getLogger(AllianceService.class);
+	
 	/**
 	 * 
 	 * @return alliance service
@@ -77,6 +81,8 @@ public class AllianceService
 	{
 		allianceMembers = new FastMap<Integer, PlayerAlliance>();
 		playerAllianceRemovalTasks = new FastMap<Integer, ScheduledFuture<?>>();
+		
+		log.info("AllianceService: Initialized.");
 	}
 
 	/**

@@ -21,6 +21,7 @@ import java.util.Properties;
 import org.apache.log4j.Logger;
 
 import com.aionemu.commons.configuration.ConfigurableProcessor;
+import com.aionemu.commons.utils.AEInfos;
 import com.aionemu.commons.utils.PropertiesUtils;
 import com.aionemu.gameserver.configs.administration.AdminConfig;
 import com.aionemu.gameserver.configs.main.CacheConfig;
@@ -40,7 +41,6 @@ import com.aionemu.gameserver.configs.main.TaskManagerConfig;
 import com.aionemu.gameserver.configs.main.ThreadConfig;
 import com.aionemu.gameserver.configs.network.IPConfig;
 import com.aionemu.gameserver.configs.network.NetworkConfig;
-import com.aionemu.gameserver.utils.Util;
 
 /**
  * @author -Nemesiss-
@@ -65,7 +65,7 @@ public class Config
 			ConfigurableProcessor.process(Config.class, props);
 
 			// Administration
-			Util.printSection("Administration");
+			AEInfos.printSection("Administration");
 			String administration = "./config/administration";
 			Properties[] adminProps = PropertiesUtils.loadAllFromDirectory(administration);
 			
@@ -73,7 +73,7 @@ public class Config
 			log.info("Loading: " + administration + "/admin.properties");
 
 			// Main
-			Util.printSection("Main");
+			AEInfos.printSection("Main");
 			String main = "./config/main";
 			Properties[] mainProps = PropertiesUtils.loadAllFromDirectory(main);
 			
@@ -123,7 +123,7 @@ public class Config
 			log.info("Loading: " + main + "/thread.properties");
 
 			// Network
-			Util.printSection("Network");
+			AEInfos.printSection("Network");
 			String network = "./config/network";
 			Properties[] networkProps = PropertiesUtils.loadAllFromDirectory(network);	
 			

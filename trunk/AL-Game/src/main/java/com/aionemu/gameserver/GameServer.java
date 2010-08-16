@@ -61,7 +61,6 @@ import com.aionemu.gameserver.taskmanager.tasks.PacketBroadcaster;
 import com.aionemu.gameserver.utils.DeadlockDetector;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
 import com.aionemu.gameserver.utils.ThreadUncaughtExceptionHandler;
-import com.aionemu.gameserver.utils.Util;
 import com.aionemu.gameserver.utils.VersionningService;
 import com.aionemu.gameserver.utils.chathandlers.ChatHandlers;
 import com.aionemu.gameserver.utils.gametime.GameTimeManager;
@@ -77,7 +76,6 @@ import com.aionemu.gameserver.world.World;
  */
 public class GameServer
 {
-	/** Logger for gameserver */
 	private static final Logger	log	= Logger.getLogger(GameServer.class);
 
 	/**
@@ -92,79 +90,96 @@ public class GameServer
 
 		initUtilityServicesAndConfig();
 		
-		Util.printSection("World");
+		AEInfos.printSection("StaticDatas");
 		DataManager.getInstance();
+		
+		AEInfos.printSection("IDFactory");
 		IDFactory.getInstance();
+		
+		AEInfos.printSection("World");
 		World.getInstance();
 
 		GameServer gs = new GameServer();
 		// Set all players is offline
 		DAOManager.getDAO(PlayerDAO.class).setPlayersOffline(false);
+		
+		AEInfos.printSection("Drops");
+		DropService.getInstance();
 
-		Util.printSection("Spawns");
+		AEInfos.printSection("Spawns");
 		SpawnEngine.getInstance();
 
-		Util.printSection("Quests");
+		AEInfos.printSection("Quests");
 		QuestEngine.getInstance();
 		QuestEngine.getInstance().load();
 
-		Util.printSection("TaskManagers");
+		AEInfos.printSection("TaskManagers");
 		PacketBroadcaster.getInstance();
+		ItemUpdater.getInstance();
+		TaskManagerFromDB.getInstance();
 	
+		AEInfos.printSection("Time");
 		GameTimeService.getInstance();
 
+		AEInfos.printSection("Announcements");
 		AnnouncementService.getInstance();
-
+		
+		AEInfos.printSection("Debug");
 		DebugService.getInstance();
-
-		ZoneService.getInstance();
 		
+		AEInfos.printSection("Zones");
+		ZoneService.getInstance();		
+		
+		AEInfos.printSection("Weather");
 		WeatherService.getInstance();
-
-		DuelService.getInstance();
-
-		MailService.getInstance();
-
-		GroupService.getInstance();
 		
+		AEInfos.printSection("Duel");
+		DuelService.getInstance();
+		
+		AEInfos.printSection("Mail");
+		MailService.getInstance();
+		
+		AEInfos.printSection("Group");
+		GroupService.getInstance();		
+		
+		AEInfos.printSection("Alliance");
 		AllianceService.getInstance();
 		
+		AEInfos.printSection("Broker");
 		BrokerService.getInstance();
-
-		SiegeService.getInstance();
 		
-		Influence.getInstance();
+		AEInfos.printSection("Sieges");
+		SiegeService.getInstance();	
+		Influence.getInstance();	
 		
-		DropService.getInstance();
-
-		ExchangeService.getInstance();
-
-		ItemUpdater.getInstance();
+		AEInfos.printSection("Exchange");
+		ExchangeService.getInstance();	
 		
+		AEInfos.printSection("Petitions");
 		PetitionService.getInstance();
-
-		ChatHandlers.getInstance();
 		
-		TaskManagerFromDB.getInstance();
+		AEInfos.printSection("ChatHandlers");
+		ChatHandlers.getInstance();
 
-		Util.printSection("System");
+		AEInfos.printSection("System");
 		VersionningService.printFullVersionInfo();
 		System.gc();
 		AEInfos.printAllInfos();
 
-		Util.printSection("GameServerLog");
-		log.info("AE Game Server started in " + (System.currentTimeMillis() - start) / 1000 + " seconds.");
-
+		AEInfos.printSection("IOServer");
 		gs.startServers();
 		GameTimeManager.startClock();
 
 		if(TaskManagerConfig.DEADLOCK_DETECTOR_ENABLED)
 		{
-			log.info("Starting deadlock detector");
+			AEInfos.printSection("DeadLock Detector");
 			new Thread(new DeadlockDetector(TaskManagerConfig.DEADLOCK_DETECTOR_INTERVAL)).start();
 		}
 
 		Runtime.getRuntime().addShutdownHook(ShutdownHook.getInstance());
+		
+		AEInfos.printSection("GameServerLog");
+		log.info("Total Boot Time: " + (System.currentTimeMillis() - start) / 1000 + " seconds.");
 
 		onStartup();
 	}
@@ -211,12 +226,13 @@ public class GameServer
 		// init config
 		Config.load();
 		// Second should be database factory
-		Util.printSection("DataBase");
+		AEInfos.printSection("DataBase");
 		DatabaseFactory.init();
 		// Initialize DAOs
 		DAOManager.init();
+		
 		// Initialize thread pools
-		Util.printSection("Threads");
+		AEInfos.printSection("Threads");
 		ThreadConfig.load();
 		ThreadPoolManager.getInstance();
 	}
