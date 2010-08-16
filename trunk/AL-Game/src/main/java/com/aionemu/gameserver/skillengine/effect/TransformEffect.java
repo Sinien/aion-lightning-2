@@ -102,7 +102,30 @@ public class TransformEffect extends EffectTemplate
 	public void startEffect(final Effect effect)
 	{
 		final Creature effected = effect.getEffected();
-		effected.getEffectController().setAbnormal(EffectId.SHAPECHANGE.getEffectId());
+		switch(effect.getSkillId())	//check, if allowed fly transform - don't ban flying
+		{
+			case (689):		//MAU transform effect
+			case (690):
+			case (780):
+			case (781):
+			case (782):
+			case (789):
+			case (790):
+			case (791):
+			case (9737):	//Abyss trasfrom effect
+			case (9738):
+			case (9739):
+			case (9740):
+			case (9741):
+			case (9742):
+			case (9743):
+			case (9744):
+			case (9745):
+			case (9746):
+				break;
+			default:
+				effected.getEffectController().setAbnormal(EffectId.SHAPECHANGE.getEffectId());
+			}
 		effected.setTransformedModelId(model);
 		PacketSendUtility.broadcastPacketAndReceive(effected, new SM_TRANSFORM(effected));
 	}
