@@ -84,7 +84,7 @@ public class CM_CHAT_MESSAGE_WHISPER extends AionClientPacket
 		Player receiver = World.getInstance().findPlayer(formatname);
 
 		if(GSConfig.LOG_CHAT)
-			log.info(String.format("[MESSAGE] [%s] Whisper To: %s, Message: %s", sender.getName(), formatname, message));
+			log.info(String.format("[MESSAGE] [%s] W: %s, Message: %s", sender.getName(), formatname, message));
 
 		if(receiver == null)
 		{
