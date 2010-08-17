@@ -42,7 +42,9 @@
 	-->
 	<appender name="ERROR_APPENDER" class="org.apache.log4j.RollingFileAppender">
 		<param name="file" value="log/errors.log" />
-		<param name="append" value="false" />
+		<param name="append" value="true" />
+		<param name="MaxFileSize" value="50000KB" />
+		<param name="MaxBackupIndex" value="5" />
 		<layout class="org.apache.log4j.EnhancedPatternLayout">
 			<param name="ConversionPattern" value="%p [%d{dd MMM yyyy HH:mm:ss,SSS}] %c:%L %m%n" />
 		</layout>
