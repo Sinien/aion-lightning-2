@@ -21,6 +21,7 @@ import java.util.Properties;
 import org.apache.log4j.Logger;
 
 import com.aionemu.commons.configuration.ConfigurableProcessor;
+import com.aionemu.commons.database.DatabaseConfig;
 import com.aionemu.commons.utils.AEInfos;
 import com.aionemu.commons.utils.PropertiesUtils;
 import com.aionemu.gameserver.configs.administration.AdminConfig;
@@ -48,10 +49,7 @@ import com.aionemu.gameserver.configs.network.NetworkConfig;
  */
 public class Config
 {
-	/**
-	 * Logger for this class.
-	 */
-	protected static final Logger	log	= Logger.getLogger(Config.class);
+	protected static final Logger	log		= Logger.getLogger(Config.class);
 
 	/**
 	 * Initialize all configs in com.aionemu.gameserver.configs package
@@ -66,70 +64,36 @@ public class Config
 
 			// Administration
 			AEInfos.printSection("Administration");
-			String administration = "./config/administration";
-			Properties[] adminProps = PropertiesUtils.loadAllFromDirectory(administration);
+			Properties[] admin = PropertiesUtils.loadAllFromDirectory("./config/administration");
 			
-			ConfigurableProcessor.process(AdminConfig.class, adminProps);
-			log.info("Loading: " + administration + "/admin.properties");
+			ConfigurableProcessor.process(AdminConfig.class, admin);
 
 			// Main
 			AEInfos.printSection("Main");
-			String main = "./config/main";
-			Properties[] mainProps = PropertiesUtils.loadAllFromDirectory(main);
+			Properties[] main = PropertiesUtils.loadAllFromDirectory("./config/main");
 			
-			ConfigurableProcessor.process(LegionConfig.class, mainProps);
-			log.info("Loading: " + main + "/legion.properties");
-			
-			ConfigurableProcessor.process(RateConfig.class, mainProps);
-			log.info("Loading: " + main + "/rates.properties");
-			
-			ConfigurableProcessor.process(CacheConfig.class, mainProps);
-			log.info("Loading: " + main + "/cache.properties");
-			
-			ConfigurableProcessor.process(ShutdownConfig.class, mainProps);
-			log.info("Loading: " + main + "/shutdown.properties");
-			
-			ConfigurableProcessor.process(TaskManagerConfig.class, mainProps);
-			log.info("Loading: " + main + "/taskmanager.properties");
-			
-			ConfigurableProcessor.process(GroupConfig.class, mainProps);
-			log.info("Loading: " + main + "/group.properties");
-			
-			ConfigurableProcessor.process(CustomConfig.class, mainProps);
-			log.info("Loading: " + main + "/custom.properties");
-			
-			ConfigurableProcessor.process(EnchantsConfig.class, mainProps);
-			log.info("Loading: " + main + "/enchants.properties");
-			
-			ConfigurableProcessor.process(FallDamageConfig.class, mainProps);
-			log.info("Loading: " + main + "/falldamage.properties");
-			
-			ConfigurableProcessor.process(GSConfig.class, mainProps);
-			log.info("Loading: " + main + "/gameserver.properties");
-			
-			ConfigurableProcessor.process(NpcMovementConfig.class, mainProps);
-			log.info("Loading: " + main + "/npcmovement.properties");
-			
-			ConfigurableProcessor.process(PeriodicSaveConfig.class, mainProps);
-			log.info("Loading: " + main + "/periodicsave.properties");
-			
-			ConfigurableProcessor.process(PricesConfig.class, mainProps);
-			log.info("Loading: " + main + "/prices.properties");
-			
-			ConfigurableProcessor.process(SiegeConfig.class, mainProps);
-			log.info("Loading: " + main + "/siege.properties");
-			
-			ConfigurableProcessor.process(ThreadConfig.class, mainProps);
-			log.info("Loading: " + main + "/thread.properties");
+			ConfigurableProcessor.process(LegionConfig.class, main);			
+			ConfigurableProcessor.process(RateConfig.class, main);			
+			ConfigurableProcessor.process(CacheConfig.class, main);			
+			ConfigurableProcessor.process(ShutdownConfig.class, main);			
+			ConfigurableProcessor.process(TaskManagerConfig.class, main);			
+			ConfigurableProcessor.process(GroupConfig.class, main);			
+			ConfigurableProcessor.process(CustomConfig.class, main);			
+			ConfigurableProcessor.process(EnchantsConfig.class, main);			
+			ConfigurableProcessor.process(FallDamageConfig.class, main);			
+			ConfigurableProcessor.process(GSConfig.class, main);			
+			ConfigurableProcessor.process(NpcMovementConfig.class, main);			
+			ConfigurableProcessor.process(PeriodicSaveConfig.class, main);			
+			ConfigurableProcessor.process(PricesConfig.class, main);			
+			ConfigurableProcessor.process(SiegeConfig.class, main);			
+			ConfigurableProcessor.process(ThreadConfig.class, main);
 
 			// Network
 			AEInfos.printSection("Network");
-			String network = "./config/network";
-			Properties[] networkProps = PropertiesUtils.loadAllFromDirectory(network);	
+			Properties[] network = PropertiesUtils.loadAllFromDirectory("./config/network");	
 			
-			ConfigurableProcessor.process(NetworkConfig.class, networkProps);		
-			log.info("Loading: " + network + "/database.properties");
-			log.info("Loading: " + network + "/network.properties");
+			ConfigurableProcessor.process(NetworkConfig.class, network);		
+			ConfigurableProcessor.process(DatabaseConfig.class, network);
 		}
 		catch(Exception e)
 		{
