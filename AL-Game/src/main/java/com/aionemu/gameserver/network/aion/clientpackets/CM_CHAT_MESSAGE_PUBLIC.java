@@ -92,7 +92,7 @@ public class CM_CHAT_MESSAGE_PUBLIC extends AionClientPacket
 
 		if (player == null)
 			return;
-		//log.info(String.format("Public Message [%s]: %s, Type: %s", player.getName(), message, type));
+		
 		FastList<ChatHandler> chatHandlers = ChatHandlers.getInstance().getHandlers();
 		for (FastList.Node<ChatHandler> n = chatHandlers.head(), end = chatHandlers.tail(); (n = n.getNext()) != end;)
 		{
@@ -112,7 +112,7 @@ public class CM_CHAT_MESSAGE_PUBLIC extends AionClientPacket
 						return;
 					
 					if(GSConfig.LOG_CHAT)
-						log.info(String.format("[MESSAGE] - GROUP <%d>: [%s]> %s", player.getPlayerGroup().getGroupId(), player.getName(), message));
+						log.info(String.format("[MESSAGE] - G <%d>: [%s]> %s", player.getPlayerGroup().getGroupId(), player.getName(), message));
 					
 					broadcastToGroupMembers(player);
 					break;
@@ -121,7 +121,7 @@ public class CM_CHAT_MESSAGE_PUBLIC extends AionClientPacket
 						return;
 					
 					if(GSConfig.LOG_CHAT)
-						log.info(String.format("[MESSAGE] - ALLIANCE <%d>: [%s]> %s", player.getPlayerAlliance().getObjectId(), player.getName(), message));
+						log.info(String.format("[MESSAGE] - A <%d>: [%s]> %s", player.getPlayerAlliance().getObjectId(), player.getName(), message));
 					
 					broadcastToAllianceMembers(player);
 					break;
@@ -131,7 +131,7 @@ public class CM_CHAT_MESSAGE_PUBLIC extends AionClientPacket
 						return;
 					
 					if(GSConfig.LOG_CHAT)
-						log.info(String.format("[MESSAGE] - LEADER_ALERT: [%s]> %s", player.getName(), message));
+						log.info(String.format("[MESSAGE] - LA: [%s]> %s", player.getName(), message));
 					
 					// Alert must go to entire group or alliance.
 					if (player.isInGroup())
@@ -141,7 +141,7 @@ public class CM_CHAT_MESSAGE_PUBLIC extends AionClientPacket
 					break;
 				case LEGION:				
 					if(GSConfig.LOG_CHAT)
-						log.info(String.format("[MESSAGE] - LEGION <%s>: [%s]> %s", player.getLegion().getLegionName(), player.getName(), message));
+						log.info(String.format("[MESSAGE] - L <%s>: [%s]> %s", player.getLegion().getLegionName(), player.getName(), message));
 					
 					broadcastToLegionMembers(player);
 					break;
