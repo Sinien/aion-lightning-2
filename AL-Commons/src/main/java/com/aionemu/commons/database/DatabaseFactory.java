@@ -88,8 +88,6 @@ public class DatabaseFactory
 			return;
 		}
 
-		DatabaseConfig.load();
-
 		try
 		{
 			DatabaseConfig.DATABASE_DRIVER.newInstance();
