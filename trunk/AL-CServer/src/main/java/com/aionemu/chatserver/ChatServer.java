@@ -16,6 +16,8 @@
  */
 package com.aionemu.chatserver;
 
+import org.apache.log4j.Logger;
+
 import com.aionemu.chatserver.configs.Config;
 import com.aionemu.chatserver.network.netty.NettyServer;
 import com.aionemu.commons.services.LoggingService;
@@ -26,11 +28,12 @@ import com.aionemu.commons.utils.AEInfos;
  */
 public class ChatServer
 {
-    /**
-     * @param args
-     */
+	private static final Logger log = Logger.getLogger(ChatServer.class);
+	
     public static void main(String[] args)
     {
+    	long start = System.currentTimeMillis();
+    	
         LoggingService.init();
         AEInfos.printSection("Configurations");
 		Config.load();
@@ -40,5 +43,8 @@ public class ChatServer
 
         AEInfos.printSection("System");
         AEInfos.printAllInfos();
+        
+        AEInfos.printSection("ChatServerLog");
+        log.info("Total Boot Time: " + (System.currentTimeMillis() - start) / 1000 + " seconds.");
     }
 }
