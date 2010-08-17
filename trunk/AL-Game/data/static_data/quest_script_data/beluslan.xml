@@ -472,8 +472,7 @@
 	<monster_hunt start_npc_id="204655" id="2655">
 		<monster_infos var_id="0" npc_id="204649" max_kill="7"/>
 	</monster_hunt>
-	<!-- [Spy] The Last Persuasion -->
-	<report_to start_npc_id="204775" end_npc_id="204655" id="2654"/>
+	<!-- Handled by Script - [Spy] The Last Persuasion -->
 	<!-- TODO:[Group] Destroying Balaur Weapons -->
 	<!-- [Group] Get 'Em While They're Young -->
 	<monster_hunt start_npc_id="204799" id="2632">

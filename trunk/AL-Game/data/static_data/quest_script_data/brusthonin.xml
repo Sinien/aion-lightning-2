@@ -88,9 +88,12 @@
 	<!-- Frightcorn-ucopia -->
 	<item_collecting id="4006" start_npc_id="205121" action_item_id="700341"/>
 	<!-- TODO: Gathering the Herb Pouches //need careful test maybe tweak xsd files for different action_item_id for each item_collect -->
+<!--
+	TODO: Duplicated Quests... Need to remade it in scripts...	
 	<item_collecting id="4082" start_npc_id="205190" action_item_id="700430"/>
 	<item_collecting id="4082" start_npc_id="205190" action_item_id="700431"/>
 	<item_collecting id="4082" start_npc_id="205190" action_item_id="700432"/>
+-->
 	<!-- Ginseng Gone Wild -->
 	<item_collecting id="4045" start_npc_id="205165" action_item_id="700385"/>
 	<!-- TODO: Glossy Hoe -->

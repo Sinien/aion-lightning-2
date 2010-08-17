@@ -41,8 +41,7 @@
 	<!-- TODO: Combat Rations -->
 	<!-- TODO: Deep Maternal Love -->
 	<!-- TODO: Deliver the Taming Manual -->
-	<!-- Delivering Odella Juice //not sure need improvement:TODO:talk back to Doman before get reward -->
-	<report_to start_npc_id="204191" end_npc_id="204221" id="2954"/>
+	<!-- Delivering Odella Juice - Handled by Script -->
 	<!-- TODO: Delivering Supply Request -->
 	<!-- TODO: Elementary, My Dear Daeva -->
 	<!-- TODO: Enlightenment of Destiny -->
