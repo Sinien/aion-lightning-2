@@ -31,11 +31,13 @@ public class ChatServer
      */
     public static void main(String[] args)
     {
-        LoggingService.init();      
+        LoggingService.init();
+        AEInfos.printSection("Configurations");
 		Config.load();
         
         new NettyServer();	
 
+        AEInfos.printSection("System");
         AEInfos.printAllInfos();
     }
 }
