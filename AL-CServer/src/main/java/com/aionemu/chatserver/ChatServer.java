@@ -35,6 +35,7 @@ public class ChatServer
         AEInfos.printSection("Configurations");
 		Config.load();
         
+		AEInfos.printSection("NettyServer");
         new NettyServer();	
 
         AEInfos.printSection("System");
