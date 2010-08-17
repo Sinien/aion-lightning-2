@@ -23,6 +23,7 @@ import java.util.Collection;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
 
 /**
  * This class is designed to simplify routine job with properties
@@ -31,6 +32,8 @@ import org.apache.commons.io.FileUtils;
  */
 public class PropertiesUtils
 {
+	private static final Logger log = Logger.getLogger(PropertiesUtils.class);
+	
 	/**
 	 * Loads properties by given file
 	 * 
@@ -41,7 +44,7 @@ public class PropertiesUtils
 	 *             if can't load file
 	 */
 	public static Properties load(String file) throws IOException
-	{
+	{	
 		return load(new File(file));
 	}
 
@@ -56,6 +59,8 @@ public class PropertiesUtils
 	 */
 	public static Properties load(File file) throws IOException
 	{
+		log.info("Loading: " + file);
+		
 		FileInputStream fis = new FileInputStream(file);
 		Properties p = new Properties();
 		p.load(fis);

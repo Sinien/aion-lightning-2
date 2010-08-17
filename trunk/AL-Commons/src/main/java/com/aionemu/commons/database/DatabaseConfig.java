@@ -17,14 +17,8 @@
 package com.aionemu.commons.database;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.Properties;
 
-import org.apache.log4j.Logger;
-
-import com.aionemu.commons.configuration.ConfigurableProcessor;
 import com.aionemu.commons.configuration.Property;
-import com.aionemu.commons.utils.PropertiesUtils;
 
 /**
  * This class holds all configuration of database
@@ -34,19 +28,9 @@ import com.aionemu.commons.utils.PropertiesUtils;
 public class DatabaseConfig
 {
 	/**
-	 * Logger for database config
-	 */
-	private static final Logger	log			= Logger.getLogger(DatabaseConfig.class);
-
-	/**
-	 * Config file location
-	 */
-	public static final String	CONFIG_FILE	= "config/network/database.properties";
-
-	/**
 	 * Default database url.
 	 */
-	@Property(key = "database.url", defaultValue = "jdbc:mysql://localhost:3306/aion_uni")
+	@Property(key = "database.url", defaultValue = "jdbc:mysql://localhost:3306/Aion_DB")
 	public static String		DATABASE_URL;
 
 	/**
@@ -84,24 +68,4 @@ public class DatabaseConfig
 	 */
 	@Property(key = "database.scriptcontext.descriptor", defaultValue = "./data/scripts/system/database/database.xml")
 	public static File			DATABASE_SCRIPTCONTEXT_DESCRIPTOR;
-
-	/**
-	 * Loads database configuration
-	 */
-	public static void load()
-	{
-
-		Properties p;
-		try
-		{
-			p = PropertiesUtils.load(CONFIG_FILE);
-		}
-		catch(IOException e)
-		{
-			log.fatal("Can't load database configuration...");
-			throw new Error("Can't load " + CONFIG_FILE, e);
-		}
-
-		ConfigurableProcessor.process(DatabaseConfig.class, p);
-	}
 }
