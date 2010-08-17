@@ -811,7 +811,7 @@
 	</spawn>
 	<!-- Nestor (NPC Normal lvl:40)-->
 	<spawn map="110010000" npcid="203834" pool="1" interval="295">
-		<object x="2005.5713" y="1488.1425" z="581.1387" h="52"/>
+		<object x="2004.9135" y="1488.1294" z="581.6213" h="111"/>
 	</spawn>
 	<!-- Nianalo (NPC Normal lvl:40)-->
 	<spawn map="110010000" npcid="798359" pool="1" interval="295">

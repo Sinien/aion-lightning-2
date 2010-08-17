@@ -3,6 +3,17 @@
 	<npc_template hpgauge="3" tribe="GENERAL" srange="20" rank="NORMAL" npc_type="NON_ATTACKABLE" height="1.0" name="teleport statue" name_id="350737" level="3" npc_id="730264">
         <stats power="11" accuracy="11" maxXp="104" mdef="11" pdef="11" crit="11" run_speed_fight="0.0" magic_accuracy="11" parry="11" block="100" evasion="11" fly_speed="0.0" run_speed="0.0" walk_speed="0.0" maxHp="121"/>
     </npc_template>
+	<npc_template npc_id="203834" level="40" name="nestor" name_id="351326" npc_type="NON_ATTACKABLE" height="2.0" title_id="350470" rank="NORMAL" race="ELYOS" tribe="GENERAL" srange="10" arange="2" arank="1000" hpgauge="3" state="6">
+		<stats maxMp="2828" maxHp="9426" maxXp="20552" block="70" parry="70" mdef="70" pdef="70" crit="70" power="70" evasion="70" accuracy="70" magic_accuracy="70" walk_speed="1.5" run_speed="6.0" run_speed_fight="4.2" fly_speed="0.0"/>
+		<equipment>
+			<item>114100294</item>
+			<item>111100277</item>
+			<item>125001508</item>
+			<item>113100276</item>
+			<item>112100256</item>
+			<item>110100298</item>
+		</equipment>
+	</npc_template>
 	<npc_template npc_id="203901" level="45" name="telemachus" name_id="351700" npc_type="NON_ATTACKABLE" height="0.85" title_id="350503" rank="LEGENDARY" race="ELYOS" tribe="GUARD" srange="20" arange="2" arank="1000" hpgauge="27" state="6">
 		<stats maxMp="2057919" maxHp="6859729" maxXp="440709" block="139" parry="139" mdef="139" pdef="139" crit="139" power="139" evasion="139" accuracy="139" magic_accuracy="139" walk_speed="1.5" run_speed="6.0" run_speed_fight="7.0" fly_speed="0.0"/>
 		<equipment>
