@@ -21,7 +21,8 @@ import java.security.*;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Random;
-import java.util.concurrent.ConcurrentHashMap;
+
+import javolution.util.FastMap;
 
 import org.apache.log4j.Logger;
 
@@ -31,6 +32,7 @@ import com.aionemu.chatserver.model.channel.Channels;
 import com.aionemu.chatserver.network.aion.serverpackets.SM_PLAYER_AUTH_RESPONSE;
 import com.aionemu.chatserver.network.netty.handler.ClientChannelHandler;
 import com.aionemu.chatserver.network.netty.handler.ClientChannelHandler.State;
+
 /**
  * @author ATracer
  */
@@ -38,13 +40,13 @@ public class ChatService
 {
 	private static final Logger	log = Logger.getLogger(ChatService.class);
 	
-	private Map<Integer, ChatClient>	players	= new ConcurrentHashMap<Integer, ChatClient>();
-	
+	private Map<Integer, ChatClient>	players	= new FastMap<Integer, ChatClient>();
 	
 	public static final ChatService getInstance()
 	{
 		return SingletonHolder.instance;
 	}
+	
 	/**
 	 * Player registered from server side
 	 * 

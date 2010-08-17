@@ -17,7 +17,8 @@
 package com.aionemu.chatserver.service;
 
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+
+import javolution.util.FastMap;
 
 import com.aionemu.chatserver.model.ChatClient;
 import com.aionemu.chatserver.model.message.Message;
@@ -40,7 +41,7 @@ public class BroadcastService
 	
 	private BroadcastService()
 	{
-		clients = new ConcurrentHashMap<Integer, ChatClient>();
+		clients = new FastMap<Integer, ChatClient>();
 	}
 
 	/**

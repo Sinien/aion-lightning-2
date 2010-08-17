@@ -16,7 +16,6 @@
  */
 package com.aionemu.chatserver.network.gameserver;
 
-import org.apache.log4j.Logger;
 import org.jboss.netty.buffer.ChannelBuffer;
 
 import com.aionemu.chatserver.common.netty.AbstractPacketHandler;
@@ -31,9 +30,6 @@ import com.aionemu.chatserver.network.netty.handler.GameChannelHandler.State;
  */
 public class GameServerPacketHandler extends AbstractPacketHandler
 {
-	@SuppressWarnings("unused")
-	private static final Logger	log	= Logger.getLogger(GameServerPacketHandler.class);
-
 	/**
 	 * Reads one packet from ChannelBuffer
 	 * 

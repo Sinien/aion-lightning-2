@@ -17,8 +17,9 @@
 package com.aionemu.chatserver.model;
 
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import javolution.util.FastMap;
 
 import com.aionemu.chatserver.model.channel.Channel;
 import com.aionemu.chatserver.network.netty.handler.ClientChannelHandler;
@@ -52,7 +53,7 @@ public class ChatClient
 	 * Map with all connected channels<br>
 	 * Only one channel of specific type can be added
 	 */
-	private Map<ChannelType, Channel>	channelsList	= new ConcurrentHashMap<ChannelType, Channel>();
+	private Map<ChannelType, Channel>	channelsList	= new FastMap<ChannelType, Channel>();
 
 	/**
 	 * Incremented during each new channel request
