@@ -22,6 +22,7 @@ import org.apache.log4j.Logger;
 
 import com.aionemu.commons.configuration.ConfigurableProcessor;
 import com.aionemu.commons.configuration.Property;
+import com.aionemu.commons.database.DatabaseConfig;
 import com.aionemu.commons.utils.AEInfos;
 import com.aionemu.commons.utils.PropertiesUtils;
 
@@ -98,12 +99,10 @@ public class Config
 		try
 		{
 			AEInfos.printSection("Network");
-			String network = "./config/network";
-			Properties[] props = PropertiesUtils.loadAllFromDirectory(network);
+			Properties[] props = PropertiesUtils.loadAllFromDirectory("./config/network");
 			
 			ConfigurableProcessor.process(Config.class, props);
-			log.info("Loading: " + network + "/network.properties");
-			log.info("Loading: " + network + "/database.properties");
+			ConfigurableProcessor.process(DatabaseConfig.class, props);
 		}
 		catch (Exception e)
 		{
