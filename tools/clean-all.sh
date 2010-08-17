@@ -20,13 +20,13 @@ else
 fi
    echo "Moving to folder $buildxmlCMPath"
    cd $pomxmlCMPath
-   mvn install
+   mvn clean
    echo "Moving to folder $pomxmlLSPath"
    cd $pomxmlLSPath
-   mvn assembly:assembly
+   mvn clean
    echo "Moving to folder $pomxmlGSPath"
    cd $pomxmlGSPath
-   mvn assembly:assembly
+   mvn clean
    echo "Moving to folder $pomxmlCSPath"
    cd $pomxmlCSPath
-   mvn assembly:assembly
+   mvn clean
