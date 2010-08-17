@@ -25,6 +25,8 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import javolution.text.TextBuilder;
+
 import com.aionemu.commons.scripting.impl.javacompiler.ScriptCompilerImpl;
 
 /**
@@ -165,7 +167,6 @@ public class ScriptInfo
 		ScriptInfo that = (ScriptInfo) o;
 
 		return root.equals(that.root);
-
 	}
 
 	/**
@@ -179,17 +180,22 @@ public class ScriptInfo
 		return root.hashCode();
 	}
 
-	/** {@inheritDoc} */
 	@Override
 	public String toString()
 	{
-		final StringBuilder sb = new StringBuilder();
-		sb.append("ScriptInfo");
-		sb.append("{root=").append(root);
-		sb.append(", libraries=").append(libraries);
-		sb.append(", compilerClass='").append(compilerClass).append('\'');
-		sb.append(", scriptInfos=").append(scriptInfos);
-		sb.append('}');
-		return sb.toString();
+		final TextBuilder tb = TextBuilder.newInstance();
+		
+		tb.append("ScriptInfo");
+		tb.append("{root=").append(root);
+		tb.append(", libraries=").append(libraries);
+		tb.append(", compilerClass='").append(compilerClass).append('\'');
+		tb.append(", scriptInfos=").append(scriptInfos);
+		tb.append('}');
+		
+		String toString = tb.toString();
+		
+		TextBuilder.recycle(tb);
+		
+		return toString;
 	}
 }

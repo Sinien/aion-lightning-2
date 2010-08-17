@@ -23,6 +23,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import javolution.text.TextBuilder;
+
 /**
  * Root element for script descriptors
  * 
@@ -63,10 +65,16 @@ public class ScriptList
 	@Override
 	public String toString()
 	{
-		final StringBuilder sb = new StringBuilder();
-		sb.append("ScriptList");
-		sb.append("{scriptInfos=").append(scriptInfos);
-		sb.append('}');
-		return sb.toString();
+		final TextBuilder tb = TextBuilder.newInstance();
+		
+		tb.append("ScriptList");
+		tb.append("{scriptInfos=").append(scriptInfos);
+		tb.append('}');
+		
+		String toString = tb.toString();
+		
+		TextBuilder.recycle(tb);
+		
+		return toString;
 	}
 }

@@ -27,7 +27,7 @@ public abstract class AbstractLockManager
 	private final ReentrantReadWriteLock			lock		= new ReentrantReadWriteLock();
 	
 	private final ReentrantReadWriteLock.WriteLock	writeLock	= lock.writeLock();
-	private final ReentrantReadWriteLock.ReadLock	readLock	= lock.readLock(); // Later could be used.
+	private final ReentrantReadWriteLock.ReadLock	readLock	= lock.readLock();
 
 	public final void writeLock()
 	{
