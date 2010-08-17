@@ -23,7 +23,7 @@
 <spawns>
 	<!-- "The History of Struggles Primum" (Object Normal lvl:1)-->
 	<spawn map="400010000" npcid="730129" pool="1" interval="295">
-		<object x="870.27" y="3105.71" z="1643.9" h="0"/>
+		<object x="870.27" y="3105.7075" z="1643.903" h="0" staticid="277"/>
 	</spawn>
 	<!-- Abend (NPC Normal lvl:50)-->
 	<spawn map="400010000" npcid="278129" pool="1" interval="295">
@@ -149,9 +149,9 @@
 	<spawn map="400010000" npcid="278549" pool="1" interval="295">
 		<object x="2905.1697" y="1015.36115" z="1527.9968" h="58"/>
 	</spawn>
-	<!-- Beautiful Landscape Painting (Object Normal lvl:1)-->
+	<!-- Beautiful Landscape Painting - ELYOS (Object Normal lvl:1)-->
 	<spawn map="400010000" npcid="700460" pool="1" interval="295">
-		<object x="705.45" y="2921.74" z="2880.84" h="105"/>
+		<object x="704.9808" y="2922.2163" z="2880.9604" h="0" staticid="71"/>
 	</spawn>
 	<!-- Belita (NPC Elite lvl:53)-->
 	<spawn map="400010000" npcid="278550" pool="1" interval="295">
@@ -187,7 +187,7 @@
 	</spawn>
 	<!-- Bone of Ancient Dragon (Object Normal lvl:1)-->
 	<spawn map="400010000" npcid="700308" pool="1" interval="295">
-		<object x="2132.796" y="2452.6567" z="2911.825" h="46"/>
+		<object x="2136.9846" y="2452.8564" z="2913.1685" h="0" staticid="1005"/>
 	</spawn>
 	<!-- Bonitra (NPC Elite lvl:50)-->
 	<spawn map="400010000" npcid="278551" pool="1" interval="295">
@@ -778,9 +778,9 @@
 		<object x="3006.1055" y="874.1671" z="1546.2754" h="45"/>
 	</spawn>
 	<!-- Mailbox (Object Normal lvl:1)-->
-	<spawn map="400010000" npcid="700000" pool="2" interval="295">
-		<object x="2997.97" y="892.69" z="1546.09" h="0"/>
-		<object x="918.19" y="3005.36" z="1655.35" h="0"/>
+	<spawn map="400010000" npcid="700079" pool="2" interval="295">
+		<object x="2997.97" y="892.69" z="1546.09" h="0" staticid="284"/>
+		<object x="918.194" y="3005.3599" z="1655.3525" h="0" staticid="285"/>
 	</spawn>
 	<!-- Maius (NPC Elite lvl:53)-->
 	<spawn map="400010000" npcid="278535" pool="1" interval="295">
@@ -868,7 +868,7 @@
 	</spawn>
 	<!-- Mossy Gate (Object Normal lvl:1)-->
 	<spawn map="400010000" npcid="700458" pool="1" interval="295">
-		<object x="2011.16" y="1252.53" z="2945.4092" h="93"/>
+		<object x="2011.3734" y="1251.6195" z="2945.3445" h="0" staticid="1218"/>
 	</spawn>
 	<!-- Muirica (NPC Elite lvl:40)-->
 	<spawn map="400010000" npcid="278107" pool="1" interval="295">
@@ -954,11 +954,11 @@
 	</spawn>
 	<!-- Obelisk (Object Normal lvl:3 Elyos Side)-->
 	<spawn map="400010000" npcid="730071" pool="1" interval="295">
-		<object x="2984.6853" y="901.9103" z="1546.3339" h="105"/>
+		<object x="2984.7502" y="901.9211" z="1546.4128" h="0" staticid="269"/>
 	</spawn>
-	<!-- Obelisk (Object Normal lvl:3 Asmo side)-->
-	<spawn map="400010000" npcid="700401" pool="1" interval="295">
-		<object x="928.667" y="3000.3533" z="1655.3849" h="44"/>
+	<!-- Obelisk (Object Normal lvl:1 Asmo side)-->
+	<spawn map="400010000" npcid="730072" pool="1" interval="295">
+		<object x="928.64844" y="3000.4812" z="1655.7684" h="0" staticid="296"/>
 	</spawn>
 	<!-- Ockham (NPC Elite lvl:53 Subtext: Special Administration Officer)-->
 	<spawn map="400010000" npcid="279054" pool="1" interval="295">
@@ -966,7 +966,7 @@
 	</spawn>
 	<!-- Old Stone Statue (Object Normal lvl:1)-->
 	<spawn map="400010000" npcid="700479" pool="1" interval="295">
-		<object x="2712.53" y="757.89" z="2854.295" h="81"/>
+		<object x="2712.5066" y="757.6218" z="2854.295" h="0" staticid="1210"/>
 	</spawn>
 	<!-- Ozur (NPC Normal lvl:45 Subtext: Combat Administration Officer)-->
 	<spawn map="400010000" npcid="278023" pool="1" interval="295">
@@ -998,11 +998,11 @@
 	</spawn>
 	<!-- Portal (Object Normal lvl:1)-->
 	<spawn map="400010000" npcid="700414" pool="1" interval="295">
-		<object x="883.07385" y="3078.527" z="1647.238" h="54"/>
+		<object x="883.3619" y="3078.529" z="1645.2096" h="0" staticid="68"/>
 	</spawn>
 	<!-- Portal Statue (Object Normal lvl:1)-->
 	<spawn map="400010000" npcid="700413" pool="1" interval="295">
-		<object x="2884.74" y="743.44" z="1502.82" h="0"/>
+		<object x="2884.7407" y="742.9055" z="1503.2267" h="0" staticid="38"/>
 	</spawn>
 	<!-- Primum Coin Fountain (Object Normal lvl:1)-->
 	<spawn map="400010000" npcid="730143" pool="1" interval="295">
@@ -1195,9 +1195,9 @@
 	</spawn>
 	<!-- Stone Plate from Ruins of Roah (Object Normal lvl:1)-->
 	<spawn map="400010000" npcid="700303" pool="3" interval="295">
-		<object x="2648.48" y="687.26" z="2901.46" h="17"/>
-		<object x="2698.18" y="667.48" z="2924.5" h="0"/>
-		<object x="2660.57" y="628.61" z="2926.62" h="0"/>
+		<object x="2660.7363" y="628.52765" z="2926.5637" h="0" staticid="1011"/>
+		<object x="2698.0945" y="667.5004" z="2924.4497" h="0" staticid="1017"/>
+		<object x="2648.55" y="687.4417" z="2901.3645" h="0" staticid="1030"/>
 	</spawn>
 	<!-- Sulfur Isle Guard Tower (NPC Elite lvl:40)-->
 	<spawn map="400010000" npcid="275413" pool="1" interval="295">
@@ -1280,21 +1280,22 @@
 		<object x="924.3342" y="3033.8494" z="1646.445" h="104"/>
 	</spawn>
 	<!-- Tigraki Crystal (Object Normal lvl:1)-->
-	<spawn map="400010000" npcid="700307" pool="14" interval="295">
-		<object x="2671.06" y="2387.1" z="3019.41" h="0"/>
-		<object x="2409.45" y="2548.68" z="2892.32" h="0"/>
-		<object x="2222.83" y="2569.98" z="2921.58" h="0"/>
-		<object x="2059.53" y="2553.19" z="2943.51" h="0"/>
-		<object x="2099.15" y="2401.63" z="2933.7" h="0"/>
-		<object x="1533.55" y="2302.1" z="2946.43" h="0"/>
-		<object x="1899.24" y="2094.54" z="2997.04" h="0"/>
-		<object x="1961.01" y="2134.71" z="2995.59" h="0"/>
-		<object x="1629.71" y="1661.96" z="2918.35" h="0"/>
-		<object x="1674.45" y="1786.97" z="2926.19" h="0"/>
-		<object x="1759.25" y="1808.65" z="2921.31" h="0"/>
-		<object x="1908.87" y="1839.84" z="2927.78" h="0"/>
-		<object x="2556.6" y="2407.71" z="3031.79" h="0"/>
-		<object x="1618.81" y="2240.25" z="2956.35" h="0"/>
+	<spawn map="400010000" npcid="700307" pool="15" interval="295">
+		<object x="2409.6516" y="2548.6406" z="2892.2896" h="0" staticid="1038"/>
+		<object x="1961.2367" y="2134.6855" z="2995.4712" h="0" staticid="1035"/>
+		<object x="1674.7065" y="1786.8187" z="2926.2183" h="0" staticid="1044"/>
+		<object x="2101.9736" y="2263.0823" z="2919.4663" h="0" staticid="1039"/>
+		<object x="1908.6703" y="1839.8992" z="2928.1475" h="0" staticid="1046"/>
+		<object x="1630.1208" y="1661.1377" z="2918.5918" h="0" staticid="1043"/>
+		<object x="1534.4116" y="2301.9736" z="2946.5906" h="0" staticid="997"/>
+		<object x="2556.5938" y="2407.721" z="3031.9536" h="0" staticid="1041"/>
+		<object x="2671.1345" y="2386.916" z="3019.2173" h="0" staticid="1042"/>
+		<object x="2099.3796" y="2401.4526" z="2933.5952" h="0" staticid="1040"/>
+		<object x="2222.8535" y="2569.6677" z="2921.5706" h="0" staticid="1037"/>
+		<object x="1759.2563" y="1808.7573" z="2921.0125" h="0" staticid="1045"/>
+		<object x="1899.118" y="2094.4746" z="2995.897" h="0" staticid="1033"/>
+		<object x="1619.0363" y="2240.4338" z="2957.0261" h="0" staticid="1034"/>
+		<object x="2059.7378" y="2553.193" z="2943.6997" h="0" staticid="1036"/>
 	</spawn>
 	<!-- Trian (NPC Elite lvl:53)-->
 	<spawn map="400010000" npcid="278542" pool="1" interval="295">
@@ -1350,7 +1351,7 @@
 	</spawn>
 	<!-- Votan (NPC Hero lvl:60 Subtext: Governor of Reshanta)-->
 	<spawn map="400010000" npcid="278001" pool="1" interval="295">
-		<object x="924.2855" y="3005.126" z="1646.7515" h="45"/>
+		<object x="924.42926" y="3004.8965" z="1646.7515" h="103"/>
 	</spawn>
 	<!-- Warberg (NPC Normal lvl:45 Subtext: Magic Class Stigma Contributor)-->
 	<spawn map="400010000" npcid="279053" pool="1" interval="295">
@@ -1372,5 +1373,165 @@
 	<!-- Zeth (NPC Normal lvl:45)-->
 	<spawn map="400010000" npcid="278508" pool="1" interval="295">
 		<object x="2938.8984" y="879.9779" z="1546.1272" h="14"/>
+	</spawn>
+	<spawn map="400010000" npcid="730211" pool="1" interval="295">
+		<object x="2245.935" y="2195.1184" z="2190.5051" h="0" staticid="33"/>
+	</spawn>
+	<spawn map="400010000" npcid="700304" pool="9" interval="295">
+		<object x="1645.0" y="1836.4152" z="2901.6553" h="0" staticid="999"/>
+		<object x="1605.5286" y="1842.4376" z="2894.015" h="0" staticid="1002"/>
+		<object x="1665.6366" y="1833.0853" z="2891.5745" h="0" staticid="1003"/>
+		<object x="1658.0358" y="1815.6735" z="2891.5745" h="0" staticid="1006"/>
+		<object x="1539.5338" y="1906.5421" z="2927.7114" h="0" staticid="1009"/>
+		<object x="1614.57" y="1868.0496" z="2900.4407" h="0" staticid="1016"/>
+		<object x="1530.3557" y="1878.833" z="2919.605" h="0" staticid="1025"/>
+		<object x="1598.5654" y="1914.548" z="2893.0635" h="0" staticid="1028"/>
+		<object x="1600.0536" y="1842.5278" z="2891.809" h="0" staticid="1029"/>
+	</spawn>
+	<spawn map="400010000" npcid="700419" pool="15" interval="295">
+		<object x="3094.1897" y="1357.348" z="2663.127" h="0" staticid="1000"/>
+		<object x="3209.5571" y="754.5574" z="2757.0454" h="0" staticid="1001"/>
+		<object x="2957.1934" y="1416.0863" z="2648.4612" h="0" staticid="1004"/>
+		<object x="2970.6519" y="1451.7072" z="2638.3528" h="0" staticid="1007"/>
+		<object x="3267.3396" y="1081.4694" z="2762.302" h="0" staticid="1012"/>
+		<object x="2814.398" y="1494.9941" z="2660.6785" h="0" staticid="1013"/>
+		<object x="2966.0393" y="1365.1636" z="2696.0981" h="0" staticid="1014"/>
+		<object x="3119.8743" y="1468.8213" z="2851.5452" h="0" staticid="1018"/>
+		<object x="2946.0645" y="1505.2273" z="2872.899" h="0" staticid="1020"/>
+		<object x="3114.2708" y="906.3291" z="2822.4795" h="0" staticid="1021"/>
+		<object x="3327.918" y="956.77905" z="2711.2874" h="0" staticid="1022"/>
+		<object x="3261.9573" y="1192.3975" z="2707.5435" h="0" staticid="1023"/>
+		<object x="2981.8604" y="1270.8308" z="2912.4946" h="0" staticid="1024"/>
+		<object x="3233.729" y="1077.1211" z="2677.814" h="0" staticid="1026"/>
+		<object x="3088.2869" y="1238.31" z="2634.161" h="0" staticid="1031"/>
+	</spawn>
+	<spawn map="400010000" npcid="700536" pool="1" interval="295">
+		<object x="1815.0714" y="2321.572" z="2931.347" h="0" staticid="1217"/>
+	</spawn>
+	<spawn map="400010000" npcid="700530" pool="1" interval="295">
+		<object x="2785.06" y="2663.84" z="1485.9668" h="0" staticid="1216"/>
+	</spawn>
+	<!-- Artifacts Spawn = for Fortress AI ELYOS -->
+	<spawn map="400010000" npcid="295056" pool="31" interval="295">
+		<object x="2606.443" y="2014.7198" z="3081.743" h="0" staticid="148"/>
+		<object x="833.1917" y="3026.1829" z="3047.7178" h="0" staticid="133"/>
+		<object x="2291.6846" y="2159.5454" z="2279.6523" h="0" staticid="165"/>
+		<object x="1951.6798" y="2094.7454" z="2261.522" h="0" staticid="177"/>
+		<object x="3000.3826" y="899.55334" z="2845.913" h="0" staticid="17"/>
+		<object x="2030.5175" y="1646.6462" z="2243.8362" h="0" staticid="229"/>
+		<object x="2576.7812" y="855.1737" z="2896.2292" h="0" staticid="105"/>
+		<object x="2239.3066" y="1652.7366" z="2263.2048" h="0" staticid="174"/>
+		<object x="2917.2485" y="2841.5974" z="1453.0287" h="0" staticid="9"/>
+		<object x="1304.2714" y="1271.8223" z="1513.413" h="0" staticid="227"/>
+		<object x="1531.9769" y="1292.9369" z="1694.2677" h="0" staticid="94"/>
+		<object x="2428.5837" y="1902.8556" z="2267.9932" h="0" staticid="162"/>
+		<object x="2035.8787" y="2179.3562" z="2277.5166" h="0" staticid="221"/>
+		<object x="2409.8823" y="2221.67" z="3082.527" h="0" staticid="151"/>
+		<object x="2367.5266" y="2051.2432" z="2278.3037" h="0" staticid="168"/>
+		<object x="2152.746" y="1940.3618" z="3104.0627" h="0" staticid="257"/>
+		<object x="1251.1672" y="1072.9778" z="1694.5751" h="0" staticid="96"/>
+		<object x="2163.563" y="2186.1128" z="2395.159" h="0" staticid="156"/>
+		<object x="694.2952" y="3186.7063" z="2912.2915" h="0" staticid="251"/>
+		<object x="2050.9592" y="1450.7904" z="2965.832" h="0" staticid="136"/>
+		<object x="2442.352" y="2721.5732" z="1566.2002" h="0" staticid="55"/>
+		<object x="1500.3777" y="1007.924" z="1695.5474" h="0" staticid="99"/>
+		<object x="1308.8562" y="1382.0947" z="1694.2382" h="0" staticid="102"/>
+		<object x="1722.4504" y="2150.301" z="2947.7644" h="0" staticid="139"/>
+		<object x="2169.4363" y="1170.4268" z="3014.5664" h="0" staticid="132"/>
+		<object x="1877.9948" y="1838.7773" z="2268.0042" h="0" staticid="171"/>
+		<object x="2836.8865" y="722.00806" z="2888.6775" h="0" staticid="134"/>
+		<object x="2933.0" y="566.3278" z="2889.0325" h="0" staticid="143"/>
+		<object x="1728.7653" y="2440.4136" z="2940.1167" h="0" staticid="201"/>
+		<object x="2708.205" y="2397.3203" z="1554.0867" h="0" staticid="224"/>
+		<object x="627.47925" y="2881.5903" z="2686.6445" h="0" staticid="113"/>
+	</spawn>
+	<!-- Artifacts Spawn = for Fortress AI ASMODIANS
+	<spawn map="400010000" npcid="295057" pool="31" interval="295">
+		<object x="1500.382" y="1007.9198" z="1695.5497" h="0" staticid="100"/>
+		<object x="2917.2485" y="2841.5974" z="1453.0287" h="0" staticid="7"/>
+		<object x="3000.3826" y="899.55334" z="2845.913" h="0" staticid="16"/>
+		<object x="2030.5127" y="1646.6431" z="2243.834" h="0" staticid="158"/>
+		<object x="2169.4363" y="1170.4268" z="3014.5664" h="0" staticid="135"/>
+		<object x="2442.352" y="2721.5732" z="1566.2002" h="0" staticid="13"/>
+		<object x="833.1917" y="3026.1829" z="3047.7178" h="0" staticid="131"/>
+		<object x="1877.9991" y="1838.7816" z="2268.0063" h="0" staticid="170"/>
+		<object x="2163.5674" y="2186.1174" z="2395.1604" h="0" staticid="8"/>
+		<object x="2708.205" y="2397.3203" z="1554.0867" h="0" staticid="10"/>
+		<object x="2035.883" y="2179.361" z="2277.518" h="0" staticid="222"/>
+		<object x="694.2952" y="3186.7063" z="2912.2915" h="0" staticid="273"/>
+		<object x="2050.9592" y="1450.7904" z="2965.832" h="0" staticid="138"/>
+		<object x="2606.443" y="2014.7198" z="3081.743" h="0" staticid="150"/>
+		<object x="2409.8823" y="2221.67" z="3082.527" h="0" staticid="153"/>
+		<object x="627.47925" y="2881.5903" z="2686.6445" h="0" staticid="115"/>
+		<object x="2239.311" y="1652.7408" z="2263.207" h="0" staticid="173"/>
+		<object x="2291.689" y="2159.5498" z="2279.6545" h="0" staticid="164"/>
+		<object x="1531.9812" y="1292.9327" z="1694.27" h="0" staticid="92"/>
+		<object x="2428.5881" y="1902.8597" z="2267.9956" h="0" staticid="161"/>
+		<object x="1304.2756" y="1271.8181" z="1513.4153" h="0" staticid="228"/>
+		<object x="2576.7812" y="855.1737" z="2896.2292" h="0" staticid="106"/>
+		<object x="2152.746" y="1940.3618" z="3104.0627" h="0" staticid="256"/>
+		<object x="1722.4504" y="2150.301" z="2947.7644" h="0" staticid="142"/>
+		<object x="2836.8865" y="722.00806" z="2888.6775" h="0" staticid="128"/>
+		<object x="1308.8605" y="1382.0906" z="1694.2405" h="0" staticid="103"/>
+		<object x="2367.531" y="2051.2476" z="2278.306" h="0" staticid="167"/>
+		<object x="2933.0" y="566.3278" z="2889.0325" h="0" staticid="129"/>
+		<object x="1728.7653" y="2440.4136" z="2940.1167" h="0" staticid="145"/>
+		<object x="1951.684" y="2094.7495" z="2261.5242" h="0" staticid="176"/>
+		<object x="1251.1715" y="1072.9736" z="1694.5774" h="0" staticid="190"/>
+	</spawn>
+	-->
+	<!-- Artifacts Spawn = for Fortress AI BALAUR
+	<spawn map="400010000" npcid="295058" pool="32" interval="295">
+		<object x="833.1917" y="3026.1829" z="3047.7178" h="0" staticid="130"/>
+		<object x="1877.9948" y="1838.7773" z="2268.0042" h="0" staticid="169"/>
+		<object x="2239.3066" y="1652.7366" z="2263.2048" h="0" staticid="172"/>
+		<object x="1722.4504" y="2150.301" z="2947.7644" h="0" staticid="140"/>
+		<object x="694.2952" y="3186.7063" z="2912.2915" h="0" staticid="252"/>
+		<object x="1308.8562" y="1382.0947" z="1694.2382" h="0" staticid="101"/>
+		<object x="1531.9769" y="1292.9369" z="1694.2677" h="0" staticid="93"/>
+		<object x="2836.8855" y="722.0058" z="2888.676" h="0" staticid="127"/>
+		<object x="2163.563" y="2186.1128" z="2395.159" h="0" staticid="11"/>
+		<object x="1728.7653" y="2440.4136" z="2940.1167" h="0" staticid="144"/>
+		<object x="2932.999" y="566.32556" z="2889.031" h="0" staticid="107"/>
+		<object x="2291.6846" y="2159.5454" z="2279.6523" h="0" staticid="163"/>
+		<object x="2442.352" y="2721.5732" z="1566.2002" h="0" staticid="14"/>
+		<object x="2708.205" y="2397.3203" z="1554.0867" h="0" staticid="12"/>
+		<object x="2576.7803" y="855.1715" z="2896.2278" h="0" staticid="104"/>
+		<object x="627.47925" y="2881.5903" z="2686.6445" h="0" staticid="217"/>
+		<object x="2144.6284" y="1956.2332" z="1595.6572" h="0" staticid="290"/>
+		<object x="1951.6798" y="2094.7454" z="2261.522" h="0" staticid="175"/>
+		<object x="3000.3816" y="899.5511" z="2845.9116" h="0" staticid="15"/>
+		<object x="2367.5266" y="2051.2432" z="2278.3037" h="0" staticid="166"/>
+		<object x="2035.8787" y="2179.3562" z="2277.5166" h="0" staticid="219"/>
+		<object x="1500.3777" y="1007.924" z="1695.5474" h="0" staticid="98"/>
+		<object x="1251.1672" y="1072.9778" z="1694.5751" h="0" staticid="95"/>
+		<object x="2606.443" y="2014.7198" z="3081.743" h="0" staticid="149"/>
+		<object x="1304.2714" y="1271.8223" z="1513.413" h="0" staticid="226"/>
+		<object x="2917.2485" y="2841.5974" z="1453.0287" h="0" staticid="66"/>
+		<object x="2030.5085" y="1646.6388" z="2243.8318" h="0" staticid="157"/>
+		<object x="2152.746" y="1940.3618" z="3104.0627" h="0" staticid="231"/>
+		<object x="2050.9592" y="1450.7904" z="2965.832" h="0" staticid="137"/>
+		<object x="2428.5837" y="1902.8556" z="2267.9932" h="0" staticid="160"/>
+		<object x="2409.8823" y="2221.67" z="3082.527" h="0" staticid="152"/>
+		<object x="2169.4363" y="1170.4268" z="3014.5664" h="0" staticid="155"/>
+	</spawn>
+	-->
+	<!-- Artifacts Spawn -->
+	<spawn map="400010000" npcid="277063" pool="9" interval="295">
+		<object x="2523.8901" y="2060.8198" z="3030.8838" h="0" staticid="1276"/>
+		<object x="2192.7104" y="1926.9017" z="2301.5916" h="0" staticid="1285"/>
+		<object x="2556.5693" y="2848.9114" z="1487.5215" h="0" staticid="1266"/>
+		<object x="2778.0144" y="2658.229" z="1485.0659" h="0" staticid="1263"/>
+		<object x="1334.9246" y="1235.9989" z="1495.5886" h="0" staticid="1269"/>
+		<object x="1821.8206" y="2313.6924" z="2930.6233" h="0" staticid="1279"/>
+		<object x="708.1214" y="2916.0645" z="2876.4749" h="0" staticid="1282"/>
+		<object x="2706.655" y="747.89685" z="2853.3809" h="0" staticid="1068"/>
+		<object x="2008.2504" y="1261.6799" z="2944.4858" h="0" staticid="1272"/>
+	</spawn>
+	<!-- Flame Meteor -->
+	<spawn map="400010000" npcid="294515" pool="3" interval="295">
+		<object x="-2.9624345E-5" y="4.8502414E-5" z="-1.4372003E-4" h="0" staticid="241"/>
+		<object x="-2.9624345E-5" y="4.8502414E-5" z="-1.4372003E-4" h="0" staticid="341"/>
+		<object x="-2.9624345E-5" y="4.8502414E-5" z="-1.4372003E-4" h="0" staticid="336"/>
 	</spawn>
 </spawns>

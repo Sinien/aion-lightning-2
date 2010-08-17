@@ -17,10 +17,12 @@
 	
 	Reshanta
 	@author Atomix
+	@author_fix Magenik From 1.9-2.0 Retail Spawn
 	fix and split by Destin
 	
 	TODO: Split Sieges Mobs in another file, don't delete same coord mobs!
-	
+				Dredgion Is added from his starting point but need build his AI 
+				and fix his Hight in npc_template.xml
  -->
 <spawns>
 	<!-- Abyssal Aegis Artifact Core (Monster Elite lvl:40)-->
@@ -5990,6 +5992,79 @@
 	</spawn>
 	<!-- Naga Sorcerer (Monster Hero lvl:42)-->
 	<spawn map="400010000" npcid="290126" pool="1" interval="14400">
-		<object staticid="0" x="1612.2395" y="1827.3862" z="2884.5764" h="75" w="0" rw="0"/>
+		<object x="1612.2395" y="1827.3862" z="2884.5764" h="75"/>
+	</spawn>
+	<!-- Dredgion By Magenik -->
+	<spawn map="400010000" npcid="294550" pool="40" interval="295">
+		<object x="0.042591706" y="84.765434" z="-13.919274" h="0" staticid="390"/>
+		<object x="2.2515876" y="-3.385718" z="-28.71847" h="0" staticid="35"/>
+		<object x="-2.1121557" y="-3.4322417" z="-28.698938" h="0" staticid="369"/>
+		<object x="8.721628" y="-21.913006" z="2.5223782" h="0" staticid="75"/>
+		<object x="11.551708" y="29.237524" z="19.448162" h="0" staticid="357"/>
+		<object x="-2.647764" y="-53.99081" z="-7.3079453" h="0" staticid="362"/>
+		<object x="-2.1121557" y="-3.4322417" z="-28.698938" h="0" staticid="40"/>
+		<object x="-5.3593197" y="-60.08909" z="-5.35897" h="0" staticid="360"/>
+		<object x="-10.967727" y="35.690483" z="3.7781157" h="0" staticid="373"/>
+		<object x="7.416513" y="-44.324978" z="-8.898155" h="0" staticid="380"/>
+		<object x="-10.967727" y="35.690483" z="3.7781157" h="0" staticid="76"/>
+		<object x="11.404195" y="35.876575" z="3.9029937" h="0" staticid="386"/>
+		<object x="-7.4457645" y="-44.426743" z="-8.976158" h="0" staticid="72"/>
+		<object x="2.8159127" y="-58.75636" z="-8.893394" h="0" staticid="389"/>
+		<object x="2.9379656" y="-53.990814" z="-7.3079453" h="0" staticid="74"/>
+		<object x="7.416513" y="-44.324978" z="-8.898155" h="0" staticid="77"/>
+		<object x="5.4714475" y="-59.365673" z="-5.0124125" h="0" staticid="78"/>
+		<object x="29.442833" y="3.4226816" z="-13.573937" h="0" staticid="385"/>
+		<object x="-12.071547" y="29.643476" z="19.467815" h="0" staticid="79"/>
+		<object x="5.4714475" y="-59.365673" z="-5.0124125" h="0" staticid="381"/>
+		<object x="-8.671543" y="-21.735535" z="2.3680813" h="0" staticid="83"/>
+		<object x="-2.8852224" y="-58.764732" z="-8.667076" h="0" staticid="89"/>
+		<object x="0.1332915" y="9.153258" z="-11.262779" h="0" staticid="359"/>
+		<object x="29.442833" y="3.4226816" z="-13.573937" h="0" staticid="90"/>
+		<object x="11.404195" y="35.876575" z="3.9029937" h="0" staticid="154"/>
+		<object x="-29.406546" y="3.4554968" z="-13.544518" h="0" staticid="358"/>
+		<object x="-8.671543" y="-21.735535" z="2.3680813" h="0" staticid="383"/>
+		<object x="2.8159127" y="-58.75636" z="-8.893394" h="0" staticid="366"/>
+		<object x="8.721628" y="-21.913006" z="2.5223782" h="0" staticid="371"/>
+		<object x="0.042591706" y="84.765434" z="-13.919274" h="0" staticid="372"/>
+		<object x="-12.071547" y="29.643476" z="19.467815" h="0" staticid="382"/>
+		<object x="-7.4457645" y="-44.426743" z="-8.976158" h="0" staticid="379"/>
+		<object x="11.551708" y="29.237524" z="19.448162" h="0" staticid="384"/>
+		<object x="-29.406546" y="3.4554968" z="-13.544518" h="0" staticid="388"/>
+		<object x="0.1332915" y="9.153258" z="-11.262779" h="0" staticid="1241"/>
+		<object x="-5.3593197" y="-60.08909" z="-5.35897" h="0" staticid="1242"/>
+		<object x="-2.8852224" y="-58.764732" z="-8.667076" h="0" staticid="1245"/>
+		<object x="2.9379656" y="-53.990814" z="-7.3079453" h="0" staticid="1248"/>
+		<object x="2.2515876" y="-3.385718" z="-28.71847" h="0" staticid="1251"/>
+		<object x="-2.647764" y="-53.99081" z="-7.3079453" h="0" staticid="1252"/>
+	</spawn>
+	<spawn map="400010000" npcid="296113" pool="2" interval="295">
+		<object x="0.053946346" y="-70.14586" z="-1.3362647" h="0" staticid="70"/>
+		<object x="0.053946346" y="-70.14586" z="-1.3362647" h="0" staticid="1244"/>
+	</spawn>
+	<spawn map="400010000" npcid="296114" pool="4" interval="295">
+		<object x="24.799507" y="-7.8152404" z="-11.592979" h="0" staticid="67"/>
+		<object x="-25.532999" y="-6.7695866" z="-11.313316" h="0" staticid="69"/>
+		<object x="24.799507" y="-7.8152404" z="-11.592979" h="0" staticid="370"/>
+		<object x="-25.532999" y="-6.7695866" z="-11.313316" h="0" staticid="1333"/>
+	</spawn>
+	<spawn map="400010000" npcid="296115" pool="2" interval="295">
+		<object x="0.053976025" y="47.220757" z="22.170818" h="0" staticid="377"/>
+		<object x="0.053976025" y="47.220757" z="22.170818" h="0" staticid="73"/>
+	</spawn>
+	<spawn map="400010000" npcid="296117" pool="2" interval="295">>
+		<object x="0.054037537" y="-50.865368" z="-8.642052" h="0" staticid="364"/>
+		<object x="0.054037537" y="-50.865368" z="-8.642052" h="0" staticid="1337"/>
+	</spawn>
+	<spawn map="400010000" npcid="296118" pool="2" interval="295">>
+		<object x="0.054393426" y="-8.86122" z="-24.017542" h="0" staticid="36"/>
+		<object x="0.054393426" y="-8.86122" z="-24.017542" h="0" staticid="367"/>
+	</spawn>
+	<spawn map="400010000" npcid="296119" pool="2" interval="295">>
+		<object x="0.053969588" y="21.763186" z="22.219158" h="0" staticid="363"/>
+		<object x="0.053969588" y="21.763186" z="22.219158" h="0" staticid="1336"/>
+	</spawn>
+	<spawn map="400010000" npcid="296118" pool="2" interval="295">>
+		<object x="0.054393426" y="-8.86122" z="-24.017542" h="0" staticid="36"/>
+		<object x="0.054393426" y="-8.86122" z="-24.017542" h="0" staticid="367"/>
 	</spawn>
 </spawns>
