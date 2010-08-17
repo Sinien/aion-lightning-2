@@ -347,7 +347,7 @@ public final class RunnableStatsManager
 		PrintStream ps = null;
 		try
 		{
-			ps = new PrintStream("MethodStats-" + System.currentTimeMillis() + ".log");
+			ps = new PrintStream("log/MethodStats-" + System.currentTimeMillis() + ".log");
 
 			for(String line : lines)
 				ps.println(line);
