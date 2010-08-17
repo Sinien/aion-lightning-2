@@ -295,13 +295,7 @@
 	<!-- A Pain in the Nyerk -->
 	<report_to id="1359" start_npc_id="798055" end_npc_id="798051" item_id="182201324"/>
 	<!-- 1346 Killing for Castor Scripted -->
-	<!-- 1467 [Group]The Four Leaders -->
-	<monster_hunt id="1467" start_npc_id="204045">
-		<monster_infos npc_id="211696" var_id="0" max_kill="1"/>
-		<monster_infos npc_id="211697" var_id="1" max_kill="1"/>
-		<monster_infos npc_id="211698" var_id="2" max_kill="1"/>
-		<monster_infos npc_id="211699" var_id="3" max_kill="1"/>
-	</monster_hunt>
+	<!-- 1467 - Handled by Script - [Group]The Four Leaders -->
 	<!-- Ore for Hannet -->
 	<item_collecting start_npc_id="203992" id="1450"/>
 	<!-- Delivery for Hannet -->
