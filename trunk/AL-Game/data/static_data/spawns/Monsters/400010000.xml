@@ -6051,15 +6051,15 @@
 		<object x="0.053976025" y="47.220757" z="22.170818" h="0" staticid="377"/>
 		<object x="0.053976025" y="47.220757" z="22.170818" h="0" staticid="73"/>
 	</spawn>
-	<spawn map="400010000" npcid="296117" pool="2" interval="295">>
+	<spawn map="400010000" npcid="296117" pool="2" interval="295">
 		<object x="0.054037537" y="-50.865368" z="-8.642052" h="0" staticid="364"/>
 		<object x="0.054037537" y="-50.865368" z="-8.642052" h="0" staticid="1337"/>
 	</spawn>
-	<spawn map="400010000" npcid="296118" pool="2" interval="295">>
+	<spawn map="400010000" npcid="296118" pool="2" interval="295">
 		<object x="0.054393426" y="-8.86122" z="-24.017542" h="0" staticid="36"/>
 		<object x="0.054393426" y="-8.86122" z="-24.017542" h="0" staticid="367"/>
 	</spawn>
-	<spawn map="400010000" npcid="296119" pool="2" interval="295">>
+	<spawn map="400010000" npcid="296119" pool="2" interval="295">
 		<object x="0.053969588" y="21.763186" z="22.219158" h="0" staticid="363"/>
 		<object x="0.053969588" y="21.763186" z="22.219158" h="0" staticid="1336"/>
 	</spawn>
