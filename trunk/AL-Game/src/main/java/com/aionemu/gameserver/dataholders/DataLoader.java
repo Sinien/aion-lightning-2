@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.util.Collection;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.LineIterator;
 import org.apache.commons.io.filefilter.FileFilterUtils;
 import org.apache.commons.io.filefilter.HiddenFileFilter;
@@ -167,17 +168,7 @@ abstract class DataLoader
 		}
 		finally
 		{
-			if(fr != null)
-			{
-				try
-				{
-					fr.close();
-				}
-				catch(Exception e)
-				{
-					log.fatal("Error while closing save data file", e);
-				}
-			}
+			IOUtils.closeQuietly(fr);
 		}
 	}
 
@@ -199,7 +190,6 @@ abstract class DataLoader
 	 */
 	protected void saveEntries(FileWriter fileWriter) throws Exception
 	{
-		// TODO Auto-generated method stub
 
 	}
 }

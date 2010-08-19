@@ -16,10 +16,10 @@
  */
 package com.aionemu.gameserver.dataholders;
 
+import gnu.trove.THashMap;
 import gnu.trove.TIntObjectHashMap;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.xml.bind.Unmarshaller;
@@ -44,8 +44,8 @@ public class PortalData
 	
 	/** A map containing all npc templates */
 	private TIntObjectHashMap<PortalTemplate> portalData	= new TIntObjectHashMap<PortalTemplate>();
-	private HashMap<Integer, ArrayList<PortalTemplate>> instancesMap = new HashMap<Integer, ArrayList<PortalTemplate>>();
-	private HashMap<String, PortalTemplate> namedPortals = new HashMap<String, PortalTemplate>();
+	private TIntObjectHashMap<ArrayList<PortalTemplate>> instancesMap = new TIntObjectHashMap<ArrayList<PortalTemplate>>();
+	private THashMap<String, PortalTemplate> namedPortals = new THashMap<String, PortalTemplate>();
 
 	/**
 	 *  - Inititialize all maps for subsequent use
