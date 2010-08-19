@@ -16,9 +16,9 @@
  */
 package com.aionemu.gameserver.dataholders;
 
-import java.util.HashMap;
+import gnu.trove.THashMap;
+
 import java.util.List;
-import java.util.Map;
 
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -44,7 +44,7 @@ public class TribeRelationsData
 	@XmlElement(name = "tribe", required = true)
 	protected List<Tribe> tribeList;
 
-	protected Map<String, Tribe> tribeNameMap = new HashMap<String, Tribe>();
+	protected THashMap<String, Tribe> tribeNameMap = new THashMap<String, Tribe>();
 
 	void afterUnmarshal(Unmarshaller u, Object parent)
 	{
