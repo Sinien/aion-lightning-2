@@ -417,7 +417,6 @@ public class PlayerService
 			ChatService.onPlayerLogout(player);
 
 		storePlayer(player);
-		player.setCommonData(null);
 		player.getEquipment().setOwner(null);
 	}
 
