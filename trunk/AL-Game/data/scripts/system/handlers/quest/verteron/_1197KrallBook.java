@@ -94,7 +94,7 @@ public class _1197KrallBook extends QuestHandler
 				}
 				else if(env.getDialogId() == 1009)
 				{
-					player.getInventory().removeFromBagByItemId(182200558, 1);
+					ItemService.removeItemFromInventoryByItemId(player, 182200558);
 					qs.setQuestVar(1);
 					qs.setStatus(QuestStatus.REWARD);
 					updateQuestStatus(player, qs);

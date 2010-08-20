@@ -153,6 +153,14 @@ public class Player extends Creature
 		return playerCommonData;
 	}
 
+	/**
+	 * @param playerCommonData the playerCommonData to set
+	 */
+	public void setCommonData(PlayerCommonData playerCommonData)
+	{
+		this.playerCommonData = playerCommonData;
+	}
+
 	@Override
 	public String getName()
 	{
@@ -393,6 +401,8 @@ public class Player extends Creature
 	 */
 	public void setStore(PrivateStore store)
 	{
+		if (this.store != null && store == null)
+			this.store.clear();
 		this.store = store;
 	}
 
@@ -454,13 +464,11 @@ public class Player extends Creature
 		if(storageType == StorageType.CUBE)
 		{
 			this.inventory = storage;
-			inventory.setOwner(this);
 		}
 
 		if(storageType == StorageType.REGULAR_WAREHOUSE)
 		{
 			this.regularWarehouse = storage;
-			regularWarehouse.setOwner(this);
 		}
 
 		if(storageType == StorageType.ACCOUNT_WAREHOUSE)

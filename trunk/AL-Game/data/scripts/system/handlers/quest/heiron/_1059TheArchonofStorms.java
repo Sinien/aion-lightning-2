@@ -239,7 +239,7 @@ public class _1059TheArchonofStorms extends QuestHandler
 			{
 				PacketSendUtility.broadcastPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(), itemObjId, id, 0, 1, 0), true);
 				PacketSendUtility.sendPacket(player, new SM_PLAY_MOVIE(0, 192));
-				player.getInventory().removeFromBagByItemId(182201619, 1);				
+				ItemService.decreaseItemCountByItemId(player, 182201619, 1);			
 				qs.setQuestVarById(0, 5);
 				qs.setStatus(QuestStatus.REWARD);				
 				updateQuestStatus(player, qs);

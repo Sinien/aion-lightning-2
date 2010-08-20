@@ -24,6 +24,7 @@ import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
 import com.aionemu.gameserver.questEngine.model.QuestStatus;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.services.QuestService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 
@@ -148,7 +149,7 @@ public class _1056LepharistPoisonResearch extends QuestHandler
 					{
 						qs.setQuestVarById(0, 4);						
 						updateQuestStatus(player, qs);
-						player.getInventory().removeFromBagByItemId(182201614, 1);						
+						ItemService.decreaseItemCountByItemId(player, 182201614, 1);					
 						PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
 						return true;
 					}

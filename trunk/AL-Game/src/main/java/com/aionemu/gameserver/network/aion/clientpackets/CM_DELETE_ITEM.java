@@ -21,8 +21,8 @@ import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.player.Storage;
 import com.aionemu.gameserver.network.aion.AionClientPacket;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_DELETE_ITEM;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 /**
  * 
@@ -59,7 +59,6 @@ public class CM_DELETE_ITEM extends AionClientPacket
 			return;
 		}
 		if (resultItem != null)
-			bag.removeFromBag(resultItem, true);
-		sendPacket(new SM_DELETE_ITEM(objId));
+			ItemService.removeItemByObjectId(player, objId, true);
 	}
 }

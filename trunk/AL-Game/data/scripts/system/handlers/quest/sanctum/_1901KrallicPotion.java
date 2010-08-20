@@ -151,7 +151,7 @@ public class _1901KrallicPotion extends QuestHandler
 										.getObjectId(), 10));
 									return true;
 								case 10005:
-									player.getInventory().removeFromBagByItemId(182206000, 1);
+									ItemService.removeItemFromInventoryByItemId(player, 182206000);
 									qs.setQuestVarById(0, var + 1);// var==5
 									updateQuestStatus(player, qs);
 									PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject()

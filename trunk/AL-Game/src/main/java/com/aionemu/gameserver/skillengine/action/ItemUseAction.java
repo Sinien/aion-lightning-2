@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
 import com.aionemu.gameserver.model.gameobjects.player.Player;
-import com.aionemu.gameserver.model.gameobjects.player.Storage;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.skillengine.model.Skill;
 
 /**
@@ -45,9 +45,7 @@ public class ItemUseAction extends Action
 		if(skill.getEffector() instanceof Player)
 		{		
 			Player player = (Player) skill.getEffector();
-			Storage inventory = player.getInventory();
-
-			if(!inventory.removeFromBagByItemId(itemid, count))
+			if(!ItemService.decreaseItemCountByItemId(player, itemid, count))
 				return;			
 		}
 	}

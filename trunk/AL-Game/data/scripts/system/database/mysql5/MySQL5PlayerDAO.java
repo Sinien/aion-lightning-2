@@ -242,7 +242,6 @@ public class MySQL5PlayerDAO extends PlayerDAO
 
 			if (resultSet.next())
 			{
-				success = true;
 				cd.setName(resultSet.getString("name"));
 				//set player class before exp
 				cd.setPlayerClass(PlayerClass.valueOf(resultSet.getString("player_class")));
@@ -292,6 +291,7 @@ public class MySQL5PlayerDAO extends PlayerDAO
 		finally
 		{
 			DatabaseFactory.close(con);
+			success = true;
 		}
 
 		if(success)

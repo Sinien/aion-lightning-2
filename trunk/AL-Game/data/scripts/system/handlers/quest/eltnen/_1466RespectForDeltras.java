@@ -56,7 +56,7 @@ public class _1466RespectForDeltras extends QuestHandler
 	}
 
 	@Override
-	public boolean onItemUseEvent(QuestEnv env, Item item)
+	public boolean onItemUseEvent(QuestEnv env, final Item item)
 	{
 		final Player player = env.getPlayer();
 		final int id = item.getItemTemplate().getTemplateId();
@@ -75,8 +75,8 @@ public class _1466RespectForDeltras extends QuestHandler
 			public void run()
 			{
 				PacketSendUtility.broadcastPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(), itemObjId, id, 0, 1, 0), true);
-				player.getInventory().removeFromBagByObjectId(itemObjId, 1);
-					qs.setStatus(QuestStatus.REWARD);
+				ItemService.removeItemFromInventory(player, item);
+				qs.setStatus(QuestStatus.REWARD);
 				updateQuestStatus(player, qs);
 			}
 		}, 3000);

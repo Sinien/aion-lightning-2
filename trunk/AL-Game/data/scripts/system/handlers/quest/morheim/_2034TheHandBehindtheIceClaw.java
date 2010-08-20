@@ -182,8 +182,8 @@ public class _2034TheHandBehindtheIceClaw extends QuestHandler
 						PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, EmotionType.START_LOOT, 0, targetObjectId), true);
 						QuestService.addNewSpawn(220020000, 1, 204417, (float) 461.23,
 														(float) 188.82, (float) 485.61, (byte) 25, true);
-						player.getInventory().removeFromBagByItemId(182204008, 1);								
-						player.getInventory().removeFromBagByItemId(182204019, 1);
+						ItemService.removeItemFromInventoryByItemId(player, 182204008);								
+						ItemService.removeItemFromInventoryByItemId(player, 182204019);
 					}
 				}, 3000);
 			}

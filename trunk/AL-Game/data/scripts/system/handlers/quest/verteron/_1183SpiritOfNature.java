@@ -137,8 +137,8 @@ public class _1183SpiritOfNature extends QuestHandler
 						case 1009:
 						{
 							qs.setQuestVar(3);
-							player.getInventory().removeFromBagByItemId(182200550, 1);
-							player.getInventory().removeFromBagByItemId(182200565, 1);
+							ItemService.removeItemFromInventoryByItemId(player, 182200550);
+							ItemService.removeItemFromInventoryByItemId(player, 182200565);
 							qs.setStatus(QuestStatus.REWARD);
 							updateQuestStatus(player, qs);
 							return defaultQuestEndDialog(env);

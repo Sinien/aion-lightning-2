@@ -56,6 +56,7 @@ public class _2013ADangerousCrop extends QuestHandler
 		qe.setNpcQuestData(203605).addOnTalkEvent(questId);
 		qe.setNpcQuestData(700096).addOnTalkEvent(questId);
 		qe.setQuestEnterZone(ZoneName.MUMU_FARMLAND_220030000).add(questId);
+		deletebleItems = new int[]{182203012};
 	}
 
 	@Override
@@ -96,7 +97,7 @@ public class _2013ADangerousCrop extends QuestHandler
 									if (!ItemService.addItems(player, Collections.singletonList(new QuestItems(182203012, 1))))
 										return true;
 								if (var == 8)
-									player.getInventory().removeFromBagByItemId(182203012, 1);
+									ItemService.removeItemFromInventoryByItemId(player, 182203012);
 								qs.setQuestVarById(0, var + 1);
 								updateQuestStatus(player, qs);
 								PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));

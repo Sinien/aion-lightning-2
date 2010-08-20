@@ -23,6 +23,7 @@ import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
 import com.aionemu.gameserver.questEngine.model.QuestStatus;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
 
@@ -139,7 +140,7 @@ public class _3930SecretoftheShatteredStigma extends QuestHandler
 									// player doesn't own required item
 									return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 10001);
 								}
-								player.getInventory().removeFromBagByItemId(182206075, 1);	
+								ItemService.removeItemFromInventoryByItemId(player, 182206075);	
 								qs.setStatus(QuestStatus.REWARD);
 								updateQuestStatus(player, qs);	
 								return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 10000);

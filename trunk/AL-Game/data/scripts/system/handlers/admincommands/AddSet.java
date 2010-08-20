@@ -107,9 +107,7 @@ public class AddSet extends AdminCommand
 		
 		for( ItemPart setPart : itemSet.getItempart())
 		{
-			long count = ItemService.addItem(receiver, setPart.getItemid(), 1);
-	
-			if(count != 0)
+			if(ItemService.addItem(receiver, setPart.getItemid(), 1))
 			{
 				PacketSendUtility.sendMessage(admin, "Item " + setPart.getItemid() +  " couldn't be added");
 				return;

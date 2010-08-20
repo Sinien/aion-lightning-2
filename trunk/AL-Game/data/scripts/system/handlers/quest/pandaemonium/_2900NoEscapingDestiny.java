@@ -394,6 +394,6 @@ public class _2900NoEscapingDestiny extends QuestHandler
 		{
 			equipment.unEquipItem(item.getObjectId(), 0);
 		}
-		player.getInventory().removeFromBagByItemId(itemId, 1);
+		ItemService.removeItemFromInventoryByItemId(player, itemId);
 	}
 }

@@ -110,7 +110,7 @@ public class _1721MeetingwiththeBrigadeGeneral extends QuestHandler
                qs.setQuestVar(2);
 			   qs.setStatus(QuestStatus.REWARD);
                updateQuestStatus(player, qs);
-			   player.getInventory().removeFromBagByItemId(182202151, 1);
+			   ItemService.removeItemFromInventoryByItemId(player, 182202151);
                PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
                return true;
             }

@@ -249,7 +249,7 @@ public class _1055EternalRest extends QuestHandler
 					{
 						PacketSendUtility.sendPacket(player, new SM_USE_OBJECT(player.getObjectId(), targetObjectId, 3000, 0));
 						PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, EmotionType.START_LOOT, 0, targetObjectId), true);
-						player.getInventory().removeFromBagByItemId(182201613, 1);
+						ItemService.decreaseItemCountByItemId(player, 182201613, 1);
 						qs.setQuestVarById(0, 4);
 						updateQuestStatus(player, qs);
 					}

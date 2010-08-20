@@ -22,6 +22,7 @@ import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
 import com.aionemu.gameserver.questEngine.model.QuestStatus;
+import com.aionemu.gameserver.services.ItemService;
 
 /**
  * @author Nanou
@@ -101,10 +102,10 @@ public class _3936DecorationsOfSanctum extends QuestHandler
 								player.getInventory().getItemCountByItemId(182206093) >= 10 &&
 								player.getInventory().getItemCountByItemId(182206094) >= 10 )
 							{
-								player.getInventory().removeFromBagByItemId(182206091, 10);
-								player.getInventory().removeFromBagByItemId(182206092, 10);
-								player.getInventory().removeFromBagByItemId(182206093, 10);
-								player.getInventory().removeFromBagByItemId(182206094, 10);
+								ItemService.removeItemFromInventoryByItemId(player, 182206091);
+								ItemService.removeItemFromInventoryByItemId(player, 182206092);
+								ItemService.removeItemFromInventoryByItemId(player, 182206093);
+								ItemService.removeItemFromInventoryByItemId(player, 182206094);
 								qs.setStatus(QuestStatus.REWARD);
 								updateQuestStatus(player, qs);
 								// Send select_quest_reward1 to eddit-HtmlPages.xml

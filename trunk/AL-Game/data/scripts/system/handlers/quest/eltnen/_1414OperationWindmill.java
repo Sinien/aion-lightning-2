@@ -104,13 +104,13 @@ public class _1414OperationWindmill extends QuestHandler
 							@Override
 							public void run()
 							{
+								if(player.getTarget() == null || player.getTarget().getObjectId() != targetObjectId)
+									return;
 								final QuestState qs = player.getQuestStateList().getQuestState(questId);
 								qs.setQuestVar(1);
 								qs.setStatus(QuestStatus.REWARD);
 								updateQuestStatus(player, qs);
-								player.getInventory().removeFromBagByItemId(182201349, 1);
-								if(player.getTarget() == null || player.getTarget().getObjectId() != targetObjectId)
-									return;
+								ItemService.removeItemFromInventoryByItemId(player, 182201349);
 								PacketSendUtility.sendPacket(player, new SM_USE_OBJECT(player.getObjectId(),
 									targetObjectId, 3000, 0));
 								PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, EmotionType.START_LOOT, 0,

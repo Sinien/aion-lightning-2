@@ -77,8 +77,6 @@ public class NpcController extends CreatureController<Npc>
 	public void notSee(VisibleObject object, boolean isOutOfRange)
 	{
 		super.notSee(object, isOutOfRange);
-		if(object instanceof Creature)
-			getOwner().getAggroList().remove((Creature) object);
 		if(object instanceof Player || object instanceof Summon)
 			getOwner().getAi().handleEvent(Event.NOT_SEE_PLAYER);			
 	}

@@ -27,6 +27,7 @@ import com.aionemu.gameserver.questEngine.QuestEngine;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
 import com.aionemu.gameserver.questEngine.model.QuestStatus;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.services.QuestService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.world.zone.ZoneName;
@@ -65,18 +66,14 @@ public class QuestHandler
 			for(QuestItems qi : qwi.getQuestWorkItem())
 			{
 				if(qi != null)
-				{	
-					long count = player.getInventory().getItemCountByItemId(qi.getItemId());
-					if(count > 0)
-						player.getInventory().removeFromBagByItemId(qi.getItemId(), count);					
+				{
+					ItemService.removeItemFromInventoryByItemId(player, qi.getItemId());					
 				}
 			}
 		}
 		for (int itemId : deletebleItems)
 		{
-			long count = player.getInventory().getItemCountByItemId(itemId);
-			if(count > 0)
-				player.getInventory().removeFromBagByItemId(itemId, count);	
+			ItemService.removeItemFromInventoryByItemId(player, itemId);
 		}
 	}
 

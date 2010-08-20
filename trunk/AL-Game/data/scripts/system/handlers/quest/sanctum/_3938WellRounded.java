@@ -301,7 +301,7 @@ public class _3938WellRounded extends QuestHandler
 							case 33:
 								if(player.getInventory().getItemCountByItemId(186000077) >= 1)
 								{
-									player.getInventory().removeFromBagByItemId(186000077, 1);
+									ItemService.removeItemFromInventoryByItemId(player, 186000077);
 									qs.setQuestVarById(0, var + 1);
 									updateQuestStatus(player, qs);
 									// Send check_user_item_ok to eddit-HtmlPages.xml
@@ -333,7 +333,7 @@ public class _3938WellRounded extends QuestHandler
 									return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 10002);
 							// Get HACTION_SELECT_QUEST_REWARD in the eddit-HyperLinks.xml
 							case 1009:
-									player.getInventory().removeFromBagByItemId(186000081, 1);	
+									ItemService.removeItemFromInventoryByItemId(player, 186000081);	
 									qs.setStatus(QuestStatus.REWARD);
 									updateQuestStatus(player, qs);	
 									// Send select_quest_reward1 to eddit-HtmlPages.xml									

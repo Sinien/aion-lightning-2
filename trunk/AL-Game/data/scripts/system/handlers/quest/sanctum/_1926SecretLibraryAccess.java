@@ -80,7 +80,7 @@ public class _1926SecretLibraryAccess extends QuestHandler {
 				if(env.getDialogId() == -1 && qs.getStatus() == QuestStatus.REWARD)
 					return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 10002);
 				else if (env.getDialogId() == 17) {
-					player.getInventory().removeFromBagByItemId(182206022, 1);
+					ItemService.removeItemFromInventoryByItemId(player, 182206022);
 					qs.setQuestVarById(0, qs.getQuestVarById(0) + 1);
 					updateQuestStatus(player, qs);
 					return defaultQuestEndDialog(env);

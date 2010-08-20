@@ -76,6 +76,7 @@ public class _2008Ascension extends QuestHandler
 		qe.addOnEnterWorld(questId);
 		qe.addOnDie(questId);
 		qe.addOnQuestFinish(questId);
+		deletebleItems = new int[]{182203009, 182203010, 182203011};
 	}
 
 	@Override
@@ -166,9 +167,9 @@ public class _2008Ascension extends QuestHandler
 						if(var == 4)
 						{
 							PacketSendUtility.sendPacket(player, new SM_PLAY_MOVIE(0, 57));
-							player.getInventory().removeFromBagByItemId(182203009, 1);
-							player.getInventory().removeFromBagByItemId(182203010, 1);
-							player.getInventory().removeFromBagByItemId(182203011, 1);
+							ItemService.removeItemFromInventoryByItemId(player, 182203009);
+							ItemService.removeItemFromInventoryByItemId(player, 182203010);
+							ItemService.removeItemFromInventoryByItemId(player, 182203011);
 							return false;
 						}
 					case 10000:
@@ -240,9 +241,8 @@ public class _2008Ascension extends QuestHandler
 					case 10001:
 						if(var == 1)
 						{
-							if(player.getInventory().getItemCountByItemId(182203009) == 0)
-								if (ItemService.addItems(player, Collections.singletonList(new QuestItems(182203009, 1))))
-									return true;
+							if (ItemService.addItems(player, Collections.singletonList(new QuestItems(182203009, 1))))
+								return true;
 								
 							qs.setQuestVarById(0, var + 1);
 							updateQuestStatus(player, qs);

@@ -129,7 +129,7 @@ public class _2055TheSeirensTreasure extends QuestHandler
 				case 1009:
 					if(var == 6)
 					{
-						player.getInventory().removeFromBagByItemId(182204321, 1);
+						ItemService.removeItemFromInventoryByItemId(player, 182204321);
 						qs.setStatus(QuestStatus.REWARD);
 						updateQuestStatus(player, qs);
 						return defaultQuestEndDialog(env);
@@ -138,7 +138,7 @@ public class _2055TheSeirensTreasure extends QuestHandler
 					if(var == 6)
 					{
 						PacketSendUtility.sendPacket(player, new SM_PLAY_MOVIE(0, 241));
-						player.getInventory().removeFromBagByItemId(182204321, 1);
+						ItemService.removeItemFromInventoryByItemId(player, 182204321);
 						qs.setStatus(QuestStatus.REWARD);
 						updateQuestStatus(player, qs);
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 5);
@@ -157,7 +157,7 @@ public class _2055TheSeirensTreasure extends QuestHandler
 					{
 						qs.setQuestVarById(0, var + 1);
 						updateQuestStatus(player, qs);
-						player.getInventory().removeFromBagByItemId(182204310, 1);
+						ItemService.removeItemFromInventoryByItemId(player, 182204310);
 						ItemService.addItems(player, Collections.singletonList(new QuestItems(182204311, 1)));
 						PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
 						return true;
@@ -183,7 +183,7 @@ public class _2055TheSeirensTreasure extends QuestHandler
 					{
 						qs.setQuestVarById(0, var + 1);
 						updateQuestStatus(player, qs);
-						player.getInventory().removeFromBagByItemId(182204311, 1);
+						ItemService.removeItemFromInventoryByItemId(player, 182204311);
 						PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
 						return true;
 					}

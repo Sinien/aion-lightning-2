@@ -74,10 +74,12 @@ public class _1114TheNymphsGown extends QuestHandler
 			{
 				if(env.getDialogId() == 1002)
 				{
-					QuestService.startQuest(env, QuestStatus.START);
 					if(!ItemService.addItems(player, Collections.singletonList(new QuestItems(182200226, 1))));
-					player.getInventory().removeFromBagByItemId(182200214, 1); // Namus's Diary with double-click to start the quest
-					PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(0, 0));
+					{
+						QuestService.startQuest(env, QuestStatus.START);
+						ItemService.removeItemFromInventoryByItemId(player, 182200214); // Namus's Diary with double-click to start the quest
+						PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(0, 0));
+					}
 					return true;
 				}
 				else
@@ -124,7 +126,7 @@ public class _1114TheNymphsGown extends QuestHandler
 						qs.setQuestVarById(0, var + 2);
 						qs.setStatus(QuestStatus.REWARD);						
 						updateQuestStatus(player, qs);
-						player.getInventory().removeFromBagByItemId(182200217, 1);
+						ItemService.removeItemFromInventoryByItemId(player, 182200217);
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 6);
 					}
 					if(var == 3)
@@ -132,7 +134,7 @@ public class _1114TheNymphsGown extends QuestHandler
 						qs.setQuestVarById(0, var + 1);
 						qs.setStatus(QuestStatus.REWARD);
 						updateQuestStatus(player, qs);
-						player.getInventory().removeFromBagByItemId(182200217, 1);
+						ItemService.removeItemFromInventoryByItemId(player, 182200217);
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 6);
 					}
 				case 10000:
@@ -140,7 +142,7 @@ public class _1114TheNymphsGown extends QuestHandler
 					{
 						qs.setQuestVarById(0, var + 1);
 						updateQuestStatus(player, qs);
-						player.getInventory().removeFromBagByItemId(182200226, 1);
+						ItemService.removeItemFromInventoryByItemId(player, 182200226);
 						PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
 						return true;
 					}
@@ -200,7 +202,7 @@ public class _1114TheNymphsGown extends QuestHandler
 					{
 						qs.setStatus(QuestStatus.REWARD);
 						updateQuestStatus(player, qs);
-						player.getInventory().removeFromBagByItemId(182200217, 1);
+						ItemService.removeItemFromInventoryByItemId(player, 182200217);
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 5);
 					}
 				case 10001:

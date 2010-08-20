@@ -33,6 +33,8 @@ import com.aionemu.gameserver.model.gameobjects.player.Equipment;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.player.Storage;
 import com.aionemu.gameserver.model.gameobjects.player.StorageType;
+import com.aionemu.gameserver.services.ItemService;
+import com.aionemu.gameserver.world.World;
 
 /**
  * @author ATracer
@@ -51,26 +53,20 @@ public class MySQL5InventoryDAO extends InventoryDAO
 	private static final String SELECT_ACCOUNT_QUERY 	= "SELECT `account_id` FROM `players` WHERE `id`=?";
 
 	@Override
-	public Storage loadStorage(Player player, StorageType storageType)
+	public Storage loadStorage(Player player, final int objectId, StorageType storageType)
 	{
-		final Storage inventory = new Storage(player, storageType);
-		int playerId = player.getObjectId();
+		final Storage inventory = new Storage(storageType);
 		final int storage = storageType.getId();
 		final int equipped = 0;
 
-		if(storageType == StorageType.ACCOUNT_WAREHOUSE)
-		{
-			playerId = getPlayerAccountId(playerId);
-		}
-		inventory.setOwnerId(playerId);
+		inventory.setOwnerId(objectId);
 
-		final int owner = playerId;
 		Connection con = null;
 		try
 		{
 			con = DatabaseFactory.getConnection();
 			PreparedStatement stmt = con.prepareStatement(SELECT_QUERY);
-			stmt.setInt(1, owner);
+			stmt.setInt(1, objectId);
 			stmt.setInt(2, storage);
 			stmt.setInt(3, equipped);
 			ResultSet rset = stmt.executeQuery();
@@ -86,16 +82,16 @@ public class MySQL5InventoryDAO extends InventoryDAO
 				int enchant = rset.getInt("enchant");
 				int itemSkin = rset.getInt("itemSkin");
 				int fusionedItem = rset.getInt("fusionedItem");
-				Item item = new Item(playerId, itemUniqueId, itemId, itemCount, itemColor, isEquiped == 1, isSoulBound == 1,slot, storage, enchant, itemSkin,fusionedItem);
+				Item item = new Item(objectId, itemUniqueId, itemId, itemCount, itemColor, isEquiped == 1, isSoulBound == 1,slot, storage, enchant, itemSkin,fusionedItem);
 				item.setPersistentState(PersistentState.UPDATED);
-				inventory.onLoadHandler(item);
+				ItemService.onLoadHandler(player, inventory, item);
 			}
 			rset.close();
 			stmt.close();
 		}
 		catch (Exception e)
 		{
-			log.fatal("Could not restore storage data for player: " + playerId + " from DB: "+e.getMessage(), e);
+			log.fatal("Could not restore storage data for player: " + objectId + " from DB: "+e.getMessage(), e);
 		}
 		finally
 		{
@@ -222,22 +218,120 @@ public class MySQL5InventoryDAO extends InventoryDAO
 		}
 		return accountId;
 	}
-
+	
 	@Override
-	public boolean store(Player player)
+	public boolean store(List<Item> items)
 	{
-		
-		List<Item> allPlayerItems = player.getDirtyItemsToUpdate();
-
-		boolean resultSuccess = true;
-		for(Item item : allPlayerItems)
+		Connection con = null;
+		try
 		{
-			if(item != null)
-				resultSuccess = store(item);
-		} 
-		return resultSuccess;
+			con = DatabaseFactory.getConnection();
+			PreparedStatement insertStmt = con.prepareStatement(INSERT_QUERY);
+			int insertCount = 0;
+			PreparedStatement updateStmt = con.prepareStatement(UPDATE_QUERY);
+			int updateCount = 0;
+			PreparedStatement deleteStmt = con.prepareStatement(DELETE_QUERY);
+			int deleteCount = 0;
+			for(Item item : items)
+			{
+				switch(item.getPersistentState())
+				{
+					case NEW:
+						insertStmt.setInt(1, item.getObjectId());
+						insertStmt.setInt(2, item.getItemTemplate().getTemplateId());
+						insertStmt.setLong(3, item.getItemCount());
+						insertStmt.setInt(4, item.getItemColor());
+						insertStmt.setInt(5, item.getOwnerId());
+						insertStmt.setBoolean(6, item.isEquipped());
+						insertStmt.setInt(7, item.isSoulBound() ? 1 : 0);
+						insertStmt.setInt(8, item.getEquipmentSlot());
+						insertStmt.setInt(9, item.getItemLocation());
+						insertStmt.setInt(10, item.getEnchantLevel());
+						insertStmt.setInt(11, item.getItemSkinTemplate().getTemplateId());
+						insertStmt.setInt(12, item.getFusionedItem());
+						if (insertCount >= 500)
+						{
+							insertCount = 0;
+							insertStmt.addBatch();
+							insertStmt.executeBatch();
+						}
+						else
+						{
+							insertCount++;
+							insertStmt.addBatch();
+						}
+						break;
+					case UPDATE_REQUIRED:
+						updateStmt.setLong(1, item.getItemCount());
+						updateStmt.setInt(2, item.getItemColor());
+						updateStmt.setInt(3, item.getOwnerId());
+						updateStmt.setBoolean(4, item.isEquipped());
+						updateStmt.setInt(5, item.isSoulBound() ? 1 : 0);
+						updateStmt.setInt(6, item.getEquipmentSlot());
+						updateStmt.setInt(7, item.getItemLocation());
+						updateStmt.setInt(8, item.getEnchantLevel());
+						updateStmt.setInt(9, item.getItemSkinTemplate().getTemplateId());
+						updateStmt.setInt(10, item.getFusionedItem());
+						updateStmt.setInt(11, item.getObjectId());
+						if (updateCount >= 500)
+						{
+							updateCount = 0;
+							updateStmt.addBatch();
+							updateStmt.executeBatch();
+						}
+						else
+						{
+							updateCount++;
+							updateStmt.addBatch();
+						}
+						break;
+					case DELETED:
+						Player player = World.getInstance().findPlayer(item.getOwnerId());
+						if (player != null)
+						{
+							Storage storage = player.getStorage(item.getItemLocation());
+							if (storage != null)
+							{
+								storage.getDeletedItems().remove(item);
+							}
+						}
+						deleteStmt.setInt(1, item.getObjectId());
+						if (deleteCount >= 500)
+						{
+							deleteCount = 0;
+							deleteStmt.addBatch();
+							deleteStmt.executeBatch();
+						}
+						else
+						{
+							deleteCount++;
+							deleteStmt.addBatch();
+						}
+						break;
+				}
+				item.setPersistentState(PersistentState.UPDATED);
+			}
+			if (insertCount > 0)
+				insertStmt.executeBatch();
+			if (updateCount > 0)
+				updateStmt.executeBatch();
+			if (deleteCount > 0)
+				deleteStmt.executeBatch();
+			insertStmt.close();
+			updateStmt.close();
+			deleteStmt.close();
+		}
+		catch (Exception e)
+		{
+			log.error("Error store items", e);
+			return false;
+		}
+		finally
+		{
+			DatabaseFactory.close(con);
+		}
+		return true;
 	}
-
 	/**
 	 * @param item The item that needs to be stored
 	 * @param ownerId The playerObjectId of the owner of the item

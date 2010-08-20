@@ -23,7 +23,6 @@ import com.aionemu.gameserver.model.gameobjects.player.Storage;
 import com.aionemu.gameserver.model.templates.item.ArmorType;
 import com.aionemu.gameserver.model.templates.item.ItemQuality;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_UPDATE_ITEM;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 
 /**
@@ -77,7 +76,7 @@ public class ItemRemodelService
 			}
 
 			// Remove Pattern Reshaper
-			player.getInventory().decreaseItemCount(extractItem, 1);
+			ItemService.decreaseItemCount(player, extractItem, 1);
 			
 			// Revert item to ORIGINAL SKIN
 			keepItem.setItemSkinTemplate(keepItem.getItemTemplate());
@@ -86,8 +85,6 @@ public class ItemRemodelService
 			if (!keepItem.getItemTemplate().isItemDyePermitted())
 				keepItem.setItemColor(0);
 			
-			// Notify Player
-			PacketSendUtility.sendPacket(player, new SM_UPDATE_ITEM(keepItem));
 			PacketSendUtility.sendPacket(player,
 				SM_SYSTEM_MESSAGE.STR_CHANGE_ITEM_SKIN_SUCCEED(new DescriptionId(keepItem.getItemTemplate().getNameId())));
 			
@@ -130,12 +127,16 @@ public class ItemRemodelService
 		
 		
 		// -- SUCCESS --
-		
-		// Remove Money
-		ItemService.decreaseKinah(player, remodelCost);
-		
-		// Remove Item
-		player.getInventory().decreaseItemCount(extractItem, 1);
+		// Check Kinah
+		if (!ItemService.decreaseKinah(player, remodelCost))
+		{
+			PacketSendUtility.sendPacket(player,
+				SM_SYSTEM_MESSAGE.STR_CHANGE_ITEM_SKIN_NOT_ENOUGH_GOLD(new DescriptionId(keepItem.getItemTemplate().getNameId())));
+			return;
+		}
+
+		// Remove Pattern Reshaper
+		ItemService.decreaseItemCount(player, extractItem, 1);
 		
 		// REMODEL ITEM
 		keepItem.setItemSkinTemplate(extractItem.getItemSkinTemplate());
@@ -143,8 +144,6 @@ public class ItemRemodelService
 		// Transfer Dye
 		keepItem.setItemColor(extractItem.getItemColor());
 		
-		// Notify Player
-		PacketSendUtility.sendPacket(player, new SM_UPDATE_ITEM(keepItem));
 		PacketSendUtility.sendPacket(player, new SM_SYSTEM_MESSAGE(1300483, new DescriptionId(keepItem.getItemTemplate().getNameId())));
 	}
 }

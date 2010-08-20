@@ -117,4 +117,10 @@ public class PrivateStore
 	{
 		return storeMessage;
 	}
+	
+	public void clear()
+	{
+		owner = null;
+		items.clear();
+	}
 }

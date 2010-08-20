@@ -24,6 +24,7 @@ import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
 import com.aionemu.gameserver.questEngine.model.QuestStatus;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
 
@@ -86,9 +87,9 @@ public class _1487BalaurBones extends QuestHandler
 					itemCount2 = player.getInventory().getItemCountByItemId(182201409);
 					if(itemCount > 0 && itemCount1 > 2 && itemCount2 > 1)
 					{
-						player.getInventory().removeFromBagByItemId(182201407, 1);
-						player.getInventory().removeFromBagByItemId(182201408, 3);
-						player.getInventory().removeFromBagByItemId(182201409, 2);
+						ItemService.removeItemFromInventoryByItemId(player, 182201407);
+						ItemService.removeItemFromInventoryByItemId(player, 182201408);
+						ItemService.removeItemFromInventoryByItemId(player, 182201409);
 						qs.setStatus(QuestStatus.REWARD);
 						updateQuestStatus(player, qs);
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 5);

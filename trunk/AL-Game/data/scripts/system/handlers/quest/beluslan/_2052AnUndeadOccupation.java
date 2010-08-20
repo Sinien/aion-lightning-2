@@ -57,7 +57,8 @@ public class _2052AnUndeadOccupation extends QuestHandler
 		qe.setQuestItemIds(182204304).add(questId);		
 		qe.setNpcQuestData(213044).addOnKillEvent(questId);		
 		for(int npc_id : npc_ids)
-			qe.setNpcQuestData(npc_id).addOnTalkEvent(questId);	 
+			qe.setNpcQuestData(npc_id).addOnTalkEvent(questId);
+		deletebleItems = new int[]{182204304};
 	}
 
 	@Override
@@ -223,7 +224,7 @@ public class _2052AnUndeadOccupation extends QuestHandler
 			public void run()
 			{
 				PacketSendUtility.broadcastPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(), itemObjId, id, 0, 1, 0), true);
-				player.getInventory().removeFromBagByItemId(182204304, 1);
+				ItemService.removeItemFromInventoryByItemId(player, 182204304);
 				qs.setStatus(QuestStatus.REWARD);
 				updateQuestStatus(player, qs);
 			}

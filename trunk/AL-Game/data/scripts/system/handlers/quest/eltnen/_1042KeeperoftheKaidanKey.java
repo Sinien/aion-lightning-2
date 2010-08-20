@@ -26,6 +26,7 @@ import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
 import com.aionemu.gameserver.questEngine.model.QuestStatus;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.services.QuestService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 /**
@@ -127,8 +128,8 @@ public class _1042KeeperoftheKaidanKey extends QuestHandler
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1352);
 				case 33:
 					if(QuestService.collectItemCheck(env, true))				
-					{                             
-						player.getInventory().removeFromBagByItemId(182201018, 1);           ///// nobody needs useless junk ///
+					{
+						ItemService.decreaseItemCountByItemId(player, 182201018, 1);
 						qs.setStatus(QuestStatus.REWARD);					
 						updateQuestStatus(player, qs);			
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 5);

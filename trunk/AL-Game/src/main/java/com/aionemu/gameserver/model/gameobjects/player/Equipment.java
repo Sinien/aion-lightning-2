@@ -34,6 +34,7 @@ import com.aionemu.gameserver.network.aion.serverpackets.SM_QUESTION_WINDOW;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_UPDATE_ITEM;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_UPDATE_PLAYER_APPEARANCE;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.services.StigmaService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
@@ -173,8 +174,7 @@ public class Equipment
 		synchronized(equipment)
 		{
 			//remove item first from inventory to have at least one slot free
-			owner.getInventory().removeFromBag(item, false);
-			
+			ItemService.removeItem(owner, owner.getInventory(), item, false, false);
 			//do unequip of necessary items
 			Item equippedItem = equipment.get(itemSlotToEquip);
 			if(equippedItem != null)

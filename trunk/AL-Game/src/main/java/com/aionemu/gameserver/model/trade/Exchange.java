@@ -39,7 +39,6 @@ public class Exchange
 
 	public Exchange(Player activeplayer, Player targetPlayer)
 	{
-		super();
 		this.activeplayer = activeplayer;
 		this.targetPlayer = targetPlayer;
 	}
@@ -121,5 +120,12 @@ public class Exchange
 	public boolean isExchangeListFull()
 	{
 		return items.size() > 18;
+	}
+	
+	public void clear()
+	{
+		activeplayer = null;
+		targetPlayer = null;
+		items.clear();
 	}
 }

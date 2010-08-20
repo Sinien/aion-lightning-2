@@ -46,6 +46,7 @@ import com.aionemu.gameserver.questEngine.handlers.models.QuestScriptData;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
 import com.aionemu.gameserver.questEngine.model.QuestStatus;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.world.zone.ZoneName;
 
 /**
@@ -303,10 +304,8 @@ public class QuestEngine
 			for(QuestItems qi : qwi.getQuestWorkItem())
 			{
 				if(qi != null)
-				{	
-					count = player.getInventory().getItemCountByItemId(qi.getItemId());
-					if(count > 0)
-						player.getInventory().removeFromBagByItemId(qi.getItemId(), count);					
+				{
+					ItemService.decreaseItemCountByItemId(player, qi.getItemId(), count);				
 				}
 			}
 		}

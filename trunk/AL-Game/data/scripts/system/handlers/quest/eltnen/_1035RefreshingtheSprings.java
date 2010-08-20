@@ -162,7 +162,7 @@ public class _1035RefreshingtheSprings extends QuestHandler
 					{
 						PacketSendUtility.sendPacket(player, new SM_USE_OBJECT(player.getObjectId(), targetObjectId, 3000, 0));
 						PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, EmotionType.START_LOOT, 0, targetObjectId), true);
-						player.getInventory().removeFromBagByItemId(182201014, 1);
+						ItemService.decreaseItemCountByItemId(player, 182201014, 1);
 						qs.setQuestVarById(0, qs.getQuestVarById(0) + 1);
 						updateQuestStatus(player, qs);						
 					}
@@ -249,7 +249,7 @@ public class _1035RefreshingtheSprings extends QuestHandler
 					{
 						PacketSendUtility.sendPacket(player, new SM_USE_OBJECT(player.getObjectId(), targetObjectId, 3000, 0));
 						PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, EmotionType.START_LOOT, 0, targetObjectId), true);
-						player.getInventory().removeFromBagByItemId(182201024, 1);
+						ItemService.decreaseItemCountByItemId(player, 182201024, 1);
 						qs.setQuestVarById(0, qs.getQuestVarById(0) + 1);
 						updateQuestStatus(player, qs);						
 					}
@@ -296,7 +296,7 @@ public class _1035RefreshingtheSprings extends QuestHandler
 					{
 						PacketSendUtility.sendPacket(player, new SM_USE_OBJECT(player.getObjectId(), targetObjectId, 3000, 0));
 						PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, EmotionType.START_LOOT, 0, targetObjectId), true);
-						player.getInventory().removeFromBagByItemId(182201025, 1);
+						ItemService.decreaseItemCountByItemId(player, 182201025, 1);
 						qs.setQuestVarById(0, qs.getQuestVarById(0) + 1);
 						updateQuestStatus(player, qs);						
 					}

@@ -76,7 +76,7 @@ public class _1722RastinsHomesickness extends QuestHandler
 		if(qs.getStatus() == QuestStatus.REWARD)
 		{
 			if(targetId == 278547)
-				player.getInventory().removeFromBagByItemId(182202101, 1);
+				ItemService.removeItemFromInventoryByItemId(player, 182202101);
 				return defaultQuestEndDialog(env);
 		}
 		else if(qs.getStatus() != QuestStatus.START)

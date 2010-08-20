@@ -97,10 +97,8 @@ public class Add extends AdminCommand
 				return;
 			}
 		}
-		
-		long count = ItemService.addItem(receiver, itemId, itemCount);
 
-		if(count == 0)
+		if(ItemService.addItem(receiver, itemId, itemCount))
 		{
 			PacketSendUtility.sendMessage(admin, "Item added successfully");
 			PacketSendUtility.sendMessage(receiver, "Admin gives you an item");

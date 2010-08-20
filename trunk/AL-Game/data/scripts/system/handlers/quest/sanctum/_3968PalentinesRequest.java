@@ -148,9 +148,9 @@ public class _3968PalentinesRequest extends QuestHandler
 			{
 				qs.setStatus(QuestStatus.REWARD);
 				updateQuestStatus(player, qs);
-				player.getInventory().removeFromBagByItemId(182206123, 1);
-				player.getInventory().removeFromBagByItemId(182206124, 1);
-				player.getInventory().removeFromBagByItemId(182206125, 1);
+				ItemService.removeItemFromInventoryByItemId(player, 182206123);
+				ItemService.removeItemFromInventoryByItemId(player, 182206124);
+				ItemService.removeItemFromInventoryByItemId(player, 182206125);
 				return defaultQuestEndDialog(env);
 			}
 			else

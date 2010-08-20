@@ -187,7 +187,7 @@ public class _1036KaidanPrisoner extends QuestHandler
 					if(var == 5)
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 2716);
 				case 2717:
-						player.getInventory().removeFromBagByItemId(182201004, 1);					
+					ItemService.decreaseItemCountByItemId(player, 182201004, 1);				
 				case 10004:
 					if(var == 5)
 					{
@@ -211,7 +211,7 @@ public class _1036KaidanPrisoner extends QuestHandler
 				case 1009:
 					if(var ==6)
 					{
-						player.getInventory().removeFromBagByItemId(182201005, 1);						
+						ItemService.decreaseItemCountByItemId(player, 182201005, 1);					
 						qs.setStatus(QuestStatus.REWARD);
 						qs.setQuestVarById(0, var + 1);
 						updateQuestStatus(player, qs);

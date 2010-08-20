@@ -59,6 +59,8 @@ public abstract class CreatureController<T extends Creature> extends VisibleObje
 			getOwner().setTarget(null);
 			PacketSendUtility.broadcastPacket(getOwner(), new SM_LOOKATOBJECT(getOwner()));
 		}
+		if (object instanceof Creature)
+			getOwner().getAggroList().remove((Creature)object);
 	}
 
 	/**

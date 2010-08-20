@@ -23,6 +23,7 @@ import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
 import com.aionemu.gameserver.questEngine.model.QuestStatus;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.services.QuestService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 
@@ -84,9 +85,11 @@ public class _1052RootoftheRot extends QuestHandler
 		if(qs.getStatus() == QuestStatus.REWARD)
 		{
 			if(targetId == 730024)
-				player.getInventory().removeFromBagByItemId(182201603, 3);
-				player.getInventory().removeFromBagByItemId(182201604, 3);
+			{
+				ItemService.decreaseItemCountByItemId(player, 182201603, 1);
+				ItemService.decreaseItemCountByItemId(player, 182201604, 1);
 				return defaultQuestEndDialog(env);
+			}
 		}
 		else if(qs.getStatus() != QuestStatus.START)
 		{

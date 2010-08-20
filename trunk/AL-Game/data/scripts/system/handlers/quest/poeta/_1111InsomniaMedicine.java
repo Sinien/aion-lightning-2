@@ -74,12 +74,12 @@ public class _1111InsomniaMedicine extends QuestHandler
 				{
 					if(qs.getQuestVarById(0) == 2)
 					{	
-						player.getInventory().removeFromBagByItemId(182200222, 1);
+						ItemService.removeItemFromInventoryByItemId(player, 182200222);
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 2375);
 					}	
 					else if(qs.getQuestVarById(0) == 3)
 					{	
-						player.getInventory().removeFromBagByItemId(182200221, 1);
+						ItemService.removeItemFromInventoryByItemId(player, 182200221);
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 2716);
 					}	
 					return false;

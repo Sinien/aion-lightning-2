@@ -280,8 +280,8 @@ public class _1687TheTigrakiAgreement extends QuestHandler
 		Player player = env.getPlayer();
 		QuestState qs = player.getQuestStateList().getQuestState(questId);
 
-		player.getInventory().removeFromBagByItemId(186000035, 2);
-		player.getInventory().removeFromBagByItemId(186000036, 5);
+		ItemService.removeItemFromInventoryByItemId(player, 186000035);
+		ItemService.removeItemFromInventoryByItemId(player, 186000036);
 		qs.setStatus(QuestStatus.COMPLETE);
 		qs.setCompliteCount(qs.getCompliteCount() + 1);
 		int rewardExp = player.getRates().getQuestXpRate() * 1535800;

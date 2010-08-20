@@ -163,7 +163,7 @@ public class _2071SpeakingBalaur extends QuestHandler
 					else if(var == 6)
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 3057);
 				case 3058:
-					player.getInventory().removeFromBagByItemId(182205501, 1);
+					ItemService.removeItemFromInventoryByItemId(player, 182205501);
 					PacketSendUtility.sendPacket(player, new SM_PLAY_MOVIE(0, 293));
 						break;
 				case 10004:

@@ -23,6 +23,7 @@ import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
 import com.aionemu.gameserver.questEngine.model.QuestStatus;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 
 /**
@@ -152,7 +153,7 @@ public class _3935ShoulderTheBurden extends QuestHandler
 							case 33:
 								if(player.getInventory().getItemCountByItemId(186000079) >= 30)
 								{
-									player.getInventory().removeFromBagByItemId(186000079, 30);
+									ItemService.removeItemFromInventoryByItemId(player, 186000079);
 									qs.setQuestVarById(0, var + 1);
 									updateQuestStatus(player, qs);
 									// Send check_user_item_ok to eddit-HtmlPages.xml
@@ -184,7 +185,7 @@ public class _3935ShoulderTheBurden extends QuestHandler
 									return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 10002);
 							// Get HACTION_SELECT_QUEST_REWARD in the eddit-HyperLinks.xml
 							case 1009:
-									player.getInventory().removeFromBagByItemId(186000080, 1);	
+									ItemService.removeItemFromInventoryByItemId(player, 186000080);	
 									qs.setStatus(QuestStatus.REWARD);
 									updateQuestStatus(player, qs);	
 									// Send select_quest_reward1 to eddit-HtmlPages.xml									

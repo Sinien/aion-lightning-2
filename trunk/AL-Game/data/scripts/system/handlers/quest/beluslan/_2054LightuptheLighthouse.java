@@ -59,6 +59,7 @@ public class _2054LightuptheLighthouse extends QuestHandler
 		qe.addQuestLvlUp(questId);
 		for(int npc_id : npc_ids)
 			qe.setNpcQuestData(npc_id).addOnTalkEvent(questId);
+		deletebleItems = new int[]{182204309, 182204308};
 	}
 
 	@Override
@@ -198,7 +199,7 @@ public class _2054LightuptheLighthouse extends QuestHandler
 					{
 						PacketSendUtility.sendPacket(player, new SM_USE_OBJECT(player.getObjectId(), targetObjectId, 3000, 0));
 						PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, EmotionType.START_LOOT, 0, targetObjectId), true);
-						player.getInventory().removeFromBagByItemId(182204309, 1);
+						ItemService.removeItemFromInventoryByItemId(player, 182204309);
 						PacketSendUtility.sendPacket(player, new SM_PLAY_MOVIE(0, 238));
 						qs.setStatus(QuestStatus.REWARD);
 						updateQuestStatus(player, qs);
@@ -228,7 +229,7 @@ public class _2054LightuptheLighthouse extends QuestHandler
 			public void run()
 			{
 				PacketSendUtility.broadcastPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(), itemObjId, id, 0, 1, 0), true);
-				player.getInventory().removeFromBagByItemId(182204308, 1);
+				ItemService.removeItemFromInventoryByItemId(player, 182204308);
 				qs.setQuestVarById(0, 3);
 				updateQuestStatus(player, qs);
 			}

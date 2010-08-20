@@ -75,8 +75,7 @@ public class ArmsfusionService
 		// TODO: Transfer Manastones
 		
 		firstItem.setFusionedItem(secondItem.getItemTemplate().getTemplateId());
-		
-		player.getInventory().removeFromBagByObjectId(secondItemUniqueId, 1);
+		ItemService.decreaseItemCount(player, secondItem, 1);
 		
 		PacketSendUtility.sendPacket(player, new SM_UPDATE_ITEM(firstItem));
 		

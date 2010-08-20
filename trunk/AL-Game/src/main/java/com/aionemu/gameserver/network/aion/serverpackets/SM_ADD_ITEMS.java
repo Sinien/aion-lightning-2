@@ -30,12 +30,12 @@ import com.aionemu.gameserver.network.aion.InventoryPacket;
  * @author ATracer
  * 
  */
-public class SM_INVENTORY_UPDATE extends InventoryPacket
+public class SM_ADD_ITEMS extends InventoryPacket
 {
 	private List<Item> items;
 	private int size;
 
-	public SM_INVENTORY_UPDATE(List<Item> items)
+	public SM_ADD_ITEMS (List<Item> items)
 	{
 		this.items = items;
 		this.size = items.size();

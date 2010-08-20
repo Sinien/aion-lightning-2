@@ -221,20 +221,20 @@ public class _2056ThawingKurngalfberg extends QuestHandler
 				if(qs.getQuestVarById(0) == 2)
 				{
 					PacketSendUtility.sendPacket(player, new SM_PLAY_MOVIE(0, 243));
-					player.getInventory().removeFromBagByItemId(id, 1);
+					ItemService.removeItemFromInventoryByItemId(player, id);
 					qs.setQuestVarById(0, qs.getQuestVarById(0) + 1);
 					updateQuestStatus(player, qs);
 				}
 				else if(qs.getQuestVarById(0) == 3)
 				{
 					PacketSendUtility.sendPacket(player, new SM_PLAY_MOVIE(0, 244));
-					player.getInventory().removeFromBagByItemId(id, 1);
+					ItemService.removeItemFromInventoryByItemId(player, id);
 					qs.setQuestVarById(0, qs.getQuestVarById(0) + 1);
 					updateQuestStatus(player, qs);
 				}
 				else if(qs.getQuestVarById(0) == 4)
 				{
-					player.getInventory().removeFromBagByItemId(id, 1);
+					ItemService.removeItemFromInventoryByItemId(player, id);
 					PacketSendUtility.sendPacket(player, new SM_PLAY_MOVIE(0, 245));
 					qs.setStatus(QuestStatus.REWARD);
 					updateQuestStatus(player, qs);

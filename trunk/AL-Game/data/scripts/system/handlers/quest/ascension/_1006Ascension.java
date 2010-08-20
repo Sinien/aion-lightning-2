@@ -79,6 +79,7 @@ public class _1006Ascension extends QuestHandler
 		qe.addOnEnterWorld(questId);
 		qe.addOnDie(questId);
 		qe.addOnQuestFinish(questId);
+		deletebleItems = new int[]{182200008, 182200009};
 	}
 
 	@Override
@@ -147,9 +148,8 @@ public class _1006Ascension extends QuestHandler
 					case 10000:
 						if(var == 0)
 						{
-							if(player.getInventory().getItemCountByItemId(182200007) == 0)
-								if (!ItemService.addItems(player, Collections.singletonList(new QuestItems(182200007, 1))))
-									return true;
+							if (!ItemService.addItems(player, Collections.singletonList(new QuestItems(182200007, 1))))
+								return true;
 							qs.setQuestVarById(0, var + 1);
 							updateQuestStatus(player, qs);
 							PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
@@ -158,7 +158,7 @@ public class _1006Ascension extends QuestHandler
 					case 10002:
 						if(var == 3)
 						{
-							player.getInventory().removeFromBagByItemId(182200009, 1);
+							ItemService.removeItemFromInventoryByItemId(player, 182200009);
 							qs.setQuestVar(99);
 							updateQuestStatus(player, qs);
 							PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 0));
@@ -222,7 +222,7 @@ public class _1006Ascension extends QuestHandler
 						if(var == 2)
 						{
 							PacketSendUtility.sendPacket(player, new SM_PLAY_MOVIE(0, 14));
-							player.getInventory().removeFromBagByItemId(182200008, 1);
+							ItemService.decreaseItemCountByItemId(player, 182200008, 1);
 							ItemService.addItems(player, Collections.singletonList(new QuestItems(182200009, 1)));
 						}
 						return false;
@@ -321,7 +321,7 @@ public class _1006Ascension extends QuestHandler
 	}
 
 	@Override
-	public boolean onItemUseEvent(QuestEnv env, Item item)
+	public boolean onItemUseEvent(QuestEnv env, final Item item)
 	{
 		final Player player = env.getPlayer();
 		final int id = item.getItemTemplate().getTemplateId();
@@ -340,7 +340,7 @@ public class _1006Ascension extends QuestHandler
 			public void run()
 			{
 				PacketSendUtility.broadcastPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(), itemObjId, id, 0, 1, 0), true);
-				player.getInventory().removeFromBagByObjectId(itemObjId, 1);
+				ItemService.removeItemFromInventory(player, item);
 				ItemService.addItems(player, Collections.singletonList(new QuestItems(182200008, 1)));
 				qs.setQuestVarById(0, 2);
 				updateQuestStatus(player, qs);

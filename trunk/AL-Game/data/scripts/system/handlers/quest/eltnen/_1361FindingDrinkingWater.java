@@ -60,7 +60,7 @@ public class _1361FindingDrinkingWater extends QuestHandler
 	}
 	
 	@Override
-	public boolean onItemUseEvent(QuestEnv env, Item item)
+	public boolean onItemUseEvent(QuestEnv env, final Item item)
 	{
 		final Player player = env.getPlayer();
 		final int id = item.getItemTemplate().getTemplateId();
@@ -79,7 +79,7 @@ public class _1361FindingDrinkingWater extends QuestHandler
 			public void run()
 			{
 				PacketSendUtility.broadcastPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(), itemObjId, id, 0, 1, 0), true);
-				player.getInventory().removeFromBagByObjectId(itemObjId, 1);
+				ItemService.removeItemFromInventory(player, item);
 				ItemService.addItems(player, Collections.singletonList(new QuestItems(182201327, 1)));
 				qs.setQuestVar(1);
 				updateQuestStatus(player, qs);
@@ -146,12 +146,12 @@ public class _1361FindingDrinkingWater extends QuestHandler
 							@Override
 							public void run()
 							{
+								if(player.getTarget() == null || player.getTarget().getObjectId() != targetObjectId)
+									return;
 								final QuestState qs = player.getQuestStateList().getQuestState(questId);
 								qs.setStatus(QuestStatus.REWARD);
 								updateQuestStatus(player, qs);
-								player.getInventory().removeFromBagByItemId(182201327, 1);
-								if(player.getTarget() == null || player.getTarget().getObjectId() != targetObjectId)
-									return;
+								ItemService.removeItemFromInventoryByItemId(player, 182201327);
 								PacketSendUtility.sendPacket(player, new SM_USE_OBJECT(player.getObjectId(),
 									targetObjectId, 3000, 0));
 								PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, EmotionType.START_LOOT, 0,

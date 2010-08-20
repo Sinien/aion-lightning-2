@@ -24,6 +24,7 @@ import javax.xml.bind.annotation.XmlType;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ITEM_USAGE_ANIMATION;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.skillengine.SkillEngine;
 import com.aionemu.gameserver.skillengine.model.Skill;
 import com.aionemu.gameserver.utils.PacketSendUtility;
@@ -76,7 +77,7 @@ public class SkillUseAction extends AbstractItemAction
 				parentItem.getObjectId(), parentItem.getItemTemplate().getTemplateId()), true);
 			skill.useSkill();
 
-			player.getInventory().removeFromBagByObjectId(parentItem.getObjectId(), 1);
+			ItemService.decreaseItemCount(player, parentItem, 1);
 		}
 	}
 

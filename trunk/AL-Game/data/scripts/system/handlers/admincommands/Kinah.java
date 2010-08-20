@@ -18,7 +18,6 @@ package admincommands;
 
 import com.aionemu.gameserver.configs.administration.AdminConfig;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
-import com.aionemu.gameserver.model.items.ItemId;
 import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.Util;
@@ -93,16 +92,8 @@ public class Kinah extends AdminCommand
 			}
 		}
 		
-		long count = ItemService.addItem(receiver, ItemId.KINAH.value(), kinahCount);
-
-		if(count == 0)
-		{
-			PacketSendUtility.sendMessage(admin, "Kinah given successfully.");
-			PacketSendUtility.sendMessage(receiver, "An admin gives you some kinah.");
-		}
-		else
-		{
-			PacketSendUtility.sendMessage(admin, "Kinah couldn't be given.");
-		}
+		ItemService.increaseKinah(receiver, kinahCount);
+		PacketSendUtility.sendMessage(admin, "Kinah given successfully.");
+		PacketSendUtility.sendMessage(receiver, "An admin gives you some kinah.");
 	}
 }

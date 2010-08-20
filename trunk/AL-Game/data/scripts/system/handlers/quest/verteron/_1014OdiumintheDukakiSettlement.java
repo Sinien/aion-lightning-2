@@ -29,6 +29,7 @@ import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
 import com.aionemu.gameserver.questEngine.model.QuestStatus;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.services.QuestService;
 import com.aionemu.gameserver.services.ZoneService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
@@ -236,8 +237,8 @@ public class _1014OdiumintheDukakiSettlement extends QuestHandler
 			{
 				PacketSendUtility.sendPacket(player, new SM_PLAY_MOVIE(0, 172));
 				PacketSendUtility.broadcastPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(), itemObjId, id, 0, 1, 0), true);
-			    player.getInventory().removeFromBagByItemId(182200012, 1);
-				player.getInventory().removeFromBagByItemId(182200011, 1);
+				ItemService.decreaseItemCountByItemId(player, 182200012, 1);
+				ItemService.decreaseItemCountByItemId(player, 182200011, 1);
 				qs.setQuestVarById(0, 14);
 				updateQuestStatus(player, qs);
 			}

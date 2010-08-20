@@ -30,6 +30,7 @@ import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.templates.spawn.SpawnTemplate;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ITEM_USAGE_ANIMATION;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.spawnengine.SpawnEngine;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
@@ -113,6 +114,6 @@ public class ToyPetSpawnAction extends AbstractItemAction
 			parentItem.getObjectId(), parentItem.getItemTemplate().getTemplateId()), true);
 			
 		//RemoveKisk
-		player.getInventory().removeFromBagByObjectId(parentItem.getObjectId(), 1);
+		ItemService.decreaseItemCount(player, parentItem, 1);
 	}
 }

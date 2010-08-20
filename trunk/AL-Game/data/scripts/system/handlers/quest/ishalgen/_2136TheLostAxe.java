@@ -29,6 +29,7 @@ import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
 import com.aionemu.gameserver.questEngine.model.QuestStatus;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.services.QuestService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
@@ -111,7 +112,7 @@ public class _2136TheLostAxe extends QuestHandler
 					{
 						qs.setStatus(QuestStatus.REWARD);
 						updateQuestStatus(player, qs);
-						player.getInventory().removeFromBagByItemId(182203130, 1);
+						ItemService.removeItemFromInventoryByItemId(player, 182203130);
 						PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 0));
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 6);
 					}						
@@ -120,7 +121,7 @@ public class _2136TheLostAxe extends QuestHandler
 					{
 						qs.setStatus(QuestStatus.REWARD);
 						updateQuestStatus(player, qs);
-						player.getInventory().removeFromBagByItemId(182203130, 1);
+						ItemService.removeItemFromInventoryByItemId(player, 182203130);
 						PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 0));
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 5);
 					}

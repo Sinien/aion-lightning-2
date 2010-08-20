@@ -49,7 +49,7 @@ public class _1535TheColdColdGround extends QuestHandler
 		qe.setNpcQuestData(204580).addOnQuestStart(questId);
 		qe.setNpcQuestData(204580).addOnTalkEvent(questId);
 	}
-	
+
 	@Override
 	public boolean onLvlUpEvent(QuestEnv env)
 	{
@@ -63,10 +63,10 @@ public class _1535TheColdColdGround extends QuestHandler
 		int targetId = 0;
 		if(env.getVisibleObject() instanceof Npc)
 			targetId = ((Npc) env.getVisibleObject()).getNpcId();
-		
+
 		if(targetId != 204580)
 			return false;
-		
+
 		final QuestState qs = player.getQuestStateList().getQuestState(questId);
 		if(qs == null || qs.getStatus() == QuestStatus.NONE)
 		{
@@ -75,16 +75,16 @@ public class _1535TheColdColdGround extends QuestHandler
 			else
 				return defaultQuestStartDialog(env);
 		}
-		
+
 		if(qs == null)
 			return false;
-		
+
 		if(qs.getStatus() == QuestStatus.START)
 		{
 			boolean abexSkins = player.getInventory().getItemCountByItemId(182201818) > 4;
 			boolean worgSkins = player.getInventory().getItemCountByItemId(182201819) > 2;
 			boolean karnifSkins = player.getInventory().getItemCountByItemId(182201820) > 0;
-			
+
 			switch(env.getDialogId())
 			{
 				case -1:
@@ -92,7 +92,8 @@ public class _1535TheColdColdGround extends QuestHandler
 					if(abexSkins || worgSkins || karnifSkins)
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1352);
 				case 10000:
-					if (abexSkins) {
+					if(abexSkins)
+					{
 						qs.setQuestVarById(0, 1);
 						qs.setStatus(QuestStatus.REWARD);
 						updateQuestStatus(player, qs);
@@ -100,16 +101,18 @@ public class _1535TheColdColdGround extends QuestHandler
 					}
 					break;
 				case 10001:
-					if (worgSkins) {
-					    qs.setQuestVarById(0, 2);
+					if(worgSkins)
+					{
+						qs.setQuestVarById(0, 2);
 						qs.setStatus(QuestStatus.REWARD);
-						updateQuestStatus(player, qs);	
+						updateQuestStatus(player, qs);
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 6);
 					}
 					break;
 				case 10002:
-					if (karnifSkins) {
-					    qs.setQuestVarById(0, 3);
+					if(karnifSkins)
+					{
+						qs.setQuestVarById(0, 3);
 						qs.setStatus(QuestStatus.REWARD);
 						updateQuestStatus(player, qs);
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 7);
@@ -121,28 +124,39 @@ public class _1535TheColdColdGround extends QuestHandler
 		else if(qs.getStatus() == QuestStatus.REWARD)
 		{
 			int var = qs.getQuestVarById(0);
-			if(var == 1) {
-				player.getInventory().removeFromBagByItemId(182201818, 5);
+			if(var == 1)
+			{
+				ItemService.removeItemFromInventoryByItemId(player, 182201818);
 				return defaultQuestEndDialog(env);
-			} else if(var == 2) {
-				//add Greater Mana Potion x 5
-				if(!ItemService.addItems(player, Collections.singletonList(new QuestItems(162000010, 5)))) {
-					//check later
+			}
+			else if(var == 2)
+			{
+				// add Greater Mana Potion x 5
+				if(!ItemService.addItems(player, Collections.singletonList(new QuestItems(162000010, 5))))
+				{
+					// check later
 					qs.setStatus(QuestStatus.START);
 					updateQuestStatus(player, qs);
-				} else {
-					player.getInventory().removeFromBagByItemId(182201819, 3);
+				}
+				else
+				{
+					ItemService.removeItemFromInventoryByItemId(player, 182201819);
 				}
 				defaultQuestEndDialog(env);
 				return true;
-			} else if(var == 3) {
-				//add Greater Life Serum x 5
-				if(!ItemService.addItems(player, Collections.singletonList(new QuestItems(162000015, 5)))) {
-					//check later
+			}
+			else if(var == 3)
+			{
+				// add Greater Life Serum x 5
+				if(!ItemService.addItems(player, Collections.singletonList(new QuestItems(162000015, 5))))
+				{
+					// check later
 					qs.setStatus(QuestStatus.START);
 					updateQuestStatus(player, qs);
-				} else {
-					player.getInventory().removeFromBagByItemId(182201820, 1);
+				}
+				else
+				{
+					ItemService.removeItemFromInventoryByItemId(player, 182201820);
 				}
 				defaultQuestEndDialog(env);
 				return true;

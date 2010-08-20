@@ -18,8 +18,9 @@ package com.aionemu.gameserver.model.items;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
+
+import javolution.util.FastList;
 
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.templates.item.ItemTemplate;
@@ -35,14 +36,14 @@ public class ItemStorage
 	/**
 	 * LinkedList storageItems
 	 */
-	private List<Item> storageItems;
+	private FastList<Item> storageItems;
 
 	private int limit = 0;
 
 	public ItemStorage(int limit)
 	{
 		this.limit = limit;
-		storageItems = new LinkedList<Item>();
+		storageItems = new FastList<Item>(limit);
 	}
 
 	/**
@@ -167,34 +168,6 @@ public class ItemStorage
 	public int getNextAvailableSlot()
 	{
 		return FIRST_AVAILABLE_SLOT;
-	}
-
-	/**
-	 *  Add item logic:
-	 *  - If there is already existing item - try to increase stack count
-	 *  - If stack is full - put to next available slot
-	 *  
-	 *  - Return null if item was not added
-	 *  - Return Item as the result of successful operation
-	 *  
-	 *   DEPRECATED ??
-	 *   
-	 * @param item
-	 * @return Item
-	 */
-	public Item addItemToStorage(Item item)
-	{
-		Item existingItem = getItemFromStorageByItemId(item.getItemTemplate().getTemplateId());
-
-		if(existingItem != null && existingItem.getItemCount() < existingItem.getItemTemplate().getMaxStackCount())
-		{
-			int maxValue = existingItem.getItemTemplate().getMaxStackCount();
-			long sum = item.getItemCount() + existingItem.getItemCount();
-			existingItem.setItemCount(sum >  maxValue ? maxValue : sum);
-			
-			return existingItem;
-		}
-		return putToNextAvailableSlot(item);
 	}
 	
 	/**

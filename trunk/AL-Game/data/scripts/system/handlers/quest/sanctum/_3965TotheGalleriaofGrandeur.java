@@ -85,7 +85,7 @@ public class _3965TotheGalleriaofGrandeur extends QuestHandler
 				{
 					if(player.getInventory().getItemCountByItemId(182206120) > 1)
 					{
-						player.getInventory().removeFromBagByItemId(182206120, 1);
+						ItemService.removeItemFromInventoryByItemId(player, 182206120);
 						qs.setQuestVar(++var);
 						updateQuestStatus(player, qs);
 					}
@@ -103,10 +103,9 @@ public class _3965TotheGalleriaofGrandeur extends QuestHandler
 					return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 2375);
 				else if(env.getDialogId() == 1009)
 				{
-					if(player.getInventory().getItemCountByItemId(182206120) > 0)
+					if(ItemService.removeItemFromInventoryByItemId(player, 182206120))
 					{
-						player.getInventory().removeFromBagByItemId(182206120, 1);
-						qs.setQuestVar(++var);
+						qs.setQuestVar(2);
 						qs.setStatus(QuestStatus.REWARD);
 						updateQuestStatus(player, qs);
 						return defaultQuestEndDialog(env);
