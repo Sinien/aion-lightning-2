@@ -27,7 +27,6 @@ import com.aionemu.gameserver.dataholders.GoodsListData;
 import com.aionemu.gameserver.dataholders.TradeListData;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.Npc;
-import com.aionemu.gameserver.model.gameobjects.player.AbyssRank;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.player.Storage;
 import com.aionemu.gameserver.model.templates.TradeListTemplate;
@@ -113,7 +112,6 @@ public class TradeService
 		}
 		Storage inventory = player.getInventory();
 		int freeSlots = inventory.getLimit() - inventory.getAllItems().size() + 1;
-		AbyssRank rank = player.getAbyssRank();
 
 		// 1. check required items and ap
 		if(!tradeList.calculateAbyssBuyListPrice(player))
@@ -129,12 +127,12 @@ public class TradeService
 			{
 				log.warn(String.format("CHECKPOINT: itemservice couldnt add all items on buy: %d %d %d %d", player
 					.getObjectId(), tradeItem.getItemTemplate().getTemplateId(), tradeItem.getCount(), tradeItem.getCount()));
-				rank.addAp(-tradeList.getRequiredAp());
+				player.getCommonData().addAp(-tradeList.getRequiredAp());
 				return false;
 			}
 		}
-
-		rank.addAp(-tradeList.getRequiredAp());
+		
+		player.getCommonData().addAp(-tradeList.getRequiredAp());
 		Map<Integer, Integer> requiredItems = tradeList.getRequiredItems();
 		for(Integer itemId : requiredItems.keySet())
 		{
