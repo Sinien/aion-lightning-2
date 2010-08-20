@@ -211,7 +211,7 @@ public class _2098ButWhatweMake extends QuestHandler
 					return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 2716);
 				else if(env.getDialogId() == 10005)
 				{
-					player.getInventory().removeFromBagByItemId(182207089, 1);
+					ItemService.removeItemFromInventoryByItemId(player, 182207089);
 					qs.setQuestVarById(0, qs.getQuestVarById(0) + 1);
 					updateQuestStatus(player, qs);
 					PacketSendUtility
@@ -290,7 +290,7 @@ public class _2098ButWhatweMake extends QuestHandler
 					return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 4080);
 				else if(env.getDialogId() == 10009)
 				{
-					player.getInventory().removeFromBagByItemId(182207090, 1);
+					ItemService.removeItemFromInventoryByItemId(player, 182207090);
 					qs.setQuestVarById(0, qs.getQuestVarById(0) + 1);
 					updateQuestStatus(player, qs);
 					PacketSendUtility
@@ -388,7 +388,7 @@ public class _2098ButWhatweMake extends QuestHandler
 					return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 2972);
 				else if(env.getDialogId() == 10255)
 				{
-					player.getInventory().removeFromBagByItemId(182207091, 1);
+					ItemService.removeItemFromInventoryByItemId(player, 182207091);
 					qs.setStatus(QuestStatus.REWARD);
 					updateQuestStatus(player, qs);
 					PacketSendUtility

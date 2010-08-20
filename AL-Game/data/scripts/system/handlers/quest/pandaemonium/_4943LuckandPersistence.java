@@ -124,7 +124,7 @@ public class _4943LuckandPersistence extends QuestHandler
 							case 33:
 								if(player.getInventory().getItemCountByItemId(182207124) >= 20)
 								{
-									player.getInventory().removeFromBagByItemId(182207124, 20);
+									ItemService.removeItemFromInventoryByItemId(player, 182207124);
 									qs.setQuestVarById(0, var + 1);
 									updateQuestStatus(player, qs);
 									// Send check_user_item_ok to eddit-HtmlPages.xml
@@ -190,7 +190,7 @@ public class _4943LuckandPersistence extends QuestHandler
 									return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 10002);
 							// Get HACTION_SELECT_QUEST_REWARD in the eddit-HyperLinks.xml
 							case 1009:
-									player.getInventory().removeFromBagByItemId(186000085, 1);	
+									ItemService.removeItemFromInventoryByItemId(player, 186000085);	
 									qs.setStatus(QuestStatus.REWARD);
 									updateQuestStatus(player, qs);	
 									// Send select_quest_reward1 to eddit-HtmlPages.xml									

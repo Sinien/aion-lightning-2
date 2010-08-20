@@ -108,7 +108,7 @@ public class _3967AndusDyeBox extends QuestHandler
 				return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 2375);
 			else if(env.getDialogId() == 1009)
 			{
-				player.getInventory().removeFromBagByItemId(182206122, 1);
+				ItemService.removeItemFromInventoryByItemId(player, 182206122);
 				return defaultQuestEndDialog(env);
 			}
 			else

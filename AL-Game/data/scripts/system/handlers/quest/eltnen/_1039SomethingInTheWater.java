@@ -75,7 +75,7 @@ public class _1039SomethingInTheWater extends QuestHandler
 	}	
 	
 	@Override
-	public boolean onItemUseEvent(QuestEnv env, Item item)
+	public boolean onItemUseEvent(QuestEnv env, final Item item)
 	{
 		final Player player = env.getPlayer();
 		final int id = item.getItemTemplate().getTemplateId();
@@ -94,7 +94,7 @@ public class _1039SomethingInTheWater extends QuestHandler
 			public void run()
 			{
 				PacketSendUtility.broadcastPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(), itemObjId, id, 0, 1, 0), true);
-				player.getInventory().removeFromBagByObjectId(itemObjId, 1);
+				ItemService.removeItemFromInventory(player, item);
 				ItemService.addItems(player, Collections.singletonList(new QuestItems(182201010, 1)));
 				qs.setQuestVar(2);
 				updateQuestStatus(player, qs);
@@ -214,9 +214,8 @@ public class _1039SomethingInTheWater extends QuestHandler
 				{
 					qs.setQuestVar(3); 
 					updateQuestStatus(player, qs);
-					player.getInventory().removeFromBagByItemId(182201010, 1);
-					PacketSendUtility
-						.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
+					ItemService.decreaseItemCountByItemId(player, 182201010, 1);
+					PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
 					return true;
 				}
 				else

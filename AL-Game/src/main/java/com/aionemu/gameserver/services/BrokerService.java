@@ -40,12 +40,11 @@ import com.aionemu.gameserver.model.gameobjects.BrokerItem;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.PersistentState;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_ADD_ITEMS;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_BROKER_ITEMS;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_BROKER_REGISTERED_LIST;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_BROKER_REGISTRATION_SERVICE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_BROKER_SETTLED_LIST;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_DELETE_ITEM;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_INVENTORY_UPDATE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
 import com.aionemu.gameserver.taskmanager.AbstractFIFOPeriodicTaskManager;
 import com.aionemu.gameserver.utils.PacketSendUtility;
@@ -329,13 +328,10 @@ public class BrokerService
 		}
 
 		ItemService.decreaseKinah(player, price);
-		Item boughtItem = player.getInventory().putToBag(item);
-
+		ItemService.addFullItem(player, player.getInventory(), item);
 		// create save task
 		BrokerOpSaveTask bost = new BrokerOpSaveTask(buyingItem);
 		saveManager.add(bost);
-
-		PacketSendUtility.sendPacket(player, new SM_INVENTORY_UPDATE(Collections.singletonList(boughtItem)));
 
 		showRequestedItems(player, getPlayerCache(player).getBrokerMaskCache(), getPlayerCache(player)
 			.getBrokerSortTypeCache(), getPlayerCache(player).getBrokerStartPageCache());
@@ -418,8 +414,7 @@ public class BrokerService
 		}
 
 		ItemService.decreaseKinah(player, registrationCommition);
-		player.getInventory().removeFromBag(itemToRegister, false);
-		PacketSendUtility.sendPacket(player, new SM_DELETE_ITEM(itemToRegister.getObjectId()));
+		ItemService.removeItemFromInventory(player, itemToRegister, false);
 
 		itemToRegister.setItemLocation(126);
 
@@ -475,7 +470,7 @@ public class BrokerService
 		if(brokerItem != null)
 		{
 			Item item = player.getInventory().putToBag(brokerItem.getItem());
-			PacketSendUtility.sendPacket(player, new SM_INVENTORY_UPDATE(Collections.singletonList(item)));
+			ItemService.addFullItem(player, player.getInventory(), item);
 			brokerItem.setPersistentState(PersistentState.DELETED);
 			saveManager.add(new BrokerOpSaveTask(brokerItem));
 			brokerItems.remove(brokerItemId);
@@ -573,7 +568,7 @@ public class BrokerService
 						{
 							item.setPersistentState(PersistentState.DELETED);
 							saveManager.add(new BrokerOpSaveTask(item));
-							PacketSendUtility.sendPacket(player, new SM_INVENTORY_UPDATE(Collections
+							PacketSendUtility.sendPacket(player, new SM_ADD_ITEMS(Collections
 								.singletonList(resultItem)));
 						}
 					}

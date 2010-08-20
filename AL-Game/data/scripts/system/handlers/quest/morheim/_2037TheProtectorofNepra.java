@@ -129,7 +129,7 @@ public class _2037TheProtectorofNepra extends QuestHandler
 						case 10003:
 							if (var == 3)
 							{					
-								player.getInventory().removeFromBagByItemId(182204015, 1);
+								ItemService.removeItemFromInventoryByItemId(player, 182204015);
 								qs.setQuestVarById(0, var + 1);
 								updateQuestStatus(player, qs);
 								PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));

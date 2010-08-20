@@ -132,7 +132,7 @@ public class _1162_AltenosWeddingRing extends QuestHandler
 					{
 						qs.setStatus(QuestStatus.REWARD);
 						updateQuestStatus(player, qs);
-						player.getInventory().removeFromBagByItemId(182200563, 1);
+						ItemService.removeItemFromInventoryByItemId(player, 182200563);
 						PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(),
 							10));
 						return true;

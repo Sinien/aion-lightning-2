@@ -52,6 +52,7 @@ public class _2019SecuringtheSupplyRoute extends QuestHandler
 		qe.setNpcQuestData(210492).addOnKillEvent(questId);
 		qe.setNpcQuestData(210493).addOnKillEvent(questId);		
 		qe.setNpcQuestData(203673).addOnTalkEvent(questId);
+		deletebleItems = new int[]{182203024};
 	}
 
 	@Override
@@ -108,7 +109,7 @@ public class _2019SecuringtheSupplyRoute extends QuestHandler
 						case 1009:
 							if (var==5)
 							{
-								player.getInventory().removeFromBagByItemId(182203024, 1);
+								ItemService.removeItemFromInventoryByItemId(player, 182203024);
 								qs.setStatus(QuestStatus.REWARD);
 								updateQuestStatus(player, qs);
 								return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 5);

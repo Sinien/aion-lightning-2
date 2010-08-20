@@ -23,7 +23,6 @@ import org.apache.log4j.Logger;
 
 import com.aionemu.commons.database.dao.DAOManager;
 import com.aionemu.gameserver.configs.main.CacheConfig;
-import com.aionemu.gameserver.controllers.PlayerController;
 import com.aionemu.gameserver.dao.InventoryDAO;
 import com.aionemu.gameserver.dao.LegionMemberDAO;
 import com.aionemu.gameserver.dao.PlayerAppearanceDAO;
@@ -32,7 +31,6 @@ import com.aionemu.gameserver.model.account.Account;
 import com.aionemu.gameserver.model.account.AccountTime;
 import com.aionemu.gameserver.model.account.PlayerAccountData;
 import com.aionemu.gameserver.model.gameobjects.Item;
-import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.player.PlayerAppearance;
 import com.aionemu.gameserver.model.gameobjects.player.PlayerCommonData;
 import com.aionemu.gameserver.model.gameobjects.player.Storage;
@@ -142,21 +140,15 @@ public class AccountService
 			playerDAO.setCreationDeletionTime(acData);
 
 			account.addPlayerAccountData(acData);
-			
-			/**
-			 * load account warehouse only once
-			 */	
-			if(account.getAccountWarehouse() == null)
-			{
-				//TODO memory lake.....
-				Player player = new Player(new PlayerController(), playerCommonData, appereance);
-				Storage accWarehouse = DAOManager.getDAO(InventoryDAO.class).loadStorage(player, StorageType.ACCOUNT_WAREHOUSE);
-				ItemService.loadItemStones(accWarehouse.getStorageItems());
-				accWarehouse.setOwner(null);
-				account.setAccountWarehouse(accWarehouse);
-			}
 		}
 		
+		/**
+		 * load account warehouse only once
+		 */	
+		Storage accWarehouse = DAOManager.getDAO(InventoryDAO.class).loadStorage(null, account.getId(), StorageType.ACCOUNT_WAREHOUSE);
+		ItemService.loadItemStones(accWarehouse.getStorageItems());
+		account.setAccountWarehouse(accWarehouse);
+
 		/**
 		 * For new accounts - create empty account warehouse
 		 */

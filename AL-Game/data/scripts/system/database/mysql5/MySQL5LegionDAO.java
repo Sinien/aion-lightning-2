@@ -37,6 +37,7 @@ import com.aionemu.gameserver.model.legion.LegionEmblem;
 import com.aionemu.gameserver.model.legion.LegionHistory;
 import com.aionemu.gameserver.model.legion.LegionHistoryType;
 import com.aionemu.gameserver.model.legion.LegionWarehouse;
+import com.aionemu.gameserver.services.ItemService;
 
 /**
  * Class that that is responsible for loading/storing {@link com.aionemu.gameserver.model.legion.Legion} object from
@@ -588,7 +589,7 @@ public class MySQL5LegionDAO extends LegionDAO
 				int fusionedItem = rset.getInt("fusionedItem");
 				Item item = new Item(legionId, itemUniqueId, itemId, itemCount, itemColor, isEquiped == 1, false, slot, storage, enchant, itemSkin,fusionedItem);
 				item.setPersistentState(PersistentState.UPDATED);
-				inventory.onLoadHandler(item);
+				ItemService.onLoadHandler(null, inventory, item);
 			}
 			
 			rset.close();

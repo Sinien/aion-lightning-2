@@ -151,7 +151,7 @@ public class _1051TheRuinsofRoah extends QuestHandler
 						qs.setQuestVarById(0, var + 1);
 						updateQuestStatus(player, qs);
 						PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
-						player.getInventory().removeFromBagByItemId(182201601, 1);						
+						ItemService.decreaseItemCountByItemId(player, 182201601, 1);					
 						return true;
 					}					
 					return false;

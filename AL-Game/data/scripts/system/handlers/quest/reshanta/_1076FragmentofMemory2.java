@@ -154,9 +154,9 @@ public class _1076FragmentofMemory2 extends QuestHandler
 				case 10005:
 					if(var == 5)
 					{
-						qs.setQuestVarById(0, var + 1);
+						qs.setQuestVarById(0, 6);
 						updateQuestStatus(player, qs);
-						player.getInventory().removeFromBagByItemId(182202006, 1);
+						ItemService.removeItemFromInventoryByItemId(player, 182202006);
 						PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
 						return true;
 					}					

@@ -285,7 +285,7 @@ public class _2060RestoringBeluslanObservatory extends QuestHandler
 			{
 				PacketSendUtility.broadcastPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(), itemObjId,
 					id, 0, 1, 0), true);
-				player.getInventory().removeFromBagByItemId(182204318, 1);
+				ItemService.removeItemFromInventoryByItemId(player, 182204318);
 				ItemService.addItems(player, Collections.singletonList(new QuestItems(182204319, 1)));
 				updateQuestStatus(player, qs);
 			}

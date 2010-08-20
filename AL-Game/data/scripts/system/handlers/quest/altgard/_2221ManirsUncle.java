@@ -23,6 +23,7 @@ import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
 import com.aionemu.gameserver.questEngine.model.QuestStatus;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 
 /**
@@ -90,7 +91,7 @@ public class _2221ManirsUncle extends QuestHandler
 							return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 2375);
 						else if(env.getDialogId() == 1009)
 						{
-							player.getInventory().removeFromBagByItemId(182203215, 1);
+							ItemService.removeItemFromInventoryByItemId(player, 182203215);
 							qs.setStatus(QuestStatus.REWARD);
 							updateQuestStatus(player, qs);
 							return defaultQuestEndDialog(env);

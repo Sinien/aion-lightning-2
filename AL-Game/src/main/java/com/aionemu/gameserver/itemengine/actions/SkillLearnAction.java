@@ -26,6 +26,7 @@ import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.templates.item.ItemTemplate;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ITEM_USAGE_ANIMATION;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.skillengine.model.learn.SkillClass;
 import com.aionemu.gameserver.skillengine.model.learn.SkillRace;
 import com.aionemu.gameserver.utils.PacketSendUtility;
@@ -56,6 +57,8 @@ public class SkillLearnAction extends AbstractItemAction
 	@Override
 	public void act(Player player, Item parentItem, Item targetItem)
 	{
+		if (!ItemService.removeItemFromInventory(player, parentItem))
+			return;
 		//item animation and message
 		ItemTemplate itemTemplate = parentItem.getItemTemplate();
 		//PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.USE_ITEM(itemTemplate.getDescription()));
@@ -63,9 +66,6 @@ public class SkillLearnAction extends AbstractItemAction
 			parentItem.getObjectId(), itemTemplate.getTemplateId()), true);	
 		//add skill
 		player.getSkillList().addSkill(player, skillid, 1, true);
-		//remove book from inventory (assuming its not stackable)
-		Item item = player.getInventory().getItemByObjId(parentItem.getObjectId());
-		player.getInventory().removeFromBag(item, true);
 	}
 
 	private boolean validateConditions(Player player)

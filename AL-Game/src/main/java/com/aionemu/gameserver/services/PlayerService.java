@@ -132,7 +132,7 @@ public class PlayerService
 		return DAOManager.getDAO(PlayerDAO.class).saveNewPlayer(player.getCommonData(), accountId, accountName)
 			&& DAOManager.getDAO(PlayerAppearanceDAO.class).store(player)
 			&& DAOManager.getDAO(PlayerSkillListDAO.class).storeSkills(player)
-			&& DAOManager.getDAO(InventoryDAO.class).store(player)
+			&& DAOManager.getDAO(InventoryDAO.class).store(player.getDirtyItemsToUpdate())
 			&& DAOManager.getDAO(PlayerTitleListDAO.class).storeTitles(player);
 	}
 
@@ -150,7 +150,7 @@ public class PlayerService
 		DAOManager.getDAO(PlayerTitleListDAO.class).storeTitles(player);
 		DAOManager.getDAO(AbyssRankDAO.class).storeAbyssRank(player);
 		DAOManager.getDAO(PlayerPunishmentsDAO.class).storePlayerPunishments(player);
-		DAOManager.getDAO(InventoryDAO.class).store(player);
+		DAOManager.getDAO(InventoryDAO.class).store(player.getDirtyItemsToUpdate());
 		DAOManager.getDAO(ItemStoneListDAO.class).save(player);
 		DAOManager.getDAO(MailDAO.class).storeMailbox(player);
 	}
@@ -224,12 +224,12 @@ public class PlayerService
 		
 		player.setStorage(accWarehouse, StorageType.ACCOUNT_WAREHOUSE);
 		
-		Storage inventory = DAOManager.getDAO(InventoryDAO.class).loadStorage(player, StorageType.CUBE);
+		Storage inventory = DAOManager.getDAO(InventoryDAO.class).loadStorage(player, player.getObjectId(), StorageType.CUBE);
 		ItemService.loadItemStones(inventory.getStorageItems());
 
 		player.setStorage(inventory, StorageType.CUBE);
 		
-		Storage warehouse = DAOManager.getDAO(InventoryDAO.class).loadStorage(player, StorageType.REGULAR_WAREHOUSE);
+		Storage warehouse = DAOManager.getDAO(InventoryDAO.class).loadStorage(player, player.getObjectId(), StorageType.REGULAR_WAREHOUSE);
 		ItemService.loadItemStones(warehouse.getStorageItems());
 
 		player.setStorage(warehouse, StorageType.REGULAR_WAREHOUSE);
@@ -292,9 +292,9 @@ public class PlayerService
 
 		List<ItemType> items = playerCreationData.getItems();
 
-		Storage playerInventory = new Storage(newPlayer, StorageType.CUBE);
-		Storage regularWarehouse = new Storage(newPlayer, StorageType.REGULAR_WAREHOUSE);
-		Storage accountWarehouse = new Storage(newPlayer, StorageType.ACCOUNT_WAREHOUSE);
+		Storage playerInventory = new Storage(StorageType.CUBE);
+		Storage regularWarehouse = new Storage(StorageType.REGULAR_WAREHOUSE);
+		Storage accountWarehouse = new Storage(StorageType.ACCOUNT_WAREHOUSE);
 		
 		Equipment equipment = new Equipment(newPlayer);
 		newPlayer.setStorage(playerInventory, StorageType.CUBE);
@@ -322,7 +322,7 @@ public class PlayerService
 				equipment.onLoadHandler(item);
 			}
 			else
-				playerInventory.onLoadHandler(item);
+				ItemService.onLoadHandler(newPlayer, newPlayer.getInventory(), item);
 		}
 		equipment.onLoadApplyEquipmentStats();
 		/**
@@ -417,10 +417,8 @@ public class PlayerService
 			ChatService.onPlayerLogout(player);
 
 		storePlayer(player);
-		
+		player.setCommonData(null);
 		player.getEquipment().setOwner(null);
-		player.getInventory().setOwner(null);
-		player.getWarehouse().setOwner(null);
 	}
 
 	public static void playerLoggedOutDelay(final Player player, int delay)

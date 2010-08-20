@@ -27,6 +27,7 @@ import com.aionemu.gameserver.network.aion.serverpackets.SM_ITEM_USAGE_ANIMATION
 import com.aionemu.gameserver.network.aion.serverpackets.SM_PLAYER_INFO;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_STATS_INFO;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.services.TeleportService;
 import com.aionemu.gameserver.skillengine.effect.EffectTemplate;
 import com.aionemu.gameserver.skillengine.effect.RebirthEffect;
@@ -147,7 +148,7 @@ public class ReviveController
 		player.addItemCoolDown(item.getItemTemplate().getDelayId(), System.currentTimeMillis() + useDelay, useDelay / 1000);
 		PacketSendUtility.broadcastPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(),
 			item.getObjectId(), item.getItemTemplate().getTemplateId()), true);
-		player.getInventory().removeFromBagByObjectId(item.getObjectId(), 1);
+		ItemService.decreaseItemCount(player, item, 1);
 
 		// Tombstone Self-Rez retail verified 15%
 		revive(15, 15);

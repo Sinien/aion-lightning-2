@@ -96,10 +96,9 @@ public class _3969SexiestManAlive extends QuestHandler
 					return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1352);
 				else if(env.getDialogId() == 10000)
 				{
-					if(player.getInventory().getItemCountByItemId(182206126) > 0)
+					if(ItemService.removeItemFromInventoryByItemId(player, 182206126))
 					{
-						player.getInventory().removeFromBagByItemId(182206126, 1);
-						qs.setQuestVar(++var);
+						qs.setQuestVar(1);
 						qs.setStatus(QuestStatus.REWARD);
 						updateQuestStatus(player, qs);
 						PacketSendUtility

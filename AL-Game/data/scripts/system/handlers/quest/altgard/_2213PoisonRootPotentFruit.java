@@ -113,7 +113,7 @@ public class _2213PoisonRootPotentFruit extends QuestHandler
 							return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 2375);
 						else if(env.getDialogId() == 1009)
 							{
-								player.getInventory().removeFromBagByItemId(182203208, 1);
+								ItemService.removeItemFromInventoryByItemId(player, 182203208);
 								qs.setStatus(QuestStatus.REWARD);
 								updateQuestStatus(player, qs);
 								return defaultQuestEndDialog(env);

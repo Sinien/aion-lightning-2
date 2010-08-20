@@ -174,8 +174,8 @@ public class _1098PearlofProtection extends QuestHandler
 					return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 2034);
 				else if(env.getDialogId() == 10003)
 				{
-					player.getInventory().removeFromBagByItemId(182206062, 1);
-					qs.setQuestVarById(0, qs.getQuestVarById(0) + 1);
+					ItemService.removeItemFromInventoryByItemId(player, 182206062);
+					qs.setQuestVar(4);
 					updateQuestStatus(player, qs);
 					PacketSendUtility
 						.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
@@ -272,7 +272,7 @@ public class _1098PearlofProtection extends QuestHandler
 					return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 3739);
 				else if(env.getDialogId() == 10008)
 				{
-					player.getInventory().removeFromBagByItemId(182206063, 1);
+					ItemService.removeItemFromInventoryByItemId(player, 182206063);
 					qs.setQuestVarById(0, qs.getQuestVarById(0) + 1);
 					updateQuestStatus(player, qs);
 					PacketSendUtility
@@ -389,7 +389,7 @@ public class _1098PearlofProtection extends QuestHandler
 					return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 2972);
 				else if(env.getDialogId() == 10255)
 				{
-					player.getInventory().removeFromBagByItemId(182206064, 1);
+					ItemService.removeItemFromInventoryByItemId(player, 182206064);
 					qs.setStatus(QuestStatus.REWARD);
 					updateQuestStatus(player, qs);
 					PacketSendUtility

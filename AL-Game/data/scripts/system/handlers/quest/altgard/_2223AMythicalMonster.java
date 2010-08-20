@@ -49,6 +49,7 @@ public class _2223AMythicalMonster extends QuestHandler
 		qe.setNpcQuestData(203616).addOnQuestStart(questId);
 		qe.setNpcQuestData(203616).addOnTalkEvent(questId);
 		qe.setNpcQuestData(211621).addOnKillEvent(questId);
+		deletebleItems = new int[]{182203217};
 	}
 
 	@Override

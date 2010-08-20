@@ -16,12 +16,9 @@
  */
 package com.aionemu.gameserver.network.aion.clientpackets;
 
-import com.aionemu.gameserver.model.EmotionType;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.AionClientPacket;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_EMOTION;
 import com.aionemu.gameserver.services.ItemService;
-import com.aionemu.gameserver.utils.PacketSendUtility;
 
 /**
  * @author alexa026, kosyachok
@@ -66,9 +63,5 @@ public class CM_MOVE_ITEM extends AionClientPacket
 	{
 		Player player = getConnection().getActivePlayer();
 		ItemService.moveItem(player, targetObjectId, source, destination, slot);
-
-		PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player,EmotionType.END_LOOT,0,0));
-
-		//		sendPacket(new SM_LOOT_STATUS(targetObjectId,3));
 	}
 }

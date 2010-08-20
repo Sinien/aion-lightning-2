@@ -25,6 +25,7 @@ import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
 import com.aionemu.gameserver.questEngine.model.QuestStatus;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.services.QuestService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 
@@ -99,7 +100,7 @@ public class _2107ReturntoSender extends QuestHandler
 				{
 					qs.setQuestVar(2);
 					qs.setStatus(QuestStatus.REWARD);
-					player.getInventory().removeFromBagByItemId(182203107, 1);
+					ItemService.removeItemFromInventoryByItemId(player, 182203107);
 					updateQuestStatus(player, qs);
 					return defaultQuestEndDialog(env);
 				}

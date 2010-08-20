@@ -143,7 +143,7 @@ public class _3931HowToUseStigma extends QuestHandler
 					  return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1693);
           case 10255:
 				   if (var == 2)
-				   player.getInventory().removeFromBagByItemId(182206080, 1);
+				   ItemService.removeItemFromInventoryByItemId(player, 182206080);
            ItemService.addItems(player, Collections.singletonList(new QuestItems(182206081, 1)));
            PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
            qs.setStatus(QuestStatus.REWARD);

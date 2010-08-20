@@ -24,6 +24,7 @@ import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
 import com.aionemu.gameserver.questEngine.model.QuestStatus;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
 
@@ -88,9 +89,9 @@ public class _2495SpriggNightlights extends QuestHandler
 					itemCount2 = player.getInventory().getItemCountByItemId(182204229);
 					if(itemCount > 4 && itemCount1 > 4 && itemCount2 > 4)
 					{
-						player.getInventory().removeFromBagByItemId(182204227, 5);
-						player.getInventory().removeFromBagByItemId(182204228, 5);
-						player.getInventory().removeFromBagByItemId(182204229, 5);
+						ItemService.removeItemFromInventoryByItemId(player, 182204227);
+						ItemService.removeItemFromInventoryByItemId(player, 182204228);
+						ItemService.removeItemFromInventoryByItemId(player, 182204229);
 						qs.setStatus(QuestStatus.REWARD);
 						updateQuestStatus(player, qs);
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 5);

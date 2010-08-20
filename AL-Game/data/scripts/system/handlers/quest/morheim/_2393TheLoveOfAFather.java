@@ -55,7 +55,7 @@ public class _2393TheLoveOfAFather extends QuestHandler
 	}
 
 	@Override
-	public boolean onItemUseEvent(QuestEnv env, Item item)
+	public boolean onItemUseEvent(QuestEnv env, final Item item)
 	{
 		final Player player = env.getPlayer();
 		final int id = item.getItemTemplate().getTemplateId();
@@ -74,7 +74,7 @@ public class _2393TheLoveOfAFather extends QuestHandler
 			public void run()
 			{
 				PacketSendUtility.broadcastPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(), itemObjId, id, 0, 1, 0), true);
-				player.getInventory().removeFromBagByObjectId(itemObjId, 1);
+				ItemService.removeItemFromInventory(player, item);
 				ItemService.addItems(player, Collections.singletonList(new QuestItems(182204163, 1)));
 				qs.setStatus(QuestStatus.REWARD);
 				updateQuestStatus(player, qs);

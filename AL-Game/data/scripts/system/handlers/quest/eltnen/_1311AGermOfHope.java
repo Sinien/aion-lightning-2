@@ -103,7 +103,7 @@ public class _1311AGermOfHope extends QuestHandler
                            targetObjectId, 3000, 0));
                         PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, EmotionType.START_LOOT, 0,
                            targetObjectId), true);
-                        player.getInventory().removeFromBagByItemId(182201305, 1);
+                        ItemService.removeItemFromInventoryByItemId(player, 182201305);
                         qs.setStatus(QuestStatus.REWARD);
                         qs.setQuestVarById(0, 1);
                         updateQuestStatus(player, qs);
@@ -120,7 +120,7 @@ public class _1311AGermOfHope extends QuestHandler
                      return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 2375);
                   else if(env.getDialogId() == 33)
                      {
-                        player.getInventory().removeFromBagByItemId(182201305, 1);
+                        ItemService.removeItemFromInventoryByItemId(player, 182201305);
                         qs.setStatus(QuestStatus.REWARD);
                         updateQuestStatus(player, qs);
                         return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 5);

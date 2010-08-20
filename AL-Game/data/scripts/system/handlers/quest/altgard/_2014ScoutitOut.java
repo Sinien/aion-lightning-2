@@ -93,7 +93,7 @@ public class _2014ScoutitOut extends QuestHandler
 							{
 								if (var == 1 || var == 2)
 								{
-									player.getInventory().removeFromBagByItemId(182203015, 1);
+									ItemService.removeItemFromInventoryByItemId(player, 182203015);
 									qs.setQuestVarById(0, 3);
 									
 								}

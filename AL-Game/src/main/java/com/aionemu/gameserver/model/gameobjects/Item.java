@@ -28,6 +28,7 @@ import com.aionemu.gameserver.model.items.ManaStone;
 import com.aionemu.gameserver.model.templates.item.EquipType;
 import com.aionemu.gameserver.model.templates.item.ItemTemplate;
 import com.aionemu.gameserver.taskmanager.tasks.ItemUpdater;
+import com.aionemu.gameserver.utils.idfactory.IDFactory;
 
 /**
  * @author ATracer
@@ -80,7 +81,8 @@ public class Item extends AionObject
 		this.isEquipped = isEquipped;
 		this.equipmentSlot = equipmentSlot;
 		this.persistentState = PersistentState.NEW;
-		ItemUpdater.getInstance().add(this);
+		if (ownerId != 0)
+			ItemUpdater.getInstance().add(this);
 	}
 
 	/**
@@ -123,6 +125,7 @@ public class Item extends AionObject
 	public void setOwnerId(int ownerId)
 	{
 		this.ownerId = ownerId;
+		setPersistentState(PersistentState.UPDATE_REQUIRED);
 	}
 
 	@Override
@@ -375,7 +378,7 @@ public class Item extends AionObject
 	 */
 	public void setPersistentState(PersistentState persistentState)
 	{
-		if (persistentState != PersistentState.UPDATED)
+		if (persistentState != PersistentState.UPDATED && persistentState != PersistentState.NOACTION && ownerId != 0)
 			ItemUpdater.getInstance().add(this);
 		switch(persistentState)
 		{
@@ -472,4 +475,24 @@ public class Item extends AionObject
 		fusionedItemId = itemTemplateId;
 	}
 
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#finalize()
+	 */
+	@Override
+	public void finalize()
+	{
+		if (this.persistentState == PersistentState.NOACTION || this.persistentState == PersistentState.DELETED || ownerId == 0)
+		{
+			IDFactory.getInstance().releaseId(getObjectId());
+		}
+		try
+		{
+			super.finalize();
+		}
+		catch(Throwable e)
+		{
+			e.printStackTrace();
+		}
+	}
 }

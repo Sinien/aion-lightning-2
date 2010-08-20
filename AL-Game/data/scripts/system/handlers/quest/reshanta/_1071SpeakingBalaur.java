@@ -134,7 +134,7 @@ public class _1071SpeakingBalaur extends QuestHandler
 					{
 						qs.setQuestVarById(0, var + 1);
 						updateQuestStatus(player, qs);
-						player.getInventory().removeFromBagByItemId(182202002, 1);
+						ItemService.decreaseItemCountByItemId(player, 182202002, 1);
 						ItemService.addItems(player, Collections.singletonList(new QuestItems(182202001, 1)));						
 						PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
 						return true;
@@ -228,9 +228,9 @@ public class _1071SpeakingBalaur extends QuestHandler
 			return false;
 			
 		PacketSendUtility.broadcastPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(), itemObjId, id, 1, 1, 0), true);
-		player.getInventory().removeFromBagByItemId(182202001, 1);
+		ItemService.decreaseItemCountByItemId(player, 182202001, 1);
 		qs.setQuestVarById(0, qs.getQuestVarById(0) + 1);
 		updateQuestStatus(player, qs);
-			return true;
+		return true;
 	}
 }

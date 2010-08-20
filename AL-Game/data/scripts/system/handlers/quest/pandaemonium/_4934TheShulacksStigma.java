@@ -146,7 +146,7 @@ public class _4934TheShulacksStigma extends QuestHandler
 									// player doesn't own required item
 									return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 10001);
 								}
-								player.getInventory().removeFromBagByItemId(182207102, 1);	
+								ItemService.removeItemFromInventoryByItemId(player, 182207102);	
 								qs.setStatus(QuestStatus.REWARD);
 								updateQuestStatus(player, qs);	
 								return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 10000);

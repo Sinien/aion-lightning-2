@@ -23,6 +23,7 @@ import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
 import com.aionemu.gameserver.questEngine.model.QuestStatus;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 
 /**
@@ -114,7 +115,7 @@ public class _1988AMeetingwithaSage extends QuestHandler
 						{
 							qs.setStatus(QuestStatus.REWARD);
 							updateQuestStatus(player, qs);
-							player.getInventory().removeFromBagByItemId(186000039, 1);							
+							ItemService.removeItemFromInventoryByItemId(player, 186000039);							
 							return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 2035);
 						}
 						else				

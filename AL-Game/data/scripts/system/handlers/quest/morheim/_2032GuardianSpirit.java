@@ -193,7 +193,7 @@ public class _2032GuardianSpirit extends QuestHandler
 			{
 				PacketSendUtility.broadcastPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(), itemObjId, id, 0, 1, 0), true);
 				PacketSendUtility.sendPacket(player, new SM_PLAY_MOVIE(0, 88));
-				player.getInventory().removeFromBagByItemId(itemId, 1);
+				ItemService.removeItemFromInventoryByItemId(player, itemId);
 				qs.setStatus(QuestStatus.REWARD);
 				updateQuestStatus(player, qs);
 			}

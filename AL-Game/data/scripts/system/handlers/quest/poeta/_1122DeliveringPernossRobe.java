@@ -92,8 +92,8 @@ public class _1122DeliveringPernossRobe extends QuestHandler
 							qs.setQuestVar(1);
 							qs.setStatus(QuestStatus.REWARD);
 							updateQuestStatus(player, qs);
-							player.getInventory().removeFromBagByItemId(182200218, 1);
-							player.getInventory().removeFromBagByItemId(182200216, 1);
+							ItemService.removeItemFromInventoryByItemId(player, 182200218);
+							ItemService.removeItemFromInventoryByItemId(player, 182200216);
 							return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1523);
 						}
 						else
@@ -106,8 +106,8 @@ public class _1122DeliveringPernossRobe extends QuestHandler
 							qs.setQuestVar(2);
 							qs.setStatus(QuestStatus.REWARD);
 							updateQuestStatus(player, qs);
-							player.getInventory().removeFromBagByItemId(182200219, 1);
-							player.getInventory().removeFromBagByItemId(182200216, 1);
+							ItemService.removeItemFromInventoryByItemId(player, 182200219);
+							ItemService.removeItemFromInventoryByItemId(player, 182200216);
 							return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1438);
 						}
 						else
@@ -119,8 +119,8 @@ public class _1122DeliveringPernossRobe extends QuestHandler
 							qs.setQuestVar(3);
 							qs.setStatus(QuestStatus.REWARD);
 							updateQuestStatus(player, qs);
-							player.getInventory().removeFromBagByItemId(182200220, 1);
-							player.getInventory().removeFromBagByItemId(182200216, 1);
+							ItemService.removeItemFromInventoryByItemId(player, 182200220);
+							ItemService.removeItemFromInventoryByItemId(player, 182200216);
 							return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1353);
 						}
 						else

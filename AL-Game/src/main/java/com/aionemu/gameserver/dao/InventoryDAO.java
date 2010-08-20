@@ -34,7 +34,7 @@ public abstract class InventoryDAO implements IDFactoryAwareDAO
 	 * @param StorageType
 	 * @return Storage
 	 */
-	public abstract Storage loadStorage(Player player, StorageType storageType);
+	public abstract Storage loadStorage(Player player, int objectId, StorageType storageType);
 
 	/**
 	 * @param player
@@ -51,7 +51,7 @@ public abstract class InventoryDAO implements IDFactoryAwareDAO
 	/**
 	 * @param inventory
 	 */
-	public abstract boolean store(Player player);
+	public abstract boolean store(List<Item> items);
 
 	/**
 	 * @param item

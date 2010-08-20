@@ -21,16 +21,9 @@ import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-import org.apache.log4j.Logger;
-
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.PersistentState;
 import com.aionemu.gameserver.model.items.ItemStorage;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_DELETE_ITEM;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_DELETE_WAREHOUSE_ITEM;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_UPDATE_ITEM;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_UPDATE_WAREHOUSE_ITEM;
-import com.aionemu.gameserver.utils.PacketSendUtility;
 
 /**
  * @author Avol
@@ -38,9 +31,6 @@ import com.aionemu.gameserver.utils.PacketSendUtility;
  */
 public class Storage
 {
-	private static final Logger	log	= Logger.getLogger(Storage.class);
-
-	private Player owner;
 	
 	private int ownerId;
 
@@ -84,31 +74,6 @@ public class Storage
 	}
 
 	/**
-	 * @param owner
-	 */
-	public Storage(Player owner, StorageType storageType)
-	{
-		this(storageType);
-		this.owner = owner;
-	}	
-
-	/**
-	 * @return the owner
-	 */
-	public Player getOwner()
-	{
-		return owner;
-	}
-
-	/**
-	 * @param owner the owner to set
-	 */
-	public void setOwner(Player owner)
-	{
-		this.owner = owner;
-	}
-
-	/**
 	 * @return the ownerId
 	 */
 	public int getOwnerId()
@@ -130,6 +95,14 @@ public class Storage
 	public Item getKinahItem()
 	{
 		return kinahItem;
+	}
+
+	/**
+	 * @param kinahItem the kinahItem to set
+	 */
+	public void setKinahItem(Item kinahItem)
+	{
+		this.kinahItem = kinahItem;
 	}
 
 	public int getStorageType()
@@ -159,31 +132,6 @@ public class Storage
 	}
 
 	/**
-	 * 
-	 *  This method should be called only for new items added to inventory (loading from DB)
-	 *  If item is equiped - will be put to equipment
-	 *  if item is unequiped - will be put to default bag for now
-	 *  Kinah is stored separately as it will be used frequently
-	 *  
-	 *  @param item
-	 */
-	public void onLoadHandler(Item item)
-	{
-		if(item.isEquipped())
-		{
-			owner.getEquipment().onLoadHandler(item);
-		}
-		else if(item.getItemTemplate().isKinah())
-		{
-			kinahItem = item;
-		}
-		else
-		{
-			storage.putToNextAvailableSlot(item);
-		}
-	}
-
-	/**
 	 *  Used to put item into storage cube at first avaialble slot (no check for existing item)
 	 *  During unequip/equip process persistImmediately should be false
 	 *  
@@ -199,8 +147,8 @@ public class Storage
 		{
 			resultItem.setItemLocation(storageType);
 		}
-		setPersistentState(PersistentState.UPDATE_REQUIRED);
 		item.setOwnerId(ownerId);
+		setPersistentState(PersistentState.UPDATE_REQUIRED);
 		return resultItem;
 	}
 
@@ -216,44 +164,11 @@ public class Storage
 		if(operationResult && persist)
 		{
 			item.setPersistentState(PersistentState.DELETED);
-			sendDeleteItemPacket(item.getObjectId());
 			deletedItems.add(item);
 			setPersistentState(PersistentState.UPDATE_REQUIRED);
 		}
 	}
 
-
-	/**
-	 *  Used to reduce item count in bag or completely remove by ITEMID
-	 *  This method operates in iterative manner overl all items with specified ITEMID.
-	 *  Return value can be the following:
-	 *  - true - item removal was successfull
-	 *  - false - not enough amount of items to reduce 
-	 *  or item is not present
-	 *  
-	 * @param itemId
-	 * @param count
-	 * @return true or false
-	 */
-	public boolean removeFromBagByItemId(int itemId, long count)
-	{
-		if(count < 1)
-			return false;
-
-		List<Item> items = storage.getItemsFromStorageByItemId(itemId);
-
-		for(Item item : items)
-		{
-			count = decreaseItemCount(item, count);
-
-			if(count == 0)
-				break;
-		}
-		boolean result = count >=0;
-		if(result)
-			setPersistentState(PersistentState.UPDATE_REQUIRED);
-		return result;
-	}
 	/**
 	 * 
 	 * @param itemId
@@ -265,68 +180,6 @@ public class Storage
 		if (items.size() == 0)
 			return null;
 		return items.get(0);
-	}
-	/**
-	 *  Used to reduce item count in bag or completely remove by OBJECTID
-	 *  Return value can be the following:
-	 *  - true - item removal was successfull
-	 *  - false - not enough amount of items to reduce 
-	 *  or item is not present
-	 *  
-	 * @param itemObjId
-	 * @param count
-	 * @return true or false
-	 */
-	public boolean removeFromBagByObjectId(int itemObjId, long count)
-	{
-		if(count < 1)
-			return false;
-
-		Item item = storage.getItemFromStorageByItemObjId(itemObjId);
-		if(item == null)
-		{ // the item doesn't exist, return false if the count is bigger then 0.
-			log.warn("An item from player '" + getOwner().getName() + "' that should be removed doesn't exist.");
-			return count == 0;
-		}
-		boolean result = decreaseItemCount(item, count) >= 0;
-		if(result)
-			setPersistentState(PersistentState.UPDATE_REQUIRED);
-		return result;
-	}
-
-	/**
-	 *   This method decreases inventory's item by count and sends
-	 *   appropriate packets to owner.
-	 *   Item will be saved in database after update or deleted if count=0 (and persist=true)
-	 * 
-	 * @param count should be > 0
-	 * @param item
-	 * @return
-	 */
-	public long decreaseItemCount(Item item, long count)
-	{
-		long itemCount = item.getItemCount();
-		if(itemCount >= count)
-		{
-			item.decreaseItemCount(count);
-			count = 0;
-		}
-		else
-		{		
-			item.decreaseItemCount(itemCount);
-			count -= itemCount;
-		}
-		if(item.getItemCount() == 0)
-		{
-			storage.removeItemFromStorage(item);
-			sendDeleteItemPacket(item.getObjectId());
-			deletedItems.add(item);
-		}
-		else
-			sendUpdateItemPacket (item);
-		
-		setPersistentState(PersistentState.UPDATE_REQUIRED);
-		return count;
 	}
 
 	/**
@@ -477,24 +330,12 @@ public class Storage
 	public void increaseItemCount(Item item, long count)
 	{
 		item.increaseItemCount(count);
-		sendUpdateItemPacket (item);
 		setPersistentState(PersistentState.UPDATE_REQUIRED);
 	}
-	
-	private void sendUpdateItemPacket (Item item)
-	{
-		if(storageType == StorageType.CUBE.getId())
-			PacketSendUtility.sendPacket(getOwner(), new SM_UPDATE_ITEM(item));
-		else
-			PacketSendUtility.sendPacket(getOwner(), new SM_UPDATE_WAREHOUSE_ITEM(item, storageType));
-	}
 
-	private void sendDeleteItemPacket(int itemObjId)
+	public Item putToNextAvailableSlot(Item item)
 	{
-		if(storageType == StorageType.CUBE.getId())
-			PacketSendUtility.sendPacket(getOwner(), new SM_DELETE_ITEM(itemObjId));
-		else
-			PacketSendUtility.sendPacket(getOwner(), new SM_DELETE_WAREHOUSE_ITEM(storageType, itemObjId));
+		return storage.putToNextAvailableSlot(item);
 	}
 	/**
 	 *  Size of underlying storage

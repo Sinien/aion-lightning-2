@@ -60,6 +60,7 @@ public class ReportTo extends QuestHandler
 		qe.setNpcQuestData(startNpc).addOnQuestStart(questId);
 		qe.setNpcQuestData(startNpc).addOnTalkEvent(questId);
 		qe.setNpcQuestData(endNpc).addOnTalkEvent(questId);
+		deletebleItems = new int[]{itemId};
 	}
 
 	@Override
@@ -96,7 +97,7 @@ public class ReportTo extends QuestHandler
 				else if(env.getDialogId() == 1009)
 				{
 					if(itemId != 0)
-						player.getInventory().removeFromBagByItemId(itemId, 1);
+						ItemService.removeItemFromInventoryByItemId(player, itemId);
 					qs.setQuestVar(1);
 					qs.setStatus(QuestStatus.REWARD);
 					updateQuestStatus(player, qs);

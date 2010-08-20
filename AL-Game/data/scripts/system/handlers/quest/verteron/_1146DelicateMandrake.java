@@ -32,7 +32,7 @@ import com.aionemu.gameserver.utils.PacketSendUtility;
 
 /**
  * @author Mr. Poke + Dune11
- *
+ * 
  */
 public class _1146DelicateMandrake extends QuestHandler
 {
@@ -50,7 +50,7 @@ public class _1146DelicateMandrake extends QuestHandler
 		qe.setNpcQuestData(203123).addOnTalkEvent(questId);
 		qe.setNpcQuestData(203139).addOnTalkEvent(questId);
 	}
-	
+
 	@Override
 	public boolean onDialogEvent(QuestEnv env)
 	{
@@ -70,26 +70,25 @@ public class _1146DelicateMandrake extends QuestHandler
 					case 1007:
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 4);
 					case 1002:
-						if (!ItemService.addItems(player, Collections.singletonList(new QuestItems(182200519, 1))));
+						if(!ItemService.addItems(player, Collections.singletonList(new QuestItems(182200519, 1))))
+							;
 						QuestService.questTimerStart(env, 900);
-						if (QuestService.startQuest(env, QuestStatus.START))
+						if(QuestService.startQuest(env, QuestStatus.START))
 							return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1003);
-						else 
+						else
 							return false;
 					case 1003:
-						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1004);							
+						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1004);
 				}
 			}
 		}
 		else if(targetId == 203139)
 		{
-			long itemCount = player.getInventory().getItemCountByItemId(182200519);
-				if(itemCount >= 1)
+			if((qs.getQuestVarById(0) == 0 || qs.getQuestVarById(0) == 0) && env.getDialogId() == -1)
 			{
-				if ((qs.getQuestVarById(0) == 0 || qs.getQuestVarById(0) == 0) && env.getDialogId() == -1)
+				if(ItemService.removeItemFromInventoryByItemId(player, 182200011))
 				{
 					qs.setQuestVar(2);
-					player.getInventory().removeFromBagByItemId(182200011, itemCount);
 					QuestService.questTimerEnd(env);
 					qs.setStatus(QuestStatus.REWARD);
 					updateQuestStatus(player, qs);
@@ -98,12 +97,12 @@ public class _1146DelicateMandrake extends QuestHandler
 				else
 					PacketSendUtility
 						.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
-					return defaultQuestEndDialog(env);
+				return defaultQuestEndDialog(env);
 			}
 		}
 		return false;
 	}
-	
+
 	@Override
 	public boolean onQuestTimerEndEvent(QuestEnv env)
 	{
@@ -111,8 +110,9 @@ public class _1146DelicateMandrake extends QuestHandler
 		QuestState qs = player.getQuestStateList().getQuestState(questId);
 		if(qs == null || qs.getStatus() != QuestStatus.START)
 			return false;
-		//int var = qs.getQuestVars().getQuestVars();
-		PacketSendUtility.sendMessage(player, "ToDo: Set what happens when timer ends..... And remove temp from QuestService");
+		// int var = qs.getQuestVars().getQuestVars();
+		PacketSendUtility.sendMessage(player,
+			"ToDo: Set what happens when timer ends..... And remove temp from QuestService");
 		return true;
-	}	
+	}
 }

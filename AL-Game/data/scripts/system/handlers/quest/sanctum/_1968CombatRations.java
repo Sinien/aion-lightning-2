@@ -9,6 +9,7 @@ import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
 import com.aionemu.gameserver.questEngine.model.QuestStatus;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.services.QuestService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
@@ -61,7 +62,7 @@ public class _1968CombatRations extends QuestHandler
 				}
 				else if(env.getDialogId() == 1009)
 				{
-					player.getInventory().removeFromBagByItemId(182206037, 1);
+					ItemService.removeItemFromInventoryByItemId(player, 182206037);
 					qs.setQuestVar(1);
 					qs.setStatus(QuestStatus.REWARD);
 					updateQuestStatus(player, qs);

@@ -27,7 +27,6 @@ import com.aionemu.gameserver.model.DescriptionId;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.PersistentState;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
-import com.aionemu.gameserver.model.gameobjects.player.Storage;
 import com.aionemu.gameserver.model.gameobjects.stats.StatEnum;
 import com.aionemu.gameserver.model.gameobjects.stats.id.EnchantStatEffectId;
 import com.aionemu.gameserver.model.gameobjects.stats.listeners.ItemEquipmentListener;
@@ -59,7 +58,6 @@ public class EnchantService
 	 */
 	public static void breakItem(Player player, Item targetItem, Item parentItem)
 	{
-		Storage inventory = player.getInventory();
 
 		ItemTemplate itemTemplate = targetItem.getItemTemplate();
 		ItemQuality quality = itemTemplate.getItemQuality();
@@ -92,9 +90,8 @@ public class EnchantService
 		int enchantItemLevel = targetItem.getItemTemplate().getLevel() + level;
 		int enchantItemId = 166000000 + enchantItemLevel;
 
-		inventory.removeFromBag(targetItem, true);
-
-		inventory.removeFromBagByObjectId(parentItem.getObjectId(), 1);
+		ItemService.removeItemFromInventory(player, targetItem);
+		ItemService.decreaseItemCount(player, parentItem, 1);
 
 		ItemService.addItem(player, enchantItemId, number);
 	}
@@ -188,7 +185,7 @@ public class EnchantService
 			if(enchantitemLevel > 10)
 				supplementUseCount = supplementUseCount * 2;
 
-			player.getInventory().removeFromBagByObjectId(supplementItem.getObjectId(), supplementUseCount);
+			ItemService.decreaseItemCount(player, supplementItem, supplementUseCount);
 
 			//Add successRate
 			success = success + addsuccessRate;			
@@ -254,7 +251,7 @@ public class EnchantService
 			PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.STR_ENCHANT_ITEM_FAILED(new DescriptionId(Integer
 				.parseInt(targetItem.getName()))));
 		}
-		player.getInventory().removeFromBagByObjectId(parentItem.getObjectId(), 1);
+		ItemService.decreaseItemCount(player, parentItem, 1);
 
 		return result;
 	}
@@ -350,7 +347,8 @@ public class EnchantService
 			if(stoneCount > 0)
 				supplementUseCount = supplementUseCount * manastoneCount;
 
-			player.getInventory().removeFromBagByObjectId(supplementItem.getObjectId(), supplementUseCount);
+			if (ItemService.decreaseItemCount(player, supplementItem, supplementUseCount) != 0)
+				return false;
 
 			//Add successRate
 			successRate = successRate + addsuccessRate;			
@@ -383,7 +381,7 @@ public class EnchantService
 		}
 
 		PacketSendUtility.sendPacket(player, new SM_UPDATE_ITEM(targetItem));
-		player.getInventory().removeFromBagByObjectId(parentItem.getObjectId(), 1);
+		ItemService.decreaseItemCount(player, parentItem, 1);
 		return result;
 	}
 

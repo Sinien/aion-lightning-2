@@ -132,17 +132,17 @@ public class _1016SourceOfThePollution extends QuestHandler
 							{
 								qs.setQuestVarById(0, var + 1);
 								updateQuestStatus(player, qs);
-								player.getInventory().removeFromBagByItemId(182200013, 1);
-								player.getInventory().removeFromBagByItemId(182200014, 1);
+								ItemService.decreaseItemCountByItemId(player, 182200013, 1);
+								ItemService.decreaseItemCountByItemId(player, 182200014, 1);
 								if(!ItemService.addItems(player, Collections.singletonList(new QuestItems(182200015, 2))));//add slime immunity medicine
-								PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
+									PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
 								return true;
 							}
 						case 10008:
 							if(var == 8)
 							{
 								if(!ItemService.addItems(player, Collections.singletonList(new QuestItems(182200015, 2))));//add slime immunity medicine
-								PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
+									PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
 								return true;
 							}							
 					}
@@ -204,9 +204,9 @@ public class _1016SourceOfThePollution extends QuestHandler
 							{
 								qs.setQuestVarById(0, var + 1);
 								updateQuestStatus(player, qs);
-								player.getInventory().removeFromBagByItemId(182200017, 1);
+								ItemService.decreaseItemCountByItemId(player, 182200017, 1);
 								if(!ItemService.addItems(player, Collections.singletonList(new QuestItems(182200018, 1))));//add letter of introduction								
-								PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
+									PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
 								return true;
 							}
 					}
@@ -221,7 +221,7 @@ public class _1016SourceOfThePollution extends QuestHandler
 							{
 								qs.setQuestVarById(0, var + 1);
 								updateQuestStatus(player, qs);
-								player.getInventory().removeFromBagByItemId(182200018, 1);
+								ItemService.decreaseItemCountByItemId(player, 182200018, 1);
 								if(!ItemService.addItems(player, Collections.singletonList(new QuestItems(182200014, 1))));//add Yustiel's Tear							
 								PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
 								return true;
@@ -238,7 +238,7 @@ public class _1016SourceOfThePollution extends QuestHandler
 							{
 								qs.setStatus(QuestStatus.REWARD);
 								updateQuestStatus(player, qs);
-								player.getInventory().removeFromBagByItemId(182200015, 2);
+								ItemService.decreaseItemCountByItemId(player, 182200015, 1);
 								if(!ItemService.addItems(player, Collections.singletonList(new QuestItems(182200016, 1))));//add Poison research diary									
 								PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
 								final Npc npc = (Npc)env.getVisibleObject();

@@ -181,7 +181,7 @@ public class _1032ARulersDuty extends QuestHandler
 					return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1693);
 				else if(env.getDialogId() == 10002)
 				{
-					player.getInventory().removeFromBagByItemId(182201001, 1);
+					ItemService.decreaseItemCountByItemId(player, 182201001, 1);
 					qs.setQuestVarById(0, qs.getQuestVarById(0) + 1);
 					updateQuestStatus(player, qs);
 					PacketSendUtility

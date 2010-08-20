@@ -28,6 +28,7 @@ import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.templates.recipe.RecipeTemplate;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ITEM_USAGE_ANIMATION;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 
 /**
@@ -80,7 +81,7 @@ public class CraftLearnAction extends AbstractItemAction
 		PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.USE_ITEM(new DescriptionId(parentItem.getItemTemplate().getNameId())));
 		PacketSendUtility.sendPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(), parentItem.getObjectId(), parentItem.getItemTemplate().getTemplateId()));
 		
-		if (player.getInventory().removeFromBagByObjectId(parentItem.getObjectId(), 1))
+		if (ItemService.decreaseItemCount(player, parentItem, 1) == 0)
 		{
 			player.getRecipeList().addRecipe(player, template);
 		}

@@ -24,6 +24,7 @@ import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
 import com.aionemu.gameserver.questEngine.model.QuestStatus;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
 
@@ -77,7 +78,7 @@ public class _2123TheImprisonedGourmet extends QuestHandler
 					itemCount = player.getInventory().getItemCountByItemId(182203121);
 					if(itemCount > 0)
 					{
-						player.getInventory().removeFromBagByItemId(182203121, 1);
+						ItemService.removeItemFromInventoryByItemId(player, 182004687);
 						qs.setQuestVar(5);
 						updateQuestStatus(player, qs);
 						qs.setStatus(QuestStatus.REWARD);
@@ -94,7 +95,7 @@ public class _2123TheImprisonedGourmet extends QuestHandler
 					itemCount = player.getInventory().getItemCountByItemId(182203122);
 					if(itemCount > 0)
 					{	
-						player.getInventory().removeFromBagByItemId(182203122, 1);
+						ItemService.removeItemFromInventoryByItemId(player, 182203122);
 						qs.setQuestVar(6);
 						updateQuestStatus(player, qs);
 						qs.setStatus(QuestStatus.REWARD);
@@ -111,7 +112,7 @@ public class _2123TheImprisonedGourmet extends QuestHandler
 					itemCount = player.getInventory().getItemCountByItemId(182203123);
 					if(itemCount > 0)
 					{
-						player.getInventory().removeFromBagByItemId(182203123, 1);
+						ItemService.removeItemFromInventoryByItemId(player, 182203123);
 						qs.setStatus(QuestStatus.REWARD);
 						updateQuestStatus(player, qs);
 						qs.setQuestVar(7);

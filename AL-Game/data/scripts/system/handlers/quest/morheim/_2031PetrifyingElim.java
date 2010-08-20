@@ -26,6 +26,7 @@ import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
 import com.aionemu.gameserver.questEngine.model.QuestStatus;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.services.QuestService;
 import com.aionemu.gameserver.services.ZoneService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
@@ -76,7 +77,7 @@ public class _2031PetrifyingElim extends QuestHandler
 			{
 				PacketSendUtility.broadcastPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(), itemObjId, id, 0, 1, 0), true);
 				PacketSendUtility.sendPacket(player, new SM_PLAY_MOVIE(0, 72));
-				player.getInventory().removeFromBagByItemId(182204001, 1);
+				ItemService.removeItemFromInventoryByItemId(player, 182204001);
 				qs.setStatus(QuestStatus.REWARD);
 				updateQuestStatus(player, qs);
 			}

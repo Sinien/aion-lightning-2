@@ -22,6 +22,7 @@ import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
 import com.aionemu.gameserver.questEngine.model.QuestStatus;
+import com.aionemu.gameserver.services.ItemService;
 
 /**
 * @author Atomics
@@ -73,7 +74,7 @@ public class _1351EarningMaranasRespect extends QuestHandler
 					itemCount = player.getInventory().getItemCountByItemId(182201321);
 					if(itemCount > 9)
 					{
-						player.getInventory().removeFromBagByItemId(182201321, 10);
+						ItemService.removeItemFromInventoryByItemId(player, 182201321);
 						qs.setStatus(QuestStatus.REWARD);
 						updateQuestStatus(player, qs);
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 5);

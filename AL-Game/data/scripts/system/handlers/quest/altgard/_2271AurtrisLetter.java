@@ -48,7 +48,8 @@ public class _2271AurtrisLetter extends QuestHandler
 		qe.setNpcQuestData(203655).addOnQuestStart(questId);
 		qe.setNpcQuestData(203655).addOnTalkEvent(questId);
 		qe.setNpcQuestData(203654).addOnTalkEvent(questId);	
-		qe.setNpcQuestData(203557).addOnTalkEvent(questId);		  
+		qe.setNpcQuestData(203557).addOnTalkEvent(questId);
+		deletebleItems = new int[]{182203247};
    }
 
    @Override

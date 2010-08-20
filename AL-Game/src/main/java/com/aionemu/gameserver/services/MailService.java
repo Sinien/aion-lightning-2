@@ -34,8 +34,7 @@ import com.aionemu.gameserver.model.gameobjects.player.PlayerCommonData;
 import com.aionemu.gameserver.model.gameobjects.player.Storage;
 import com.aionemu.gameserver.model.gameobjects.player.StorageType;
 import com.aionemu.gameserver.model.templates.mail.MailMessage;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_DELETE_ITEM;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_INVENTORY_UPDATE;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_ADD_ITEMS;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_MAIL_SERVICE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_UPDATE_ITEM;
@@ -179,8 +178,7 @@ public class MailService
 
 				if(senderItem.getItemCount() == attachedItemCount)
 				{
-					senderInventory.removeFromBag(senderItem, false);
-					PacketSendUtility.sendPacket(sender, new SM_DELETE_ITEM(attachedItemObjId));
+					ItemService.removeItemFromInventory(sender, senderItem, false);
 
 					senderItem.setEquipped(false);
 					senderItem.setEquipmentSlot(0);
@@ -323,7 +321,7 @@ public class MailService
 					return;
 				}
 				Item inventoryItem = player.getInventory().putToBag(attachedItem);
-				PacketSendUtility.sendPacket(player, new SM_INVENTORY_UPDATE(Collections.singletonList(inventoryItem)));
+				PacketSendUtility.sendPacket(player, new SM_ADD_ITEMS(Collections.singletonList(inventoryItem)));
 				PacketSendUtility.sendPacket(player, new SM_MAIL_SERVICE(letterId, attachmentType));
 				letter.removeAttachedItem();
 				break;

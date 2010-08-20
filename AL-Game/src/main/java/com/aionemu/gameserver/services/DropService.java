@@ -341,7 +341,8 @@ public class DropService
 			if((!player.isInGroup() && !player.isInAlliance()) || (dropNpc.getDistributionType() == 0) 
 				|| (requestedItem.isFreeForAll()))
 			{
-				currentDropItemCount = ItemService.addItem(player, itemId, currentDropItemCount);
+				if (ItemService.addItem(player, itemId, currentDropItemCount))
+					currentDropItemCount = 0;
 			}
 
 			// handles distribution of item to correct player and messages accordingly
@@ -361,7 +362,8 @@ public class DropService
 					return;
 				}
 				
-				currentDropItemCount = ItemService.addItem(requestedItem.getWinningPlayer(), itemId, currentDropItemCount);
+				if (ItemService.addItem(requestedItem.getWinningPlayer(), itemId, currentDropItemCount))
+					currentDropItemCount = 0;
 				
 				switch(dropNpc.getDistributionType())
 				{

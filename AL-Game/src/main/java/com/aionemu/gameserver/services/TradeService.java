@@ -83,11 +83,10 @@ public class TradeService
 
 		for(TradeItem tradeItem : tradeList.getTradeItems())
 		{
-			long count = ItemService.addItem(player, tradeItem.getItemTemplate().getTemplateId(), tradeItem.getCount());
-			if(count != 0)
+			if(!ItemService.addItem(player, tradeItem.getItemTemplate().getTemplateId(), tradeItem.getCount()))
 			{
 				log.warn(String.format("CHECKPOINT: itemservice couldnt add all items on buy: %d %d %d %d", player
-					.getObjectId(), tradeItem.getItemTemplate().getTemplateId(), tradeItem.getCount(), count));
+					.getObjectId(), tradeItem.getItemTemplate().getTemplateId(), tradeItem.getCount(), tradeItem.getCount()));
 				ItemService.decreaseKinah(player, tradeListPrice);
 				return false;
 			}
@@ -126,20 +125,20 @@ public class TradeService
 
 		for(TradeItem tradeItem : tradeList.getTradeItems())
 		{
-			long count = ItemService.addItem(player, tradeItem.getItemTemplate().getTemplateId(), tradeItem.getCount());
-			if(count != 0)
+			if(!ItemService.addItem(player, tradeItem.getItemTemplate().getTemplateId(), tradeItem.getCount()))
 			{
 				log.warn(String.format("CHECKPOINT: itemservice couldnt add all items on buy: %d %d %d %d", player
-					.getObjectId(), tradeItem.getItemTemplate().getTemplateId(), tradeItem.getCount(), count));
+					.getObjectId(), tradeItem.getItemTemplate().getTemplateId(), tradeItem.getCount(), tradeItem.getCount()));
 				rank.addAp(-tradeList.getRequiredAp());
 				return false;
 			}
 		}
+
 		rank.addAp(-tradeList.getRequiredAp());
 		Map<Integer, Integer> requiredItems = tradeList.getRequiredItems();
 		for(Integer itemId : requiredItems.keySet())
 		{
-			player.getInventory().removeFromBagByItemId(itemId, requiredItems.get(itemId));
+			ItemService.decreaseItemCountByItemId(player, itemId, requiredItems.get(itemId));
 		}
 
 		// TODO message
@@ -196,24 +195,11 @@ public class TradeService
 				log.warn("[AUDIT] Trade exploit, sell item count big: " + player.getName());
 				return false;
 			}
-			else if(item.getItemCount() - tradeItem.getCount() == 0)
+			else if(ItemService.decreaseItemCount(player, item, tradeItem.getCount()) == 0)
 			{
-				inventory.removeFromBag(item, true); // need to be here to avoid exploit by sending packet with many
-														// items with same unique ids
-				kinahReward += item.getItemTemplate().getPrice() * item.getItemCount();
+				// TODO check retail packet here
+				kinahReward += item.getItemTemplate().getPrice() * tradeItem.getCount();
 			}
-			else if(item.getItemCount() - tradeItem.getCount() > 0)
-			{
-				if(inventory.decreaseItemCount(item, tradeItem.getCount()) > 0)
-				{
-					// TODO check retail packet here
-					kinahReward += item.getItemTemplate().getPrice() * tradeItem.getCount();
-				}
-				else
-					return false;
-			}
-			else
-				return false;
 		}
 
 		kinahReward = player.getPrices().getKinahForSell(kinahReward);

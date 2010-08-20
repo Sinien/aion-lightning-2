@@ -60,6 +60,7 @@ public class _2053AMissingFather extends QuestHandler
 		qe.setQuestItemIds(182204305).add(questId);
 		for(int npc_id : npc_ids)
 			qe.setNpcQuestData(npc_id).addOnTalkEvent(questId);
+		deletebleItems = new int[]{182204307, 182204305};
 	}
 
 	@Override
@@ -200,7 +201,7 @@ public class _2053AMissingFather extends QuestHandler
 					{
 						PacketSendUtility.sendPacket(player, new SM_USE_OBJECT(player.getObjectId(), targetObjectId, 3000, 0));
 						PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, EmotionType.START_LOOT, 0, targetObjectId), true);
-						player.getInventory().removeFromBagByItemId(182204307, 1);
+						ItemService.removeItemFromInventoryByItemId(player, 182204307);
 						qs.setStatus(QuestStatus.REWARD);
 						updateQuestStatus(player, qs);
 					}
@@ -243,7 +244,7 @@ public class _2053AMissingFather extends QuestHandler
 			public void run()
 			{
 				PacketSendUtility.broadcastPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(), itemObjId, id, 0, 1, 0), true);
-				player.getInventory().removeFromBagByItemId(182204305, 1);
+				ItemService.removeItemFromInventoryByItemId(player, 182204305);
 				qs.setQuestVarById(0, 3);
 				updateQuestStatus(player, qs);
 			}

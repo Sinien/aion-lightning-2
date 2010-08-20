@@ -164,7 +164,7 @@ public class _1037SecretsoftheTemple extends QuestHandler
 						PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, EmotionType.START_LOOT, 0, targetObjectId), true);
 						if(qs.getQuestVarById(0) == 7)
 						{
-							player.getInventory().removeFromBagByItemId(182201027, 1);
+							ItemService.decreaseItemCountByItemId(player, 182201027, 1);
 							qs.setStatus(QuestStatus.REWARD);
 							updateQuestStatus(player, qs);
 							return;

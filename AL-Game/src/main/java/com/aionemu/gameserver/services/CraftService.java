@@ -132,7 +132,7 @@ public class CraftService
 	
 			for (Component component : recipeTemplate.getComponent())
 			{
-				player.getInventory().removeFromBagByItemId(component.getItemid(), component.getQuantity());
+				ItemService.decreaseItemCountByItemId(player, component.getItemid(), component.getQuantity());
 			}
 			// ----------------------------------------------------------------------------------
 			

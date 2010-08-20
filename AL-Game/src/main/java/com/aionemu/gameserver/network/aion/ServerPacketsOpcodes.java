@@ -62,7 +62,7 @@ public class ServerPacketsOpcodes
 		addPacketOpcode(SM_INVENTORY_INFO.class, 0x16, idSet);// 1.9
 		addPacketOpcode(SM_SYSTEM_MESSAGE.class, 0x17, idSet);// 1.9
 		addPacketOpcode(SM_DELETE_ITEM.class, 0x18, idSet);
-		addPacketOpcode(SM_INVENTORY_UPDATE.class, 0x19, idSet);// 1.9
+		addPacketOpcode(SM_ADD_ITEMS.class, 0x19, idSet);// 1.9
 		addPacketOpcode(SM_UI_SETTINGS.class, 0x1A, idSet);// 1.9
 		addPacketOpcode(SM_UPDATE_ITEM.class, 0x1B, idSet);// 1.9
 		addPacketOpcode(SM_PLAYER_INFO.class, 0x1C, idSet);// 1.9

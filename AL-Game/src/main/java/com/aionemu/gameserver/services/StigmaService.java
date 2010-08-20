@@ -93,7 +93,7 @@ public class StigmaService
 				log.info("[AUDIT]Possible client hack advenced stigma skill player: "+player.getName());
 			}
 
-			player.getInventory().removeFromBagByItemId(141000001, shardCount);
+			ItemService.decreaseItemCountByItemId(player, 141000001, shardCount);
 			SkillListEntry skill = new SkillListEntry(skillId, true, stigmaInfo.getSkilllvl(), PersistentState.NOACTION);
 			player.getSkillList().addSkill(skill);
 			PacketSendUtility.sendPacket(player, new SM_SKILL_LIST(skill, 1300401));

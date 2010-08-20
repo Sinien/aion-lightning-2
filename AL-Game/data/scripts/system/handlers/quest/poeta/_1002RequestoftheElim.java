@@ -141,7 +141,7 @@ public class _1002RequestoftheElim extends QuestHandler
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1352);
 					else if(var == 5)
 					{
-						player.getInventory().removeFromBagByItemId(182200002, 1);
+						ItemService.decreaseItemCountByItemId(player, 182200002, 1);
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1693);
 					}
 					else if(var == 6)

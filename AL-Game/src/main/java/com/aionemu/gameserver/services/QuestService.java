@@ -167,10 +167,8 @@ public final class QuestService
 				for(QuestItems qi : qwi.getQuestWorkItem())
 				{
 					if(qi != null)
-					{	
-						count = player.getInventory().getItemCountByItemId(qi.getItemId());
-						if(count > 0)
-							player.getInventory().removeFromBagByItemId(qi.getItemId(), count);					
+					{
+						ItemService.decreaseItemCountByItemId(player, qi.getItemId(), count);				
 					}
 				}
 			}
@@ -319,7 +317,7 @@ public final class QuestService
 		{
 			for (CollectItem collectItem : collectItems.getCollectItem())
 			{
-				player.getInventory().removeFromBagByItemId(collectItem.getItemId(), collectItem.getCount());
+				ItemService.decreaseItemCountByItemId(player, collectItem.getItemId(), collectItem.getCount());
 			}
 		}
 		return true;

@@ -101,9 +101,8 @@ public class _1170HeadlessStoneStatue extends QuestHandler
 		{
 			if(targetId == 730000)
 			{
-				if(player.getInventory().getItemCountByItemId(182200504) >= 1)
+				if(ItemService.removeItemFromInventoryByItemId(player, 182200504))
 				{
-					player.getInventory().removeFromBagByItemId(182200504, 1);
 					PacketSendUtility.sendPacket(player, new SM_PLAY_MOVIE(0, 16));
 					return true;
 				}

@@ -140,7 +140,7 @@ public class _2035TheThreeKeys extends QuestHandler
 							{
 								if(QuestService.collectItemCheck(env, true))
 								{
-									player.getInventory().removeFromBagByItemId(182204012, 1);
+									ItemService.removeItemFromInventoryByItemId(player, 182204012);
 									qs.setStatus(QuestStatus.REWARD);
 									updateQuestStatus(player, qs);
 									return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 10000);

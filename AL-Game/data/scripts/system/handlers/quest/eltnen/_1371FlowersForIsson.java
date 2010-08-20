@@ -25,6 +25,7 @@ import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
 import com.aionemu.gameserver.questEngine.model.QuestStatus;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
 
@@ -93,7 +94,7 @@ public class _1371FlowersForIsson extends QuestHandler
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1438);
 					}
                case 10000:
-                  player.getInventory().removeFromBagByItemId(152000601, 5);
+                  ItemService.removeItemFromInventoryByItemId(player, 152000601);
 				  qs.setQuestVar(2);
 				  updateQuestStatus(player, qs);
                   return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 0);   

@@ -26,6 +26,7 @@ import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
 import com.aionemu.gameserver.questEngine.model.QuestStatus;
 import com.aionemu.gameserver.services.InstanceService;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.services.QuestService;
 import com.aionemu.gameserver.services.TeleportService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
@@ -153,7 +154,7 @@ public class _1020SealingTheAbyssGate extends QuestHandler
 							@Override
 							public void run()
 							{
-								player.getInventory().removeFromBagByItemId(182200024, 1);
+								ItemService.removeItemFromInventoryByItemId(player, 182200024);
 								qs.setStatus(QuestStatus.REWARD);
 								updateQuestStatus( player, qs );
 								TeleportService.teleportTo(player, WorldMapType.VERTERON.getId(), 2684.308f, 1068.7382f, 199.375f, 0);
@@ -218,7 +219,7 @@ public class _1020SealingTheAbyssGate extends QuestHandler
 		if(var == 2 || var == 3)
 		{
 			qs.setQuestVar(1);
-			player.getInventory().removeFromBagByItemId(182200024, 1);
+			ItemService.decreaseItemCountByItemId(player, 182200024, 1);
 			updateQuestStatus(player, qs);
 		}
 
@@ -241,7 +242,7 @@ public class _1020SealingTheAbyssGate extends QuestHandler
 				if(player.getWorldId() != 310030000)
 				{
 					qs.setQuestVar(1);
-					player.getInventory().removeFromBagByItemId(182200024, 1);
+					ItemService.decreaseItemCountByItemId(player, 182200024, 1);
 					updateQuestStatus(player, qs);
 				}
 			}

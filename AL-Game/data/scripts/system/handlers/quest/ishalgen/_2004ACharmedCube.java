@@ -26,6 +26,7 @@ import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
 import com.aionemu.gameserver.questEngine.model.QuestStatus;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.services.QuestService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
@@ -146,8 +147,8 @@ public class _2004ACharmedCube extends QuestHandler
 						case 10002:
 							if (var == 2)
 							{
-								player.getInventory().removeFromBagByItemId(182203005, 1);
-								qs.setQuestVarById(0, var + 1);
+								ItemService.removeItemFromInventoryByItemId(player, 182203005);
+								qs.setQuestVarById(0, 3);
 								updateQuestStatus(player, qs);
 								PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
 								return true;

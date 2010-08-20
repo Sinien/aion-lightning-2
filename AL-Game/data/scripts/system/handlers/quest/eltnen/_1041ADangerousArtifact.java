@@ -298,7 +298,7 @@ public class _1041ADangerousArtifact extends QuestHandler
 							{
 								qs.setQuestVar(9);
 								updateQuestStatus(player, qs);
-								player.getInventory().removeFromBagByItemId(182201011, 1);
+								ItemService.decreaseItemCountByItemId(player, 182201014, 1);
 								if(player.getTarget() == null || player.getTarget().getObjectId() != targetObjectId)
 									return;
 								PacketSendUtility.sendPacket(player, new SM_USE_OBJECT(player.getObjectId(),

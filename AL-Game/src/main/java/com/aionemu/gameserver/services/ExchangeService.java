@@ -22,11 +22,10 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 
 import com.aionemu.gameserver.model.gameobjects.Item;
+import com.aionemu.gameserver.model.gameobjects.PersistentState;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
-import com.aionemu.gameserver.model.gameobjects.player.Storage;
 import com.aionemu.gameserver.model.trade.Exchange;
 import com.aionemu.gameserver.model.trade.ExchangeItem;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_DELETE_ITEM;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_EXCHANGE_ADD_ITEM;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_EXCHANGE_ADD_KINAH;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_EXCHANGE_CONFIRMATION;
@@ -42,7 +41,7 @@ public class ExchangeService
 {
 	private static final Logger log = Logger.getLogger(ExchangeService.class);
 
-	private Map<Integer, Exchange>		exchanges			= new HashMap<Integer, Exchange>();
+	private Map<Integer, Exchange>		exchanges;
 	
 	public static final ExchangeService getInstance()
 	{
@@ -54,6 +53,7 @@ public class ExchangeService
 	 */
 	private ExchangeService()
 	{
+		exchanges			= new HashMap<Integer, Exchange>();
 		log.info("ExchangeService: Initialized.");
 	}
 
@@ -180,16 +180,14 @@ public class ExchangeService
 		//item was not added previosly
 		if(exchangeItem == null)
 		{
-			Item newItem = null;
-			if(itemCount < item.getItemCount())
-			{
-				newItem = ItemService.newItem(item.getItemId(), itemCount);
-			}
+			if (item.getItemCount() == itemCount)
+				exchangeItem = new ExchangeItem(itemObjId, itemCount, item);
 			else
 			{
-				newItem = item;
+				Item newItem = ItemService.newItem(item.getItemId(), itemCount);
+				newItem.setPersistentState(PersistentState.NOACTION);
+				exchangeItem = new ExchangeItem(itemObjId, itemCount, newItem);
 			}
-			exchangeItem = new ExchangeItem(itemObjId, itemCount, newItem);
 			currentExchange.addItem(itemObjId, exchangeItem);
 			actuallAddCount = itemCount;
 		}
@@ -203,8 +201,8 @@ public class ExchangeService
 
 			long possibleToAdd = item.getItemCount() - exchangeItem.getItemCount();
 			actuallAddCount = itemCount > possibleToAdd ? possibleToAdd : itemCount;	
-			exchangeItem.addCount(actuallAddCount);	
-		}	
+			exchangeItem.addCount(actuallAddCount);
+		}
 
 		PacketSendUtility.sendPacket(activePlayer, new SM_EXCHANGE_ADD_ITEM(0, exchangeItem.getItem()));
 		PacketSendUtility.sendPacket(partner, new SM_EXCHANGE_ADD_ITEM(1, exchangeItem.getItem()));
@@ -265,17 +263,11 @@ public class ExchangeService
 
 		PacketSendUtility.sendPacket(activePlayer, new SM_EXCHANGE_CONFIRMATION(0));
 		PacketSendUtility.sendPacket(currentPartner, new SM_EXCHANGE_CONFIRMATION(0));
-
-		Exchange exchange1 = getCurrentExchange(activePlayer);
-		Exchange exchange2 = getCurrentExchange(currentPartner);
+		
+		doExchanges(activePlayer, currentPartner);
+		doExchanges(currentPartner, activePlayer);
 
 		cleanupExchanges(activePlayer, currentPartner);
-		
-		removeItemsFromInventory(activePlayer, exchange1);
-		removeItemsFromInventory(currentPartner, exchange2);
-
-		putItemToInventory(currentPartner, exchange1, exchange2);
-		putItemToInventory(activePlayer, exchange2, exchange1);
 	}
 
 	/**
@@ -287,46 +279,45 @@ public class ExchangeService
 	{
 		if(activePlayer != null)
 		{
-			exchanges.remove(activePlayer.getObjectId());
+			Exchange exchange = exchanges.remove(activePlayer.getObjectId());
+			if (exchange != null)
+				exchange.clear();
 			activePlayer.setTrading(false);
 		}
 			
 		if(currentPartner != null)
 		{
-			exchanges.remove(currentPartner.getObjectId());
+			Exchange exchange = exchanges.remove(currentPartner.getObjectId());
+			if (exchange != null)
+				exchange.clear();
 			currentPartner.setTrading(false);
 		}
 	}
 
-	/**
-	 * @param player
-	 * @param exchange
-	 */
-	private void removeItemsFromInventory(Player player, Exchange exchange)
+	private void doExchanges(Player sourcePlayer, Player targetPlayer)
 	{
-		Storage inventory = player.getInventory();
-
+		Exchange exchange = getCurrentExchange(sourcePlayer);
+		
 		for(ExchangeItem exchangeItem : exchange.getItems().values())
 		{
-			Item item = exchangeItem.getItem();
-			Item itemInInventory = inventory.getItemByObjId(exchangeItem.getItemObjId());
-			long itemCount = exchangeItem.getItemCount();
-
-			if(itemCount < itemInInventory.getItemCount())
+			Item itemInInventory = sourcePlayer.getInventory().getItemByObjId(exchangeItem.getItemObjId());
+			if (exchangeItem.getItemCount() == itemInInventory.getItemCount())
 			{
-				inventory.decreaseItemCount(itemInInventory, itemCount);
+				ItemService.removeItem(sourcePlayer, sourcePlayer.getInventory(), itemInInventory, false);
+				ItemService.addFullItem(targetPlayer, targetPlayer.getInventory(), itemInInventory);
 			}
 			else
 			{
-				inventory.removeFromBag(itemInInventory, false);
-				exchangeItem.setItem(itemInInventory);
-				//release when only part stack was added in the beginning -> full stack in the end
-				if(item.getObjectId() != exchangeItem.getItemObjId())
-					ItemService.releaseItemId(item);
-				PacketSendUtility.sendPacket(player, new SM_DELETE_ITEM(itemInInventory.getObjectId()));
-			}			
+				ItemService.decreaseItemCount(sourcePlayer, itemInInventory, exchangeItem.getItemCount());
+				ItemService.addItem(targetPlayer, itemInInventory.getItemId(), exchangeItem.getItemCount());
+			}
 		}
-		ItemService.decreaseKinah(player, exchange.getKinahCount());
+		long kinah = exchange.getKinahCount();
+		if (kinah > 0)
+		{
+			ItemService.decreaseKinah(sourcePlayer, exchange.getKinahCount());
+			ItemService.increaseKinah(targetPlayer, exchange.getKinahCount());
+		}
 	}
 
 	/**
@@ -347,28 +338,6 @@ public class ExchangeService
 	{
 		int numberOfFreeSlots = activePlayer.getInventory().getNumberOfFreeSlots();
 		return numberOfFreeSlots >=  exchange.getItems().size();			
-	}
-
-	/**
-	 * 
-	 * @param player
-	 * @param exchange1
-	 * @param exchange2
-	 */
-	private void putItemToInventory(Player player, Exchange exchange1, Exchange exchange2)
-	{
-		for(ExchangeItem exchangeItem : exchange1.getItems().values())
-		{
-			Item itemToPut = exchangeItem.getItem();
-			itemToPut.setEquipmentSlot(0);
-			player.getInventory().putToBag(itemToPut);
-			ItemService.updateItem(player, itemToPut, true);
-		}	
-		long kinahToExchange = exchange1.getKinahCount();
-		if(kinahToExchange > 0)
-		{
-			ItemService.increaseKinah(player, kinahToExchange);
-		}	
 	}
 
 	@SuppressWarnings("synthetic-access")

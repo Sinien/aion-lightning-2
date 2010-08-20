@@ -147,9 +147,9 @@ public class _1054ThePowerofElim extends QuestHandler
 				case 10004:
 					if(var == 4)
 					{
-						player.getInventory().removeFromBagByItemId(182201606, 1);
-						player.getInventory().removeFromBagByItemId(182201607, 1);
-						qs.setQuestVarById(0, var + 1);						
+						ItemService.decreaseItemCountByItemId(player, 182201606, 1);
+						ItemService.decreaseItemCountByItemId(player, 182201607, 1);
+						qs.setQuestVarById(0, 5);						
 						updateQuestStatus(player, qs);
 						PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
 						return true;
