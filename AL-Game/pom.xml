@@ -184,8 +184,8 @@
 			</releases>
 		</repository>
 		<repository>
-			<id>central aionlight</id>
-			<name>aionlight repo</name>
+			<id>central aionlightning</id>
+			<name>aionlightning repo</name>
 			<url>http://aionlightning.googlecode.com/svn/repo/</url>
 			<snapshots>
 				<enabled>true</enabled>
