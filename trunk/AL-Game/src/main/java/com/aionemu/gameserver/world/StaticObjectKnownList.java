@@ -39,7 +39,7 @@ public class StaticObjectKnownList extends KnownList
 	 * @param object
 	 */
 	@Override
-	protected void addKnownObject(VisibleObject object)
+	protected final void addKnownObject(VisibleObject object)
 	{
 		if(object instanceof Player)
 			super.addKnownObject(object);
