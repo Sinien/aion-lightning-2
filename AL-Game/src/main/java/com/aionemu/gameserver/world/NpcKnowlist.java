@@ -32,10 +32,10 @@ public class NpcKnowlist extends KnownList
 	 * Do KnownList update.
 	 */
 	@Override
-	public synchronized final void updateKnownList()
+	protected final void updateKnownListImpl()
 	{
 		if(getOwner().getActiveRegion().isMapRegionActive())
-			super.updateKnownList();
+			super.updateKnownListImpl();
 		else
 			clearKnownList();
 	}

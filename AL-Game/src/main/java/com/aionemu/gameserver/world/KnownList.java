@@ -73,15 +73,20 @@ public class KnownList
 	/**
 	 * Do KnownList update.
 	 */
-	public synchronized void updateKnownList()
+	public synchronized final void updateKnownList()
 	{
 		if((System.currentTimeMillis() - lastUpdate) < 100)
 			return;
-
+		
+		updateKnownListImpl();
+		
+		lastUpdate = System.currentTimeMillis();
+	}
+	
+	protected void updateKnownListImpl()
+	{
 		forgetObjects();
 		findVisibleObjects();
-
-		lastUpdate = System.currentTimeMillis();
 	}
 
 	/**
