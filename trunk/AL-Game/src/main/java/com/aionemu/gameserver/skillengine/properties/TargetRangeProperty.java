@@ -81,8 +81,8 @@ extends Property
 			
 				for(VisibleObject nextCreature : firstTarget.getKnownList().getKnownObjects().values())
 				{
-					if(counter > maxcount)
-						return false;
+					if(counter >= maxcount)
+						break;
 
 					//firstTarget is already added, look: FirstTargetProperty
 					if(firstTarget == nextCreature)
