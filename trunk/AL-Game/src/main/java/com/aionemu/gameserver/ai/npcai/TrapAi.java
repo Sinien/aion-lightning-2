@@ -85,7 +85,7 @@ public class TrapAi extends NpcAi
 			Creature trapCreator = owner.getCreator();
 
 			int enemyCount = 0;
-			for(VisibleObject visibleObject : owner.getKnownList())
+			for(VisibleObject visibleObject : owner.getKnownList().getKnownObjects().values())
 			{
 				if(trapCreator.isEnemy(visibleObject))
 					enemyCount++;
@@ -129,7 +129,7 @@ public class TrapAi extends NpcAi
 		@Override
 		public boolean handleDesire(AI<?> ai)
 		{
-			for(VisibleObject visibleObject : owner.getKnownList())
+			for(VisibleObject visibleObject : owner.getKnownList().getKnownObjects().values())
 			{
 				if(visibleObject == null)
 					continue;

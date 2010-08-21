@@ -16,10 +16,8 @@
  */
 package com.aionemu.gameserver.world;
 
-import java.util.Iterator;
 import java.util.Map;
 
-import javolution.util.FastList;
 import javolution.util.FastMap;
 
 import com.aionemu.gameserver.model.gameobjects.AionObject;
@@ -29,35 +27,25 @@ import com.aionemu.gameserver.utils.MathUtil;
 /**
  * KnownList.
  * 
- * @author -Nemesiss-
- * @modified kosyachok
+ * @author -Nemesiss-, kosyachok, lord_rex
+ * 		based on l2j-free engine.
  */
-
-public class KnownList implements Iterable<VisibleObject>
+public class KnownList
 {
-	/**
-	 * Visibility distance.
-	 */
-
 	// how far player will see visible object
 	private static final float					visibilityDistance	= 95;
 
 	// maxZvisibleDistance
 	private static final float					maxZvisibleDistance	= 95;
 
-	/**
-	 * Owner of this KnownList.
-	 */
-	protected final VisibleObject				owner;
-	/**
-	 * List of objects that this KnownList owner known
-	 */
-	protected final Map<Integer, VisibleObject>	knownObjects		= new FastMap<Integer, VisibleObject>().shared();
+	private final VisibleObject					owner;
+
+	private final Map<Integer, VisibleObject>	knownObjects		= new FastMap<Integer, VisibleObject>().shared();
 
 	private long								lastUpdate;
 
 	/**
-	 * COnstructor.
+	 * Constructor.
 	 * 
 	 * @param owner
 	 */
@@ -67,11 +55,27 @@ public class KnownList implements Iterable<VisibleObject>
 	}
 
 	/**
+	 * Owner of this KnownList.
+	 */
+	public VisibleObject getOwner()
+	{
+		return owner;
+	}
+
+	/**
+	 * List of objects that this KnownList owner known
+	 */
+	public Map<Integer, VisibleObject> getKnownObjects()
+	{
+		return knownObjects;
+	}
+
+	/**
 	 * Do KnownList update.
 	 */
-	public void doUpdate()
+	public synchronized void updateKnownList()
 	{
-		if((System.currentTimeMillis() - lastUpdate) < 1000)
+		if((System.currentTimeMillis() - lastUpdate) < 100)
 			return;
 
 		forgetObjects();
@@ -83,15 +87,14 @@ public class KnownList implements Iterable<VisibleObject>
 	/**
 	 * Clear known list. Used when object is despawned.
 	 */
-	public void clear()
+	public final void clearKnownList()
 	{
-		Iterator<VisibleObject> knownIt = iterator();
-		while(knownIt.hasNext())
+		for(VisibleObject object : getKnownObjects().values())
 		{
-			VisibleObject obj = knownIt.next();
-			knownIt.remove();
-			obj.getKnownList().del(owner, false);
+			object.getKnownList().removeKnownObject(getOwner(), false);
 		}
+
+		getKnownObjects().clear();
 	}
 
 	/**
@@ -102,64 +105,42 @@ public class KnownList implements Iterable<VisibleObject>
 	 */
 	public boolean knowns(AionObject object)
 	{
-		return knownObjects.containsKey(object.getObjectId());
+		return getKnownObjects().containsKey(object.getObjectId());
 	}
 
 	/**
-	 * Returns an iterator over VisibleObjects on this known list
-	 * 
-	 * @return objects iterator
-	 */
-	@Override
-	public Iterator<VisibleObject> iterator()
-	{
-		return knownObjects.values().iterator();
-	}
-
-	/**
-	 * Add VisibleObject to this KnownList.
+	 * Add VisibleObject to this KnownList. Object is unknown.
 	 * 
 	 * @param object
 	 */
-	protected void add(VisibleObject object)
+	protected void addKnownObject(VisibleObject object)
 	{
-		/**
-		 * object is not known.
-		 */
-		if(knownObjects.put(object.getObjectId(), object) == null)
-			owner.getController().see(object);
+		if(getKnownObjects().put(object.getObjectId(), object) == null)
+			getOwner().getController().see(object);
 	}
 
 	/**
-	 * Delete VisibleObject from this KnownList.
+	 * Remove VisibleObject from this KnownList. Object was known.
 	 * 
 	 * @param object
 	 */
-	private void del(VisibleObject object, boolean isOutOfRange)
+	private final void removeKnownObject(VisibleObject object, boolean isOutOfRange)
 	{
-		/**
-		 * object was known.
-		 */
-		if(knownObjects.remove(object.getObjectId()) != null)
-			owner.getController().notSee(object, isOutOfRange);
+		if(getKnownObjects().remove(object.getObjectId()) != null)
+			getOwner().getController().notSee(object, isOutOfRange);
 	}
 
 	/**
 	 * forget out of distance objects.
 	 */
-	private void forgetObjects()
+	private final void forgetObjects()
 	{
-		Iterator<VisibleObject> knownIt = iterator();
-
-		while(knownIt.hasNext())
+		for(VisibleObject object : getKnownObjects().values())
 		{
-			VisibleObject obj = knownIt.next();
-
-			if(!checkObjectInRange(owner, obj))
+			if(!checkObjectInRange(getOwner(), object))
 			{
-				knownIt.remove();
-				owner.getController().notSee(obj, true);
-				obj.getKnownList().del(owner, true);
+				getOwner().getController().notSee(object, true);
+				object.getKnownList().removeKnownObject(getOwner(), true);
 			}
 		}
 	}
@@ -169,36 +150,29 @@ public class KnownList implements Iterable<VisibleObject>
 	 */
 	protected void findVisibleObjects()
 	{
-		if(owner == null || !owner.isSpawned())
+		if(getOwner() == null || !getOwner().isSpawned())
 			return;
 
-		FastList<MapRegion> list = owner.getActiveRegion().getNeighbours();
-		for(FastList.Node<MapRegion> n = list.head(), end = list.tail(); (n = n.getNext()) != end;)
+		for(MapRegion region : getOwner().getActiveRegion().getNeighbours())
 		{
-			MapRegion r = n.getValue();
-			FastMap<Integer, VisibleObject> objects = r.getObjects();
-			for(FastMap.Entry<Integer, VisibleObject> e = objects.head(), mapEnd = objects.tail(); (e = e.getNext()) != mapEnd;)
+			for(VisibleObject newObject : region.getVisibleObjects().values())
 			{
-				VisibleObject newObject = e.getValue();
-				if(newObject == owner || newObject == null)
+				if(newObject == getOwner() || newObject == null)
 					continue;
 
-				if(!checkObjectInRange(owner, newObject))
+				if(!checkObjectInRange(getOwner(), newObject))
 					continue;
 
-				/**
-				 * New object is not known.
-				 */
-				if(knownObjects.put(newObject.getObjectId(), newObject) == null)
+				if(getKnownObjects().put(newObject.getObjectId(), newObject) == null)
 				{
-					newObject.getKnownList().add(owner);
-					owner.getController().see(newObject);
+					newObject.getKnownList().addKnownObject(getOwner());
+					getOwner().getController().see(newObject);
 				}
 			}
 		}
 	}
 
-	protected boolean checkObjectInRange(VisibleObject owner, VisibleObject newObject)
+	protected final boolean checkObjectInRange(VisibleObject owner, VisibleObject newObject)
 	{
 		// check if Z distance is greater than maxZvisibleDistance
 		if(Math.abs(owner.getZ() - newObject.getZ()) > maxZvisibleDistance)

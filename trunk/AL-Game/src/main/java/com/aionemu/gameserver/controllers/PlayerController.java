@@ -185,7 +185,7 @@ public class PlayerController extends CreatureController<Player>
 	public void updateNearbyQuests()
 	{
 		getOwner().getNearbyQuests().clear();
-		for(VisibleObject obj : getOwner().getKnownList())
+		for(VisibleObject obj : getOwner().getKnownList().getKnownObjects().values())
 		{
 			if(obj instanceof Npc)
 			{

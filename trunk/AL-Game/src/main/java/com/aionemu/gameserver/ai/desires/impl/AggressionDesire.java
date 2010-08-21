@@ -49,7 +49,7 @@ public final class AggressionDesire extends AbstractDesire
 	{
 		if (npc == null) return false;
 		
-		for(VisibleObject visibleObject : npc.getKnownList())
+		for(VisibleObject visibleObject : npc.getKnownList().getKnownObjects().values())
 		{
 			if (visibleObject == null)
 				continue;

@@ -16,18 +16,15 @@
  */
 package com.aionemu.gameserver.world;
 
-import javolution.util.FastList;
-
 import com.aionemu.gameserver.model.gameobjects.VisibleObject;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 
 /**
  * @author Mr. Poke
- *
+ * 
  */
 public class StaticObjectKnownList extends KnownList
 {
-
 	/**
 	 * @param owner
 	 */
@@ -42,43 +39,38 @@ public class StaticObjectKnownList extends KnownList
 	 * @param object
 	 */
 	@Override
-	protected void add(VisibleObject object)
+	protected void addKnownObject(VisibleObject object)
 	{
-		if (object instanceof Player)
-			super.add(object);
+		if(object instanceof Player)
+			super.addKnownObject(object);
 	}
 
 	/**
 	 * Find objects that are in visibility range.
 	 */
 	@Override
-	protected void findVisibleObjects()
+	protected final void findVisibleObjects()
 	{
-		if(owner == null || !owner.isSpawned())
+		if(getOwner() == null || !getOwner().isSpawned())
 			return;
-		
-		FastList<MapRegion> list = owner.getActiveRegion().getNeighbours();
-		for (FastList.Node<MapRegion> n = list.head(), end = list.tail(); (n = n.getNext()) != end;)
+
+		for(MapRegion region : getOwner().getActiveRegion().getNeighbours())
 		{
-			MapRegion r = n.getValue();
-			for (VisibleObject newObject : r.getObjects().values())
+			for(VisibleObject newObject : region.getVisibleObjects().values())
 			{
-				if(newObject == owner || newObject == null)
+				if(newObject == getOwner() || newObject == null)
 					continue;
 
-				if (!(newObject instanceof Player))
+				if(!(newObject instanceof Player))
 					continue;
 
-				if(!checkObjectInRange(owner, newObject))
+				if(!checkObjectInRange(getOwner(), newObject))
 					continue;
 
-				/**
-				 * New object is not known.
-				 */
-				if(knownObjects.put(newObject.getObjectId(), newObject) == null)
+				if(getKnownObjects().put(newObject.getObjectId(), newObject) == null)
 				{
-					newObject.getKnownList().add(owner);
-					owner.getController().see(newObject);
+					newObject.getKnownList().addKnownObject(getOwner());
+					getOwner().getController().see(newObject);
 				}
 			}
 		}

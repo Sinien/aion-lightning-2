@@ -283,7 +283,7 @@ public class Kisk extends Npc
 			if (!this.getKnownList().knowns(member))
 				PacketSendUtility.sendPacket(member, new SM_KISK_UPDATE(this));
 		}
-		for(VisibleObject obj : this.getKnownList())
+		for(VisibleObject obj : this.getKnownList().getKnownObjects().values())
 		{
 			if(obj instanceof Player)
 			{

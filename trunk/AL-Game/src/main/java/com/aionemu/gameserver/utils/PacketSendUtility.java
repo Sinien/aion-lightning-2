@@ -108,7 +108,7 @@ public class PacketSendUtility
 	 */
 	public static void broadcastPacket(VisibleObject visibleObject, AionServerPacket packet)
 	{
-		for(VisibleObject obj : visibleObject.getKnownList())
+		for(VisibleObject obj : visibleObject.getKnownList().getKnownObjects().values())
 		{
 			if(obj instanceof Player)
 				sendPacket(((Player) obj), packet);
@@ -135,7 +135,7 @@ public class PacketSendUtility
 			sendPacket(player, packet);
 		}
 
-		for(VisibleObject obj : player.getKnownList())
+		for(VisibleObject obj : player.getKnownList().getKnownObjects().values())
 		{
 			if(obj instanceof Player)
 			{

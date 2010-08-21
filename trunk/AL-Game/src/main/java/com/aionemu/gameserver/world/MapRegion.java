@@ -33,23 +33,27 @@ public class MapRegion
 	/**
 	 * Region id of this map region [NOT WORLD ID!]
 	 */
-	private final Integer				regionId;
+	private final Integer							regionId;
+
 	/**
 	 * WorldMapInstance witch is parent of this map region.
 	 */
-	private final WorldMapInstance		parent;
+	private final WorldMapInstance					parent;
+
 	/**
 	 * Surrounding regions + self.
 	 */
-	private final FastList<MapRegion>		neighbours	= new FastList<MapRegion>(9);
+	private final FastList<MapRegion>				neighbours		= new FastList<MapRegion>(9);
+
 	/**
 	 * Objects on this map region.
 	 */
-	private final FastMap<Integer, VisibleObject> 	objects	= new FastMap<Integer, VisibleObject>().shared();
+	private final FastMap<Integer, VisibleObject>	objects			= new FastMap<Integer, VisibleObject>().shared();
 
-	private int playerCount = 0;
-	
-	private boolean regionActive = false;
+	private int										playerCount		= 0;
+
+	private boolean									regionActive	= false;
+
 	/**
 	 * Constructor.
 	 * 
@@ -78,6 +82,7 @@ public class MapRegion
 	{
 		return getParent().getWorld();
 	}
+
 	/**
 	 * Returns region id of this map region. [NOT WORLD ID!]
 	 * 
@@ -103,7 +108,7 @@ public class MapRegion
 	 * 
 	 * @return objects iterator
 	 */
-	public FastMap<Integer, VisibleObject> getObjects()
+	public FastMap<Integer, VisibleObject> getVisibleObjects()
 	{
 		return objects;
 	}
@@ -133,12 +138,14 @@ public class MapRegion
 	 */
 	void add(VisibleObject object)
 	{
-		if (objects.put(object.getObjectId(), object) == null)
+		if(objects.put(object.getObjectId(), object) == null)
 		{
-			if (object instanceof Player)
+			if(object instanceof Player)
 			{
 				playerCount++;
-				regionActive = playerCount > 0;
+
+				if(playerCount > 0)
+					setMapRegionActive(true);
 			}
 		}
 	}
@@ -150,22 +157,28 @@ public class MapRegion
 	 */
 	void remove(VisibleObject object)
 	{
-		if (objects.remove(object.getObjectId()) != null)
-			if (object instanceof Player)
+		if(objects.remove(object.getObjectId()) != null)
+		{
+			if(object instanceof Player)
 			{
 				playerCount--;
-				regionActive = playerCount > 0;
+
+				if(playerCount > 0)
+					setMapRegionActive(false);
 			}
+		}
 	}
-	
+
+	public void setMapRegionActive(boolean regionActive)
+	{
+		this.regionActive = regionActive;
+	}
+
 	public boolean isMapRegionActive()
 	{
-		for (FastList.Node<MapRegion> n = neighbours.head(), end = neighbours.tail(); (n = n.getNext()) != end;)
-		{
-			MapRegion r = n.getValue();
-			if (r.regionActive)
-				return true;
-		}
-		return false;
+		if(neighbours.isEmpty())
+			return false;
+
+		return regionActive;
 	}
 }

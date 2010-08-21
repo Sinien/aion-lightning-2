@@ -172,7 +172,7 @@ public class _1114TheNymphsGown extends QuestHandler
 							{
 								PacketSendUtility.sendPacket(player, new SM_USE_OBJECT(player.getObjectId(), targetObjectId, 3000, 0));
 								PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, EmotionType.START_LOOT, 0, targetObjectId), true);
-								for (VisibleObject obj : player.getKnownList())
+								for (VisibleObject obj : player.getKnownList().getKnownObjects().values())
 								{
 									if (!(obj instanceof Npc))
 										continue;
