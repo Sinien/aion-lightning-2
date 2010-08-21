@@ -241,10 +241,10 @@ public class _2008Ascension extends QuestHandler
 					case 10001:
 						if(var == 1)
 						{
-							if (ItemService.addItems(player, Collections.singletonList(new QuestItems(182203009, 1))))
+							if (!ItemService.addItems(player, Collections.singletonList(new QuestItems(182203009, 1))))
 								return true;
 								
-							qs.setQuestVarById(0, var + 1);
+							qs.setQuestVarById(0, 2);
 							updateQuestStatus(player, qs);
 							PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
 							return true;
@@ -261,10 +261,9 @@ public class _2008Ascension extends QuestHandler
 					case 10002:
 						if(var == 2)
 						{
-							if(player.getInventory().getItemCountByItemId(182203010) == 0)
-								if (!ItemService.addItems(player, Collections.singletonList(new QuestItems(182203010, 1))))
-									return true;
-							qs.setQuestVarById(0, var + 1);
+							if (!ItemService.addItems(player, Collections.singletonList(new QuestItems(182203010, 1))))
+								return true;
+							qs.setQuestVarById(0, 3);
 							updateQuestStatus(player, qs);
 							PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
 							return true;
@@ -281,11 +280,10 @@ public class _2008Ascension extends QuestHandler
 					case 10003:
 						if(var == 3)
 						{
-							if(player.getInventory().getItemCountByItemId(182203011) == 0)
-								if (!ItemService.addItems(player, Collections.singletonList(new QuestItems(182203011, 1))))
-									return true;
+							if (!ItemService.addItems(player, Collections.singletonList(new QuestItems(182203011, 1))))
+								return true;
 								
-							qs.setQuestVarById(0, var + 1);
+							qs.setQuestVarById(0, 4);
 							updateQuestStatus(player, qs);
 							PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
 							return true;
