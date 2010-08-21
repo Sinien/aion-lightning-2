@@ -418,6 +418,8 @@ public class ItemService
 	 */
 	public static boolean addItem(Player player, int itemId, long count)
 	{
+		if (count < 1)
+			return false;
 		if(GSConfig.LOG_ITEM)
 			log.info(String.format("[ITEM] ID/Count - %d/%d to player %s.", itemId, count, player.getName()));
 		if(itemId == ItemId.KINAH.value())
@@ -426,7 +428,7 @@ public class ItemService
 			return true;
 		}
 		Item item = ItemService.newItem(itemId, count);
-		if (item == null)
+		if(item == null)
 			return false;
 		return addFullItem(player, player.getInventory(), item, true);
 	}
@@ -476,7 +478,7 @@ public class ItemService
 			// power shards.
 			for(Item existingItem : existingItems)
 			{
-				if(item.getItemCount() == 0)
+				if(item.getItemCount() < 1)
 					break;
 
 				long freeCount = maxStackCount - existingItem.getItemCount();
@@ -520,7 +522,7 @@ public class ItemService
 			return false;
 		}
 
-		if(item.getItemCount() == 0)
+		if(item.getItemCount() < 1)
 		{
 			item.setPersistentState(PersistentState.DELETED);
 			ItemUpdater.getInstance().add(item);

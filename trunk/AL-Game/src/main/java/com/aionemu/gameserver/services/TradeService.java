@@ -43,11 +43,10 @@ import com.aionemu.gameserver.world.World;
  */
 public class TradeService
 {
-	private static final Logger	log	= Logger.getLogger(TradeService.class);
+	private static final Logger			log				= Logger.getLogger(TradeService.class);
 
-
-	private static final TradeListData		tradeListData = DataManager.TRADE_LIST_DATA;
-	private static final GoodsListData		goodsListData = DataManager.GOODSLIST_DATA;
+	private static final TradeListData	tradeListData	= DataManager.TRADE_LIST_DATA;
+	private static final GoodsListData	goodsListData	= DataManager.GOODSLIST_DATA;
 
 	/**
 	 * 
@@ -58,7 +57,7 @@ public class TradeService
 	public static boolean performBuyFromShop(Player player, TradeList tradeList)
 	{
 
-		if(!validateBuyItems(tradeList))
+		if(!validateBuyItems(tradeList, player))
 		{
 			PacketSendUtility.sendMessage(player, "Some items are not allowed to be sold by this npc.");
 			return false;
@@ -85,7 +84,8 @@ public class TradeService
 			if(!ItemService.addItem(player, tradeItem.getItemTemplate().getTemplateId(), tradeItem.getCount()))
 			{
 				log.warn(String.format("CHECKPOINT: itemservice couldnt add all items on buy: %d %d %d %d", player
-					.getObjectId(), tradeItem.getItemTemplate().getTemplateId(), tradeItem.getCount(), tradeItem.getCount()));
+					.getObjectId(), tradeItem.getItemTemplate().getTemplateId(), tradeItem.getCount(), tradeItem
+					.getCount()));
 				ItemService.decreaseKinah(player, tradeListPrice);
 				return false;
 			}
@@ -105,7 +105,7 @@ public class TradeService
 	public static boolean performBuyFromAbyssShop(Player player, TradeList tradeList)
 	{
 
-		if(!validateBuyItems(tradeList))
+		if(!validateBuyItems(tradeList, player))
 		{
 			PacketSendUtility.sendMessage(player, "Some items are not allowed to be selled from this npc");
 			return false;
@@ -126,12 +126,13 @@ public class TradeService
 			if(!ItemService.addItem(player, tradeItem.getItemTemplate().getTemplateId(), tradeItem.getCount()))
 			{
 				log.warn(String.format("CHECKPOINT: itemservice couldnt add all items on buy: %d %d %d %d", player
-					.getObjectId(), tradeItem.getItemTemplate().getTemplateId(), tradeItem.getCount(), tradeItem.getCount()));
+					.getObjectId(), tradeItem.getItemTemplate().getTemplateId(), tradeItem.getCount(), tradeItem
+					.getCount()));
 				player.getCommonData().addAp(-tradeList.getRequiredAp());
 				return false;
 			}
 		}
-		
+
 		player.getCommonData().addAp(-tradeList.getRequiredAp());
 		Map<Integer, Integer> requiredItems = tradeList.getRequiredItems();
 		for(Integer itemId : requiredItems.keySet())
@@ -146,7 +147,7 @@ public class TradeService
 	/**
 	 * @param tradeList
 	 */
-	private static boolean validateBuyItems(TradeList tradeList)
+	private static boolean validateBuyItems(TradeList tradeList, Player player)
 	{
 		Npc npc = (Npc) World.getInstance().findAionObject(tradeList.getSellerObjId());
 		TradeListTemplate tradeListTemplate = tradeListData.getTradeListTemplate(npc.getObjectTemplate()
@@ -164,8 +165,16 @@ public class TradeService
 
 		for(TradeItem tradeItem : tradeList.getTradeItems())
 		{
-			if(!allowedItems.contains(tradeItem.getItemId()))
+			if(tradeItem.getCount() < 1)
+			{
+				log.warn("[AUDIT] Player: " + player.getName() + " posible client hack. Trade count < 1");
 				return false;
+			}
+			if(!allowedItems.contains(tradeItem.getItemId()))
+			{
+				log.warn("[AUDIT] Player: " + player.getName() + " posible client hack. Tade item not in GoodsList");
+				return false;
+			}
 		}
 		return true;
 	}
@@ -188,7 +197,7 @@ public class TradeService
 			if(item == null)
 				return false;
 
-			if (item.getItemCount() - tradeItem.getCount() < 0)
+			if(item.getItemCount() - tradeItem.getCount() < 0)
 			{
 				log.warn("[AUDIT] Trade exploit, sell item count big: " + player.getName());
 				return false;
@@ -205,7 +214,7 @@ public class TradeService
 
 		return true;
 	}
-	
+
 	/**
 	 * @return the tradeListData
 	 */
@@ -213,5 +222,5 @@ public class TradeService
 	{
 		return tradeListData;
 	}
-	
+
 }
