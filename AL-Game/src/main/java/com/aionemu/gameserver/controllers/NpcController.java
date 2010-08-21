@@ -427,7 +427,7 @@ public class NpcController extends CreatureController<Npc>
 			log.warn("CHECKPOINT: npc attacked without ai " + npc.getObjectTemplate().getTemplateId());
 			return;
 		}
-		for (VisibleObject obj : this.getOwner().getKnownList())
+		for (VisibleObject obj : this.getOwner().getKnownList().getKnownObjects().values())
 		{
 			if (obj instanceof Npc)
 			{

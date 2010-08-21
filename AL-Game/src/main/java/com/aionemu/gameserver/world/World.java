@@ -227,7 +227,7 @@ public class World
 		
 		if(updateKnownList)
 		{
-			object.updateKnownlist();
+			object.getKnownList().updateKnownList();
 		}
 	}
 
@@ -312,7 +312,7 @@ public class World
 		object.getActiveRegion().getParent().addObject(object);
 		object.getActiveRegion().add(object);
 
-		object.updateKnownlist();
+		object.getKnownList().updateKnownList();
 	}
 
 	/**
@@ -333,7 +333,7 @@ public class World
 		object.getPosition().setIsSpawned(false);
 		if(object.getSpawn() != null)
 			object.getSpawn().setSpawned(false, object.getInstanceId());
-		object.clearKnownlist();
+		object.getKnownList().clearKnownList();
 	}
 	
 	@SuppressWarnings("synthetic-access")

@@ -193,16 +193,6 @@ public abstract class VisibleObject extends AionObject
 	{
 		return position.isInstanceMap();
 	}
-	
-	public void clearKnownlist()
-	{
-		getKnownList().clear();
-	}
-	
-	public void updateKnownlist()
-	{
-		getKnownList().doUpdate();
-	}
 
 	/**
 	 * Set KnownList to this VisibleObject

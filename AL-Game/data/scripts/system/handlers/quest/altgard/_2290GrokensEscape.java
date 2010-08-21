@@ -91,7 +91,7 @@ public class _2290GrokensEscape extends QuestHandler
 				{
 					if (qs.getQuestVarById(0) == 0 && env.getDialogId() == -1)
 					{
-						for (VisibleObject obj : player.getKnownList())
+						for (VisibleObject obj : player.getKnownList().getKnownObjects().values())
 						{
 							if (!(obj instanceof Npc))
 								continue;

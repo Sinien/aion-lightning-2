@@ -38,6 +38,6 @@ public class SeePlayerEventHandler implements EventHandler
 		ai.setAiState(AIState.ACTIVE);
 		if(!ai.isScheduled())
 			ai.analyzeState();
-		ai.getOwner().getKnownList().doUpdate();
+		ai.getOwner().getKnownList().updateKnownList();
 	}
 }

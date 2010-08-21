@@ -16,7 +16,6 @@
  */
 package com.aionemu.gameserver.skillengine.properties;
 
-import java.util.Iterator;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -80,10 +79,10 @@ extends Property
 					return false;
 				}
 			
-				Iterator<VisibleObject> iterator = firstTarget.getKnownList().iterator();
-				while(iterator.hasNext() && counter < maxcount)
+				for(VisibleObject nextCreature : firstTarget.getKnownList().getKnownObjects().values())
 				{
-					VisibleObject nextCreature = iterator.next();
+					if(counter > maxcount)
+						return false;
 
 					//firstTarget is already added, look: FirstTargetProperty
 					if(firstTarget == nextCreature)

@@ -313,7 +313,7 @@ public abstract class CreatureController<T extends Creature> extends VisibleObje
 	 */
 	public void broadcastHate(int value)
 	{
-		for(VisibleObject visibleObject : getOwner().getKnownList())
+		for(VisibleObject visibleObject : getOwner().getKnownList().getKnownObjects().values())
 		{
 			if(visibleObject instanceof Creature)
 			{

@@ -14,14 +14,12 @@
  *  You should have received a copy of the GNU General Public License
  *  along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.aionemu.gameserver.world;
 
 import com.aionemu.gameserver.model.gameobjects.VisibleObject;
 
 public class NpcKnowlist extends KnownList
 {
-
 	/**
 	 * @param owner
 	 */
@@ -29,16 +27,16 @@ public class NpcKnowlist extends KnownList
 	{
 		super(owner);
 	}
-	
+
 	/**
 	 * Do KnownList update.
 	 */
 	@Override
-	public void doUpdate()
+	public synchronized final void updateKnownList()
 	{
-		if (owner.getActiveRegion().isMapRegionActive())
-			super.doUpdate();
+		if(getOwner().getActiveRegion().isMapRegionActive())
+			super.updateKnownList();
 		else
-			clear();
+			clearKnownList();
 	}
 }

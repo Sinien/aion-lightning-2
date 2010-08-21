@@ -38,14 +38,14 @@ public class NotSeePlayerEventHandler implements EventHandler
 	public void handleEvent(Event event, AI<?> ai)
 	{
 		int playerCount = 0;
-		for(VisibleObject visibleObject : ai.getOwner().getKnownList())
+		for(VisibleObject visibleObject : ai.getOwner().getKnownList().getKnownObjects().values())
 		{
 			if (visibleObject instanceof Player)
 				playerCount++;
 		}
 		if(playerCount == 0)
 		{
-			ai.getOwner().getKnownList().clear();
+			ai.getOwner().getKnownList().clearKnownList();
 			ai.setAiState(AIState.THINKING);
 		}
 	}

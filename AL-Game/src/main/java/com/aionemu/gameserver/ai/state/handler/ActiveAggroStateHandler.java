@@ -50,7 +50,7 @@ public class ActiveAggroStateHandler extends StateHandler
 		
 		//if there are players visible - add AggressionDesire filter
 		int creatureCount = 0;
-		for(VisibleObject visibleObject : owner.getKnownList())
+		for(VisibleObject visibleObject : owner.getKnownList().getKnownObjects().values())
 		{
 			if (visibleObject instanceof Creature)
 			{
