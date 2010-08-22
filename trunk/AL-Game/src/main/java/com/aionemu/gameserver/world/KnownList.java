@@ -18,8 +18,7 @@ package com.aionemu.gameserver.world;
 
 import java.util.Map;
 
-import javolution.util.FastMap;
-
+import com.aionemu.commons.utils.SingletonMap;
 import com.aionemu.gameserver.model.gameobjects.AionObject;
 import com.aionemu.gameserver.model.gameobjects.VisibleObject;
 import com.aionemu.gameserver.utils.MathUtil;
@@ -40,7 +39,7 @@ public class KnownList
 
 	private final VisibleObject					owner;
 
-	private final Map<Integer, VisibleObject>	knownObjects		= new FastMap<Integer, VisibleObject>().shared();
+	private final Map<Integer, VisibleObject>	knownObjects		= new SingletonMap<Integer, VisibleObject>().setShared();
 
 	private long								lastUpdate;
 
