@@ -28,7 +28,7 @@ import com.aionemu.gameserver.utils.MathUtil;
  * KnownList.
  * 
  * @author -Nemesiss-, kosyachok, lord_rex
- * 		based on l2j-free engine.
+ * 		based on l2j-free engines.
  */
 public class KnownList
 {
