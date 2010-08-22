@@ -23,7 +23,7 @@ import com.aionemu.gameserver.model.gameobjects.player.Player;
  * @author Mr. Poke
  * 
  */
-public class StaticObjectKnownList extends KnownList
+public final class StaticObjectKnownList extends KnownList
 {
 	/**
 	 * @param owner
@@ -45,5 +45,27 @@ public class StaticObjectKnownList extends KnownList
 			return super.addKnownObject(object);
 
 		return false;
+	}
+	
+	/**
+	 * Find objects that are in visibility range.
+	 */
+	@Override
+	protected final void findVisibleObjects()
+	{
+		if(getOwner() == null || !getOwner().isSpawned())
+			return;
+
+		for(MapRegion region : getOwner().getActiveRegion().getNeighbours())
+		{
+			for(VisibleObject object : region.getVisibleObjects().values())
+			{
+				if(!(object instanceof Player))
+					continue;
+				
+				addKnownObject(object);
+				object.getKnownList().addKnownObject(getOwner());
+			}
+		}
 	}
 }
