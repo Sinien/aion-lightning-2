@@ -57,6 +57,7 @@ import com.aionemu.gameserver.services.ZoneService;
 import com.aionemu.gameserver.spawnengine.SpawnEngine;
 import com.aionemu.gameserver.taskmanager.TaskManagerFromDB;
 import com.aionemu.gameserver.taskmanager.tasks.ItemUpdater;
+import com.aionemu.gameserver.taskmanager.tasks.KnownListUpdater;
 import com.aionemu.gameserver.taskmanager.tasks.PacketBroadcaster;
 import com.aionemu.gameserver.utils.DeadlockDetector;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
@@ -103,6 +104,12 @@ public class GameServer
 		// Set all players is offline
 		DAOManager.getDAO(PlayerDAO.class).setPlayersOffline(false);
 		
+		AEInfos.printSection("TaskManagers");
+		PacketBroadcaster.getInstance();
+		ItemUpdater.getInstance();
+		KnownListUpdater.getInstance();
+		TaskManagerFromDB.getInstance();
+		
 		AEInfos.printSection("Drops");
 		DropService.getInstance();
 
@@ -112,11 +119,6 @@ public class GameServer
 		AEInfos.printSection("Quests");
 		QuestEngine.getInstance();
 		QuestEngine.getInstance().load();
-
-		AEInfos.printSection("TaskManagers");
-		PacketBroadcaster.getInstance();
-		ItemUpdater.getInstance();
-		TaskManagerFromDB.getInstance();
 	
 		AEInfos.printSection("Time");
 		GameTimeService.getInstance();
