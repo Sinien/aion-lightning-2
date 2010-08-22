@@ -24,7 +24,6 @@ import com.aionemu.gameserver.configs.main.CustomConfig;
 import com.aionemu.gameserver.configs.main.GSConfig;
 import com.aionemu.gameserver.configs.main.GroupConfig;
 import com.aionemu.gameserver.configs.main.LegionConfig;
-import com.aionemu.gameserver.configs.main.PeriodicSaveConfig;
 import com.aionemu.gameserver.configs.main.RateConfig;
 import com.aionemu.gameserver.configs.main.ShutdownConfig;
 import com.aionemu.gameserver.configs.main.TaskManagerConfig;
@@ -108,10 +107,6 @@ public class Configure extends AdminCommand
 		else if("legion".equalsIgnoreCase(className))
 		{
 			classToMofify = LegionConfig.class;
-		}
-		else if("ps".equalsIgnoreCase(className))
-		{
-			classToMofify = PeriodicSaveConfig.class;
 		}
 		else if("rate".equalsIgnoreCase(className))
 		{
