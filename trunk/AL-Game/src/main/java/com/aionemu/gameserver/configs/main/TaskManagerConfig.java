@@ -38,6 +38,6 @@ public class TaskManagerConfig
 	@Property(key = "gameserver.tasks.items", defaultValue = "60")
 	public static int	ITEMS;
 	
-	@Property(key = "gameserver.tasks.knownlist.clear", defaultValue = "5")
+	@Property(key = "gameserver.tasks.knownlist.clear", defaultValue = "15")
 	public static int 	KNOWNLIST_CLEAR;
 }

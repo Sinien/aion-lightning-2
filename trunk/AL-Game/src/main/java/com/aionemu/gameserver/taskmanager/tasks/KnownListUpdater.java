@@ -51,7 +51,12 @@ public final class KnownListUpdater extends AbstractPeriodicTaskManager
 	public void run()
 	{
 		for(AionObject object : World.getInstance().getAllObjects())
+		{
 			if(object instanceof VisibleObject)
+			{
 				((VisibleObject) object).getKnownList().clearKnownList();
+				((VisibleObject) object).getKnownList().updateKnownList();
+			}
+		}
 	}
 }
