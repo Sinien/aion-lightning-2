@@ -52,8 +52,6 @@ public class MapRegion
 
 	private int										playerCount		= 0;
 
-	private boolean									regionActive	= false;
-
 	/**
 	 * Constructor.
 	 * 
@@ -143,9 +141,6 @@ public class MapRegion
 			if(object instanceof Player)
 			{
 				playerCount++;
-
-				if(playerCount > 0)
-					setMapRegionActive(true);
 			}
 		}
 	}
@@ -163,22 +158,8 @@ public class MapRegion
 			{
 				playerCount--;
 
-				if(playerCount > 0)
-					setMapRegionActive(false);
+				object.getKnownList().clearKnownList();
 			}
 		}
-	}
-
-	public void setMapRegionActive(boolean regionActive)
-	{
-		this.regionActive = regionActive;
-	}
-
-	public boolean isMapRegionActive()
-	{
-		if(neighbours.isEmpty())
-			return false;
-
-		return regionActive;
 	}
 }
