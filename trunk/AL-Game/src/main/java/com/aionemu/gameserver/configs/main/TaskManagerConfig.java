@@ -31,4 +31,13 @@ public class TaskManagerConfig
 	 */
 	@Property(key = "gameserver.deadlock.enable", defaultValue = "true")
 	public static boolean	DEADLOCK_DETECTOR_ENABLED;
+	
+	@Property(key = "gameserver.player.tasks.general", defaultValue = "900")
+	public static int	PLAYER_GENERAL;
+
+	@Property(key = "gameserver.tasks.items", defaultValue = "60")
+	public static int	ITEMS;
+	
+	@Property(key = "gameserver.tasks.knownlist.clear", defaultValue = "5")
+	public static int 	KNOWNLIST_CLEAR;
 }

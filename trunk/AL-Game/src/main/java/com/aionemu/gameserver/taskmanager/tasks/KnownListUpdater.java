@@ -16,6 +16,7 @@
  */
 package com.aionemu.gameserver.taskmanager.tasks;
 
+import com.aionemu.gameserver.configs.main.TaskManagerConfig;
 import com.aionemu.gameserver.model.gameobjects.AionObject;
 import com.aionemu.gameserver.model.gameobjects.VisibleObject;
 import com.aionemu.gameserver.taskmanager.AbstractPeriodicTaskManager;
@@ -39,7 +40,7 @@ public final class KnownListUpdater extends AbstractPeriodicTaskManager
 
 	public KnownListUpdater()
 	{
-		super(5 * 60 * 1000);
+		super(TaskManagerConfig.KNOWNLIST_CLEAR * 60 * 1000);
 	}
 
 	/*

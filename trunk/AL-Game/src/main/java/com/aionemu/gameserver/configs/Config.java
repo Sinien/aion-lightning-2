@@ -33,7 +33,6 @@ import com.aionemu.gameserver.configs.main.GSConfig;
 import com.aionemu.gameserver.configs.main.GroupConfig;
 import com.aionemu.gameserver.configs.main.LegionConfig;
 import com.aionemu.gameserver.configs.main.NpcMovementConfig;
-import com.aionemu.gameserver.configs.main.PeriodicSaveConfig;
 import com.aionemu.gameserver.configs.main.PricesConfig;
 import com.aionemu.gameserver.configs.main.RateConfig;
 import com.aionemu.gameserver.configs.main.ShutdownConfig;
@@ -82,8 +81,7 @@ public class Config
 			ConfigurableProcessor.process(EnchantsConfig.class, main);			
 			ConfigurableProcessor.process(FallDamageConfig.class, main);			
 			ConfigurableProcessor.process(GSConfig.class, main);			
-			ConfigurableProcessor.process(NpcMovementConfig.class, main);			
-			ConfigurableProcessor.process(PeriodicSaveConfig.class, main);			
+			ConfigurableProcessor.process(NpcMovementConfig.class, main);	
 			ConfigurableProcessor.process(PricesConfig.class, main);			
 			ConfigurableProcessor.process(SiegeConfig.class, main);			
 			ConfigurableProcessor.process(ThreadConfig.class, main);

@@ -26,7 +26,7 @@ import javolution.util.FastMap;
 import org.apache.log4j.Logger;
 
 import com.aionemu.commons.database.dao.DAOManager;
-import com.aionemu.gameserver.configs.main.PeriodicSaveConfig;
+import com.aionemu.gameserver.configs.main.TaskManagerConfig;
 import com.aionemu.gameserver.controllers.FlyController;
 import com.aionemu.gameserver.controllers.PlayerController;
 import com.aionemu.gameserver.controllers.ReviveController;
@@ -679,7 +679,7 @@ public class Player extends Creature
 	{
 		getController().addTask(TaskId.PLAYER_UPDATE,
 		ThreadPoolManager.getInstance().scheduleAtFixedRate(
-			new GeneralUpdateTask(this), PeriodicSaveConfig.PLAYER_GENERAL * 1000, PeriodicSaveConfig.PLAYER_GENERAL * 1000));
+			new GeneralUpdateTask(this), TaskManagerConfig.PLAYER_GENERAL * 1000, TaskManagerConfig.PLAYER_GENERAL * 1000));
 	}
 
 	/**
