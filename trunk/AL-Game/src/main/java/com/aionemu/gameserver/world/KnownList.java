@@ -21,13 +21,13 @@ import java.util.Map;
 import com.aionemu.commons.utils.SingletonMap;
 import com.aionemu.gameserver.model.gameobjects.AionObject;
 import com.aionemu.gameserver.model.gameobjects.VisibleObject;
-import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.utils.MathUtil;
 
 /**
  * KnownList.
  * 
- * @author -Nemesiss-, kosyachok, lord_rex based on l2j-free engines.
+ * @author -Nemesiss-, kosyachok, lord_rex 
+ * 		based on l2j-free engines.
  */
 public class KnownList
 {
@@ -39,10 +39,7 @@ public class KnownList
 
 	private final VisibleObject					owner;
 
-	private final Map<Integer, VisibleObject>	knownObjects		= new SingletonMap<Integer, VisibleObject>()
-																		.setShared();
-
-	private final Map<Integer, Player>			knownPlayers		= new SingletonMap<Integer, Player>().setShared();
+	private final Map<Integer, VisibleObject>	knownObjects		= new SingletonMap<Integer, VisibleObject>().setShared();
 
 	private long								lastUpdate;
 
@@ -67,17 +64,9 @@ public class KnownList
 	/**
 	 * List of objects that this KnownList owner known
 	 */
-	public Map<Integer, VisibleObject> getKnownObjects()
+	public final Map<Integer, VisibleObject> getKnownObjects()
 	{
 		return knownObjects;
-	}
-
-	/**
-	 * List of objects that this KnownList owner known
-	 */
-	public Map<Integer, Player> getKnownPlayers()
-	{
-		return knownPlayers;
 	}
 
 	/**
@@ -111,7 +100,6 @@ public class KnownList
 		}
 
 		getKnownObjects().clear();
-		getKnownPlayers().clear();
 	}
 
 	/**
@@ -142,8 +130,7 @@ public class KnownList
 		if(getKnownObjects().put(object.getObjectId(), object) != null)
 			return false;
 
-		if(object instanceof Player)
-			getKnownPlayers().put(object.getObjectId(), (Player) object);
+		getKnownObjects().put(object.getObjectId(), object);
 
 		getOwner().getController().see(object);
 
@@ -164,15 +151,14 @@ public class KnownList
 		if(getKnownObjects().remove(object.getObjectId()) == null)
 			return false;
 
-		if(object instanceof Player)
-			getKnownPlayers().remove(object.getObjectId());
+		getKnownObjects().remove(object.getObjectId());
 
 		getOwner().getController().notSee(object, isOutOfRange);
 
 		return true;
 	}
 
-	public final void forgetVisibleObjects()
+	private final void forgetVisibleObjects()
 	{
 		for(VisibleObject object : getKnownObjects().values())
 		{
@@ -181,7 +167,7 @@ public class KnownList
 		}
 	}
 
-	public boolean forgetVisibleObject(VisibleObject object)
+	private final boolean forgetVisibleObject(VisibleObject object)
 	{
 		if(checkObjectInRange(getOwner(), object))
 			return false;

@@ -157,8 +157,6 @@ public class MapRegion
 			if(object instanceof Player)
 			{
 				playerCount--;
-
-				object.getKnownList().clearKnownList();
 			}
 		}
 	}
