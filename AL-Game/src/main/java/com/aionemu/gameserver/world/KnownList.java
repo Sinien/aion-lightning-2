@@ -21,13 +21,13 @@ import java.util.Map;
 import com.aionemu.commons.utils.SingletonMap;
 import com.aionemu.gameserver.model.gameobjects.AionObject;
 import com.aionemu.gameserver.model.gameobjects.VisibleObject;
+import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.utils.MathUtil;
 
 /**
  * KnownList.
  * 
- * @author -Nemesiss-, kosyachok, lord_rex
- * 		based on l2j-free engines.
+ * @author -Nemesiss-, kosyachok, lord_rex based on l2j-free engines.
  */
 public class KnownList
 {
@@ -39,7 +39,10 @@ public class KnownList
 
 	private final VisibleObject					owner;
 
-	private final Map<Integer, VisibleObject>	knownObjects		= new SingletonMap<Integer, VisibleObject>().setShared();
+	private final Map<Integer, VisibleObject>	knownObjects		= new SingletonMap<Integer, VisibleObject>()
+																		.setShared();
+
+	private final Map<Integer, Player>			knownPlayers		= new SingletonMap<Integer, Player>().setShared();
 
 	private long								lastUpdate;
 
@@ -70,21 +73,29 @@ public class KnownList
 	}
 
 	/**
+	 * List of objects that this KnownList owner known
+	 */
+	public Map<Integer, Player> getKnownPlayers()
+	{
+		return knownPlayers;
+	}
+
+	/**
 	 * Do KnownList update.
 	 */
 	public synchronized final void updateKnownList()
 	{
 		if((System.currentTimeMillis() - lastUpdate) < 100)
 			return;
-		
+
 		updateKnownListImpl();
-		
+
 		lastUpdate = System.currentTimeMillis();
 	}
-	
+
 	protected void updateKnownListImpl()
 	{
-		forgetObjects();
+		forgetVisibleObjects();
 		findVisibleObjects();
 	}
 
@@ -95,10 +106,12 @@ public class KnownList
 	{
 		for(VisibleObject object : getKnownObjects().values())
 		{
+			removeKnownObject(object, false);
 			object.getKnownList().removeKnownObject(getOwner(), false);
 		}
 
 		getKnownObjects().clear();
+		getKnownPlayers().clear();
 	}
 
 	/**
@@ -116,37 +129,64 @@ public class KnownList
 	 * Add VisibleObject to this KnownList. Object is unknown.
 	 * 
 	 * @param object
+	 * @return
 	 */
-	protected void addKnownObject(VisibleObject object)
+	protected boolean addKnownObject(VisibleObject object)
 	{
-		if(getKnownObjects().put(object.getObjectId(), object) == null)
-			getOwner().getController().see(object);
+		if(object == null || object == getOwner())
+			return false;
+
+		if(!checkObjectInRange(getOwner(), object))
+			return false;
+
+		if(getKnownObjects().put(object.getObjectId(), object) != null)
+			return false;
+
+		if(object instanceof Player)
+			getKnownPlayers().put(object.getObjectId(), (Player) object);
+
+		getOwner().getController().see(object);
+
+		return true;
 	}
 
 	/**
 	 * Remove VisibleObject from this KnownList. Object was known.
 	 * 
 	 * @param object
+	 * @return
 	 */
-	private final void removeKnownObject(VisibleObject object, boolean isOutOfRange)
+	private final boolean removeKnownObject(VisibleObject object, boolean isOutOfRange)
 	{
-		if(getKnownObjects().remove(object.getObjectId()) != null)
-			getOwner().getController().notSee(object, isOutOfRange);
+		if(object == null)
+			return false;
+
+		if(getKnownObjects().remove(object.getObjectId()) == null)
+			return false;
+
+		if(object instanceof Player)
+			getKnownPlayers().remove(object.getObjectId());
+
+		getOwner().getController().notSee(object, isOutOfRange);
+
+		return true;
 	}
 
-	/**
-	 * forget out of distance objects.
-	 */
-	private final void forgetObjects()
+	public final void forgetVisibleObjects()
 	{
 		for(VisibleObject object : getKnownObjects().values())
 		{
-			if(!checkObjectInRange(getOwner(), object))
-			{
-				getOwner().getController().notSee(object, true);
-				object.getKnownList().removeKnownObject(getOwner(), true);
-			}
+			forgetVisibleObject(object);
+			object.getKnownList().forgetVisibleObject(getOwner());
 		}
+	}
+
+	public boolean forgetVisibleObject(VisibleObject object)
+	{
+		if(checkObjectInRange(getOwner(), object))
+			return false;
+
+		return removeKnownObject(object, true);
 	}
 
 	/**
@@ -159,19 +199,10 @@ public class KnownList
 
 		for(MapRegion region : getOwner().getActiveRegion().getNeighbours())
 		{
-			for(VisibleObject newObject : region.getVisibleObjects().values())
+			for(VisibleObject object : region.getVisibleObjects().values())
 			{
-				if(newObject == getOwner() || newObject == null)
-					continue;
-
-				if(!checkObjectInRange(getOwner(), newObject))
-					continue;
-
-				if(getKnownObjects().put(newObject.getObjectId(), newObject) == null)
-				{
-					newObject.getKnownList().addKnownObject(getOwner());
-					getOwner().getController().see(newObject);
-				}
+				addKnownObject(object);
+				object.getKnownList().addKnownObject(getOwner());
 			}
 		}
 	}
