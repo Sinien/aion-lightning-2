@@ -339,4 +339,704 @@
             <mpuse value="81" delta="0"/>
         </actions>
     </skill_template>
+	
+	<!-- 
+	/ Abyss Skills
+	/ @Author: Kavinsky
+	/ -->
+	<!-- ABYSS SKILL ELYOS: Transformation: Guardian Deity General I (9737) -->
+	<skill_template skill_id="9737" name="STR_SKILL_Abyss_RankerSkill_Light_Avatar_G1" nameId="577347" stack="SKILL_ABYSS_RANKERSKILL_LIGHT_AVATAR" lvl="1" skilltype="MAGICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="72000" duration="6000">
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="2"/>
+			<targetrange value="ONLYONE" maxcount="1"/>
+			<targetrelation value="FRIEND"/>
+		</setproperties>
+		<useconditions>
+			<playermove allow="false"/>
+		</useconditions>
+		<effects>
+			<skilllauncher skill_id="9764" value="1" e="1"/>
+			<transform model="202502" duration="600000" effectid="175" e="2"/>
+            <dispeldebuff e="3" element="WATER"/>
+            <statup duration="600000" effectid="109121" e="4" hoptype="SKILLLV" hopb="328">
+                <change stat="SPEED" func="PERCENT" value="10"/>
+ 			</statup>
+            <statup duration="600000" effectid="109122" e="5">
+                <change stat="FLY_SPEED" func="PERCENT" value="10"/>
+            </statup>
+            <statup duration="600000" effectid="10184251" e="6">
+               <change stat="MAXHP" func="ADD" delta="0" value="78000"/>
+            </statup>
+            <statup duration="600000" effectid="101212" e="7">
+                <change stat="REGEN_HP" func="ADD" value="100"/>
+            </statup>
+            <statup duration="600000" effectid="10184252" e="8">
+                <change stat="MAXMP" func="ADD" delta="0" value="156000"/>
+            </statup>
+            <statup duration="600000" effectid="117321" e="9">
+                <change stat="REGEN_MP" func="ADD" value="400"/>
+           </statup>
+            <statup duration="600000" effectid="185861" e="10">
+                <change stat="PVP_ATTACK_RATIO" func="ADD" delta="0" value="200"/>
+            </statup>
+			<heal value="78000" delta="0" e="11" element="WATER"/>
+            <healmp value="156000" delta="0" e="12" element="WATER"/>
+		</effects>
+		<actions>
+			<itemuse itemid="169300012" count="6"/>
+		</actions>
+	</skill_template>
+	
+	<!-- ABYSS SKILL ELYOS: Transformation: Guardian Deity General II (9738) -->
+	<skill_template skill_id="9738" name="STR_SKILL_Abyss_RankerSkill_Light_Avatar_G2" nameId="577353" stack="SKILL_ABYSS_RANKERSKILL_LIGHT_AVATAR" lvl="2" skilltype="MAGICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="72000" duration="6000">
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="2"/>
+			<targetrange value="ONLYONE" maxcount="1"/>
+			<targetrelation value="FRIEND"/>
+		</setproperties>
+		<useconditions>
+			<playermove allow="false"/>
+		</useconditions>
+		<effects>
+			<skilllauncher skill_id="9765" value="1" e="1"/>
+			<transform model="202503" duration="600000" effectid="175" e="2"/>
+			<dispeldebuff e="3" element="WATER"/>
+            <statup duration="600000" effectid="109121" e="4" hoptype="SKILLLV" hopb="328">
+                <change stat="SPEED" func="PERCENT" value="10"/>
+ 			</statup>
+            <statup duration="600000" effectid="109122" e="5">
+                <change stat="FLY_SPEED" func="PERCENT" value="10"/>
+            </statup>
+            <statup duration="600000" effectid="10184251" e="6">
+               <change stat="MAXHP" func="ADD" delta="0" value="93600"/>
+            </statup>
+            <statup duration="600000" effectid="101212" e="7">
+                <change stat="REGEN_HP" func="ADD" value="120"/>
+            </statup>
+            <statup duration="600000" effectid="10184252" e="8">
+                <change stat="MAXMP" func="ADD" delta="0" value="187200"/>
+            </statup>
+            <statup duration="600000" effectid="117321" e="9">
+                <change stat="REGEN_MP" func="ADD" value="480"/>
+           </statup>
+            <statup duration="600000" effectid="185861" e="10">
+                <change stat="PVP_ATTACK_RATIO" func="ADD" delta="0" value="210"/>
+            </statup>
+			<heal value="93600" delta="0" e="11" element="WATER"/>
+            <healmp value="187200" delta="0" e="12" element="WATER"/>
+		</effects>
+		<actions>
+			<itemuse itemid="169300012" count="7"/>
+		</actions>
+	</skill_template>
+	
+	<!-- ABYSS SKILL ELYOS: Transformation: Guardian Deity General III (9739) -->
+	<skill_template skill_id="9739" name="STR_SKILL_Abyss_RankerSkill_Light_Avatar_G3" nameId="577357" stack="SKILL_ABYSS_RANKERSKILL_LIGHT_AVATAR" lvl="3" skilltype="MAGICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="72000" duration="6000">
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="2"/>
+			<targetrange value="ONLYONE" maxcount="1"/>
+			<targetrelation value="FRIEND"/>
+		</setproperties>
+		<useconditions>
+			<playermove allow="false"/>
+		</useconditions>
+		<effects>
+			<skilllauncher skill_id="9766" value="1" e="1"/>
+			<transform model="202504" duration="600000" effectid="175" e="2"/>
+			<statup duration="600000" effectid="197373" e="2">
+				<change stat="SPEED" func="ADD" delta="0" value="20"/>
+			</statup>
+			<dispeldebuff e="3" element="WATER"/>
+            <statup duration="600000" effectid="109121" e="4" hoptype="SKILLLV" hopb="328">
+                <change stat="SPEED" func="PERCENT" value="10"/>
+ 			</statup>
+            <statup duration="600000" effectid="109122" e="5">
+                <change stat="FLY_SPEED" func="PERCENT" value="20"/>
+            </statup>
+            <statup duration="600000" effectid="10184251" e="6">
+               <change stat="MAXHP" func="ADD" delta="0" value="109200"/>
+            </statup>
+            <statup duration="600000" effectid="101212" e="7">
+                <change stat="REGEN_HP" func="ADD" value="140"/>
+            </statup>
+            <statup duration="600000" effectid="10184252" e="8">
+                <change stat="MAXMP" func="ADD" delta="0" value="218400"/>
+            </statup>
+            <statup duration="600000" effectid="117321" e="9">
+                <change stat="REGEN_MP" func="ADD" value="560"/>
+           </statup>
+            <statup duration="600000" effectid="185861" e="10">
+                <change stat="PVP_ATTACK_RATIO" func="ADD" delta="0" value="220"/>
+            </statup>
+			<heal value="109200" delta="0" e="11" element="WATER"/>
+            <healmp value="218400" delta="0" e="12" element="WATER"/>			
+		</effects>
+		<actions>
+			<itemuse itemid="169300012" count="8"/>
+		</actions>
+	</skill_template>
+	
+	<!-- ABYSS SKILL ELYOS: Transformation: Guardian Deity General IV (9740) -->
+	<skill_template skill_id="9740" name="STR_SKILL_Abyss_RankerSkill_Light_Avatar_G4" nameId="577361" stack="SKILL_ABYSS_RANKERSKILL_LIGHT_AVATAR" lvl="4" skilltype="MAGICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="72000" duration="6000">
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="2"/>
+			<targetrange value="ONLYONE" maxcount="1"/>
+			<targetrelation value="FRIEND"/>
+		</setproperties>
+		<useconditions>
+			<playermove allow="false"/>
+		</useconditions>
+		<effects>
+			<skilllauncher skill_id="9767" value="1" e="1"/>
+			<transform model="202505" duration="600000" effectid="175" e="2"/>			
+			<dispeldebuff e="3" element="WATER"/>
+            <statup duration="600000" effectid="109121" e="4" hoptype="SKILLLV" hopb="328">
+                <change stat="SPEED" func="PERCENT" value="10"/>
+ 			</statup>
+            <statup duration="600000" effectid="109122" e="5">
+                <change stat="FLY_SPEED" func="PERCENT" value="30"/>
+            </statup>
+            <statup duration="600000" effectid="10184251" e="6">
+               <change stat="MAXHP" func="ADD" delta="0" value="124800"/>
+            </statup>
+            <statup duration="600000" effectid="101212" e="7">
+                <change stat="REGEN_HP" func="ADD" value="160"/>
+            </statup>
+            <statup duration="600000" effectid="10184252" e="8">
+                <change stat="MAXMP" func="ADD" delta="0" value="249600"/>
+            </statup>
+            <statup duration="600000" effectid="117321" e="9">
+                <change stat="REGEN_MP" func="ADD" value="640"/>
+           </statup>
+            <statup duration="600000" effectid="185861" e="10">
+                <change stat="PVP_ATTACK_RATIO" func="ADD" delta="0" value="230"/>
+            </statup>
+			<heal value="124800" delta="0" e="11" element="WATER"/>
+            <healmp value="249600" delta="0" e="12" element="WATER"/>	
+		</effects>
+		<actions>
+			<itemuse itemid="169300012" count="9"/>
+		</actions>
+	</skill_template>
+	
+	<!-- ABYSS SKILL ELYOS: Transformation: Guardian Deity General V (9741) -->
+	<skill_template skill_id="9741" name="STR_SKILL_Abyss_RankerSkill_Light_Avatar_G5" nameId="577365" stack="SKILL_ABYSS_RANKERSKILL_LIGHT_AVATAR" lvl="5" skilltype="MAGICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="72000" duration="6000">
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="2"/>
+			<targetrange value="ONLYONE" maxcount="1"/>
+			<targetrelation value="FRIEND"/>
+		</setproperties>
+		<useconditions>
+			<playermove allow="false"/>
+		</useconditions>
+		<effects>
+			<skilllauncher skill_id="9768" value="1" e="1"/>
+			<transform model="202506" duration="600000" effectid="175" e="2"/>
+			<statup duration="600000" effectid="109121" e="4" hoptype="SKILLLV" hopb="328">
+                <change stat="SPEED" func="PERCENT" value="10"/>
+ 			</statup>
+            <statup duration="600000" effectid="109122" e="5">
+                <change stat="FLY_SPEED" func="PERCENT" value="30"/>
+            </statup>
+            <statup duration="600000" effectid="10184251" e="6">
+               <change stat="MAXHP" func="ADD" delta="0" value="156000"/>
+            </statup>
+            <statup duration="600000" effectid="101212" e="7">
+                <change stat="REGEN_HP" func="ADD" value="200"/>
+            </statup>
+            <statup duration="600000" effectid="10184252" e="8">
+                <change stat="MAXMP" func="ADD" delta="0" value="312000"/>
+            </statup>
+            <statup duration="600000" effectid="117321" e="9">
+                <change stat="REGEN_MP" func="ADD" value="800"/>
+           </statup>
+            <statup duration="600000" effectid="185861" e="10">
+                <change stat="PVP_ATTACK_RATIO" func="ADD" delta="0" value="250"/>
+            </statup>
+			<heal value="156000" delta="0" e="11" element="WATER"/>
+            <healmp value="312000" delta="0" e="12" element="WATER"/>	
+		</effects>
+		<actions>
+			<itemuse itemid="169300012" count="10"/>
+		</actions>
+	</skill_template>
+	
+	<!-- ABYSS SKILL ASMODIANS: Transformation: Guardian Deity General I (9742) -->
+	<skill_template skill_id="9742" name="STR_SKILL_Abyss_RankerSkill_Dark_Avatar_G1" nameId="577369" stack="SKILL_ABYSS_RANKERSKILL_DARK_AVATAR" lvl="1" skilltype="MAGICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="72000" duration="6000">
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="2"/>
+			<targetrange value="ONLYONE" maxcount="1"/>
+			<targetrelation value="FRIEND"/>
+		</setproperties>
+		<useconditions>
+			<playermove allow="false"/>
+		</useconditions>
+		<effects>
+			<skilllauncher skill_id="9759" value="1" e="1"/>
+			<transform model="202507" duration="600000" effectid="175" e="2"/>
+			<dispeldebuff e="3" element="WATER"/>
+            <statup duration="600000" effectid="109121" e="4" hoptype="SKILLLV" hopb="328">
+                <change stat="SPEED" func="PERCENT" value="10"/>
+ 			</statup>
+            <statup duration="600000" effectid="109122" e="5">
+                <change stat="FLY_SPEED" func="PERCENT" value="10"/>
+            </statup>
+            <statup duration="600000" effectid="10184251" e="6">
+               <change stat="MAXHP" func="ADD" delta="0" value="78000"/>
+            </statup>
+            <statup duration="600000" effectid="101212" e="7">
+                <change stat="REGEN_HP" func="ADD" value="100"/>
+            </statup>
+            <statup duration="600000" effectid="10184252" e="8">
+                <change stat="MAXMP" func="ADD" delta="0" value="156000"/>
+            </statup>
+            <statup duration="600000" effectid="117321" e="9">
+                <change stat="REGEN_MP" func="ADD" value="400"/>
+           </statup>
+            <statup duration="600000" effectid="185861" e="10">
+                <change stat="PVP_ATTACK_RATIO" func="ADD" delta="0" value="200"/>
+            </statup>
+			<heal value="78000" delta="0" e="11" element="WATER"/>
+            <healmp value="156000" delta="0" e="12" element="WATER"/>
+		</effects>
+		<actions>
+			<itemuse itemid="169300012" count="6"/>
+		</actions>
+	</skill_template>
+	
+	<!-- ABYSS SKILL ASMODIANS: Transformation: Guardian Deity General II (9743) -->
+	<skill_template skill_id="9743" name="STR_SKILL_Abyss_RankerSkill_Dark_Avatar_G2" nameId="577373" stack="SKILL_ABYSS_RANKERSKILL_DARK_AVATAR" lvl="2" skilltype="MAGICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="72000" duration="6000">
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="2"/>
+			<targetrange value="ONLYONE" maxcount="1"/>
+			<targetrelation value="FRIEND"/>
+		</setproperties>
+		<useconditions>
+			<playermove allow="false"/>
+		</useconditions>
+		<effects>
+			<skilllauncher skill_id="9760" value="1" e="1"/>
+			<transform model="202508" duration="600000" effectid="175" e="2"/>
+			<dispeldebuff e="3" element="WATER"/>
+            <statup duration="600000" effectid="109121" e="4" hoptype="SKILLLV" hopb="328">
+                <change stat="SPEED" func="PERCENT" value="10"/>
+ 			</statup>
+            <statup duration="600000" effectid="109122" e="5">
+                <change stat="FLY_SPEED" func="PERCENT" value="10"/>
+            </statup>
+            <statup duration="600000" effectid="10184251" e="6">
+               <change stat="MAXHP" func="ADD" delta="0" value="93600"/>
+            </statup>
+            <statup duration="600000" effectid="101212" e="7">
+                <change stat="REGEN_HP" func="ADD" value="120"/>
+            </statup>
+            <statup duration="600000" effectid="10184252" e="8">
+                <change stat="MAXMP" func="ADD" delta="0" value="187200"/>
+            </statup>
+            <statup duration="600000" effectid="117321" e="9">
+                <change stat="REGEN_MP" func="ADD" value="480"/>
+           </statup>
+            <statup duration="600000" effectid="185861" e="10">
+                <change stat="PVP_ATTACK_RATIO" func="ADD" delta="0" value="210"/>
+            </statup>
+			<heal value="93600" delta="0" e="11" element="WATER"/>
+            <healmp value="187200" delta="0" e="12" element="WATER"/>
+		</effects>
+		<actions>
+			<itemuse itemid="169300012" count="7"/>
+		</actions>
+	</skill_template>
+	
+	<!-- ABYSS SKILL ASMODIANS: Transformation: Guardian Deity General III (9744) -->
+	<skill_template skill_id="9744" name="STR_SKILL_Abyss_RankerSkill_Dark_Avatar_G3" nameId="577377" stack="SKILL_ABYSS_RANKERSKILL_DARK_AVATAR" lvl="3" skilltype="MAGICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="72000" duration="6000">
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="2"/>
+			<targetrange value="ONLYONE" maxcount="1"/>
+			<targetrelation value="FRIEND"/>
+		</setproperties>
+		<useconditions>
+			<playermove allow="false"/>
+		</useconditions>
+		<effects>
+			<skilllauncher skill_id="9761" value="1" e="1"/>
+			<transform model="202509" duration="600000" effectid="175" e="2"/>
+			<statup duration="600000" effectid="197373" e="2">
+				<change stat="SPEED" func="ADD" delta="0" value="20"/>
+			</statup>
+			<dispeldebuff e="3" element="WATER"/>
+            <statup duration="600000" effectid="109121" e="4" hoptype="SKILLLV" hopb="328">
+                <change stat="SPEED" func="PERCENT" value="10"/>
+ 			</statup>
+            <statup duration="600000" effectid="109122" e="5">
+                <change stat="FLY_SPEED" func="PERCENT" value="20"/>
+            </statup>
+            <statup duration="600000" effectid="10184251" e="6">
+               <change stat="MAXHP" func="ADD" delta="0" value="109200"/>
+            </statup>
+            <statup duration="600000" effectid="101212" e="7">
+                <change stat="REGEN_HP" func="ADD" value="140"/>
+            </statup>
+            <statup duration="600000" effectid="10184252" e="8">
+                <change stat="MAXMP" func="ADD" delta="0" value="218400"/>
+            </statup>
+            <statup duration="600000" effectid="117321" e="9">
+                <change stat="REGEN_MP" func="ADD" value="560"/>
+           </statup>
+            <statup duration="600000" effectid="185861" e="10">
+                <change stat="PVP_ATTACK_RATIO" func="ADD" delta="0" value="220"/>
+            </statup>
+			<heal value="109200" delta="0" e="11" element="WATER"/>
+            <healmp value="218400" delta="0" e="12" element="WATER"/>
+		</effects>
+		<actions>
+			<itemuse itemid="169300012" count="8"/>
+		</actions>
+	</skill_template>
+	
+	<!-- ABYSS SKILL ASMODIANS: Transformation: Guardian Deity General IV (9745) -->
+	<skill_template skill_id="9745" name="STR_SKILL_Abyss_RankerSkill_Dark_Avatar_G4" nameId="577381" stack="SKILL_ABYSS_RANKERSKILL_DARK_AVATAR" lvl="4" skilltype="MAGICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="72000" duration="6000">
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="2"/>
+			<targetrange value="ONLYONE" maxcount="1"/>
+			<targetrelation value="FRIEND"/>
+		</setproperties>
+		<useconditions>
+			<playermove allow="false"/>
+		</useconditions>
+		<effects>
+			<skilllauncher skill_id="9762" value="1" e="1"/>
+			<transform model="202510" duration="600000" effectid="175" e="2"/>
+			<dispeldebuff e="3" element="WATER"/>
+            <statup duration="600000" effectid="109121" e="4" hoptype="SKILLLV" hopb="328">
+                <change stat="SPEED" func="PERCENT" value="10"/>
+ 			</statup>
+            <statup duration="600000" effectid="109122" e="5">
+                <change stat="FLY_SPEED" func="PERCENT" value="30"/>
+            </statup>
+            <statup duration="600000" effectid="10184251" e="6">
+               <change stat="MAXHP" func="ADD" delta="0" value="124800"/>
+            </statup>
+            <statup duration="600000" effectid="101212" e="7">
+                <change stat="REGEN_HP" func="ADD" value="160"/>
+            </statup>
+            <statup duration="600000" effectid="10184252" e="8">
+                <change stat="MAXMP" func="ADD" delta="0" value="249600"/>
+            </statup>
+            <statup duration="600000" effectid="117321" e="9">
+                <change stat="REGEN_MP" func="ADD" value="640"/>
+           </statup>
+            <statup duration="600000" effectid="185861" e="10">
+                <change stat="PVP_ATTACK_RATIO" func="ADD" delta="0" value="230"/>
+            </statup>
+			<heal value="124800" delta="0" e="11" element="WATER"/>
+            <healmp value="249600" delta="0" e="12" element="WATER"/>
+		</effects>
+		<actions>
+			<itemuse itemid="169300012" count="9"/>
+		</actions>
+	</skill_template>
+	
+	<!-- ABYSS SKILL ASMODIANS: Transformation: Guardian Deity General V (9746) -->
+	<skill_template skill_id="9746" name="STR_SKILL_Abyss_RankerSkill_Dark_Avatar_G5" nameId="577385" stack="SKILL_ABYSS_RANKERSKILL_DARK_AVATAR" lvl="5" skilltype="MAGICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="72000" duration="6000">
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="2"/>
+			<targetrange value="ONLYONE" maxcount="1"/>
+			<targetrelation value="FRIEND"/>
+		</setproperties>
+		<useconditions>
+			<playermove allow="false"/>
+		</useconditions>
+		<effects>
+			<skilllauncher skill_id="9763" value="1" e="1"/>
+			<transform model="202511" duration="600000" effectid="175" e="2"/>
+			<statup duration="600000" effectid="197423" e="3">
+				<change stat="SPEED" func="ADD" delta="0" value="30"/>
+			</statup><statup duration="600000" effectid="109121" e="4" hoptype="SKILLLV" hopb="328">
+                <change stat="SPEED" func="PERCENT" value="10"/>
+ 			</statup>
+            <statup duration="600000" effectid="109122" e="5">
+                <change stat="FLY_SPEED" func="PERCENT" value="30"/>
+            </statup>
+            <statup duration="600000" effectid="10184251" e="6">
+               <change stat="MAXHP" func="ADD" delta="0" value="156000"/>
+            </statup>
+            <statup duration="600000" effectid="101212" e="7">
+                <change stat="REGEN_HP" func="ADD" value="200"/>
+            </statup>
+            <statup duration="600000" effectid="10184252" e="8">
+                <change stat="MAXMP" func="ADD" delta="0" value="312000"/>
+            </statup>
+            <statup duration="600000" effectid="117321" e="9">
+                <change stat="REGEN_MP" func="ADD" value="800"/>
+           </statup>
+            <statup duration="600000" effectid="185861" e="10">
+                <change stat="PVP_ATTACK_RATIO" func="ADD" delta="0" value="250"/>
+            </statup>
+			<heal value="156000" delta="0" e="11" element="WATER"/>
+            <healmp value="312000" delta="0" e="12" element="WATER"/>
+		</effects>
+		<actions>
+			<itemuse itemid="169300012" count="10"/>
+		</actions>
+	</skill_template>
+	
+	<!-- ABYSS SKILL BOTH: Abyssal Fury I (9747) -->
+	<skill_template skill_id="9747" name="STR_SKILL_Abyss_RankerSkill_AbyssianStrom_G1" nameId="577389" stack="SKILL_ABYSS_RANKERSKILL_ABYSSIANSTROM" lvl="1" skilltype="MAGICAL" skillsubtype="ATTACK" tslot="NONE" activation="ACTIVE" cooldown="200" duration="0">
+		<startconditions>
+			<mp value="10200" delta="0"/>
+		</startconditions>
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="2"/>
+			<targetrange value="AREA" distance="20" maxcount="6"/>
+			<targetrelation value="ENEMY"/>
+		</setproperties>
+		<effects>
+			<skillatk value="1018" delta="0" e="1"/>
+		</effects>
+		<actions>
+			<mpuse value="10200" delta="0"/>
+		</actions>
+	</skill_template>
+	
+	<!-- ABYSS SKILL BOTH: Abyssal Fury II (9748) -->
+	<skill_template skill_id="9748" name="STR_SKILL_Abyss_RankerSkill_AbyssianStrom_G2" nameId="577393" stack="SKILL_ABYSS_RANKERSKILL_ABYSSIANSTROM" lvl="2" skilltype="MAGICAL" skillsubtype="ATTACK" tslot="NONE" activation="ACTIVE" cooldown="200" duration="0">
+		<startconditions>
+			<mp value="10800" delta="0"/>
+		</startconditions>
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="2"/>
+			<targetrange value="AREA" distance="20" maxcount="12"/>
+			<targetrelation value="ENEMY"/>
+		</setproperties>
+		<effects>
+			<skillatk value="1018" delta="0" e="1"/>
+		</effects>
+		<actions>
+			<mpuse value="10800" delta="0"/>
+		</actions>
+	</skill_template>
+	
+	<!-- ABYSS SKILL BOTH: Abyssal Fury III (9749) -->
+	<skill_template skill_id="9749" name="STR_SKILL_Abyss_RankerSkill_AbyssianStrom_G3" nameId="577397" stack="SKILL_ABYSS_RANKERSKILL_ABYSSIANSTROM" lvl="3" skilltype="MAGICAL" skillsubtype="ATTACK" tslot="NONE" activation="ACTIVE" cooldown="200" duration="0">
+		<startconditions>
+			<mp value="11500" delta="0"/>
+		</startconditions>
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="2"/>
+			<targetrange value="AREA" distance="20" maxcount="18"/>
+			<targetrelation value="ENEMY"/>
+		</setproperties>
+		<effects>
+			<skillatk value="1018" delta="0" e="1"/>
+		</effects>
+		<actions>
+			<mpuse value="11500" delta="0"/>
+		</actions>
+	</skill_template>
+	
+	<!-- ABYSS SKILL BOTH: Abyssal Fury IV (9750) -->
+	<skill_template skill_id="9750" name="STR_SKILL_Abyss_RankerSkill_AbyssianStrom_G4" nameId="577401" stack="SKILL_ABYSS_RANKERSKILL_ABYSSIANSTROM" lvl="4" skilltype="MAGICAL" skillsubtype="ATTACK" tslot="NONE" activation="ACTIVE" cooldown="200" duration="0">
+		<startconditions>
+			<mp value="11900" delta="0"/>
+		</startconditions>
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="2"/>
+			<targetrange value="AREA" distance="20" maxcount="18"/>
+			<targetrelation value="ENEMY"/>
+		</setproperties>
+		<effects>
+			<skillatk value="1518" delta="0" e="1"/>
+		</effects>
+		<actions>
+			<mpuse value="11900" delta="0"/>
+		</actions>
+	</skill_template>
+	
+	<!-- ABYSS SKILL ELYOS: Summon Abyssal Energy I (9751) -->
+	<skill_template skill_id="9751" name="STR_SKILL_Abyss_RankerSkill_L_AbyssianServant_G1" nameId="577405" stack="SKILL_ABYSS_RANKERSKILL_L_ABYSSIANSERVANT" lvl="1" skilltype="MAGICAL" skillsubtype="SUMMON" tslot="NONE" activation="ACTIVE" cooldown="600" duration="2500">
+		<startconditions>
+			<mp value="14100" delta="0"/>
+		</startconditions>
+		<setproperties>
+			<firsttarget value="TARGET"/>
+			<firsttargetrange value="20"/>
+			<targetrange value="ONLYONE" maxcount="1"/>
+			<targetrelation value="ENEMY"/>
+		</setproperties>
+		<useconditions>
+			<playermove allow="false"/>
+		</useconditions>	
+		<effects>
+			<summonservant skill_id="17815" hp_ratio="17" npc_id="749127" e="1" element="FIRE" hoptype="SKILLLV" hopb="1949"/>
+		</effects>			
+		<actions>
+			<mpuse value="14100" delta="0"/>
+		</actions>
+	</skill_template>
+	<!-- ABYSS SKILL ELYOS: Summon Abyssal Energy II (9752) -->
+	<skill_template skill_id="9752" name="STR_SKILL_Abyss_RankerSkill_L_AbyssianServant_G2" nameId="577409" stack="SKILL_ABYSS_RANKERSKILL_L_ABYSSIANSERVANT" lvl="2" skilltype="MAGICAL" skillsubtype="SUMMON" tslot="NONE" activation="ACTIVE" cooldown="600" duration="2500">
+		<startconditions>
+			<mp value="16500" delta="0"/>
+		</startconditions>
+		<setproperties>
+			<firsttarget value="TARGET"/>
+			<firsttargetrange value="20"/>
+			<targetrange value="ONLYONE" maxcount="1"/>
+			<targetrelation value="ENEMY"/>
+		</setproperties>
+		<useconditions>
+			<playermove allow="false"/>
+		</useconditions>
+		<effects>
+			<summonservant skill_id="17816" hp_ratio="17" npc_id="749128" e="1" element="FIRE" hoptype="SKILLLV" hopb="1949"/>
+		</effects>
+		<actions>		
+			<mpuse value="16500" delta="0"/>
+		</actions>
+	</skill_template>
+	
+	<!-- ABYSS SKILL ASMODIAN: Summon Abyssal Energy I (9753) -->
+	<skill_template skill_id="9753" name="STR_SKILL_Abyss_RankerSkill_D_AbyssianServant_G1" nameId="577413" stack="SKILL_ABYSS_RANKERSKILL_D_ABYSSIANSERVANT" lvl="1" skilltype="MAGICAL" skillsubtype="SUMMON" tslot="NONE" activation="ACTIVE" cooldown="600" duration="2500">
+		<startconditions>
+			<mp value="14100" delta="0"/>
+		</startconditions>
+		<setproperties>
+			<firsttarget value="TARGET"/>
+			<firsttargetrange value="20"/>
+			<targetrange value="ONLYONE" maxcount="1"/>
+			<targetrelation value="ENEMY"/>
+		</setproperties>
+		<useconditions>
+			<playermove allow="false"/>
+		</useconditions>
+		<effects>
+			<summonservant skill_id="17815" hp_ratio="17" npc_id="749129" e="1" element="FIRE" hoptype="SKILLLV" hopb="1949"/>
+		</effects>
+		<actions>
+			<mpuse value="14100" delta="0"/>
+		</actions>
+	</skill_template>
+	
+	<!-- ABYSS SKILL ASMODIAN: Summon Abyssal Energy II (9754) -->
+	<skill_template skill_id="9754" name="STR_SKILL_Abyss_RankerSkill_D_AbyssianServant_G2" nameId="577417" stack="SKILL_ABYSS_RANKERSKILL_D_ABYSSIANSERVANT" lvl="2" skilltype="MAGICAL" skillsubtype="SUMMON" tslot="NONE" activation="ACTIVE" cooldown="600" duration="2500">
+		<startconditions>
+			<mp value="16500" delta="0"/>
+		</startconditions>
+		<setproperties>
+			<firsttarget value="TARGET"/>
+			<firsttargetrange value="20"/>
+			<targetrange value="ONLYONE" maxcount="1"/>
+			<targetrelation value="ENEMY"/>
+		</setproperties>
+		<useconditions>
+			<playermove allow="false"/>
+		</useconditions>
+		<effects>
+			<summonservant skill_id="17816" hp_ratio="17" npc_id="749130" e="1" element="FIRE" hoptype="SKILLLV" hopb="1949"/>
+		</effects>
+		<actions>
+			<mpuse value="16500" delta="0"/>
+		</actions>
+	</skill_template>
+	
+	<!-- ABYSS SKILL BOTH: Reflective Abyssal Aegis I (9755) -->
+	<skill_template skill_id="9755" name="STR_SKILL_Abyss_RankerSkill_AbyssianField_G1" nameId="577421" stack="SKILL_ABYSS_RANKERSKILL_ABYSSIANFIELD" lvl="1" skilltype="MAGICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="3000" duration="0">
+		<startconditions>
+			<mp value="21400" delta="0"/>
+		</startconditions>
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="2"/>
+			<targetrange value="ONLYONE" maxcount="1"/>
+			<targetrelation value="FRIEND"/>
+		</setproperties>
+		<effects>
+			<reflector value="600" delta="0" radius="5" duration="60000" effectid="153" e="1"/>
+		</effects>
+		<actions>
+			<mpuse value="21400" delta="0"/>
+		</actions>
+	</skill_template>
+	
+	<!-- ABYSS SKILL BOTH: Abyssal Wave I (9756) -->
+	<skill_template skill_id="9756" name="STR_SKILL_Abyss_RankerSkill_DevanianShock_G1" nameId="577427" stack="SKILL_ABYSS_RANKERSKILL_DEVANIANSHOCK" lvl="1" skilltype="MAGICAL" skillsubtype="DEBUFF" tslot="DEBUFF" activation="ACTIVE" cooldown="900" duration="0">
+		<startconditions>
+			<mp value="25400" delta="0"/>
+		</startconditions>
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="2"/>
+			<targetrange value="AREA" distance="20" maxcount="18"/>
+			<targetrelation value="ENEMY"/>
+		</setproperties>
+		<effects>
+			<stun duration="5000" effectid="20000" e="1" element="FIRE"/>
+		</effects>
+		<actions>
+			<mpuse value="25400" delta="0"/>
+		</actions>
+	</skill_template>
+	
+	<!-- ABYSS SKILL BOTH: Abyssal Tidal Wave I (9757) -->
+	<skill_template skill_id="9757" name="STR_SKILL_Abyss_RankerSkill_AbyssianChainBolt_G1" nameId="577433" stack="SKILL_ABYSS_RANKERSKILL_ABYSSIANCHAINBOLT" lvl="1" skilltype="MAGICAL" skillsubtype="ATTACK" tslot="DEBUFF" activation="ACTIVE" cooldown="1200" duration="3000">
+		<startconditions>
+			<mp value="37700" delta="0"/>
+		</startconditions>
+		<setproperties>
+			<firsttarget value="TARGET"/>
+			<firsttargetrange value="30"/>
+			<targetrange value="AREA" distance="30" maxcount="18"/>
+			<targetrelation value="ENEMY"/>
+		</setproperties>
+		<useconditions>
+			<playermove allow="false"/>
+		</useconditions>
+		<effects>
+			<skillatk value="1600" delta="0" e="1"/>
+			<statdown duration="30000" effectid="197572" e="2" element="FIRE">
+				<change stat="PVP_DEFEND_RATIO" func="ADD" delta="0" value="-200"/>
+			</statdown>
+		</effects>
+		<actions>
+			<mpuse value="37700" delta="0"/>
+		</actions>
+	</skill_template>
+	
+	<!-- ABYSS SKILL BOTH: Abyssal Verdict I (9758) -->
+	<skill_template skill_id="9758" name="STR_SKILL_Abyss_RankerSkill_DeathRay_G1" nameId="577437" stack="SKILL_ABYSS_RANKERSKILL_DEATHRAY" lvl="1" skilltype="MAGICAL" skillsubtype="ATTACK" tslot="NONE" activation="ACTIVE" cooldown="3000" duration="2000">
+		<startconditions>
+			<mp value="59000" delta="0"/>
+		</startconditions>
+		<setproperties>
+			<firsttarget value="TARGET"/>
+			<firsttargetrange value="30"/>
+			<targetrange value="ONLYONE" maxcount="1"/>
+			<targetrelation value="ENEMY"/>
+		</setproperties>
+		<useconditions>
+			<playermove allow="false"/>
+		</useconditions>
+		<effects>
+			<delaydamage delay="5000" value="9990" delta="0" e="1" element="FIRE"/>
+		</effects>
+		<actions>
+			<mpuse value="59000" delta="0"/>
+		</actions>
+	</skill_template>
+	
+	<!-- END ABYSS SKILLS -->
 </skill_data>
