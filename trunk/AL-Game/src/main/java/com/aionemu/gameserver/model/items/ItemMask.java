@@ -14,7 +14,7 @@ public class ItemMask
 	public static final int TEMP_ITEM = (1 << 7);
 	public static final int UNK9 = (1 << 8);
 	public static final int STORABLE_IN_LEGION_WH = (1 << 9);
-	public static final int UNDELETABLE_QUEST_ITEMS = (1 << 10);
+	public static final int UNK11 = (1 << 10);
 	public static final int UNK12 = (1 << 11);
 	public static final int BLACK_CLOUD_TRADERS = (1 << 12);
 	public static final int CAN_SPLIT = (1 << 13);

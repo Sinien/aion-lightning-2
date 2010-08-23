@@ -16,16 +16,13 @@
  */
 package com.aionemu.gameserver.network.aion.clientpackets;
 
-import com.aionemu.gameserver.model.DescriptionId;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.player.Storage;
 import com.aionemu.gameserver.network.aion.AionClientPacket;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
 import com.aionemu.gameserver.services.ItemService;
-import com.aionemu.gameserver.utils.PacketSendUtility;
+
 /**
- * 
  * @author Avol
  * 
  */
@@ -38,7 +35,6 @@ public class CM_DELETE_ITEM extends AionClientPacket
 		super(opcode);
 	}
 
-
 	@Override
 	protected void readImpl()
 	{
@@ -48,16 +44,10 @@ public class CM_DELETE_ITEM extends AionClientPacket
 	@Override
 	protected void runImpl()
 	{
-
 		Player player = getConnection().getActivePlayer();
 		Storage bag = player.getInventory();
 		Item resultItem = bag.getItemByObjId(objId);
-		if (resultItem.getItemTemplate().isUndeletableQuestItem())
-		{
-			PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.STR_QUEST_GIVEUP_WHEN_DELETE_QUEST_ITEM_IMPOSSIBLE(new DescriptionId(Integer
-				.parseInt(resultItem.getName())))); // TODO specify the quest name wich item belongs to
-			return;
-		}
+
 		if (resultItem != null)
 			ItemService.removeItemByObjectId(player, objId, true);
 	}

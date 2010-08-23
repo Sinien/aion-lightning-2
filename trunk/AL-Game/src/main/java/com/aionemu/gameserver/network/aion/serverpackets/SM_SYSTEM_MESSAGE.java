@@ -1025,14 +1025,6 @@ public class SM_SYSTEM_MESSAGE extends AionServerPacket
 	public static SM_SYSTEM_MESSAGE	STR_ITEM_CANT_USE_UNTIL_DELAY_TIME	= new SM_SYSTEM_MESSAGE(1300494);
 	
 	/**
-	 * You cannot destroy %0 because it is used in the "%1" quest which cannot be abandoned once started.
-	 */
-	public static SM_SYSTEM_MESSAGE	STR_QUEST_GIVEUP_WHEN_DELETE_QUEST_ITEM_IMPOSSIBLE(DescriptionId nameId)
-	{
-		return new SM_SYSTEM_MESSAGE(1300604, nameId);
-	}
-
-	/**
 	 * You cannot fly in this area.
 	 */
 	public static SM_SYSTEM_MESSAGE	STR_FLYING_FORBIDDEN_HERE			= new SM_SYSTEM_MESSAGE(1300960);

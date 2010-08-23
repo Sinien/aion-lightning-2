@@ -575,13 +575,4 @@ public class ItemTemplate extends VisibleObjectTemplate
 	{
 		return (getMask() & ItemMask.SOUL_BOUND) == ItemMask.SOUL_BOUND;
 	}
-	
-	/**
-	 * 
-	 * @return
-	 */
-	public boolean isUndeletableQuestItem()
-	{
-		return (getMask() & ItemMask.UNDELETABLE_QUEST_ITEMS) == ItemMask.UNDELETABLE_QUEST_ITEMS;
-	}
 }
