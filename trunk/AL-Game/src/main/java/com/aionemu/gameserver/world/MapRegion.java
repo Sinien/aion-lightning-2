@@ -19,6 +19,7 @@ package com.aionemu.gameserver.world;
 import javolution.util.FastList;
 import javolution.util.FastMap;
 
+import com.aionemu.gameserver.configs.main.OptionsConfig;
 import com.aionemu.gameserver.model.gameobjects.VisibleObject;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 
@@ -43,14 +44,14 @@ public class MapRegion
 	/**
 	 * Surrounding regions + self.
 	 */
-	private final FastList<MapRegion>				neighbours		= new FastList<MapRegion>(9);
+	private final FastList<MapRegion>				neighbours	= new FastList<MapRegion>(OptionsConfig.NEIGBOURS);
 
 	/**
 	 * Objects on this map region.
 	 */
-	private final FastMap<Integer, VisibleObject>	objects			= new FastMap<Integer, VisibleObject>().shared();
+	private final FastMap<Integer, VisibleObject>	objects		= new FastMap<Integer, VisibleObject>().shared();
 
-	private int										playerCount		= 0;
+	private int										playerCount	= 0;
 
 	/**
 	 * Constructor.
