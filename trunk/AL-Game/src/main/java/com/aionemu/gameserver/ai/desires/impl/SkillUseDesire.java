@@ -70,6 +70,8 @@ public class SkillUseDesire extends AbstractDesire
 		{
 			Skill skill = SkillEngine.getInstance().getSkill(owner, npcSkill.getSkillid(), npcSkill.getSkillLevel(),
 				owner.getTarget());
+			
+			if(skill != null)
 			skill.useSkill();
 		}
 		
