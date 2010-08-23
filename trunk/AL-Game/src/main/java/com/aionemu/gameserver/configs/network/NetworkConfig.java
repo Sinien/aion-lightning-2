@@ -25,66 +25,66 @@ public class NetworkConfig
 	/**
 	 * Game Server port
 	 */
-	@Property(key = "gameserver.network.client.port", defaultValue = "7777")
+	@Property(key = "network.client.port", defaultValue = "7777")
 	public static int				GAME_PORT;
 
 	/**
 	 * Game Server bind ip
 	 */
-	@Property(key = "gameserver.network.client.host", defaultValue = "*")
+	@Property(key = "network.client.host", defaultValue = "*")
 	public static String			GAME_BIND_ADDRESS;
 
 	/**
 	 * Max allowed online players
 	 */
-	@Property(key = "gameserver.network.client.maxplayers", defaultValue = "100")
+	@Property(key = "network.client.maxplayers", defaultValue = "100")
 	public static int				MAX_ONLINE_PLAYERS;
 
 	/**
 	 * LoginServer address
 	 */
-	@Property(key = "gameserver.network.login.address", defaultValue = "localhost:9014")
+	@Property(key = "network.login.address", defaultValue = "localhost:9014")
 	public static InetSocketAddress	LOGIN_ADDRESS;
-	
+
 	/**
 	 * ChatServer address
 	 */
-	@Property(key = "gameserver.network.chat.address", defaultValue = "localhost:9021")
+	@Property(key = "network.chat.address", defaultValue = "localhost:9021")
 	public static InetSocketAddress	CHAT_ADDRESS;
-	
+
 	/**
 	 * Password for this GameServer ID for authentication at ChatServer.
 	 */
-	@Property(key = "gameserver.network.chat.password", defaultValue = "")
+	@Property(key = "network.chat.password", defaultValue = "")
 	public static String			CHAT_PASSWORD;
 
 	/**
 	 * GameServer id that this GameServer will request at LoginServer.
 	 */
-	@Property(key = "gameserver.network.login.gsid", defaultValue = "0")
+	@Property(key = "network.login.gsid", defaultValue = "0")
 	public static int				GAMESERVER_ID;
 
 	/**
 	 * Password for this GameServer ID for authentication at LoginServer.
 	 */
-	@Property(key = "gameserver.network.login.password", defaultValue = "")
+	@Property(key = "network.login.password", defaultValue = "")
 	public static String			LOGIN_PASSWORD;
 
 	/**
 	 * Number of Threads that will handle io read (>= 0)
 	 */
-	@Property(key = "gameserver.network.nio.threads.read", defaultValue = "0")
+	@Property(key = "network.nio.threads.read", defaultValue = "0")
 	public static int				NIO_READ_THREADS;
 
 	/**
 	 * Number of Threads that will handle io write (>= 0)
 	 */
-	@Property(key = "gameserver.network.nio.threads.write", defaultValue = "0")
+	@Property(key = "network.nio.threads.write", defaultValue = "0")
 	public static int				NIO_WRITE_THREADS;
 
 	/**
 	 * Number of Threads that will handle io write (>= 0)
 	 */
-	@Property(key = "gameserver.network.display.unknownpackets", defaultValue = "false")
+	@Property(key = "network.display.unknownpackets", defaultValue = "false")
 	public static boolean			DISPLAY_UNKNOWNPACKETS;
 }

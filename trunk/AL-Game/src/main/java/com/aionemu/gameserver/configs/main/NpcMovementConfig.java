@@ -26,18 +26,18 @@ public class NpcMovementConfig
 	/**
 	 * NPC movement activator
 	 */
-	@Property(key = "gameserver.npc.movement.active", defaultValue = "true")
+	@Property(key = "npc.movement.active", defaultValue = "true")
 	public static boolean	ACTIVE_NPC_MOVEMENT;
 
 	/**
 	 * Minimum movement delay
 	 */
-	@Property(key = "gameserver.npc.movement.delay.minimum", defaultValue = "3")
+	@Property(key = "npc.movement.delay.minimum", defaultValue = "3")
 	public static int		MINIMIMUM_DELAY;
 
 	/**
 	 * Maximum movement delay
 	 */
-	@Property(key = "gameserver.npc.movement.delay.maximum", defaultValue = "15")
+	@Property(key = "npc.movement.delay.maximum", defaultValue = "15")
 	public static int		MAXIMUM_DELAY;
 }

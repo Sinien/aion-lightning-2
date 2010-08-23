@@ -23,30 +23,30 @@ public class FallDamageConfig
 	/**
 	 * Fly damage activator
 	 */
-	@Property(key = "gameserver.fall.damage.active", defaultValue = "true")
+	@Property(key = "fall.damage.active", defaultValue = "true")
 	public static boolean	ACTIVE_FALL_DAMAGE;
 
 	/**
 	 * Percentage of damage per meter.
 	 */
-	@Property(key = "gameserver.fall.damage.percentage", defaultValue = "1.0")
+	@Property(key = "fall.damage.percentage", defaultValue = "1.0")
 	public static float		FALL_DAMAGE_PERCENTAGE;
 
 	/**
 	 * Minimum fall damage range
 	 */
-	@Property(key = "gameserver.fall.damage.distance.minimum", defaultValue = "10")
+	@Property(key = "fall.damage.distance.minimum", defaultValue = "10")
 	public static int		MINIMUM_DISTANCE_DAMAGE;
 
 	/**
 	 * Maximum fall distance after which you will die after hitting the ground.
 	 */
-	@Property(key = "gameserver.fall.damage.distance.maximum", defaultValue = "50")
+	@Property(key = "fall.damage.distance.maximum", defaultValue = "50")
 	public static int		MAXIMUM_DISTANCE_DAMAGE;
 
 	/**
 	 * Maximum fall distance after which you will die in mid air.
 	 */
-	@Property(key = "gameserver.fall.damage.distance.midair", defaultValue = "200")
+	@Property(key = "fall.damage.distance.midair", defaultValue = "200")
 	public static int		MAXIMUM_DISTANCE_MIDAIR;
 }

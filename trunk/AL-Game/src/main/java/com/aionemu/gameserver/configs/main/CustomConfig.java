@@ -23,67 +23,67 @@ public class CustomConfig
 	/**
 	 * Factions speaking mode
 	 */
-	@Property(key = "gameserver.factions.speaking.mode", defaultValue = "0")
+	@Property(key = "factions.speaking.mode", defaultValue = "0")
 	public static int		FACTIONS_SPEAKING_MODE;
 
 	/*
-	* Factions search mode
-	*/
-	@Property(key = "gameserver.factions.search.mode", defaultValue = "false")
+	 * Factions search mode
+	 */
+	@Property(key = "factions.search.mode", defaultValue = "false")
 	public static boolean	FACTIONS_SEARCH_MODE;
 
 	/**
 	 * Skill autolearn
 	 */
-	@Property(key = "gameserver.skill.autolearn", defaultValue = "false")
+	@Property(key = "skill.autolearn", defaultValue = "false")
 	public static boolean	SKILL_AUTOLEARN;
 
 	/**
 	 * Disable monsters aggressive behave
 	 */
-	@Property(key = "gameserver.disable.mob.aggro", defaultValue = "false")
+	@Property(key = "disable.mob.aggro", defaultValue = "false")
 	public static boolean	DISABLE_MOB_AGGRO;
 
 	/**
 	 * Enable 2nd class change simple mode
 	 */
-	@Property(key = "gameserver.enable.simple.2ndclass", defaultValue = "false")
+	@Property(key = "enable.simple.2ndclass", defaultValue = "false")
 	public static boolean	ENABLE_SIMPLE_2NDCLASS;
 
 	/**
 	 * Unstuck delay
 	 */
-	@Property(key = "gameserver.unstuck.delay", defaultValue = "3600")
+	@Property(key = "unstuck.delay", defaultValue = "3600")
 	public static int		UNSTUCK_DELAY;
 
 	/**
 	 * Enable instances
 	 */
-	@Property(key = "gameserver.instances.enable", defaultValue = "true")
+	@Property(key = "instances.enable", defaultValue = "true")
 	public static boolean	ENABLE_INSTANCES;
-	
+
 	/**
 	 * Base Fly Time
 	 */
-	@Property(key = "gameserver.base.flytime", defaultValue = "60")
+	@Property(key = "base.flytime", defaultValue = "60")
 	public static int		BASE_FLYTIME;
 
-    /**
-	* Allows players of opposite factions to bind in enemy territory
-	*/
-	@Property(key = "gameserver.cross.faction.binding", defaultValue = "false")
-	public static boolean				ENABLE_CROSS_FACTION_BINDING;
-	
 	/**
-	* Disable drop rate reduction based on level diference between players and mobs
-	*/
-	@Property(key = "gameserver.disable.drop.reduction", defaultValue = "false")
-	public static boolean				DISABLE_DROP_REDUCTION;
-	
+	 * Allows players of opposite factions to bind in enemy territory
+	 */
+	@Property(key = "cross.faction.binding", defaultValue = "false")
+	public static boolean	ENABLE_CROSS_FACTION_BINDING;
+
 	/**
-	* Allowed Kills in 24 hours for full AP. Move to separate config when more pvp options. 
-	*/
-	@Property(key = "gameserver.pvp.maxkills", defaultValue = "5")
-	public static int					MAX_DAILY_PVP_KILLS;
-	
+	 * Disable drop rate reduction based on level diference between players and mobs
+	 */
+	@Property(key = "disable.drop.reduction", defaultValue = "false")
+	public static boolean	DISABLE_DROP_REDUCTION;
+
+	/**
+	 * Allowed Kills in 24 hours for full AP. Move to separate config when more pvp options.
+	 */
+	@Property(key = "pvp.maxkills", defaultValue = "5")
+	public static int		MAX_DAILY_PVP_KILLS;
+
 }

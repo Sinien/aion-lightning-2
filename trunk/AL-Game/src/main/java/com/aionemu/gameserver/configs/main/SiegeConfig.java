@@ -30,23 +30,23 @@ public class SiegeConfig
 	/**
 	 * Siege Enabled
 	 */
-	@Property(key = "gameserver.siege.enabled", defaultValue = "true")
+	@Property(key = "siege.enabled", defaultValue = "true")
 	public static boolean	SIEGE_ENABLED;
 
 	/**
 	 * Siege Timer Interval
 	 */
-	@Property(key = "gameserver.siege.interval", defaultValue = "7200")
+	@Property(key = "siege.interval", defaultValue = "7200")
 	public static int		SIEGE_TIMER_INTERVAL;
 
 	/**
 	 * Siege Location Values
 	 */
 
-	@Property(key = "gameserver.siege.influence.fortress", defaultValue = "10")
+	@Property(key = "siege.influence.fortress", defaultValue = "10")
 	public static int		SIEGE_POINTS_FORTRESS;
 
-	@Property(key = "gameserver.siege.influence.artifact", defaultValue = "1")
+	@Property(key = "siege.influence.artifact", defaultValue = "1")
 	public static int		SIEGE_POINTS_ARTIFACT;
 
 }

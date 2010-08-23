@@ -20,18 +20,18 @@ import com.aionemu.commons.configuration.Property;
 
 /**
  * @author lord_rex
- *
+ * 
  */
 public class ThreadConfig
-{		
+{
 	@Property(key = "thread.basepoolsize", defaultValue = "2")
-	public static int BASE_THREAD_POOL_SIZE;
-	
+	public static int	BASE_THREAD_POOL_SIZE;
+
 	@Property(key = "thread.threadpercore", defaultValue = "4")
-	public static int EXTRA_THREAD_PER_CORE;
-	
-	public static int THREAD_POOL_SIZE;
-	
+	public static int	EXTRA_THREAD_PER_CORE;
+
+	public static int	THREAD_POOL_SIZE;
+
 	public static void load()
 	{
 		final int baseThreadPoolSize = BASE_THREAD_POOL_SIZE;
