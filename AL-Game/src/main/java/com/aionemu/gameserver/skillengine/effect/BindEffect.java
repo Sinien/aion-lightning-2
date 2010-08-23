@@ -49,7 +49,7 @@ public class BindEffect extends EffectTemplate
 	{
 		final Creature effected = effect.getEffected();
 		effected.getEffectController().setAbnormal(EffectId.BLOCKADE.getEffectId());
-		if (effected.getCastingSkill() != null && effected.getCastingSkill().getSkillTemplate().getType() == SkillType.MAGICAL)
+		if (effected.getCastingSkill() != null && effected.getCastingSkill().getSkillTemplate().getType() == SkillType.PHYSICAL)
 			effected.getController().cancelCurrentSkill();
 	}
 	
