@@ -297,22 +297,22 @@ public class GroupService
 		// Exp reward
 		long expReward = StatFunctions.calculateGroupExperienceReward(highestLevel, owner);
 		
-		// Exp Mod
-		// TODO: Add logic to prevent power leveling. Players 10 levels below highest member should get 0 exp.
-		double mod = 1;
+		// Party Bonus 2 members 10%, 3 members 20% ... 6 members 50%
+		int bonus = 1;
 		if (players.size() == 0)
 			return;
-		else if (players.size() > 1)
-			mod = 1+(((players.size()-1)*10)/100);
-		
-		expReward *= mod; 
+		else if (players.size() > 0)
+			bonus = 100+((players.size()-1)*10);	
 
 		for(Player member : players)
 		{
 			// Exp reward
 			long currentExp = member.getCommonData().getExp();
-			long reward = (expReward * member.getLevel())/partyLvlSum;
+			long reward = (expReward * bonus * member.getLevel())/(partyLvlSum * 100);
 			reward *= member.getRates().getGroupXpRate();
+			// Players 10 levels below highest member get 0 exp.
+			if (highestLevel - member.getLevel() >= 10)
+				reward = 0;
 			member.getCommonData().setExp(currentExp + reward);
 
 			PacketSendUtility.sendPacket(member, SM_SYSTEM_MESSAGE.EXP(Long.toString(reward)));
