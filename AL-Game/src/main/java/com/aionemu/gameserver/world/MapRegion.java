@@ -95,6 +95,11 @@ public class MapRegion
 		return regionId;
 	}
 
+	public boolean isActive()
+	{
+		return playerCount > 0;
+	}
+	
 	/**
 	 * Returns WorldMapInstance witch is parent of this instance
 	 * 

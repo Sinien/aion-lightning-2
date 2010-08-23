@@ -74,7 +74,7 @@ public class KnownList
 	 */
 	public synchronized final void updateKnownList()
 	{
-		if((System.currentTimeMillis() - lastUpdate) < 100)
+		if((System.currentTimeMillis() - lastUpdate) < 100 || !owner.getActiveRegion().isActive())
 			return;
 
 		updateKnownListImpl();
