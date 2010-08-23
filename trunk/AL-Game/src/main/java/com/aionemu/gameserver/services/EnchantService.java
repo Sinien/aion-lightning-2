@@ -152,13 +152,13 @@ public class EnchantService
 			
 			//lesser supplements
 			if(supplementId == 166100000 || supplementId == 166100003 || supplementId == 166100006)
-				addsuccessRate = 10;
+				addsuccessRate = EnchantsConfig.LSUP;
 			//supplements
 			if(supplementId == 166100001 || supplementId == 166100004 || supplementId == 166100007)
-				addsuccessRate = 15;
+				addsuccessRate = EnchantsConfig.RSUP;
 			//greater supplements
 			if(supplementId == 166100002 || supplementId == 166100005 || supplementId == 166100008)
-				addsuccessRate = 20;
+				addsuccessRate = EnchantsConfig.GSUP;
 
 			if(enchantstoneLevel > 30 && enchantstoneLevel < 41)
 				supplementUseCount = 5;			

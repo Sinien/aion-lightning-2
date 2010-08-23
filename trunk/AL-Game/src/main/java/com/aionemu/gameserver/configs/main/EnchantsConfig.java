@@ -35,4 +35,14 @@ public class EnchantsConfig
 	public static int	MSPERCENT4;
 	@Property(key = "manastone.percent5", defaultValue = "2")
 	public static int	MSPERCENT5;
+
+	/**
+	 * Supplement Additional Rates
+	 */
+	@Property(key = "supplement.lesser", defaultValue = "10")
+	public static int	LSUP;
+	@Property(key = "supplement.regular", defaultValue = "15")
+	public static int	RSUP;
+	@Property(key = "supplement.greater", defaultValue = "20")
+	public static int	GSUP;
 }
