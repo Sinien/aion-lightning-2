@@ -14,17 +14,14 @@
  * You should have received a copy of the GNU General Public License
  * along with aion-emu.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.aionemu.gameserver.network.aion.clientpackets;
-
-//import org.apache.log4j.Logger;
 
 import javolution.util.FastList;
 
 import org.apache.log4j.Logger;
 
 import com.aionemu.commons.objects.filter.ObjectFilter;
-import com.aionemu.gameserver.configs.main.GSConfig;
+import com.aionemu.gameserver.configs.main.OptionsConfig;
 import com.aionemu.gameserver.model.ChatType;
 import com.aionemu.gameserver.model.alliance.PlayerAlliance;
 import com.aionemu.gameserver.model.alliance.PlayerAllianceGroup;
@@ -45,10 +42,6 @@ import com.aionemu.gameserver.utils.chathandlers.ChatHandlers;
  */
 public class CM_CHAT_MESSAGE_PUBLIC extends AionClientPacket
 {
-
-	/**
-	 * Logger
-	 */
 	private static final Logger	log	= Logger.getLogger(CM_CHAT_MESSAGE_PUBLIC.class);
 
 	/**
@@ -111,7 +104,7 @@ public class CM_CHAT_MESSAGE_PUBLIC extends AionClientPacket
 					if (player.getPlayerGroup() == null && player.getPlayerAlliance() == null)
 						return;
 					
-					if(GSConfig.LOG_CHAT)
+					if(OptionsConfig.LOG_CHAT)
 						log.info(String.format("[MESSAGE] - G <%d>: [%s]> %s", player.getPlayerGroup().getGroupId(), player.getName(), message));
 					
 					broadcastToGroupMembers(player);
@@ -120,7 +113,7 @@ public class CM_CHAT_MESSAGE_PUBLIC extends AionClientPacket
 					if (player.getPlayerAlliance() == null)
 						return;
 					
-					if(GSConfig.LOG_CHAT)
+					if(OptionsConfig.LOG_CHAT)
 						log.info(String.format("[MESSAGE] - A <%d>: [%s]> %s", player.getPlayerAlliance().getObjectId(), player.getName(), message));
 					
 					broadcastToAllianceMembers(player);
@@ -130,7 +123,7 @@ public class CM_CHAT_MESSAGE_PUBLIC extends AionClientPacket
 					if (!player.isInGroup() && !player.isInAlliance())
 						return;
 					
-					if(GSConfig.LOG_CHAT)
+					if(OptionsConfig.LOG_CHAT)
 						log.info(String.format("[MESSAGE] - LA: [%s]> %s", player.getName(), message));
 					
 					// Alert must go to entire group or alliance.
@@ -140,13 +133,13 @@ public class CM_CHAT_MESSAGE_PUBLIC extends AionClientPacket
 						broadcastToAllianceMembers(player);
 					break;
 				case LEGION:				
-					if(GSConfig.LOG_CHAT)
+					if(OptionsConfig.LOG_CHAT)
 						log.info(String.format("[MESSAGE] - L <%s>: [%s]> %s", player.getLegion().getLegionName(), player.getName(), message));
 					
 					broadcastToLegionMembers(player);
 					break;
 				default:
-					if(GSConfig.LOG_CHAT)
+					if(OptionsConfig.LOG_CHAT)
 						log.info(String.format("[MESSAGE] - ALL: [%s]> %s", player.getName(), message));
 					
 					broadcastToNonBlockedPlayers(player);

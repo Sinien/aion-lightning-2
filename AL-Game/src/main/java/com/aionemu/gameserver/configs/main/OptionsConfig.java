@@ -18,23 +18,29 @@ package com.aionemu.gameserver.configs.main;
 
 import com.aionemu.commons.configuration.Property;
 
-public class TaskManagerConfig
+public class OptionsConfig
 {
-	/**
-	 * Interval for deadlock detector run schedule
-	 */
-	@Property(key = "gameserver.deadlock.interval", defaultValue = "300")
-	public static int		DEADLOCK_DETECTOR_INTERVAL;
-
 	/**
 	 * Enable/disable deadlock detector
 	 */
-	@Property(key = "gameserver.deadlock.enable", defaultValue = "true")
+	@Property(key = "detectors.deadlock.enabled", defaultValue = "true")
 	public static boolean	DEADLOCK_DETECTOR_ENABLED;
 	
-	@Property(key = "gameserver.player.tasks.general", defaultValue = "900")
-	public static int	PLAYER_GENERAL;
+	/**
+	 * Interval for deadlock detector run schedule
+	 */
+	@Property(key = "detectors.deadlock.interval", defaultValue = "300")
+	public static int		DEADLOCK_DETECTOR_INTERVAL;
+	
+	@Property(key = "player.tasks.general", defaultValue = "900")
+	public static int		PLAYER_GENERAL;
 
-	@Property(key = "gameserver.tasks.items", defaultValue = "60")
-	public static int	ITEMS;
+	@Property(key = "tasks.items", defaultValue = "60")
+	public static int		ITEMS;
+	
+	@Property(key = "log.chat", defaultValue = "false")
+	public static boolean	LOG_CHAT;
+	
+	@Property(key = "log.item", defaultValue = "false")
+	public static boolean	LOG_ITEM;
 }

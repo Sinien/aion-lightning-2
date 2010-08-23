@@ -51,10 +51,4 @@ public class GSConfig
 	 */
 	@Property(key = "gameserver.disable.chatserver", defaultValue = "true")
 	public static boolean	DISABLE_CHAT_SERVER;
-	
-	@Property(key = "gameserver.log.chat", defaultValue = "false")
-	public static boolean	LOG_CHAT;
-	
-	@Property(key = "gameserver.log.item", defaultValue = "false")
-	public static boolean	LOG_ITEM;
 }

@@ -26,7 +26,7 @@ import com.aionemu.gameserver.configs.main.GroupConfig;
 import com.aionemu.gameserver.configs.main.LegionConfig;
 import com.aionemu.gameserver.configs.main.RateConfig;
 import com.aionemu.gameserver.configs.main.ShutdownConfig;
-import com.aionemu.gameserver.configs.main.TaskManagerConfig;
+import com.aionemu.gameserver.configs.main.OptionsConfig;
 import com.aionemu.gameserver.configs.network.IPConfig;
 import com.aionemu.gameserver.configs.network.NetworkConfig;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
@@ -118,7 +118,7 @@ public class Configure extends AdminCommand
 		}
 		else if("tm".equalsIgnoreCase(className))
 		{
-			classToMofify = TaskManagerConfig.class;
+			classToMofify = OptionsConfig.class;
 		}
 		else if("ip".equalsIgnoreCase(className))
 		{

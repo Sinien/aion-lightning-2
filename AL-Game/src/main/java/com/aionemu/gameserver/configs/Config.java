@@ -37,7 +37,7 @@ import com.aionemu.gameserver.configs.main.PricesConfig;
 import com.aionemu.gameserver.configs.main.RateConfig;
 import com.aionemu.gameserver.configs.main.ShutdownConfig;
 import com.aionemu.gameserver.configs.main.SiegeConfig;
-import com.aionemu.gameserver.configs.main.TaskManagerConfig;
+import com.aionemu.gameserver.configs.main.OptionsConfig;
 import com.aionemu.gameserver.configs.main.ThreadConfig;
 import com.aionemu.gameserver.configs.network.IPConfig;
 import com.aionemu.gameserver.configs.network.NetworkConfig;
@@ -75,7 +75,7 @@ public class Config
 			ConfigurableProcessor.process(RateConfig.class, main);			
 			ConfigurableProcessor.process(CacheConfig.class, main);			
 			ConfigurableProcessor.process(ShutdownConfig.class, main);			
-			ConfigurableProcessor.process(TaskManagerConfig.class, main);			
+			ConfigurableProcessor.process(OptionsConfig.class, main);			
 			ConfigurableProcessor.process(GroupConfig.class, main);			
 			ConfigurableProcessor.process(CustomConfig.class, main);			
 			ConfigurableProcessor.process(EnchantsConfig.class, main);			

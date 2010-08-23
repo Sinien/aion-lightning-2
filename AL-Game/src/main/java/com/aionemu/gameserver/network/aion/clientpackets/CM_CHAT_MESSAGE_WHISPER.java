@@ -1,4 +1,4 @@
-/**
+/*
  * This file is part of aion-emu <aion-emu.com>.
  *
  *  aion-emu is free software: you can redistribute it and/or modify
@@ -14,12 +14,11 @@
  *  You should have received a copy of the GNU General Public License
  *  along with aion-emu.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.aionemu.gameserver.network.aion.clientpackets;
 
 import org.apache.log4j.Logger;
 
-import com.aionemu.gameserver.configs.main.GSConfig;
+import com.aionemu.gameserver.configs.main.OptionsConfig;
 import com.aionemu.gameserver.model.ChatType;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.AionClientPacket;
@@ -37,9 +36,6 @@ import com.aionemu.gameserver.world.World;
  */
 public class CM_CHAT_MESSAGE_WHISPER extends AionClientPacket
 {
-	/**
-	 * Logger
-	 */
 	private static final Logger	log	= Logger.getLogger(CM_CHAT_MESSAGE_WHISPER.class);
 
 	/**
@@ -83,7 +79,7 @@ public class CM_CHAT_MESSAGE_WHISPER extends AionClientPacket
 		Player sender = getConnection().getActivePlayer();
 		Player receiver = World.getInstance().findPlayer(formatname);
 
-		if(GSConfig.LOG_CHAT)
+		if(OptionsConfig.LOG_CHAT)
 			log.info(String.format("[MESSAGE] [%s] W: %s, Message: %s", sender.getName(), formatname, message));
 
 		if(receiver == null)
