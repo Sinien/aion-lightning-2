@@ -58,9 +58,8 @@ public class InstanceService
 
 		log.info("Creating new instance: " + worldId + " " + nextInstanceId);
 
-		WorldMapInstance worldMapInstance = new WorldMapInstance(map, nextInstanceId);
+		WorldMapInstance worldMapInstance = map.addInstance(nextInstanceId);
 		startInstanceChecker(worldMapInstance);
-		map.addInstance(nextInstanceId, worldMapInstance);
 		SpawnEngine.getInstance().spawnInstance(worldId, worldMapInstance.getInstanceId());
 		
 		return worldMapInstance;

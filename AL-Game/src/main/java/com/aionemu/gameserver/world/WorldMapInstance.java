@@ -33,9 +33,9 @@ import com.aionemu.gameserver.world.exceptions.DuplicateAionObjectException;
 
 /**
  * World map instance object.
- *
+ * 
  * @author -Nemesiss-
- *
+ * 
  */
 public class WorldMapInstance
 {
@@ -46,7 +46,7 @@ public class WorldMapInstance
 	/**
 	 * Max world size - actually it must be some value bigger than world size. Used only for id generation.
 	 */
-	private static final int					maxWorldSize		= OptionsConfig.MAX_WORLD_SIZE;
+	protected static final int					maxWorldSize		= OptionsConfig.MAX_WORLD_SIZE;
 	/**
 	 * WorldMap witch is parent of this instance.
 	 */
@@ -54,7 +54,7 @@ public class WorldMapInstance
 	/**
 	 * Map of active regions.
 	 */
-	private final Map<Integer, MapRegion>		regions				= new FastMap<Integer, MapRegion>().shared();
+	protected final Map<Integer, MapRegion>		regions				= new FastMap<Integer, MapRegion>().shared();
 
 	/**
 	 * All objects spawned in this world map instance
@@ -66,7 +66,9 @@ public class WorldMapInstance
 	 */
 	private final Map<Integer, Player>			worldMapPlayers		= new FastMap<Integer, Player>().shared();
 
-	private final Set<Integer>					registeredObjects	= Collections.newSetFromMap(new FastMap<Integer, Boolean>().shared());
+	private final Set<Integer>					registeredObjects	= Collections
+																		.newSetFromMap(new FastMap<Integer, Boolean>()
+																			.shared());
 
 	private PlayerGroup							registeredGroup		= null;
 
@@ -79,7 +81,7 @@ public class WorldMapInstance
 
 	/**
 	 * Constructor.
-	 *
+	 * 
 	 * @param parent
 	 */
 	public WorldMapInstance(WorldMap parent, int instanceId)
@@ -90,7 +92,7 @@ public class WorldMapInstance
 
 	/**
 	 * Return World map id.
-	 *
+	 * 
 	 * @return world map id
 	 */
 	public Integer getMapId()
@@ -100,7 +102,7 @@ public class WorldMapInstance
 
 	/**
 	 * Returns WorldMap witch is parent of this instance
-	 *
+	 * 
 	 * @return parent
 	 */
 	public WorldMap getParent()
@@ -117,7 +119,7 @@ public class WorldMapInstance
 	 */
 	MapRegion getRegion(VisibleObject object)
 	{
-		return getRegion(object.getX(), object.getY());
+		return getRegion(object.getX(), object.getY(), object.getZ());
 	}
 
 	/**
@@ -127,9 +129,9 @@ public class WorldMapInstance
 	 * @param y
 	 * @return a MapRegion
 	 */
-	MapRegion getRegion(float x, float y)
+	MapRegion getRegion(float x, float y, float z)
 	{
-		Integer regionId = getRegionId(x, y);
+		Integer regionId = getRegionId(x, y, z);
 		MapRegion region = regions.get(regionId);
 		if(region == null)
 		{
@@ -152,7 +154,7 @@ public class WorldMapInstance
 	 * @param y
 	 * @return region id.
 	 */
-	private Integer getRegionId(float x, float y)
+	protected Integer getRegionId(float x, float y, float z)
 	{
 		return ((int) x) / regionSize * maxWorldSize + ((int) y) / regionSize;
 	}
@@ -163,9 +165,9 @@ public class WorldMapInstance
 	 * @param regionId
 	 * @return newly created map region
 	 */
-	private MapRegion createMapRegion(Integer regionId)
+	protected MapRegion createMapRegion(Integer regionId)
 	{
-		MapRegion r = new MapRegion(regionId, this);
+		MapRegion r = new MapRegion(regionId, this, false);
 		regions.put(regionId, r);
 
 		int rx = regionId / maxWorldSize;
@@ -192,13 +194,14 @@ public class WorldMapInstance
 
 	/**
 	 * Returs {@link World} instance to which belongs this WorldMapInstance
+	 * 
 	 * @return World
 	 */
 	public World getWorld()
 	{
 		return getParent().getWorld();
 	}
-	
+
 	/**
 	 * 
 	 * @param object
@@ -211,7 +214,7 @@ public class WorldMapInstance
 		if(object instanceof Player)
 			worldMapPlayers.put(object.getObjectId(), (Player) object);
 	}
-	
+
 	/**
 	 * 
 	 * @param object
@@ -230,10 +233,10 @@ public class WorldMapInstance
 	{
 		return instanceId;
 	}
-	
+
 	/**
-	 *  Check player is in instance
-	 *  
+	 * Check player is in instance
+	 * 
 	 * @param objId
 	 * @return
 	 */
@@ -241,18 +244,18 @@ public class WorldMapInstance
 	{
 		return worldMapPlayers.containsKey(objId);
 	}
-	
+
 	public Collection<VisibleObject> getAllWorldMapObjects()
 	{
 		return worldMapObjects.values();
 	}
-	
+
 	public Collection<Player> getAllWorldMapPlayers()
 	{
 		return worldMapPlayers.values();
 	}
 
-	public void registerGroup(PlayerGroup group) 
+	public void registerGroup(PlayerGroup group)
 	{
 		registeredGroup = group;
 		register(group.getGroupId());
@@ -267,6 +270,14 @@ public class WorldMapInstance
 	}
 
 	/**
+	 * @return the registeredObjects
+	 */
+	public int getRegisteredObjectsSize()
+	{
+		return registeredObjects.size();
+	}
+
+	/**
 	 * @param objectId
 	 * @return
 	 */
@@ -274,7 +285,7 @@ public class WorldMapInstance
 	{
 		return registeredObjects.contains(objectId);
 	}
-	
+
 	/**
 	 * @return the emptyInstanceTask
 	 */
@@ -284,7 +295,8 @@ public class WorldMapInstance
 	}
 
 	/**
-	 * @param emptyInstanceTask the emptyInstanceTask to set
+	 * @param emptyInstanceTask
+	 *            the emptyInstanceTask to set
 	 */
 	public void setEmptyInstanceTask(Future<?> emptyInstanceTask)
 	{
@@ -298,7 +310,7 @@ public class WorldMapInstance
 	{
 		return registeredGroup;
 	}
-	
+
 	/**
 	 * 
 	 * @return
@@ -307,5 +319,4 @@ public class WorldMapInstance
 	{
 		return worldMapPlayers.size();
 	}
-	
 }

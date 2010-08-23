@@ -44,9 +44,6 @@ public class OptionsConfig
 	@Property(key = "world.region.maxsize", defaultValue = "10000")
 	public static int		MAX_WORLD_SIZE;
 
-	@Property(key = "world.region.neigbours", defaultValue = "9")
-	public static int		NEIGBOURS;
-
 	@Property(key = "log.chat", defaultValue = "true")
 	public static boolean	LOG_CHAT;
 

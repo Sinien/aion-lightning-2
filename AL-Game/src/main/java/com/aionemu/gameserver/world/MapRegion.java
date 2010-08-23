@@ -19,7 +19,6 @@ package com.aionemu.gameserver.world;
 import javolution.util.FastList;
 import javolution.util.FastMap;
 
-import com.aionemu.gameserver.configs.main.OptionsConfig;
 import com.aionemu.gameserver.model.gameobjects.VisibleObject;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 
@@ -44,7 +43,7 @@ public class MapRegion
 	/**
 	 * Surrounding regions + self.
 	 */
-	private final FastList<MapRegion>				neighbours	= new FastList<MapRegion>(OptionsConfig.NEIGBOURS);
+	private final FastList<MapRegion>				neighbours;
 
 	/**
 	 * Objects on this map region.
@@ -59,8 +58,12 @@ public class MapRegion
 	 * @param id
 	 * @param parent
 	 */
-	MapRegion(Integer id, WorldMapInstance parent)
+	MapRegion(Integer id, WorldMapInstance parent, boolean is3D)
 	{
+		if (is3D)
+			neighbours		= new FastList<MapRegion>(27);
+		else
+			neighbours		= new FastList<MapRegion>(9);
 		this.regionId = id;
 		this.parent = parent;
 		this.neighbours.add(this);
@@ -160,5 +163,40 @@ public class MapRegion
 				playerCount--;
 			}
 		}
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode()
+	{
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((regionId == null) ? 0 : regionId.hashCode());
+		return (regionId == null) ? 0 : regionId.hashCode();
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj)
+	{
+		if(this == obj)
+			return true;
+		if(obj == null)
+			return false;
+		if(getClass() != obj.getClass())
+			return false;
+		MapRegion other = (MapRegion) obj;
+		if(regionId == null)
+		{
+			if(other.regionId != null)
+				return false;
+		}
+		else if(!regionId.equals(other.regionId))
+			return false;
+		return true;
 	}
 }
