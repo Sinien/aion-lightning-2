@@ -37,7 +37,7 @@ public class SM_BLOCK_LIST extends AionServerPacket
 		BlockList list = con.getActivePlayer().getBlockList();
 		writeH(buf,list.getSize());
 		writeC(buf, 0); //Unk
-		for (BlockedPlayer player : list)
+		for(BlockedPlayer player : list.getBlockedList())
 		{
 			writeS(buf, player.getName());
 			writeS(buf,	player.getReason());
