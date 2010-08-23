@@ -17,7 +17,7 @@
 package com.aionemu.gameserver.taskmanager.tasks;
 
 import com.aionemu.commons.database.dao.DAOManager;
-import com.aionemu.gameserver.configs.main.TaskManagerConfig;
+import com.aionemu.gameserver.configs.main.OptionsConfig;
 import com.aionemu.gameserver.dao.InventoryDAO;
 import com.aionemu.gameserver.dao.ItemStoneListDAO;
 import com.aionemu.gameserver.model.gameobjects.Item;
@@ -45,7 +45,7 @@ public class ItemUpdater extends AbstractFIFOPeriodicTaskManager<Item>
 	 */
 	public ItemUpdater()
 	{
-		super(TaskManagerConfig.ITEMS * 1000);
+		super(OptionsConfig.ITEMS * 1000);
 	}
 
 	/* (non-Javadoc)

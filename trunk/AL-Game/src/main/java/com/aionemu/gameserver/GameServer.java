@@ -30,7 +30,7 @@ import com.aionemu.commons.services.LoggingService;
 import com.aionemu.commons.utils.AEInfos;
 import com.aionemu.gameserver.configs.Config;
 import com.aionemu.gameserver.configs.main.GSConfig;
-import com.aionemu.gameserver.configs.main.TaskManagerConfig;
+import com.aionemu.gameserver.configs.main.OptionsConfig;
 import com.aionemu.gameserver.configs.main.ThreadConfig;
 import com.aionemu.gameserver.configs.network.NetworkConfig;
 import com.aionemu.gameserver.dao.PlayerDAO;
@@ -170,10 +170,10 @@ public class GameServer
 		gs.startServers();
 		GameTimeManager.startClock();
 
-		if(TaskManagerConfig.DEADLOCK_DETECTOR_ENABLED)
+		if(OptionsConfig.DEADLOCK_DETECTOR_ENABLED)
 		{
 			AEInfos.printSection("DeadLock Detector");
-			new Thread(new DeadlockDetector(TaskManagerConfig.DEADLOCK_DETECTOR_INTERVAL)).start();
+			new Thread(new DeadlockDetector(OptionsConfig.DEADLOCK_DETECTOR_INTERVAL)).start();
 		}
 
 		Runtime.getRuntime().addShutdownHook(ShutdownHook.getInstance());

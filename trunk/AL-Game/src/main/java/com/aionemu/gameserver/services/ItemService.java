@@ -24,7 +24,7 @@ import java.util.Set;
 import org.apache.log4j.Logger;
 
 import com.aionemu.commons.database.dao.DAOManager;
-import com.aionemu.gameserver.configs.main.GSConfig;
+import com.aionemu.gameserver.configs.main.OptionsConfig;
 import com.aionemu.gameserver.dao.ItemStoneListDAO;
 import com.aionemu.gameserver.dataholders.DataManager;
 import com.aionemu.gameserver.model.DescriptionId;
@@ -53,7 +53,6 @@ import com.aionemu.gameserver.utils.idfactory.IDFactory;
  * @author ATracer This class is used for Item manipulations (creation, disposing, modification) Can be used as a
  *         factory for Item objects
  */
-
 public class ItemService
 {
 	private static Logger	log	= Logger.getLogger(ItemService.class);
@@ -420,7 +419,7 @@ public class ItemService
 	{
 		if (count < 1)
 			return false;
-		if(GSConfig.LOG_ITEM)
+		if(OptionsConfig.LOG_ITEM)
 			log.info(String.format("[ITEM] ID/Count - %d/%d to player %s.", itemId, count, player.getName()));
 		if(itemId == ItemId.KINAH.value())
 		{
