@@ -1,17 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 
-	<!--
-		~ This file is part of aion-unique <aionunique.smfnew.com>. ~ ~
-		aion-emu is free software: you can redistribute it and/or modify ~ it
-		under the terms of the GNU General Public License as published by ~
-		the Free Software Foundation, either version 3 of the License, or ~
-		(at your option) any later version. ~ ~ aion-emu is distributed in the
-		hope that it will be useful, ~ but WITHOUT ANY WARRANTY; without even
-		the implied warranty of ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR
-		PURPOSE. See the ~ GNU General Public License for more details. ~ ~
-		You should have received a copy of the GNU General Public License ~
-		along with aion-unique. If not, see <http://www.gnu.org/licenses/>.
-	-->
+<!-- ~ This file is part of aion-unique <aionunique.smfnew.com>. ~ ~ aion-emu 
+	is free software: you can redistribute it and/or modify ~ it under the terms 
+	of the GNU General Public License as published by ~ the Free Software Foundation, 
+	either version 3 of the License, or ~ (at your option) any later version. 
+	~ ~ aion-emu is distributed in the hope that it will be useful, ~ but WITHOUT 
+	ANY WARRANTY; without even the implied warranty of ~ MERCHANTABILITY or FITNESS 
+	FOR A PARTICULAR PURPOSE. See the ~ GNU General Public License for more details. 
+	~ ~ You should have received a copy of the GNU General Public License ~ along 
+	with aion-unique. If not, see <http://www.gnu.org/licenses/>. -->
 
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
 
@@ -35,10 +32,8 @@
 		<filter class="com.aionemu.commons.log4j.filters.ConsoleFilter" />
 	</appender>
 
-	<!--
-		This appender accepts only messages with exceptions and logs them to
-		separate file
-	-->
+	<!-- This appender accepts only messages with exceptions and logs them to 
+		separate file -->
 	<appender name="ERROR_APPENDER" class="org.apache.log4j.RollingFileAppender">
 		<param name="file" value="log/errors.log" />
 		<param name="append" value="true" />
@@ -98,6 +93,18 @@
 		<filter class="com.aionemu.commons.log4j.filters.ItemFilter" />
 	</appender>
 
+	<!-- Unknown Packets -->
+	<appender name="UNKNOWNPACKETS" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="log/unknown-packets.log" />
+		<param name="append" value="true" />
+		<param name="MaxFileSize" value="50000KB" />
+		<param name="MaxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.EnhancedPatternLayout">
+			<param name="ConversionPattern" value="[%d{dd MMM HH:mm:ss,SSS}] %m%n" />
+		</layout>
+		<filter class="com.aionemu.commons.log4j.filters.UnknownPacketsFilter" />
+	</appender>
+
 	<!-- Root Logger -->
 	<root>
 		<priority value="info" />
@@ -108,6 +115,7 @@
 		<appender-ref ref="GMAUDIT" />
 		<appender-ref ref="AUDIT" />
 		<appender-ref ref="ITEM" />
+		<appender-ref ref="UNKNOWNPACKETS" />
 	</root>
 
 	<categoryFactory

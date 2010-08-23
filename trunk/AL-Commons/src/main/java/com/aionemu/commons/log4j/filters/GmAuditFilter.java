@@ -25,7 +25,7 @@ import org.apache.log4j.spi.LoggingEvent;
  * 
  * @author Divinity
  */
-public class GmAuditFilter extends Filter
+public final class GmAuditFilter extends Filter
 {
 	/**
 	 * Decides what to do with logging event.<br>
@@ -37,11 +37,11 @@ public class GmAuditFilter extends Filter
 	 *         otherwise
 	 */
 	@Override
-	public int decide(LoggingEvent loggingEvent)
+	public final int decide(LoggingEvent loggingEvent)
 	{
 		Object message = loggingEvent.getMessage();
 
-		if (((String) message).startsWith("[ADMIN COMMAND]"))
+		if(((String) message).startsWith("[ADMIN COMMAND]"))
 		{
 			return ACCEPT;
 		}

@@ -25,26 +25,20 @@ import org.apache.log4j.spi.LoggingEvent;
  * 
  * @author Divinity
  */
-public class ConsoleFilter extends Filter
+public final class ConsoleFilter extends Filter
 {
-	/**
-	 * Decides what to do with logging event.<br>
-	 * This method accepts only log events that contain exceptions.
-	 * 
-	 * @param loggingEvent
-	 *            log event that is going to be filtred.
-	 * @return {@link org.apache.log4j.spi.Filter#DENY} if chat, {@link org.apache.log4j.spi.Filter#ACCEPT}
-	 *         otherwise
+	/*
+	 * (non-Javadoc)
+	 * @see org.apache.log4j.spi.Filter#decide(org.apache.log4j.spi.LoggingEvent)
 	 */
 	@Override
-	public int decide(LoggingEvent loggingEvent)
+	public final int decide(LoggingEvent loggingEvent)
 	{
 		Object message = loggingEvent.getMessage();
 
-		if (((String) message).startsWith("[MESSAGE]") 
-			|| ((String) message).startsWith("[ADMIN COMMAND]")
-			|| ((String) message).startsWith("[AUDIT]")
-			|| ((String) message).startsWith("[ITEM]"))
+		if(((String) message).startsWith("[MESSAGE]") || ((String) message).startsWith("[ADMIN COMMAND]")
+			|| ((String) message).startsWith("[AUDIT]") || ((String) message).startsWith("[ITEM]")
+			|| ((String) message).startsWith("[UNKNOWN PACKET]"))
 		{
 			return DENY;
 		}
