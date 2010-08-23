@@ -150,15 +150,29 @@ public class EnchantService
 			int enchantstoneLevel = parentItem.getItemTemplate().getLevel();
 			int enchantitemLevel = targetItem.getEnchantLevel() + 1;
 			
-			//lesser supplements
-			if(supplementId == 166100000 || supplementId == 166100003 || supplementId == 166100006)
-				addsuccessRate = EnchantsConfig.LSUP;
-			//supplements
-			if(supplementId == 166100001 || supplementId == 166100004 || supplementId == 166100007)
-				addsuccessRate = EnchantsConfig.RSUP;
-			//greater supplements
-			if(supplementId == 166100002 || supplementId == 166100005 || supplementId == 166100008)
-				addsuccessRate = EnchantsConfig.GSUP;
+			switch(supplementId)
+			{
+				//lesser supplements
+				case 166100000:
+				case 166100003:
+				case 166100006:
+					addsuccessRate = EnchantsConfig.LSUP;
+					break;
+				
+				//supplements
+				case 166100001:
+				case 166100004:
+				case 166100007:
+					addsuccessRate = EnchantsConfig.RSUP;
+					break;
+				
+				//greater supplements
+				case 166100002:
+				case 166100005:
+				case 166100008:
+					addsuccessRate = EnchantsConfig.GSUP;
+					break;
+			}
 
 			if(enchantstoneLevel > 30 && enchantstoneLevel < 41)
 				supplementUseCount = 5;			
@@ -318,30 +332,39 @@ public class EnchantService
 			if(manastoneLevel > 50)
 				supplementUseCount = supplementUseCount + 1;
 			
-			//manastone attacks and crit strike use more supplements
-			if(manastoneId == 167000230 || manastoneId == 167000235)
-				supplementUseCount = 5;
-
-			if(manastoneId == 167000294 || manastoneId == 167000267 || manastoneId == 167000299)
-				supplementUseCount = 5;
-
-			if(manastoneId == 167000331)
-				supplementUseCount = 10;
-				
-			if(manastoneId == 167000358 || manastoneId == 167000363)
-				supplementUseCount = 15;
-
-			if(manastoneId == 167000550)
-				supplementUseCount = 20;			
-
-			if(manastoneId == 167000454 || manastoneId == 167000427 || manastoneId == 167000459)
-				supplementUseCount = 25;
-
-			if(manastoneId == 167000491)
-				supplementUseCount = 50;
-
-			if(manastoneId == 167000518 || manastoneId == 167000522)
-				supplementUseCount = 75;
+			// manastone attacks and crit strike use more supplements
+			switch(manastoneId)
+			{
+				case 167000230:
+				case 167000235:
+				case 167000294:
+				case 167000267:
+				case 167000299:
+					supplementUseCount = 5;
+					break;
+				case 167000331:
+					supplementUseCount = 10;
+					break;
+				case 167000358:
+				case 167000363:
+					supplementUseCount = 15;
+					break;
+				case 167000550:
+					supplementUseCount = 20;
+					break;
+				case 167000454:
+				case 167000427:
+				case 167000459:
+					supplementUseCount = 25;
+					break;
+				case 167000491:
+					supplementUseCount = 50;
+					break;
+				case 167000518:
+				case 167000522:
+					supplementUseCount = 75;
+					break;
+			}			
 
 			//supplementUseCount * manastoneCount
 			if(stoneCount > 0)
