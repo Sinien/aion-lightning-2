@@ -85,6 +85,6 @@ public class NetworkConfig
 	/**
 	 * Number of Threads that will handle io write (>= 0)
 	 */
-	@Property(key = "network.display.unknownpackets", defaultValue = "false")
+	@Property(key = "network.display.unknownpackets", defaultValue = "true")
 	public static boolean			DISPLAY_UNKNOWNPACKETS;
 }

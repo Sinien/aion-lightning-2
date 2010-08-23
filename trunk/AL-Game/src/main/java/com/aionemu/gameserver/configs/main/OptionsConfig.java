@@ -47,9 +47,9 @@ public class OptionsConfig
 	@Property(key = "world.region.neigbours", defaultValue = "9")
 	public static int		NEIGBOURS;
 
-	@Property(key = "log.chat", defaultValue = "false")
+	@Property(key = "log.chat", defaultValue = "true")
 	public static boolean	LOG_CHAT;
 
-	@Property(key = "log.item", defaultValue = "false")
+	@Property(key = "log.item", defaultValue = "true")
 	public static boolean	LOG_ITEM;
 }
