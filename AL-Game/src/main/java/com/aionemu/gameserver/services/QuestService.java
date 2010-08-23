@@ -329,7 +329,7 @@ public final class QuestService
 		return SpawnEngine.getInstance().spawnObject(spawn, instanceId);
 	}
 	
-	public static void getQuestDrop(Set<DropItem> dropItems, int index, Npc npc, Player player)
+	public static void getQuestDrop(Set<DropItem> droppedItems, int index, Npc npc, Player player)
 	{
 		List<QuestDrop> drops = QuestEngine.getInstance().getQuestDrop(npc.getNpcId());
 		if (drops.isEmpty())
@@ -359,9 +359,11 @@ public final class QuestService
 					item.setPlayerObjId(member.getObjectId());
 					item.setIndex(index++);
 					item.setCount(1);
-					dropItems.add(item);
-					if (drop.isDropEachMember())
-						break;
+					droppedItems.add(item);
+					if (drop.isDropEachMember() == false)
+					{
+					break;
+					}
 				}
 			}
 		}
