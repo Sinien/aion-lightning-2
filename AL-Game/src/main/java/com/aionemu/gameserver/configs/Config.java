@@ -48,7 +48,7 @@ import com.aionemu.gameserver.configs.network.NetworkConfig;
  */
 public class Config
 {
-	protected static final Logger	log		= Logger.getLogger(Config.class);
+	protected static final Logger	log	= Logger.getLogger(Config.class);
 
 	/**
 	 * Initialize all configs in com.aionemu.gameserver.configs package
@@ -64,33 +64,33 @@ public class Config
 			// Administration
 			AEInfos.printSection("Administration");
 			Properties[] admin = PropertiesUtils.loadAllFromDirectory("./config/administration");
-			
+
 			ConfigurableProcessor.process(AdminConfig.class, admin);
 
 			// Main
 			AEInfos.printSection("Main");
 			Properties[] main = PropertiesUtils.loadAllFromDirectory("./config/main");
-			
-			ConfigurableProcessor.process(LegionConfig.class, main);			
-			ConfigurableProcessor.process(RateConfig.class, main);			
-			ConfigurableProcessor.process(CacheConfig.class, main);			
-			ConfigurableProcessor.process(ShutdownConfig.class, main);			
-			ConfigurableProcessor.process(OptionsConfig.class, main);			
-			ConfigurableProcessor.process(GroupConfig.class, main);			
-			ConfigurableProcessor.process(CustomConfig.class, main);			
-			ConfigurableProcessor.process(EnchantsConfig.class, main);			
-			ConfigurableProcessor.process(FallDamageConfig.class, main);			
-			ConfigurableProcessor.process(GSConfig.class, main);			
-			ConfigurableProcessor.process(NpcMovementConfig.class, main);	
-			ConfigurableProcessor.process(PricesConfig.class, main);			
-			ConfigurableProcessor.process(SiegeConfig.class, main);			
+
+			ConfigurableProcessor.process(LegionConfig.class, main);
+			ConfigurableProcessor.process(RateConfig.class, main);
+			ConfigurableProcessor.process(CacheConfig.class, main);
+			ConfigurableProcessor.process(ShutdownConfig.class, main);
+			ConfigurableProcessor.process(OptionsConfig.class, main);
+			ConfigurableProcessor.process(GroupConfig.class, main);
+			ConfigurableProcessor.process(CustomConfig.class, main);
+			ConfigurableProcessor.process(EnchantsConfig.class, main);
+			ConfigurableProcessor.process(FallDamageConfig.class, main);
+			ConfigurableProcessor.process(GSConfig.class, main);
+			ConfigurableProcessor.process(NpcMovementConfig.class, main);
+			ConfigurableProcessor.process(PricesConfig.class, main);
+			ConfigurableProcessor.process(SiegeConfig.class, main);
 			ConfigurableProcessor.process(ThreadConfig.class, main);
 
 			// Network
 			AEInfos.printSection("Network");
-			Properties[] network = PropertiesUtils.loadAllFromDirectory("./config/network");	
-			
-			ConfigurableProcessor.process(NetworkConfig.class, network);		
+			Properties[] network = PropertiesUtils.loadAllFromDirectory("./config/network");
+
+			ConfigurableProcessor.process(NetworkConfig.class, network);
 			ConfigurableProcessor.process(DatabaseConfig.class, network);
 		}
 		catch(Exception e)
