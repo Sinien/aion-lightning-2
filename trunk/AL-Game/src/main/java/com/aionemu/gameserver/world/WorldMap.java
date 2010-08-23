@@ -53,13 +53,13 @@ public class WorldMap
 			for(int i = 1; i <= worldMapTemplate.getTwinCount(); i++)
 			{
 				int nextId = getNextInstanceId();
-				addInstance(nextId, new WorldMapInstance(this, nextId));	
+				addInstance(nextId);	
 			}			
 		}	
 		else
 		{
 			int nextId = getNextInstanceId();
-			addInstance(nextId, new WorldMapInstance(this, nextId));
+			addInstance(nextId);
 		}
 	}
 
@@ -178,9 +178,16 @@ public class WorldMap
 	 * @param instanceId
 	 * @param instance
 	 */
-	public void addInstance(int instanceId, WorldMapInstance instance)
+	public WorldMapInstance addInstance(int instanceId)
 	{
-		instances.put(instanceId, instance);
+		WorldMapInstance worldMapInstance = null;
+		if (this.worldMapTemplate.getMapId() == WorldMapType.RESHANTA.getId())
+			worldMapInstance = new WorldMapInstance3D(this, instanceId);
+		else
+			worldMapInstance = new WorldMapInstance(this, instanceId);
+		
+		instances.put(instanceId, worldMapInstance);
+		return worldMapInstance;
 	}
 	/**
 	 * Returns the World containing this WorldMap.

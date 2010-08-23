@@ -289,7 +289,7 @@ public class World
 		WorldPosition position = new WorldPosition();
 		position.setXYZH(x, y, z, heading);
 		position.setMapId(mapId);
-		position.setMapRegion(getWorldMap(mapId).getWorldMapInstance().getRegion(x, y));
+		position.setMapRegion(getWorldMap(mapId).getWorldMapInstance().getRegion(x, y, z));
 		return position;
 	}
 
