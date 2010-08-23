@@ -16,10 +16,10 @@
  */
 package com.aionemu.gameserver.model.templates.spawn;
 
+import gnu.trove.TIntIntHashMap;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -73,7 +73,7 @@ public class SpawnGroup
 	 * Real-time properties
 	 */
 	@XmlTransient
-	private Map<Integer, Integer> lastSpawnedTemplate = new HashMap<Integer, Integer>();
+	private TIntIntHashMap lastSpawnedTemplate = new TIntIntHashMap();
 	
 	/**
 	 * Constructor used by unmarshaller
