@@ -47,7 +47,7 @@ public class ConfigurableProcessor
 	 * @param properties
 	 *            Properties that should be used while seraching for a {@link Property#key()}
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public static void process(Object object, Properties... properties)
 	{
 		Class clazz;
@@ -76,7 +76,7 @@ public class ConfigurableProcessor
 	 * @param props
 	 *            Properties with keys\values
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	private static void process(Class clazz, Object obj, Properties[] props)
 	{
 		processFields(clazz, obj, props);
@@ -110,7 +110,7 @@ public class ConfigurableProcessor
 	 * @param props
 	 *            Properties with keys\values
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	private static void processFields(Class clazz, Object obj, Properties[] props)
 	{
 		for(Field f : clazz.getDeclaredFields())
@@ -198,7 +198,7 @@ public class ConfigurableProcessor
 	 * @throws TransformationException
 	 *             if something goes wrong during transformation
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	private static Object getFieldValue(Field field, Properties[] props) throws TransformationException
 	{
 		Property property = field.getAnnotation(Property.class);

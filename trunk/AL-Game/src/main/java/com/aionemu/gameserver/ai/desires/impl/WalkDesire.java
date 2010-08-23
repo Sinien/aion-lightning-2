@@ -80,7 +80,7 @@ public class WalkDesire extends AbstractDesire implements MoveDesire
 		}
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	@Override
 	public boolean handleDesire(AI ai)
 	{

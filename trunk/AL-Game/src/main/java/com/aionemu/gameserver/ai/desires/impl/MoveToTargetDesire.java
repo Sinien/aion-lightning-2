@@ -42,7 +42,7 @@ public class MoveToTargetDesire extends AbstractDesire implements MoveDesire
 		this.target = target;
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	@Override
 	public boolean handleDesire(AI ai)
 	{

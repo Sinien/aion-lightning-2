@@ -186,7 +186,7 @@ public class ScriptCompilerImpl implements ScriptCompiler
 	 * @throws RuntimeException
 	 *             if compilation failed with errros
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	protected CompilationResult doCompilation(Iterable<JavaFileObject> compilationUnits)
 	{
 		List<String> options = Arrays.asList("-encoding", "UTF-8", "-g");
@@ -230,7 +230,7 @@ public class ScriptCompilerImpl implements ScriptCompiler
 	 * @throws RuntimeException
 	 *             if can't find class
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	protected Class[] classNamesToClasses(Collection<String> classNames, ScriptClassLoader cl)
 	{
 		Class<?>[] classes = new Class<?>[classNames.size()];

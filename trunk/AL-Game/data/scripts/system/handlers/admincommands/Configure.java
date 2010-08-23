@@ -45,7 +45,7 @@ public class Configure extends AdminCommand
 		super("configure");
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	@Override
 	public void executeCommand(Player admin, String[] params)
 	{

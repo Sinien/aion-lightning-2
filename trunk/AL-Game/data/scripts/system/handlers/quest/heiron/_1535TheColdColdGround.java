@@ -76,9 +76,6 @@ public class _1535TheColdColdGround extends QuestHandler
 				return defaultQuestStartDialog(env);
 		}
 
-		if(qs == null)
-			return false;
-
 		if(qs.getStatus() == QuestStatus.START)
 		{
 			boolean abexSkins = player.getInventory().getItemCountByItemId(182201818) > 4;

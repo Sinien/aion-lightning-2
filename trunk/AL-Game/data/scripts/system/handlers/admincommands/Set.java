@@ -74,15 +74,9 @@ public class Set extends AdminCommand {
 
 			PlayerClass oldClass = null;
 			Player player = null;
-			if (target != null)
 			{
 				player = target;
 				oldClass = target.getPlayerClass();
-			}
-			else
-			{
-				player = admin;
-				oldClass = admin.getPlayerClass();
 			}
 			setClass(player, oldClass, newClass);	
 		}

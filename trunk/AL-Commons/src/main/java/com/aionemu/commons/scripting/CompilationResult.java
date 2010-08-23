@@ -18,6 +18,8 @@ package com.aionemu.commons.scripting;
 
 import java.util.Arrays;
 
+import javolution.text.TextBuilder;
+
 /**
  * This class represents compilation result of script context
  * 
@@ -28,7 +30,7 @@ public class CompilationResult
 	/**
 	 * List of classes that were compiled by compiler
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	private final Class[]			compiledClasses;
 
 	/**
@@ -45,7 +47,7 @@ public class CompilationResult
 	 * @param classLoader
 	 *            classloader that was used by compiler
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public CompilationResult(Class[] compiledClasses, ScriptClassLoader classLoader)
 	{
 		this.compiledClasses = compiledClasses;
@@ -67,7 +69,7 @@ public class CompilationResult
 	 * 
 	 * @return list of classes that were compiled
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public Class[] getCompiledClasses()
 	{
 		return compiledClasses;
@@ -77,12 +79,17 @@ public class CompilationResult
 	@Override
 	public String toString()
 	{
-		final StringBuilder sb = new StringBuilder();
-		sb.append("CompilationResult");
-		sb.append("{classLoader=").append(classLoader);
-		sb.append(", compiledClasses=").append(
+		final TextBuilder tb = TextBuilder.newInstance();
+		tb.append("CompilationResult");
+		tb.append("{classLoader=").append(classLoader);
+		tb.append(", compiledClasses=").append(
 			compiledClasses == null ? "null" : Arrays.asList(compiledClasses).toString());
-		sb.append('}');
-		return sb.toString();
+		tb.append('}');
+		
+		String toString = tb.toString();
+		
+		TextBuilder.recycle(tb);
+		
+		return toString;
 	}
 }

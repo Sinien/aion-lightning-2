@@ -45,7 +45,7 @@ public class MoveToHomeDesire extends AbstractDesire implements MoveDesire
 		z = template.getZ();
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	@Override
 	public boolean handleDesire(AI ai)
 	{
