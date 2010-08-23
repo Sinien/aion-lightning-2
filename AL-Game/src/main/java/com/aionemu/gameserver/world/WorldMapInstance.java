@@ -24,6 +24,7 @@ import java.util.concurrent.Future;
 
 import javolution.util.FastMap;
 
+import com.aionemu.gameserver.configs.main.OptionsConfig;
 import com.aionemu.gameserver.model.gameobjects.AionObject;
 import com.aionemu.gameserver.model.gameobjects.VisibleObject;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
@@ -41,11 +42,11 @@ public class WorldMapInstance
 	/**
 	 * Size of region
 	 */
-	public static final int						regionSize			= 500;
+	public static final int						regionSize			= OptionsConfig.REGION_SIZE;
 	/**
 	 * Max world size - actually it must be some value bigger than world size. Used only for id generation.
 	 */
-	private static final int					maxWorldSize		= 10000;
+	private static final int					maxWorldSize		= OptionsConfig.MAX_WORLD_SIZE;
 	/**
 	 * WorldMap witch is parent of this instance.
 	 */
