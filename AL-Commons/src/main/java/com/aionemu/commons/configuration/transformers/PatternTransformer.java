@@ -27,7 +27,7 @@ import com.aionemu.commons.configuration.TransformationException;
  * 
  * @author SoulKeeper
  */
-@SuppressWarnings("unchecked")
+@SuppressWarnings("rawtypes")
 public class PatternTransformer implements PropertyTransformer
 {
 	/**

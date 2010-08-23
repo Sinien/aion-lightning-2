@@ -181,6 +181,7 @@ public final class RunnableStatsManager
 		}
 
 		private final Comparator<MethodStat>	comparator	= new Comparator<MethodStat>(){
+																@SuppressWarnings("rawtypes")
 																@Override
 																public int compare(MethodStat o1, MethodStat o2)
 																{
@@ -227,6 +228,7 @@ public final class RunnableStatsManager
 																}
 															};
 
+		@SuppressWarnings("rawtypes")
 		private Comparable getComparableValueOf(MethodStat stat)
 		{
 			switch(this)
@@ -258,6 +260,7 @@ public final class RunnableStatsManager
 		dumpClassStats(null);
 	}
 
+	@SuppressWarnings("rawtypes")
 	public static void dumpClassStats(final SortBy sortBy)
 	{
 		final List<MethodStat> methodStats = new ArrayList<MethodStat>();

@@ -33,7 +33,7 @@ public class ClassUtils
 	 *            class
 	 * @return true if a == b or a extends b or a implements b
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public static boolean isSubclass(Class<?> a, Class<?> b)
 	{
 		// We rely on the fact that for any given java class or

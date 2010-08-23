@@ -71,7 +71,7 @@ public @interface Property
 	 * 
 	 * @return returns class that will be used to transform value
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public Class<? extends PropertyTransformer> propertyTransformer() default PropertyTransformer.class;
 
 	/**

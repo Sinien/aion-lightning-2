@@ -88,6 +88,7 @@ public class DropService
 	 * 
 	 * @param npc
 	 */
+	@SuppressWarnings("unused")
 	public void registerDrop(Npc npc, Player player, int lvl)
 	{
 		int npcUniqueId = npc.getObjectId();

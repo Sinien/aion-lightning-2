@@ -60,6 +60,7 @@ class SoftCacheMap<K, V> extends AbstractCacheMap<K, V> implements CacheMap<K, V
 		super(cacheName, valueName, log);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected synchronized void cleanQueue()
 	{

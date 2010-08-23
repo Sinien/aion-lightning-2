@@ -99,7 +99,7 @@ public abstract class Creature extends VisibleObject
 	 * 
 	 * @return CreatureController.
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public CreatureController getController()
 	{

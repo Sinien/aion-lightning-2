@@ -50,7 +50,7 @@ public class PlayerInfo extends AdminCommand
 	/* (non-Javadoc)
 	 * @see com.aionemu.gameserver.utils.chathandlers.AdminCommand#executeCommand(com.aionemu.gameserver.model.gameobjects.player.Player, java.lang.String[])
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	@Override
 	public void executeCommand(Player admin, String[] params)
 	{
