@@ -21,7 +21,8 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
-import java.util.concurrent.ConcurrentHashMap;
+
+import javolution.util.FastMap;
 
 import com.aionemu.gameserver.model.gameobjects.Letter;
 
@@ -31,7 +32,7 @@ import com.aionemu.gameserver.model.gameobjects.Letter;
  */
 public class Mailbox
 {
-	private Map<Integer, Letter>	mails	= new ConcurrentHashMap<Integer, Letter>();
+	private Map<Integer, Letter>	mails	= new FastMap<Integer, Letter>();
 
 	/**
 	 * 
