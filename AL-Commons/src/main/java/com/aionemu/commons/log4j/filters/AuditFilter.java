@@ -21,9 +21,9 @@ import org.apache.log4j.spi.LoggingEvent;
 
 /**
  * @author lord_rex
- *
+ * 
  */
-public class AuditFilter extends Filter
+public final class AuditFilter extends Filter
 {
 	/**
 	 * Decides what to do with logging event.<br>
@@ -35,11 +35,11 @@ public class AuditFilter extends Filter
 	 *         otherwise
 	 */
 	@Override
-	public int decide(LoggingEvent loggingEvent)
+	public final int decide(LoggingEvent loggingEvent)
 	{
 		Object message = loggingEvent.getMessage();
 
-		if (((String) message).startsWith("[AUDIT]"))
+		if(((String) message).startsWith("[AUDIT]"))
 		{
 			return ACCEPT;
 		}

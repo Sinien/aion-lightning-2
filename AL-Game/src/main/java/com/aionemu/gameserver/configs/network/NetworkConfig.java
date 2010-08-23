@@ -81,10 +81,4 @@ public class NetworkConfig
 	 */
 	@Property(key = "network.nio.threads.write", defaultValue = "0")
 	public static int				NIO_WRITE_THREADS;
-
-	/**
-	 * Number of Threads that will handle io write (>= 0)
-	 */
-	@Property(key = "network.display.unknownpackets", defaultValue = "true")
-	public static boolean			DISPLAY_UNKNOWNPACKETS;
 }
