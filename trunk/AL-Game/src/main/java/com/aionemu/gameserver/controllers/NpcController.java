@@ -38,6 +38,7 @@ import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.player.RequestResponseHandler;
 import com.aionemu.gameserver.model.gameobjects.state.CreatureState;
 import com.aionemu.gameserver.model.gameobjects.stats.NpcGameStats;
+import com.aionemu.gameserver.model.templates.TradeListTemplate;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK_STATUS;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_DIALOG_WINDOW;
@@ -205,7 +206,13 @@ public class NpcController extends CreatureController<Npc>
 		switch(dialogId)
 		{
 			case 2:
-				int tradeModifier = DataManager.TRADE_LIST_DATA.getTradeListTemplate(npc.getNpcId()).getSellPriceRate();
+				TradeListTemplate tradeListTemplate = DataManager.TRADE_LIST_DATA.getTradeListTemplate(npc.getNpcId());
+				if (tradeListTemplate == null)
+				{
+					PacketSendUtility.sendMessage(player, "Buy list is missing!!");
+					break;
+				}
+				int tradeModifier = tradeListTemplate.getSellPriceRate();
 				PacketSendUtility.sendPacket(player, new SM_TRADELIST(npc,
 					TradeService.getTradeListData().getTradeListTemplate(npc.getNpcId()),
 					player.getPrices().getVendorBuyModifier()*tradeModifier/100));
