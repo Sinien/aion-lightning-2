@@ -21,7 +21,6 @@ import java.sql.Timestamp;
 import org.apache.log4j.Logger;
 
 import com.aionemu.gameserver.dataholders.DataManager;
-import com.aionemu.gameserver.dataholders.StaticData;
 import com.aionemu.gameserver.model.Gender;
 import com.aionemu.gameserver.model.PlayerClass;
 import com.aionemu.gameserver.model.Race;
@@ -48,8 +47,7 @@ import com.aionemu.gameserver.world.WorldPosition;
  */
 public class PlayerCommonData extends VisibleObjectTemplate
 {
-	/** Logger used by this class and {@link StaticData} class */
-	static Logger			log	= Logger.getLogger(PlayerCommonData.class);
+	private static final Logger			log	= Logger.getLogger(PlayerCommonData.class);
 
 	private final int		playerObjId;
 	private Race			race;

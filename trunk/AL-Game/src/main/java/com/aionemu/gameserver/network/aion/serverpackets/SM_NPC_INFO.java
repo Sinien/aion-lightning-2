@@ -162,7 +162,7 @@ public class SM_NPC_INFO extends AionServerPacket
 		else
 		{
 			writeH(buf, gear.getItemsMask());
-			for(Entry<ItemSlot,ItemTemplate> item: gear) // getting it from template ( later if we make sure that npcs actually use items, we'll make Item from it )
+			for(Entry<ItemSlot,ItemTemplate> item: gear.getItems()) // getting it from template ( later if we make sure that npcs actually use items, we'll make Item from it )
 			{
 				writeD(buf, item.getValue().getTemplateId());
 				writeD(buf, 0x00);
