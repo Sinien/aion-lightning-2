@@ -79,7 +79,7 @@ public class SkillLearnService
 			if (player.getSkillList().getSkillEntry(30001) != null)
 			{
 				int skillLevel = player.getSkillList().getSkillLevel(30001);
-				player.getSkillList().removeSkill(30001);
+				player.getSkillList().removeSkill(player, 30001);
 				PacketSendUtility.sendPacket(player, new SM_SKILL_LIST(player));
 				player.getSkillList().addSkill(player, 30002, skillLevel, true);
 			}

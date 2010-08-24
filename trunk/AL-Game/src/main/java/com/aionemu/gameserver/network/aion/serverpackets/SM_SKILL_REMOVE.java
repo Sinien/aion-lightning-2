@@ -24,12 +24,12 @@ import com.aionemu.gameserver.network.aion.AionServerPacket;
 /**
  * @author Rhys2002
  */
-public class SM_STIGMA_SKILL_REMOVE extends AionServerPacket
+public class SM_SKILL_REMOVE extends AionServerPacket
 {
 
 	private int skillId;
 
-	public SM_STIGMA_SKILL_REMOVE(int skillId)
+	public SM_SKILL_REMOVE(int skillId)
 	{
 		this.skillId = skillId;
 	}
