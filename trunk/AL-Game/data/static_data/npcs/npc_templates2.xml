@@ -103,4 +103,196 @@
 			<item>110100294</item>
 		</equipment>
 	</npc_template>
+	<npc_template npc_id="260202" level="50" name="fortress mage" name_id="306870" npc_type="ATTACKABLE" height="1.05" rank="ELITE" race="ASMODIANS" tribe="GENERALDA_ALIDR" srange="20" arange="37" arank="1000" hpgauge="12">
+		<stats maxMp="28076" maxHp="93586" maxXp="55529" block="102" parry="102" mdef="102" pdef="102" crit="102" power="102" evasion="102" accuracy="102" magic_accuracy="102" walk_speed="1.457" run_speed="6.0" run_speed_fight="7.0" fly_speed="0.0"/>
+		<equipment>
+			<item>114600508</item>
+			<item>111600522</item>
+			<item>125200004</item>
+			<item>113600517</item>
+			<item>100600028</item>
+			<item>112600504</item>
+			<item>110600552</item>
+		</equipment>
+	</npc_template>
+	<npc_template npc_id="260203" level="50" name="fortress mage" name_id="306871" npc_type="ATTACKABLE" height="1.05" rank="ELITE" race="DRAKAN" tribe="GENERALDR_ALIDA" srange="20" arange="37" arank="1000" hpgauge="12">
+		<stats maxMp="28076" maxHp="93586" maxXp="55529" block="102" parry="102" mdef="102" pdef="102" crit="102" power="102" evasion="102" accuracy="102" magic_accuracy="102" walk_speed="1.457" run_speed="6.0" run_speed_fight="7.0" fly_speed="0.0"/>
+		<equipment>
+			<item>100500284</item>
+		</equipment>
+	</npc_template>
+	<npc_template npc_id="260383" level="50" name="fortress mage" name_id="308512" npc_type="ATTACKABLE" height="1.2" rank="ELITE" race="ASMODIANS" tribe="GUARD_DARK" srange="10" arange="37" arank="1000" hpgauge="12">
+		<stats maxMp="28076" maxHp="93586" maxXp="55529" block="102" parry="102" mdef="102" pdef="102" crit="102" power="102" evasion="102" accuracy="102" magic_accuracy="102" walk_speed="1.457" run_speed="6.0" run_speed_fight="7.0" fly_speed="0.0"/>
+		<equipment>
+			<item>114600136</item>
+			<item>111600135</item>
+			<item>125200001</item>
+			<item>113600128</item>
+			<item>100600029</item>
+			<item>112600123</item>
+			<item>110600142</item>
+		</equipment>
+	</npc_template>
+	<npc_template npc_id="263203" level="50" name="fortress mage" name_id="306906" npc_type="ATTACKABLE" height="1.05" rank="ELITE" race="ASMODIANS" tribe="GENERALDA_ALIDR" srange="20" arange="37" arank="1000" hpgauge="12">
+		<stats maxMp="28076" maxHp="93586" maxXp="55529" block="102" parry="102" mdef="102" pdef="102" crit="102" power="102" evasion="102" accuracy="102" magic_accuracy="102" walk_speed="1.457" run_speed="6.0" run_speed_fight="7.0" fly_speed="0.0"/>
+		<equipment>
+			<item>114600508</item>
+			<item>111600522</item>
+			<item>125200004</item>
+			<item>113600517</item>
+			<item>100600028</item>
+			<item>112600504</item>
+			<item>110600552</item>
+		</equipment>
+	</npc_template>
+	<npc_template npc_id="263504" level="50" name="fortress mage" name_id="306943" npc_type="ATTACKABLE" height="1.05" rank="ELITE" race="DRAKAN" tribe="GENERALDR_ALIDA" srange="20" arange="37" arank="1000" hpgauge="12">
+		<stats maxMp="28076" maxHp="93586" maxXp="55529" block="102" parry="102" mdef="102" pdef="102" crit="102" power="102" evasion="102" accuracy="102" magic_accuracy="102" walk_speed="1.457" run_speed="6.0" run_speed_fight="7.0" fly_speed="0.0"/>
+		<equipment>
+			<item>100500284</item>
+		</equipment>
+	</npc_template>
+	<npc_template npc_id="264703" level="50" name="fortress mage" name_id="307014" npc_type="ATTACKABLE" height="1.05" rank="ELITE" race="ASMODIANS" tribe="GENERALDA_ALIDR" srange="20" arange="37" arank="1000" hpgauge="12">
+		<stats maxMp="28076" maxHp="93586" maxXp="55529" block="102" parry="102" mdef="102" pdef="102" crit="102" power="102" evasion="102" accuracy="102" magic_accuracy="102" walk_speed="1.457" run_speed="6.0" run_speed_fight="7.0" fly_speed="0.0"/>
+		<equipment>
+			<item>114600508</item>
+			<item>111600522</item>
+			<item>125200004</item>
+			<item>113600517</item>
+			<item>100600028</item>
+			<item>112600504</item>
+			<item>110600552</item>
+		</equipment>
+	</npc_template>
+	<npc_template npc_id="264704" level="50" name="fortress mage" name_id="307015" npc_type="ATTACKABLE" height="1.05" rank="ELITE" race="DRAKAN" tribe="GENERALDR_ALIDA" srange="20" arange="37" arank="1000" hpgauge="12">
+		<stats maxMp="28076" maxHp="93586" maxXp="55529" block="102" parry="102" mdef="102" pdef="102" crit="102" power="102" evasion="102" accuracy="102" magic_accuracy="102" walk_speed="1.457" run_speed="6.0" run_speed_fight="7.0" fly_speed="0.0"/>
+		<equipment>
+			<item>100500284</item>
+		</equipment>
+	</npc_template>
+	<npc_template npc_id="266502" level="50" name="fortress mage" name_id="307193" npc_type="ATTACKABLE" height="1.05" rank="ELITE" race="ELYOS" tribe="GENERAL_ADADR" srange="20" arange="37" arank="1000" hpgauge="12">
+		<stats maxMp="28076" maxHp="93586" maxXp="55529" block="102" parry="102" mdef="102" pdef="102" crit="102" power="102" evasion="102" accuracy="102" magic_accuracy="102" walk_speed="1.457" run_speed="6.0" run_speed_fight="7.0" fly_speed="0.0"/>
+		<equipment>
+			<item>114600506</item>
+			<item>111600520</item>
+			<item>125200003</item>
+			<item>113600515</item>
+			<item>100600028</item>
+			<item>112600502</item>
+			<item>110600550</item>
+		</equipment>
+	</npc_template>
+	<npc_template npc_id="266503" level="50" name="fortress mage" name_id="307194" npc_type="ATTACKABLE" height="1.05" rank="ELITE" race="ASMODIANS" tribe="GENERALDA_ALIDR" srange="20" arange="37" arank="1000" hpgauge="12">
+		<stats maxMp="28076" maxHp="93586" maxXp="55529" block="102" parry="102" mdef="102" pdef="102" crit="102" power="102" evasion="102" accuracy="102" magic_accuracy="102" walk_speed="1.457" run_speed="6.0" run_speed_fight="7.0" fly_speed="0.0"/>
+		<equipment>
+			<item>114600508</item>
+			<item>111600522</item>
+			<item>125200004</item>
+			<item>113600517</item>
+			<item>100600028</item>
+			<item>112600504</item>
+			<item>110600552</item>
+		</equipment>
+	</npc_template>
+	<npc_template npc_id="266504" level="50" name="fortress mage" name_id="307195" npc_type="ATTACKABLE" height="1.05" rank="ELITE" race="DRAKAN" tribe="GENERALDR_ALIDA" srange="20" arange="37" arank="1000" hpgauge="12">
+		<stats maxMp="28076" maxHp="93586" maxXp="55529" block="102" parry="102" mdef="102" pdef="102" crit="102" power="102" evasion="102" accuracy="102" magic_accuracy="102" walk_speed="1.457" run_speed="6.0" run_speed_fight="7.0" fly_speed="0.0"/>
+		<equipment>
+			<item>100500284</item>
+		</equipment>
+	</npc_template>
+	<npc_template npc_id="266682" level="50" name="fortress mage" name_id="307229" npc_type="ATTACKABLE" height="1.2" rank="ELITE" race="ELYOS" tribe="GUARD" srange="10" arange="37" arank="1000" hpgauge="12">
+		<stats maxMp="28076" maxHp="93586" maxXp="55529" block="102" parry="102" mdef="102" pdef="102" crit="102" power="102" evasion="102" accuracy="102" magic_accuracy="102" walk_speed="1.457" run_speed="6.0" run_speed_fight="7.0" fly_speed="0.0"/>
+		<equipment>
+			<item>114600136</item>
+			<item>111600135</item>
+			<item>125200001</item>
+			<item>113600128</item>
+			<item>100600029</item>
+			<item>112600123</item>
+			<item>110600142</item>
+		</equipment>
+	</npc_template>
+	<npc_template npc_id="268002" level="50" name="fortress mage" name_id="307265" npc_type="ATTACKABLE" height="1.05" rank="ELITE" race="ELYOS" tribe="GENERAL_ADADR" srange="20" arange="37" arank="1000" hpgauge="12">
+		<stats maxMp="28076" maxHp="93586" maxXp="55529" block="102" parry="102" mdef="102" pdef="102" crit="102" power="102" evasion="102" accuracy="102" magic_accuracy="102" walk_speed="1.457" run_speed="6.0" run_speed_fight="7.0" fly_speed="0.0"/>
+		<equipment>
+			<item>114600506</item>
+			<item>111600520</item>
+			<item>125200003</item>
+			<item>113600515</item>
+			<item>100600028</item>
+			<item>112600502</item>
+			<item>110600550</item>
+		</equipment>
+	</npc_template>
+	<npc_template npc_id="268003" level="50" name="fortress mage" name_id="307266" npc_type="ATTACKABLE" height="1.05" rank="ELITE" race="ASMODIANS" tribe="GENERALDA_ALIDR" srange="20" arange="37" arank="1000" hpgauge="12">
+		<stats maxMp="28076" maxHp="93586" maxXp="55529" block="102" parry="102" mdef="102" pdef="102" crit="102" power="102" evasion="102" accuracy="102" magic_accuracy="102" walk_speed="1.457" run_speed="6.0" run_speed_fight="7.0" fly_speed="0.0"/>
+		<equipment>
+			<item>114600508</item>
+			<item>111600522</item>
+			<item>125200004</item>
+			<item>113600517</item>
+			<item>100600028</item>
+			<item>112600504</item>
+			<item>110600552</item>
+		</equipment>
+	</npc_template>
+	<npc_template npc_id="268004" level="50" name="fortress mage" name_id="307267" npc_type="ATTACKABLE" height="1.05" rank="ELITE" race="DRAKAN" tribe="GENERALDR_ALIDA" srange="20" arange="37" arank="1000" hpgauge="12">
+		<stats maxMp="28076" maxHp="93586" maxXp="55529" block="102" parry="102" mdef="102" pdef="102" crit="102" power="102" evasion="102" accuracy="102" magic_accuracy="102" walk_speed="1.457" run_speed="6.0" run_speed_fight="7.0" fly_speed="0.0"/>
+		<equipment>
+			<item>100500284</item>
+		</equipment>
+	</npc_template>
+	<npc_template npc_id="269202" level="50" name="fortress mage" name_id="307301" npc_type="ATTACKABLE" height="1.05" rank="ELITE" race="ELYOS" tribe="GENERAL_ADADR" srange="20" arange="37" arank="1000" hpgauge="12">
+		<stats maxMp="28076" maxHp="93586" maxXp="55529" block="102" parry="102" mdef="102" pdef="102" crit="102" power="102" evasion="102" accuracy="102" magic_accuracy="102" walk_speed="1.457" run_speed="6.0" run_speed_fight="7.0" fly_speed="0.0"/>
+		<equipment>
+			<item>114600506</item>
+			<item>111600520</item>
+			<item>125200003</item>
+			<item>113600515</item>
+			<item>100600028</item>
+			<item>112600502</item>
+			<item>110600550</item>
+		</equipment>
+	</npc_template>
+	<npc_template npc_id="269204" level="50" name="fortress mage" name_id="307303" npc_type="ATTACKABLE" height="1.05" rank="ELITE" race="DRAKAN" tribe="GENERALDR_ALIDA" srange="20" arange="37" arank="1000" hpgauge="12">
+		<stats maxMp="28076" maxHp="93586" maxXp="55529" block="102" parry="102" mdef="102" pdef="102" crit="102" power="102" evasion="102" accuracy="102" magic_accuracy="102" walk_speed="1.457" run_speed="6.0" run_speed_fight="7.0" fly_speed="0.0"/>
+		<equipment>
+			<item>100500284</item>
+		</equipment>
+	</npc_template>
+	<npc_template npc_id="270102" level="50" name="fortress mage" name_id="307337" npc_type="ATTACKABLE" height="1.05" rank="ELITE" race="ELYOS" tribe="GENERAL_ADADR" srange="20" arange="37" arank="1000" hpgauge="12">
+		<stats maxMp="28076" maxHp="93586" maxXp="55529" block="102" parry="102" mdef="102" pdef="102" crit="102" power="102" evasion="102" accuracy="102" magic_accuracy="102" walk_speed="1.457" run_speed="6.0" run_speed_fight="7.0" fly_speed="0.0"/>
+		<equipment>
+			<item>114600506</item>
+			<item>111600520</item>
+			<item>125200003</item>
+			<item>113600515</item>
+			<item>100600028</item>
+			<item>112600502</item>
+			<item>110600550</item>
+		</equipment>
+	</npc_template>
+	<npc_template npc_id="270104" level="50" name="fortress mage" name_id="307339" npc_type="ATTACKABLE" height="1.05" rank="ELITE" race="DRAKAN" tribe="GENERALDR_ALIDA" srange="20" arange="37" arank="1000" hpgauge="12">
+		<stats maxMp="28076" maxHp="93586" maxXp="55529" block="102" parry="102" mdef="102" pdef="102" crit="102" power="102" evasion="102" accuracy="102" magic_accuracy="102" walk_speed="1.457" run_speed="6.0" run_speed_fight="7.0" fly_speed="0.0"/>
+		<equipment>
+			<item>100500284</item>
+		</equipment>
+	</npc_template>
+	<npc_template npc_id="271002" level="50" name="fortress mage" name_id="307373" npc_type="ATTACKABLE" height="1.05" rank="ELITE" race="ELYOS" tribe="GENERAL_ADADR" srange="20" arange="37" arank="1000" hpgauge="12">
+		<stats maxMp="28076" maxHp="93586" maxXp="55529" block="102" parry="102" mdef="102" pdef="102" crit="102" power="102" evasion="102" accuracy="102" magic_accuracy="102" walk_speed="1.457" run_speed="6.0" run_speed_fight="7.0" fly_speed="0.0"/>
+		<equipment>
+			<item>114600506</item>
+			<item>111600520</item>
+			<item>125200003</item>
+			<item>113600515</item>
+			<item>100600028</item>
+			<item>112600502</item>
+			<item>110600550</item>
+		</equipment>
+	</npc_template>
+	<npc_template npc_id="271004" level="50" name="fortress mage" name_id="307375" npc_type="ATTACKABLE" height="1.05" rank="ELITE" race="DRAKAN" tribe="GENERALDR_ALIDA" srange="20" arange="37" arank="1000" hpgauge="12">
+		<stats maxMp="28076" maxHp="93586" maxXp="55529" block="102" parry="102" mdef="102" pdef="102" crit="102" power="102" evasion="102" accuracy="102" magic_accuracy="102" walk_speed="1.457" run_speed="6.0" run_speed_fight="7.0" fly_speed="0.0"/>
+		<equipment>
+			<item>100500284</item>
+		</equipment>
+	</npc_template>
 </npc_templates>
