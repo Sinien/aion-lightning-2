@@ -105,7 +105,7 @@ public class LootGroupRules
 	/**
 	 * @return the common_item_above
 	 */
-	public int getCommon_item_above()
+	public int getCommonItemAbove()
 	{
 		return common_item_above;
 	}
@@ -113,7 +113,7 @@ public class LootGroupRules
 	/**
 	 * @return the superior_item_above
 	 */
-	public int getSuperior_item_above()
+	public int getSuperiorItemAbove()
 	{
 		return superior_item_above;
 	}
@@ -121,7 +121,7 @@ public class LootGroupRules
 	/**
 	 * @return the heroic_item_above
 	 */
-	public int getHeroic_item_above()
+	public int getHeroicItemAbove()
 	{
 		return heroic_item_above;
 	}
@@ -129,7 +129,7 @@ public class LootGroupRules
 	/**
 	 * @return the fabled_item_above
 	 */
-	public int getFabled_item_above()
+	public int getFabledItemAbove()
 	{
 		return fabled_item_above;
 	}
@@ -137,7 +137,7 @@ public class LootGroupRules
 	/**
 	 * @return the ethernal_item_above
 	 */
-	public int getEthernal_item_above()
+	public int getEthernalItemAbove()
 	{
 		return ethernal_item_above;
 	}
@@ -145,7 +145,7 @@ public class LootGroupRules
 	/**
 	 * @return the over_ethernal
 	 */
-	public int getOver_ethernal()
+	public int getOverEthernal()
 	{
 		return over_ethernal;
 	}
@@ -153,7 +153,7 @@ public class LootGroupRules
 	/**
 	 * @return the over_over_ethernal
 	 */
-	public int getOver_over_ethernal()
+	public int getOverOverEthernal()
 	{
 		return over_over_ethernal;
 	}

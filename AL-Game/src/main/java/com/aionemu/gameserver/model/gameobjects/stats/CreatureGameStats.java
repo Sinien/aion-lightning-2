@@ -21,6 +21,7 @@ import java.util.TreeSet;
 import java.util.Map.Entry;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
+import javolution.text.TextBuilder;
 import javolution.util.FastList;
 import javolution.util.FastMap;
 
@@ -451,14 +452,19 @@ public class CreatureGameStats<T extends Creature>
 	@Override
 	public String toString()
 	{
-		StringBuilder sb = new StringBuilder();
-		sb.append('{');
-		sb.append("owner:" + owner.getObjectId());
+		TextBuilder tb = TextBuilder.newInstance();
+		
+		tb.append('{');
+		tb.append("owner:" + owner.getObjectId());
 		for(Stat stat : stats.values())
 		{
-			sb.append(stat);
+			tb.append(stat);
 		}
-		sb.append('}');
-		return sb.toString();
+		tb.append('}');
+		String toString = tb.toString();
+		
+		TextBuilder.recycle(tb);
+		
+		return toString ;
 	}
 }

@@ -53,13 +53,13 @@ public class SM_GROUP_INFO extends AionServerPacket
 		LootGroupRules lootRules = group.getLootGroupRules();
 		this.lootruletype = lootRules.getLootRule();
 		this.autodistribution = lootRules.getAutodistribution();
-		this.common_item_above = lootRules.getCommon_item_above();
-		this.superior_item_above = lootRules.getSuperior_item_above();
-		this.heroic_item_above = lootRules.getHeroic_item_above();
-		this.fabled_item_above = lootRules.getFabled_item_above();
-		this.ethernal_item_above = lootRules.getEthernal_item_above();
-		this.over_ethernal = lootRules.getOver_ethernal();
-		this.over_over_ethernal = lootRules.getOver_over_ethernal();
+		this.common_item_above = lootRules.getCommonItemAbove();
+		this.superior_item_above = lootRules.getSuperiorItemAbove();
+		this.heroic_item_above = lootRules.getHeroicItemAbove();
+		this.fabled_item_above = lootRules.getFabledItemAbove();
+		this.ethernal_item_above = lootRules.getEthernalItemAbove();
+		this.over_ethernal = lootRules.getOverEthernal();
+		this.over_over_ethernal = lootRules.getOverOverEthernal();
 	}
 
 	@Override
