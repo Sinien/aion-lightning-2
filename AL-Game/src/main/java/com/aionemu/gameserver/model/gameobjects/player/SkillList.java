@@ -28,6 +28,7 @@ import com.aionemu.gameserver.model.gameobjects.PersistentState;
 import com.aionemu.gameserver.model.templates.item.ArmorType;
 import com.aionemu.gameserver.model.templates.item.WeaponType;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SKILL_LIST;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_SKILL_REMOVE;
 import com.aionemu.gameserver.skillengine.effect.ArmorMasteryEffect;
 import com.aionemu.gameserver.skillengine.effect.EffectTemplate;
 import com.aionemu.gameserver.skillengine.effect.WeaponMasteryEffect;
@@ -221,7 +222,7 @@ public class SkillList
 	 * @param skillId
 	 * @return
 	 */
-	public synchronized boolean removeSkill(int skillId)
+	public synchronized boolean removeSkill(Player player, int skillId)
 	{
 		SkillListEntry entry = skills.get(skillId);
 		if(entry != null)
@@ -229,6 +230,7 @@ public class SkillList
 			entry.setPersistentState(PersistentState.DELETED);
 			deletedSkills.add(entry);
 			skills.remove(skillId);
+			PacketSendUtility.sendPacket(player, new SM_SKILL_REMOVE(skillId));
 		}	
 		return entry != null;
 	}

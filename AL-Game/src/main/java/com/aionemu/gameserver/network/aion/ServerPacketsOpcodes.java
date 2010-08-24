@@ -98,7 +98,7 @@ public class ServerPacketsOpcodes
 		addPacketOpcode(SM_SKILL_LIST.class, 0x48, idSet);// 1.9
 		addPacketOpcode(SM_CASTSPELL_END.class, 0x49, idSet);// 1.9
 		addPacketOpcode(SM_SKILL_ACTIVATION.class, 0x4A, idSet);// 1.9
-		addPacketOpcode(SM_STIGMA_SKILL_REMOVE.class, 0x4B, idSet);// 1.9
+		addPacketOpcode(SM_SKILL_REMOVE.class, 0x4B, idSet);// 1.9
 		addPacketOpcode(SM_ABNORMAL_EFFECT.class, 0x4E, idSet);// 1.9
 		addPacketOpcode(SM_ABNORMAL_STATE.class, 0x4F, idSet);// 1.9
 		addPacketOpcode(SM_QUESTION_WINDOW.class, 0x50, idSet);// 1.9

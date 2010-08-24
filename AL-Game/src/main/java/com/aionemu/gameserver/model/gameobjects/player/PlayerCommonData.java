@@ -309,26 +309,26 @@ public class PlayerCommonData extends VisibleObjectTemplate
 							player.getSkillList().addSkill(player, 9747, 1, true);
 							break;
 						case 15:
-							player.getSkillList().removeSkill(9737);
-							player.getSkillList().removeSkill(9747);
+							player.getSkillList().removeSkill(player, 9737);
+							player.getSkillList().removeSkill(player, 9747);
 							player.getSkillList().addSkill(player, 9738, 1, true);
 							player.getSkillList().addSkill(player, 9748, 1, true);
 							player.getSkillList().addSkill(player, 9751, 1, true);
 							break;
 						case 16:
-							player.getSkillList().removeSkill(9738);
-							player.getSkillList().removeSkill(9748);
-							player.getSkillList().removeSkill(9751);
+							player.getSkillList().removeSkill(player, 9738);
+							player.getSkillList().removeSkill(player, 9748);
+							player.getSkillList().removeSkill(player, 9751);
 							player.getSkillList().addSkill(player, 9739, 1, true);
 							player.getSkillList().addSkill(player, 9749, 1, true);
 							player.getSkillList().addSkill(player, 9751, 1, true);
 							player.getSkillList().addSkill(player, 9755, 1, true);
 							break;
 						case 17:
-							player.getSkillList().removeSkill(9739);
-							player.getSkillList().removeSkill(9749);
-							player.getSkillList().removeSkill(9751);
-							player.getSkillList().removeSkill(9755);
+							player.getSkillList().removeSkill(player, 9739);
+							player.getSkillList().removeSkill(player, 9749);
+							player.getSkillList().removeSkill(player, 9751);
+							player.getSkillList().removeSkill(player, 9755);
 							player.getSkillList().addSkill(player, 9740, 1, true);
 							player.getSkillList().addSkill(player, 9750, 1, true);
 							player.getSkillList().addSkill(player, 9752, 1, true);
@@ -336,11 +336,11 @@ public class PlayerCommonData extends VisibleObjectTemplate
 							player.getSkillList().addSkill(player, 9756, 1, true);
 							break;
 						case 18:
-							player.getSkillList().removeSkill(9740);
-							player.getSkillList().removeSkill(9750);
-							player.getSkillList().removeSkill(9752);
-							player.getSkillList().removeSkill(9755);
-							player.getSkillList().removeSkill(9756);
+							player.getSkillList().removeSkill(player, 9740);
+							player.getSkillList().removeSkill(player, 9750);
+							player.getSkillList().removeSkill(player, 9752);
+							player.getSkillList().removeSkill(player, 9755);
+							player.getSkillList().removeSkill(player, 9756);
 							player.getSkillList().addSkill(player, 9741, 1, true);
 							player.getSkillList().addSkill(player, 9750, 1, true);
 							player.getSkillList().addSkill(player, 9752, 1, true);
@@ -360,26 +360,26 @@ public class PlayerCommonData extends VisibleObjectTemplate
 						player.getSkillList().addSkill(player, 9747, 1, true);
 						break;
 					case 15:
-						player.getSkillList().removeSkill(9742);
-						player.getSkillList().removeSkill(9747);
+						player.getSkillList().removeSkill(player, 9742);
+						player.getSkillList().removeSkill(player, 9747);
 						player.getSkillList().addSkill(player, 9743, 1, true);
 						player.getSkillList().addSkill(player, 9748, 1, true);
 						player.getSkillList().addSkill(player, 9753, 1, true);
 						break;
 					case 16:
-						player.getSkillList().removeSkill(9743);
-						player.getSkillList().removeSkill(9748);
-						player.getSkillList().removeSkill(9753);
+						player.getSkillList().removeSkill(player, 9743);
+						player.getSkillList().removeSkill(player, 9748);
+						player.getSkillList().removeSkill(player, 9753);
 						player.getSkillList().addSkill(player, 9744, 1, true);
 						player.getSkillList().addSkill(player, 9749, 1, true);
 						player.getSkillList().addSkill(player, 9753, 1, true);
 						player.getSkillList().addSkill(player, 9755, 1, true);
 						break;
 					case 17:
-						player.getSkillList().removeSkill(9744);
-						player.getSkillList().removeSkill(9749);
-						player.getSkillList().removeSkill(9753);
-						player.getSkillList().removeSkill(9755);
+						player.getSkillList().removeSkill(player, 9744);
+						player.getSkillList().removeSkill(player, 9749);
+						player.getSkillList().removeSkill(player, 9753);
+						player.getSkillList().removeSkill(player, 9755);
 						player.getSkillList().addSkill(player, 9745, 1, true);
 						player.getSkillList().addSkill(player, 9750, 1, true);
 						player.getSkillList().addSkill(player, 9754, 1, true);
@@ -387,11 +387,11 @@ public class PlayerCommonData extends VisibleObjectTemplate
 						player.getSkillList().addSkill(player, 9756, 1, true);
 						break;
 					case 18:
-						player.getSkillList().removeSkill(9745);
-						player.getSkillList().removeSkill(9750);
-						player.getSkillList().removeSkill(9754);
-						player.getSkillList().removeSkill(9755);
-						player.getSkillList().removeSkill(9756);
+						player.getSkillList().removeSkill(player, 9745);
+						player.getSkillList().removeSkill(player, 9750);
+						player.getSkillList().removeSkill(player, 9754);
+						player.getSkillList().removeSkill(player, 9755);
+						player.getSkillList().removeSkill(player, 9756);
 						player.getSkillList().addSkill(player, 9746, 1, true);
 						player.getSkillList().addSkill(player, 9750, 1, true);
 						player.getSkillList().addSkill(player, 9754, 1, true);
@@ -410,13 +410,13 @@ public class PlayerCommonData extends VisibleObjectTemplate
 				switch( rank.getRank().getId() )
 				{
 					case 17:
-						player.getSkillList().removeSkill(9741);
-						player.getSkillList().removeSkill(9750);
-						player.getSkillList().removeSkill(9752);
-						player.getSkillList().removeSkill(9755);
-						player.getSkillList().removeSkill(9756);
-						player.getSkillList().removeSkill(9757);
-						player.getSkillList().removeSkill(9758);
+						player.getSkillList().removeSkill(player, 9741);
+						player.getSkillList().removeSkill(player, 9750);
+						player.getSkillList().removeSkill(player, 9752);
+						player.getSkillList().removeSkill(player, 9755);
+						player.getSkillList().removeSkill(player, 9756);
+						player.getSkillList().removeSkill(player, 9757);
+						player.getSkillList().removeSkill(player, 9758);
 						player.getSkillList().addSkill(player, 9740, 1, true);
 						player.getSkillList().addSkill(player, 9750, 1, true);
 						player.getSkillList().addSkill(player, 9752, 1, true);
@@ -424,31 +424,31 @@ public class PlayerCommonData extends VisibleObjectTemplate
 						player.getSkillList().addSkill(player, 9756, 1, true);
 						break;
 					case 16:
-						player.getSkillList().removeSkill(9738);
-						player.getSkillList().removeSkill(9748);
-						player.getSkillList().removeSkill(9751);
+						player.getSkillList().removeSkill(player, 9738);
+						player.getSkillList().removeSkill(player, 9748);
+						player.getSkillList().removeSkill(player, 9751);
 						player.getSkillList().addSkill(player, 9739, 1, true);
 						player.getSkillList().addSkill(player, 9749, 1, true);
 						player.getSkillList().addSkill(player, 9751, 1, true);
 						player.getSkillList().addSkill(player, 9755, 1, true);
 						break;
 					case 15:
-						player.getSkillList().removeSkill(9737);
-						player.getSkillList().removeSkill(9747);
+						player.getSkillList().removeSkill(player, 9737);
+						player.getSkillList().removeSkill(player, 9747);
 						player.getSkillList().addSkill(player, 9738, 1, true);
 						player.getSkillList().addSkill(player, 9748, 1, true);
 						player.getSkillList().addSkill(player, 9751, 1, true);
 						break;
 					case 14:	//
-						player.getSkillList().removeSkill(9738);
-						player.getSkillList().removeSkill(9748);
-						player.getSkillList().removeSkill(9751);
+						player.getSkillList().removeSkill(player, 9738);
+						player.getSkillList().removeSkill(player, 9748);
+						player.getSkillList().removeSkill(player, 9751);
 						player.getSkillList().addSkill(player, 9737, 1, true);
 						player.getSkillList().addSkill(player, 9747, 1, true);
 						break;
 					case 13:
-						player.getSkillList().removeSkill(9737);
-						player.getSkillList().removeSkill(9747);
+						player.getSkillList().removeSkill(player, 9737);
+						player.getSkillList().removeSkill(player, 9747);
 						break;
 				}
 			}
@@ -457,11 +457,11 @@ public class PlayerCommonData extends VisibleObjectTemplate
 				switch( rank.getRank().getId() )
 				{
 					case 17:
-						player.getSkillList().removeSkill(9745);
-						player.getSkillList().removeSkill(9750);
-						player.getSkillList().removeSkill(9754);
-						player.getSkillList().removeSkill(9755);
-						player.getSkillList().removeSkill(9756);
+						player.getSkillList().removeSkill(player, 9745);
+						player.getSkillList().removeSkill(player, 9750);
+						player.getSkillList().removeSkill(player, 9754);
+						player.getSkillList().removeSkill(player, 9755);
+						player.getSkillList().removeSkill(player, 9756);
 						player.getSkillList().addSkill(player, 9745, 1, true);
 						player.getSkillList().addSkill(player, 9750, 1, true);
 						player.getSkillList().addSkill(player, 9754, 1, true);
@@ -469,35 +469,35 @@ public class PlayerCommonData extends VisibleObjectTemplate
 						player.getSkillList().addSkill(player, 9756, 1, true);
 						break;
 					case 16:
-						player.getSkillList().removeSkill(9745);
-						player.getSkillList().removeSkill(9750);
-						player.getSkillList().removeSkill(9754);
-						player.getSkillList().removeSkill(9755);
-						player.getSkillList().removeSkill(9756);
+						player.getSkillList().removeSkill(player, 9745);
+						player.getSkillList().removeSkill(player, 9750);
+						player.getSkillList().removeSkill(player, 9754);
+						player.getSkillList().removeSkill(player, 9755);
+						player.getSkillList().removeSkill(player, 9756);
 						player.getSkillList().addSkill(player, 9744, 1, true);
 						player.getSkillList().addSkill(player, 9749, 1, true);
 						player.getSkillList().addSkill(player, 9753, 1, true);
 						player.getSkillList().addSkill(player, 9755, 1, true);
 						break;
 					case 15:
-						player.getSkillList().removeSkill(9744);
-						player.getSkillList().removeSkill(9749);
-						player.getSkillList().removeSkill(9753);
-						player.getSkillList().removeSkill(9755);
+						player.getSkillList().removeSkill(player, 9744);
+						player.getSkillList().removeSkill(player, 9749);
+						player.getSkillList().removeSkill(player, 9753);
+						player.getSkillList().removeSkill(player, 9755);
 						player.getSkillList().addSkill(player, 9743, 1, true);
 						player.getSkillList().addSkill(player, 9748, 1, true);
 						player.getSkillList().addSkill(player, 9753, 1, true);
 						break;
 					case 14:	//
-						player.getSkillList().removeSkill(9743);
-						player.getSkillList().removeSkill(9748);
-						player.getSkillList().removeSkill(9753);
+						player.getSkillList().removeSkill(player, 9743);
+						player.getSkillList().removeSkill(player, 9748);
+						player.getSkillList().removeSkill(player, 9753);
 						player.getSkillList().addSkill(player, 9742, 1, true);
 						player.getSkillList().addSkill(player, 9747, 1, true);
 						break;
 					case 13:
-						player.getSkillList().removeSkill(9742);
-						player.getSkillList().removeSkill(9747);
+						player.getSkillList().removeSkill(player, 9742);
+						player.getSkillList().removeSkill(player, 9747);
 						break;
 				}
 			}
