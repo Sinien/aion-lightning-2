@@ -42,7 +42,7 @@ public class WorldMapInstance3D extends WorldMapInstance
 	@Override
 	protected Integer getRegionId(float x, float y, float z)
 	{
-		return ((int) x) / regionSize * maxWorldSize * maxWorldSize + ((int) y) / regionSize * maxWorldSize + ((int) z)
+		return ((int) x+offset) / regionSize * maxWorldSize * maxWorldSize + ((int) y+offset) / regionSize * maxWorldSize + ((int) z+offset)
 			/ regionSize;
 	}
 

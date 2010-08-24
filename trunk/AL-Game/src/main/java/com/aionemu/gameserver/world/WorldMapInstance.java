@@ -47,6 +47,8 @@ public class WorldMapInstance
 	 * Max world size - actually it must be some value bigger than world size. Used only for id generation.
 	 */
 	protected static final int					maxWorldSize		= OptionsConfig.MAX_WORLD_SIZE;
+	
+	protected static final int					offset		= 1000;
 	/**
 	 * WorldMap witch is parent of this instance.
 	 */
@@ -156,7 +158,7 @@ public class WorldMapInstance
 	 */
 	protected Integer getRegionId(float x, float y, float z)
 	{
-		return ((int) x) / regionSize * maxWorldSize + ((int) y) / regionSize;
+		return ((int) x+offset) / regionSize * maxWorldSize + ((int) y+offset) / regionSize;
 	}
 
 	/**
