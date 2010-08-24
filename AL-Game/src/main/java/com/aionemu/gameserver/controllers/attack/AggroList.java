@@ -33,7 +33,7 @@ public class AggroList
 {	
 	private Creature owner;
 	
-	private Map<Creature, AggroInfo> aggroList = new SingletonMap<Creature, AggroInfo>().setShared();
+	private final Map<Creature, AggroInfo> aggroList = new SingletonMap<Creature, AggroInfo>().setShared();
 	
 	public AggroList(Creature owner)
 	{
