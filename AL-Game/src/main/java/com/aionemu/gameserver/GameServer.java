@@ -164,6 +164,7 @@ public class GameServer
 		AEInfos.printSection("System");
 		VersionningService.printFullVersionInfo();
 		System.gc();
+		System.runFinalization();
 		AEInfos.printAllInfos();
 
 		AEInfos.printSection("IOServer");
