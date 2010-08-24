@@ -44,7 +44,6 @@ public class CM_CLIENT_COMMAND_LOC extends AionClientPacket
 	public CM_CLIENT_COMMAND_LOC(int opcode)
 	{
 		super(opcode);
-
 	}
 
 	/**
@@ -63,7 +62,7 @@ public class CM_CLIENT_COMMAND_LOC extends AionClientPacket
 	protected void runImpl()
 	{
 		Player player = getConnection().getActivePlayer();
-		log.info("Received \"/loc\" command");
+		log.info("[AUDIT] Received \"/loc\" command");
 		
 		sendPacket(SM_SYSTEM_MESSAGE.CURRENT_LOCATION(player.getWorldId(), player.getX(), player.getY(), player.getZ()));
 	}
