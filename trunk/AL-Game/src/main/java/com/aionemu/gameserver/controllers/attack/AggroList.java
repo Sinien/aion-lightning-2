@@ -17,11 +17,9 @@
 package com.aionemu.gameserver.controllers.attack;
 
 import java.util.Collection;
+import java.util.Map;
 
-import javolution.util.FastMap;
-
-import org.apache.log4j.Logger;
-
+import com.aionemu.commons.utils.SingletonMap;
 import com.aionemu.gameserver.ai.events.Event;
 import com.aionemu.gameserver.model.gameobjects.AionObject;
 import com.aionemu.gameserver.model.gameobjects.Creature;
@@ -33,12 +31,9 @@ import com.aionemu.gameserver.model.gameobjects.player.Player;
  */
 public class AggroList
 {	
-	@SuppressWarnings("unused")
-	private static final Logger	log	= Logger.getLogger(AggroList.class);
-	
 	private Creature owner;
 	
-	private FastMap<Creature, AggroInfo> aggroList = new FastMap<Creature, AggroInfo>().shared();
+	private Map<Creature, AggroInfo> aggroList = new SingletonMap<Creature, AggroInfo>().setShared();
 	
 	public AggroList(Creature owner)
 	{
@@ -278,7 +273,7 @@ public class AggroList
 	 */
 	public Collection<AggroInfo> getFinalDamageList(boolean mergeGroupDamage)
 	{
-		final FastMap<AionObject, AggroInfo> list = new FastMap<AionObject, AggroInfo>().shared();
+		final Map<AionObject, AggroInfo> list = new SingletonMap<AionObject, AggroInfo>().setShared();
 		
 		for(AggroInfo ai : this.aggroList.values())
 		{
@@ -343,7 +338,4 @@ public class AggroList
 		
 		return list.values();
 	}
-
-	
-	
 }
