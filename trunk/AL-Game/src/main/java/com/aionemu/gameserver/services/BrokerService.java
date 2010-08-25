@@ -469,8 +469,7 @@ public class BrokerService
 
 		if(brokerItem != null)
 		{
-			Item item = player.getInventory().putToBag(brokerItem.getItem());
-			ItemService.addFullItem(player, player.getInventory(), item);
+			ItemService.addFullItem(player, player.getInventory(), brokerItem.getItem());
 			brokerItem.setPersistentState(PersistentState.DELETED);
 			saveManager.add(new BrokerOpSaveTask(brokerItem));
 			brokerItems.remove(brokerItemId);
