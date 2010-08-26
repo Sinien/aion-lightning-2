@@ -43,7 +43,7 @@ public class SM_ABYSS_RANK extends AionServerPacket
 	{
 		writeQ(buf, rank.getAp()); //curAP
 		writeD(buf, currentRankId); //curRank
-		writeD(buf, 0); //curRating
+		writeD(buf, rank.getTopRanking()); //curRating
 
 		int nextRankId = currentRankId < AbyssRankEnum.values().length ? currentRankId + 1 : currentRankId;
 		writeD(buf, 100 * rank.getAp()/AbyssRankEnum.getRankById(nextRankId).getRequired()); //exp %
@@ -51,14 +51,14 @@ public class SM_ABYSS_RANK extends AionServerPacket
 		writeD(buf, rank.getAllKill()); //allKill
 		writeD(buf, rank.getMaxRank()); //maxRank
 
-		writeD(buf, 0); //dayKill
-		writeQ(buf, 0); //dayAP
+		writeD(buf, rank.getDailyKill()); //dayKill
+		writeQ(buf, rank.getDailyAP()); //dayAP
 
-		writeD(buf, 0); //weekKill
-		writeQ(buf, 0); //weekAP
+		writeD(buf, rank.getWeeklyKill()); //weekKill
+		writeQ(buf, rank.getWeeklyAP()); //weekAP
 
-		writeD(buf, 0); //laterKill
-		writeQ(buf, 0); //laterAP
+		writeD(buf, rank.getLastKill()); //laterKill
+		writeQ(buf, rank.getLastAP()); //laterAP
 
 		writeC(buf, 0x00); //unk
 	}

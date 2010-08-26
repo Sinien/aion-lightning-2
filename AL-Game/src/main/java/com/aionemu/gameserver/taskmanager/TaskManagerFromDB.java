@@ -17,6 +17,7 @@
 
 package com.aionemu.gameserver.taskmanager;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -29,6 +30,7 @@ import com.aionemu.gameserver.model.tasks.TaskFromDB;
 import com.aionemu.gameserver.model.templates.tasks.TaskFromDBHandler;
 import com.aionemu.gameserver.taskmanager.tasks.RestartTask;
 import com.aionemu.gameserver.taskmanager.tasks.ShutdownTask;
+import com.aionemu.gameserver.taskmanager.tasks.UpdateAbyssRank;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
 
 /**
@@ -65,8 +67,9 @@ public class TaskManagerFromDB
 	 */
 	private void addTasks()
 	{
-		@SuppressWarnings("unused")
 		int maxId = tasksList.size() > 0 ? tasksList.get(tasksList.size()-1).getId() : 0;
+		
+		tasksList.add(new TaskFromDB(maxId + 1, "update_abyss_rank", "FIXED_IN_TIME", new Timestamp(System.currentTimeMillis()), "00:00:00", 0, null));
 	}
 
 	/**
@@ -76,6 +79,7 @@ public class TaskManagerFromDB
 	{
 		registerNewTask(new ShutdownTask());
 		registerNewTask(new RestartTask());
+		registerNewTask(new UpdateAbyssRank());
 	}
 
 	/**

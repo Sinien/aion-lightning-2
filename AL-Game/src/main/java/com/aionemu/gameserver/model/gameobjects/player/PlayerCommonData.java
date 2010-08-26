@@ -257,14 +257,12 @@ public class PlayerCommonData extends VisibleObjectTemplate
 		if (player == null)
 			return;
 		
-		AbyssRank rank = player.getAbyssRank();
-		
 		// Notify player of AP gained (This should happen before setAp happens.)
 		// TODO: Find System Message for "You have lost %d Abyss Points." (Lost instead of Gained)
 		PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.EARNED_ABYSS_POINT(String.valueOf(value)));
 		
 		// Set the new AP value
-		this.setAp(rank.getAp() + value);
+		this.setAp(value);
 		
 		// Add Abyss Points to Legion
 		if(player.isLegionMember() && value > 0)
@@ -285,7 +283,7 @@ public class PlayerCommonData extends VisibleObjectTemplate
 		
 		int oldAbyssRank = rank.getRank().getId();
 		
-		rank.setAp(value);
+		rank.addAp(value);
 		
 		if (rank.getRank().getId() != oldAbyssRank)
 		{

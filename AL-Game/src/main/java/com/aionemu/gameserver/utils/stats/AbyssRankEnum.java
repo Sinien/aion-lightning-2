@@ -30,27 +30,54 @@ public enum AbyssRankEnum
 	GRADE3_SOLDIER(7, 903, 356, 69700),
 	GRADE2_SOLDIER(8, 1264, 561, 105600),
 	GRADE1_SOLDIER(9, 1770, 885, 150800),
-	STAR1_OFFICER(10, 2124, 1195, 214100),
-	STAR2_OFFICER(11, 2549, 1616, 278700),
-	STAR3_OFFICER(12, 3059, 2184, 344500),
-	STAR4_OFFICER(13, 3671, 2949, 411700),
-	STAR5_OFFICER(14, 4405, 3981, 488200),
-	GENERAL(15, 5286, 5374, 565400),
-	GREAT_GENERAL(16, 6343, 7258, 643200),
-	COMMANDER(17, 7612, 9799, 721600),
-	SUPREME_COMMANDER(18, 9134, 13229, 800700);
+	STAR1_OFFICER(10, 2124, 1195, 214100, 1000),
+	STAR2_OFFICER(11, 2549, 1616, 278700, 700),
+	STAR3_OFFICER(12, 3059, 2184, 344500, 500),
+	STAR4_OFFICER(13, 3671, 2949, 411700, 300),
+	STAR5_OFFICER(14, 4405, 3981, 488200, 100),
+	GENERAL(15, 5286, 5374, 565400, 30),
+	GREAT_GENERAL(16, 6343, 7258, 643200, 10),
+	COMMANDER(17, 7612, 9799, 721600, 3),
+	SUPREME_COMMANDER(18, 9134, 13229, 800700, 1);
 	
 	private int id;
 	private int pointsGained;
 	private int pointsLost;		
 	private int required;
+	private int quota;
 	
+	/**
+	 * 
+	 * @param id
+	 * @param pointsGained
+	 * @param pointsLost
+	 * @param required
+	 */
 	private AbyssRankEnum(int id, int pointsGained, int pointsLost, int required)
 	{
-		this.id = id;
-		this.pointsGained = pointsGained;
-		this.pointsLost = pointsLost;
-		this.required = required;
+		this.id				= id;
+		this.pointsGained	= pointsGained;
+		this.pointsLost		= pointsLost;
+		this.required		= required;
+		this.quota			= 0;
+	}
+	
+	/**
+	 * @author Divinity
+	 * 
+	 * @param id
+	 * @param pointsGained
+	 * @param pointsLost
+	 * @param required
+	 * @param quota
+	 */
+	private AbyssRankEnum(int id, int pointsGained, int pointsLost, int required, int quota)
+	{
+		this.id				= id;
+		this.pointsGained	= pointsGained;
+		this.pointsLost		= pointsLost;
+		this.required		= required;
+		this.quota			= quota;
 	}
 
 	/**
@@ -84,7 +111,19 @@ public enum AbyssRankEnum
 	{
 		return required;
 	}
+	
+	/**
+	 * @return The quota is the maximum number of allowed player to have the rank
+	 */
+	public int getQuota()
+	{
+		return quota;
+	}
 
+	/**
+	 * @param id
+	 * @return The abyss rank enum by his id
+	 */
 	public static AbyssRankEnum getRankById(int id)
 	{
 		for(AbyssRankEnum rank : values())
@@ -95,6 +134,10 @@ public enum AbyssRankEnum
 		throw new IllegalArgumentException("Invalid abyss rank provided");
 	}
 	
+	/**
+	 * @param ap
+	 * @return The abyss rank enum for his needed ap
+	 */
 	public static AbyssRankEnum getRankForAp(int ap)
 	{
 		AbyssRankEnum r = AbyssRankEnum.GRADE9_SOLDIER;
