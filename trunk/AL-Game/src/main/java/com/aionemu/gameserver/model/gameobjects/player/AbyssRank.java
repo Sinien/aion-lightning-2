@@ -16,38 +16,102 @@
  */
 package com.aionemu.gameserver.model.gameobjects.player;
 
+import java.util.Calendar;
+
 import com.aionemu.gameserver.model.gameobjects.PersistentState;
 import com.aionemu.gameserver.utils.stats.AbyssRankEnum;
 
 /**
- * @author ATracer
+ * @author ATracer, Divinity
  *
  */
 public class AbyssRank
 {
-	private int ap;
-	private AbyssRankEnum rank;
-	
-	private PersistentState persistentState;
-    private int allKill;
-    private int maxRank;
+	private int				dailyAP;
+	private int				weeklyAP;
+	private int				ap;
+	private AbyssRankEnum	rank;
+	private int				topRanking;
+	private PersistentState	persistentState;
+	private int				dailyKill;
+	private	int				weeklyKill;
+    private int				allKill;
+    private int				maxRank;
+    private int				lastKill;
+    private int				lastAP;
+    private long			lastUpdate;
 
 
-    public AbyssRank(int ap, int rank, int allKill, int maxRank)
+    /**
+     * 
+     * @param dailyAP
+     * @param weeklyAP
+     * @param ap
+     * @param rank
+     * @param dailyKill
+     * @param weeklyKill
+     * @param allKill
+     * @param maxRank
+     * @param lastKill
+     * @param lastAP
+     * @param lastUpdate
+     */
+    public AbyssRank(int dailyAP, int weeklyAP, int ap, int rank, int topRanking, int dailyKill, int weeklyKill, int allKill, int maxRank, int lastKill, int lastAP, long lastUpdate)
 	{
 		super();
-		this.ap = ap;
-		this.rank = AbyssRankEnum.getRankById(rank);
-        this.allKill = allKill;
-        this.maxRank = maxRank;
+		
+		this.dailyAP	= dailyAP;
+		this.weeklyAP	= weeklyAP;
+		this.ap			= ap;
+		this.rank		= AbyssRankEnum.getRankById(rank);
+		this.topRanking	= topRanking;
+		this.dailyKill	= dailyKill;
+		this.weeklyKill	= weeklyKill;
+        this.allKill	= allKill;
+        this.maxRank	= maxRank;
+        this.lastKill	= lastKill;
+        this.lastAP		= lastAP;
+        this.lastUpdate	= lastUpdate;
+        
+        doUpdate();
 	}
 	
+    /**
+     * Add AP to a player (current player AP + added AP)
+     * 
+     * @param ap
+     */
 	public void addAp(int ap)
 	{	
+		dailyAP += ap;
+		if (dailyAP < 0)
+			dailyAP = 0;
+		
+		weeklyAP += ap;
+		if (weeklyAP < 0)
+			weeklyAP = 0;
+		
 		this.setAp(this.ap + ap);
 	}
+	
 	/**
-	 * @return the ap
+	 * @return The daily Abyss Pointn count
+	 */
+	public int getDailyAP()
+	{
+		return dailyAP;
+	}
+	
+	/**
+	 * @return The weekly Abyss Point count
+	 */
+	public int getWeeklyAP()
+	{
+		return weeklyAP;
+	}
+	
+	/**
+	 * @return The all time Abyss Point count
 	 */
 	public int getAp()
 	{
@@ -55,7 +119,9 @@ public class AbyssRank
 	}
 	
 	/**
-	 * @param ap the ap to set
+	 * Set a new AP count
+	 * 
+	 * @param ap The ap to set
 	 */
 	public void setAp(int ap)
 	{
@@ -64,7 +130,7 @@ public class AbyssRank
 		this.ap = ap;
 		
 		AbyssRankEnum newRank = AbyssRankEnum.getRankForAp(this.ap);
-		if(newRank != this.rank)
+		if (newRank != this.rank)
 			setRank(newRank);
 		
 		setPersistentState(PersistentState.UPDATE_REQUIRED);
@@ -77,6 +143,38 @@ public class AbyssRank
 	{
 		return rank;
 	}
+	
+	/**
+	 * @return The top ranking of the current rank
+	 */
+	public int getTopRanking()
+	{
+		return topRanking;
+	}
+	
+	/**
+	 * @param topRanking
+	 */
+	public void setTopRanking(int topRanking)
+	{
+		this.topRanking = topRanking;
+	}
+	
+	/**
+	 * @return The daily count kill
+	 */
+	public int getDailyKill()
+	{
+		return dailyKill;
+	}
+	
+	/**
+	 * @return The weekly count kill
+	 */
+	public int getWeeklyKill()
+	{
+		return weeklyKill;
+	}
 
     /**
      * @return all Kill
@@ -86,9 +184,14 @@ public class AbyssRank
         return allKill;
     }
 
+    /**
+     * Add one kill to a player
+     */
     public void setAllKill()
     {
-        this.allKill = allKill+1;
+    	this.dailyKill	+= 1;
+    	this.weeklyKill	+= 1;
+        this.allKill	+= 1;
     }
 
     /**
@@ -98,16 +201,34 @@ public class AbyssRank
     {
         return maxRank;
     }
+    
+    /**
+     * @return The last week count kill
+     */
+    public int getLastKill()
+    {
+    	return lastKill;
+    }
+    
+    /**
+     * @return The last week Abyss Point count
+     */
+    public int getLastAP()
+    {
+    	return lastAP;
+    }
 
 	/**
 	 * @param rank the rank to set
 	 */
 	public void setRank(AbyssRankEnum rank)
 	{
-        if(rank.getId() > this.maxRank)
+		if (rank.getId() > this.maxRank)
             this.maxRank = rank.getId();
+		
 		this.rank = rank;
-
+		// TODO: Top Ranking not implemented, see quota in AbyssRankEnum
+		
 		setPersistentState(PersistentState.UPDATE_REQUIRED);
 	}
 	
@@ -134,5 +255,51 @@ public class AbyssRank
 		}
 	}
 	
+	/**
+	 * @return The last update of the AbyssRank
+	 */
+	public long getLastUpdate()
+	{
+		return lastUpdate;
+	}
+	
+	/**
+	 * Make an update for the daily/weekly/last kill & ap counts
+	 */
+	public void doUpdate()
+	{
+		boolean needUpdate = false;
+		Calendar lastCal = Calendar.getInstance();
+		lastCal.setTimeInMillis(lastUpdate);
+		
+		Calendar curCal	 = Calendar.getInstance();
+		curCal.setTimeInMillis(System.currentTimeMillis());
+		
+		// Checking the day - month & year are checked to prevent if a player come back after 1 month, the same day
+		if (lastCal.get(Calendar.DAY_OF_MONTH) != curCal.get(Calendar.DAY_OF_MONTH) ||
+			lastCal.get(Calendar.MONTH) != curCal.get(Calendar.MONTH) ||
+			lastCal.get(Calendar.YEAR) != curCal.get(Calendar.YEAR))
+		{
+			this.dailyAP	= 0;
+			this.dailyKill	= 0;
+			needUpdate		= true;
+		}
+		
+		// Checking the week - year is checked to prevent if a player come back after 1 year, the same week
+		if (lastCal.get(Calendar.WEEK_OF_YEAR) != curCal.get(Calendar.WEEK_OF_YEAR) ||
+			lastCal.get(Calendar.YEAR) != curCal.get(Calendar.YEAR))
+		{
+			this.lastKill	= this.weeklyKill;
+			this.lastAP		= this.weeklyAP;
+			this.weeklyKill	= 0;
+			this.weeklyAP	= 0;
+			needUpdate		= true;
+		}
+		
+		// Finally, update the the last update
+		this.lastUpdate = System.currentTimeMillis();
+		
+		if (needUpdate)
+			setPersistentState(PersistentState.UPDATE_REQUIRED);
+	}
 }
-
