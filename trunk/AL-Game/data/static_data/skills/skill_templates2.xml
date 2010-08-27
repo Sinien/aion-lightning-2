@@ -332,7 +332,11 @@
 				<effectids>20013</effectids>		
             </dispel>
 			<statup duration="7000" effectid="119682" e="2">
-                <change stat="STUNLIKE_RESISTANCE" func="ADD" delta="0" value="1000"/>
+                		<change stat="STUN_RESISTANCE" func="ADD" delta="0" value="1000"/>
+				<change stat="STUMBLE_RESISTANCE" func="ADD" delta="0" value="1000"/>
+				<change stat="STAGGER_RESISTANCE" func="ADD" delta="0" value="1000"/>
+				<change stat="SPIN_RESISTANCE" func="ADD" delta="0" value="1000"/>
+				<change stat="OPENAREIAL_RESISTANCE" func="ADD" delta="0" value="1000"/>
             </statup>
         </effects>
         <actions>
@@ -1037,6 +1041,71 @@
 			<mpuse value="59000" delta="0"/>
 		</actions>
 	</skill_template>
-	
 	<!-- END ABYSS SKILLS -->
+	<skill_template skill_id="1021" name="STR_SKILL_PR_InvinsibleVeill_G1" nameId="590239" stack="SKILL_PR_INVINSIBLEVEILL" lvl="1" skilltype="MAGICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="1800" duration="0" cancel_rate="20">
+		<startconditions>
+			<mp value="162" delta="4"/>
+		</startconditions>
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="1"/>
+			<targetrange value="ONLYONE"/>
+			<targetrelation value="FRIEND"/>
+		</setproperties>
+		<effects>
+			<dispel dispeltype="EFFECTID" e="1" element="FIRE" hoptype="SKILLLV" hopb="665">
+				<effectids>119682</effectids>
+			</dispel>
+			<shield value="8000" delta="0" percent="true" hitvalue="100" hitdelta="0" duration="30000" effectid="154" e="4"/>
+			<bind duration="30000" effectid="20014" e="2" element="FIRE"/>
+			<silence duration="30000" effectid="20101" e="3" element="FIRE"/>
+		</effects>
+		<actions>
+			<mpuse value="162" delta="4"/>
+		</actions>
+	</skill_template>
+	<skill_template skill_id="1597" name="STR_SKILL_WI_iceBarrier_G1" nameId="584543" stack="SKILL_WI_ICEBARRIER" lvl="1" skilltype="MAGICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="3000" duration="2000" cancel_rate="20">
+		<startconditions>
+			<mp value="214" delta="3"/>
+		</startconditions>
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="1"/>
+			<targetrange value="ONLYONE"/>
+			<targetrelation value="FRIEND"/>
+		</setproperties>
+		<useconditions>
+			<playermove allow="false"/>
+		</useconditions>
+		<effects>
+			<shield value="10000000" delta="0" hitvalue="10000" hitdelta="0" duration="8000" effectid="154" e="1" hoptype="SKILLLV" hopb="1"/>
+			<stun duration="8000" effectid="20000" e="2" element="FIRE"/>
+		</effects>
+		<actions>
+			<mpuse value="214" delta="3"/>
+		</actions>
+	</skill_template>
+	<skill_template skill_id="287" name="STR_SKILL_WA_Steadiness_G1" nameId="567033" stack="SKILL_WA_STEADINESS" lvl="1" skilltype="MAGICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="1800" duration="0" cancel_rate="20">
+		<startconditions>
+			<mp value="79" delta="0"/>
+		</startconditions>
+		<setproperties>
+			<firsttarget value="ME"/>
+			<firsttargetrange value="1"/>
+			<targetrange value="ONLYONE"/>
+			<targetrelation value="FRIEND"/>
+		</setproperties>
+		<effects>
+			<statup duration="90000" effectid="102871" e="1" hoptype="SKILLLV" hopb="11737">
+				<change stat="STUN_RESISTANCE" func="ADD" delta="0" value="1000"/>
+				<change stat="STUMBLE_RESISTANCE" func="ADD" delta="0" value="1000"/>
+				<change stat="STAGGER_RESISTANCE" func="ADD" delta="0" value="1000"/>
+				<change stat="SPIN_RESISTANCE" func="ADD" delta="0" value="1000"/>
+				<change stat="OPENAREIAL_RESISTANCE" func="ADD" delta="0" value="1000"/>
+			</statup>
+		</effects>
+		<actions>
+			<mpuse value="79" delta="0"/>
+		</actions>
+	</skill_template>
 </skill_data>
