@@ -20,6 +20,7 @@ import org.apache.log4j.Logger;
 
 import com.aionemu.commons.database.DatabaseFactory;
 import com.aionemu.commons.database.dao.DAOManager;
+import com.aionemu.commons.log4j.exceptions.Log4jInitializationError;
 import com.aionemu.commons.services.LoggingService;
 import com.aionemu.commons.utils.AEInfos;
 import com.aionemu.commons.utils.ExitCode;
@@ -39,15 +40,18 @@ public class LoginServer
      * Logger for this class.
      */
     private static final Logger	log = Logger.getLogger(LoginServer.class);
-
-    /**
-     * @param args
-     */
+    
     public static void main(String[] args)
+    {
+    	new LoginServer();
+    }
+
+    public LoginServer() throws Log4jInitializationError
     {
     	long start = System.currentTimeMillis();
     	
         LoggingService.init();
+        log.info("Logging Initialized.");
 
 		Config.load();
 
