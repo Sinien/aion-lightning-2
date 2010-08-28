@@ -14,7 +14,6 @@
  *  You should have received a copy of the GNU General Public License
  *  along with aion-emu.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package com.aionemu.gameserver.utils.chathandlers;
 
 import java.util.Map;
@@ -23,6 +22,7 @@ import javolution.util.FastMap;
 
 import org.apache.log4j.Logger;
 
+import com.aionemu.gameserver.configs.main.OptionsConfig;
 import com.aionemu.gameserver.model.ChatType;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
@@ -61,9 +61,6 @@ public class AdminCommandChatHandler implements ChatHandler
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public ChatHandlerResponse handleChatMessage(ChatType chatType, String message, Player sender)
 	{
@@ -78,17 +75,20 @@ public class AdminCommandChatHandler implements ChatHandler
 			String command = commandAndParams[0].substring(2);
 			AdminCommand admc = commands.get(command);
 			
-			if (sender.getAccessLevel() == 0)
-				log.info("[ADMIN COMMAND] > [Name: " + sender.getName() + "]: The player has tried to use the command without have the rights :");
-			
-			if (sender.getTarget() != null && sender.getTarget() instanceof Creature)
+			if(OptionsConfig.LOG_GMAUDIT)
 			{
-				Creature target = (Creature) sender.getTarget();
+				if(sender.getAccessLevel() == 0)
+					log.info("[ADMIN COMMAND] > [Name: " + sender.getName() + "]: The player has tried to use the command without have the rights :");
 				
-				log.info("[ADMIN COMMAND] > [Name: " + sender.getName() + "][Target : " + target.getName() + "]: " + message);
+				if(sender.getTarget() != null && sender.getTarget() instanceof Creature)
+				{
+					Creature target = (Creature) sender.getTarget();
+					
+					log.info("[ADMIN COMMAND] > [Name: " + sender.getName() + "][Target : " + target.getName() + "]: " + message);
+				}
+				else
+					log.info("[ADMIN COMMAND] > [Name: " + sender.getName() + "]: " + message);	
 			}
-			else
-				log.info("[ADMIN COMMAND] > [Name: " + sender.getName() + "]: " + message);
 			
 			if(admc == null)
 			{

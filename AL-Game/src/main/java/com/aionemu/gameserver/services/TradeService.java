@@ -22,6 +22,7 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
+import com.aionemu.gameserver.configs.main.OptionsConfig;
 import com.aionemu.gameserver.dataholders.DataManager;
 import com.aionemu.gameserver.dataholders.GoodsListData;
 import com.aionemu.gameserver.dataholders.TradeListData;
@@ -83,9 +84,9 @@ public class TradeService
 		{
 			if(!ItemService.addItem(player, tradeItem.getItemTemplate().getTemplateId(), tradeItem.getCount()))
 			{
-				log.warn(String.format("CHECKPOINT: itemservice couldnt add all items on buy: %d %d %d %d", player
-					.getObjectId(), tradeItem.getItemTemplate().getTemplateId(), tradeItem.getCount(), tradeItem
-					.getCount()));
+				if(OptionsConfig.LOG_AUDIT)
+					log.warn(String.format("[AUDIT] Itemservice couldnt add all items on buy: %d %d %d %d", player
+						.getObjectId(), tradeItem.getItemTemplate().getTemplateId(), tradeItem.getCount(), tradeItem.getCount()));
 				ItemService.decreaseKinah(player, tradeListPrice);
 				return false;
 			}
@@ -125,9 +126,9 @@ public class TradeService
 		{
 			if(!ItemService.addItem(player, tradeItem.getItemTemplate().getTemplateId(), tradeItem.getCount()))
 			{
-				log.warn(String.format("CHECKPOINT: itemservice couldnt add all items on buy: %d %d %d %d", player
-					.getObjectId(), tradeItem.getItemTemplate().getTemplateId(), tradeItem.getCount(), tradeItem
-					.getCount()));
+				if(OptionsConfig.LOG_AUDIT)
+					log.warn(String.format("[AUDIT] Itemservice couldnt add all items on buy: %d %d %d %d", player
+						.getObjectId(), tradeItem.getItemTemplate().getTemplateId(), tradeItem.getCount(), tradeItem.getCount()));
 				player.getCommonData().addAp(-tradeList.getRequiredAp());
 				return false;
 			}
@@ -167,12 +168,14 @@ public class TradeService
 		{
 			if(tradeItem.getCount() < 1)
 			{
-				log.warn("[AUDIT] Player: " + player.getName() + " posible client hack. Trade count < 1");
+				if(OptionsConfig.LOG_AUDIT)
+					log.warn("[AUDIT] Player: " + player.getName() + " posible client hack. Trade count < 1");
 				return false;
 			}
 			if(!allowedItems.contains(tradeItem.getItemId()))
 			{
-				log.warn("[AUDIT] Player: " + player.getName() + " posible client hack. Tade item not in GoodsList");
+				if(OptionsConfig.LOG_AUDIT)
+					log.warn("[AUDIT] Player: " + player.getName() + " posible client hack. Tade item not in GoodsList");
 				return false;
 			}
 		}
@@ -199,7 +202,8 @@ public class TradeService
 
 			if(item.getItemCount() - tradeItem.getCount() < 0)
 			{
-				log.warn("[AUDIT] Trade exploit, sell item count big: " + player.getName());
+				if(OptionsConfig.LOG_AUDIT)
+					log.warn("[AUDIT] Trade exploit, sell item count big: " + player.getName());
 				return false;
 			}
 			else if(ItemService.decreaseItemCount(player, item, tradeItem.getCount()) == 0)
