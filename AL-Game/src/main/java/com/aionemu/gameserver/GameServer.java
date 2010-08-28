@@ -78,17 +78,17 @@ public class GameServer
 {
 	private static final Logger	log	= Logger.getLogger(GameServer.class);
 	
-	public static void main(String[] args)
-	{
-		new GameServer();
-	}
-
 	/**
 	 * Launching method for GameServer
 	 * 
 	 * @param args
 	 *            arguments, not used
 	 */
+	public static void main(String[] args)
+	{
+		new GameServer();
+	}
+
 	public GameServer() throws Log4jInitializationError
 	{
 		long start = System.currentTimeMillis();
@@ -98,7 +98,7 @@ public class GameServer
 		
 		// First of all we must initialize logging
 		LoggingService.init();
-		log.info("Logging initialized.");
+		log.info("Logging Initialized.");
 		
 		// init config
 		Config.load();
