@@ -43,10 +43,19 @@ public class OptionsConfig
 
 	@Property(key = "world.region.maxsize", defaultValue = "10000")
 	public static int		MAX_WORLD_SIZE;
+	
+	@Property(key = "log.audit", defaultValue = "true")
+	public static boolean	LOG_AUDIT;
 
 	@Property(key = "log.chat", defaultValue = "true")
 	public static boolean	LOG_CHAT;
+	
+	@Property(key = "log.gmaudit", defaultValue = "true")
+	public static boolean	LOG_GMAUDIT;
 
 	@Property(key = "log.item", defaultValue = "true")
 	public static boolean	LOG_ITEM;
+	
+	@Property(key = "log.packets", defaultValue = "true")
+	public static boolean	LOG_PACKETS;
 }

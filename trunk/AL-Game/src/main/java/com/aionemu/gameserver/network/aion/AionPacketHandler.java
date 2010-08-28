@@ -22,6 +22,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
+import com.aionemu.gameserver.configs.main.OptionsConfig;
 import com.aionemu.gameserver.network.aion.AionConnection.State;
 import com.aionemu.gameserver.utils.Util;
 
@@ -102,6 +103,7 @@ public class AionPacketHandler
 	 */
 	private void unknownPacket(State state, int id, ByteBuffer data)
 	{
-		log.warn(String.format("[UNKNOWN PACKET] : 0x%02X, state=%s %n%s", id, state.toString(), Util.toHex(data)));
+		if(OptionsConfig.LOG_PACKETS)
+			log.warn(String.format("[UNKNOWN PACKET] : 0x%02X, state=%s %n%s", id, state.toString(), Util.toHex(data)));
 	}
 }
