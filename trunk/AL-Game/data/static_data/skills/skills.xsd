@@ -218,6 +218,8 @@
 				minOccurs="0" maxOccurs="1" />
 			<xs:element name="changemp" type="ChangeMpConsumptionEffect"
 				minOccurs="0" maxOccurs="1" />
+			<xs:element name="magiccounteratk" type="MagicCounterAtkEffect"
+				minOccurs="0" maxOccurs="1" />
 		</xs:sequence>
 		<xs:attribute name="food" type="xs:boolean"/>
 	</xs:complexType>
@@ -1086,6 +1088,15 @@
 			<xs:extension base="Effect">
 				<xs:attribute name="percent" type="xs:boolean" />
 				<xs:attribute name="value" type="xs:int" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="MagicCounterAtkEffect">
+		<xs:complexContent>
+			<xs:extension base="Effect">
+				<xs:attribute name="percent" type="xs:int" />
+				<xs:attribute name="maxdmg" type="xs:int" />
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>

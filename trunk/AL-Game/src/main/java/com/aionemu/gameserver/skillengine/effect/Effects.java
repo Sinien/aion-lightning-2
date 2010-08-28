@@ -119,7 +119,8 @@ public class Effects
 		@XmlElement(name = "fear", type = FearEffect.class),
 		@XmlElement(name = "movebehind", type = MoveBehindEffect.class),
 		@XmlElement(name = "rebirth", type = RebirthEffect.class),
-		@XmlElement(name = "changemp", type = ChangeMpConsumptionEffect.class)
+		@XmlElement(name = "changemp", type = ChangeMpConsumptionEffect.class),
+		@XmlElement(name = "magiccounteratk", type = MagicCounterAtkEffect.class)
 	})
 	protected List<EffectTemplate> effects;
 	
