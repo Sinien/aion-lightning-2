@@ -199,6 +199,7 @@ public class ServerPacketsOpcodes
 		addPacketOpcode(SM_VERSION_CHECK.class, 0xFC, idSet);// 1.9
 		addPacketOpcode(SM_RECONNECT_KEY.class, 0xFD, idSet);// 1.9
 		addPacketOpcode(SM_STATS_INFO.class, 0xFF, idSet);// 1.9
+		addPacketOpcode(SM_QUESTIONNAIRE.class, 0xBD, idSet); // 1.9
 		addPacketOpcode(SM_CUSTOM_PACKET.class, 99999, idSet); // fake packet
 
 		// Unrecognized Opcodes from 1.5.4:
