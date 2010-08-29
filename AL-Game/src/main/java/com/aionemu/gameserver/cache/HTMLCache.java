@@ -65,7 +65,12 @@ public final class HTMLCache
 		"file", "steps", "step", "visible", 
 		"notifies", "notify", "progress", 
 		"pos", "fontsize", "showframe", "time",
-		"Act" 
+		"Act", "level", "question", "input", 
+		"item_cnt", "order_num", "questions",
+		"race", "select", "item_id", "title", 
+		"poll_introduction", "poll", "main_class", 
+		"start_date", "end_date", "servers", 
+		"world_id", "poll_title", "br"
 	};
 
 	private static final class SingletonHolder
@@ -237,7 +242,7 @@ public final class HTMLCache
 				end++;
 
 				String tag = html.substring(begin + 1, end - 1).toLowerCase().replaceAll("/", "");
-				if(tag.contains("!--"))
+				if(tag.contains("!--") || tag.contains("![cdata["))
 					continue outer;
 
 				for(String tag2 : VALID_TAGS)
