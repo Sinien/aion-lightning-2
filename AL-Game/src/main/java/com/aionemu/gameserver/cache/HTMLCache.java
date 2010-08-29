@@ -26,10 +26,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map.Entry;
-import java.util.Set;
 
 import javolution.util.FastMap;
 
@@ -56,22 +54,6 @@ public final class HTMLCache
 	};
 
 	private static final File		HTML_ROOT		= new File(HTMLConfig.HTML_ROOT);
-
-	private static final String[]	VALID_TAGS		= { 
-		"html", "body", "color", "p",
-		"href", "b", "name", "font",
-		"font_xml", "Contents", "HtmlPage",
-		"HtmlPages", "cdata", "Selects", "Voice", 
-		"file", "steps", "step", "visible", 
-		"notifies", "notify", "progress", 
-		"pos", "fontsize", "showframe", "time",
-		"Act", "level", "question", "input", 
-		"item_cnt", "order_num", "questions",
-		"race", "select", "item_id", "title", 
-		"poll_introduction", "poll", "main_class", 
-		"start_date", "end_date", "servers", 
-		"world_id", "poll_title", "br"
-	};
 
 	private static final class SingletonHolder
 	{
@@ -178,17 +160,6 @@ public final class HTMLCache
 			log.info(String.valueOf(this));
 		}
 
-		if(cacheFile.exists())
-		{
-			log.info("Cache[HTML]: Validation skipped!");
-		}
-		else
-		{
-			log.info("Cache[HTML]: Validating htmls... OK.");
-
-			validate();
-		}
-
 		if(!cacheFile.exists())
 		{
 			log.info("Cache[HTML]: Creating cache file... OK.");
@@ -214,51 +185,6 @@ public final class HTMLCache
 	private File getCacheFile()
 	{
 		return new File(HTMLConfig.HTML_CACHE_FILE);
-	}
-
-	private void validate()
-	{
-		final Set<String> set = new HashSet<String>();
-
-		for(Entry<String, String> entry : cache.entrySet())
-		{
-			final String filename = entry.getKey();
-			final String html = entry.getValue();
-
-			outer: for(int begin = 0; (begin = html.indexOf("<", begin)) != -1; begin++)
-			{
-				int end;
-
-				for(end = begin; end < html.length(); end++)
-				{
-					if(html.charAt(end) == '>' || html.charAt(end) == ' ')
-						break;
-
-					// some special quest-replaced tag
-					if(end == begin + 1 && html.charAt(end) == '?')
-						continue outer;
-				}
-
-				end++;
-
-				String tag = html.substring(begin + 1, end - 1).toLowerCase().replaceAll("/", "");
-				if(tag.contains("!--") || tag.contains("![cdata["))
-					continue outer;
-
-				for(String tag2 : VALID_TAGS)
-					if(tag.equals(tag2))
-						continue outer;
-
-				set.add(filename + ": '" + tag + "'");
-			}
-		}
-
-		if(!set.isEmpty())
-		{
-			log.info("Invalid tags used: " + set.size());
-			for(String tag : set)
-				log.info(tag);
-		}
 	}
 
 	private static final String[]	TAGS_TO_COMPACT;
