@@ -36,8 +36,11 @@ import javolution.util.FastMap;
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 
+import com.aionemu.gameserver.configs.main.HTMLConfig;
+
 /**
  * @authors Layane, nbali, savormix, hex1r0, lord_rex
+ * 
  */
 public final class HTMLCache
 {
@@ -52,16 +55,18 @@ public final class HTMLCache
 			}
 	};
 
-	private static final File		HTML_ROOT	= new File("./data/static_data/HTML/");
+	private static final File		HTML_ROOT		= new File(HTMLConfig.HTML_ROOT);
 
-	private static final String		HTML_CACHE_FILE	= "./html.cache";
-	
-
-	private static final String		HTML_ENCODING	= "UTF-8";
-
-	private static final String[]	VALID_TAGS		= { "html", "body", "color", "p", "href", "b", "name", "font",
-		"font_xml", "Contents", "HtmlPage", "HtmlPages", "cdata", "Selects", "Voice", "file", "steps", "step",
-		"visible", "notifies", "notify", "progress", "pos", "fontsize", "showframe", "time", "Act" };
+	private static final String[]	VALID_TAGS		= { 
+		"html", "body", "color", "p",
+		"href", "b", "name", "font",
+		"font_xml", "Contents", "HtmlPage",
+		"HtmlPages", "cdata", "Selects", "Voice", 
+		"file", "steps", "step", "visible", 
+		"notifies", "notify", "progress", 
+		"pos", "fontsize", "showframe", "time",
+		"Act" 
+	};
 
 	private static final class SingletonHolder
 	{
@@ -203,7 +208,7 @@ public final class HTMLCache
 
 	private File getCacheFile()
 	{
-		return new File(HTML_ROOT, HTML_CACHE_FILE);
+		return new File(HTMLConfig.HTML_CACHE_FILE);
 	}
 
 	private void validate()
@@ -350,7 +355,7 @@ public final class HTMLCache
 				byte[] raw = new byte[bis.available()];
 				bis.read(raw);
 
-				String content = new String(raw, HTML_ENCODING);
+				String content = new String(raw, HTMLConfig.HTML_ENCODING);
 				String relpath = getRelativePath(HTML_ROOT, file);
 
 				size += content.length();
@@ -376,20 +381,6 @@ public final class HTMLCache
 		}
 
 		return null;
-	}
-
-	public String getHTMLForce(String path)
-	{
-		String content = getHTML(path);
-
-		if(content == null)
-		{
-			content = "<html><body>My text is missing:<br>" + path + "</body></html>";
-
-			log.warn("Cache[HTML]: Missing HTML page: " + path);
-		}
-
-		return content;
 	}
 
 	public String getHTML(String path)

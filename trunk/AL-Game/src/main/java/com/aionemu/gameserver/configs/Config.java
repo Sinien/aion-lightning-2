@@ -31,6 +31,7 @@ import com.aionemu.gameserver.configs.main.EnchantsConfig;
 import com.aionemu.gameserver.configs.main.FallDamageConfig;
 import com.aionemu.gameserver.configs.main.GSConfig;
 import com.aionemu.gameserver.configs.main.GroupConfig;
+import com.aionemu.gameserver.configs.main.HTMLConfig;
 import com.aionemu.gameserver.configs.main.LegionConfig;
 import com.aionemu.gameserver.configs.main.NpcMovementConfig;
 import com.aionemu.gameserver.configs.main.PricesConfig;
@@ -85,6 +86,7 @@ public class Config
 			ConfigurableProcessor.process(PricesConfig.class, main);
 			ConfigurableProcessor.process(SiegeConfig.class, main);
 			ConfigurableProcessor.process(ThreadConfig.class, main);
+			ConfigurableProcessor.process(HTMLConfig.class, main);
 
 			// Network
 			AEInfos.printSection("Network");

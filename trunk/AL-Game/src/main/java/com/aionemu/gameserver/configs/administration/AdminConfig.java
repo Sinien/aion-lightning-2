@@ -206,4 +206,6 @@ public class AdminConfig
 	@Property(key = "administration.command.zone", defaultValue = "3")
 	public static int	COMMAND_ZONE;
 
+	@Property(key = "administration.command.html", defaultValue = "3")
+	public static int	COMMAND_HTML;
 }
