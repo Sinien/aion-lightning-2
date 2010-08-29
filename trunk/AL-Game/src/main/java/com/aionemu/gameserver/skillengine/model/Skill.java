@@ -28,6 +28,7 @@ import com.aionemu.gameserver.model.gameobjects.stats.StatEnum;
 import com.aionemu.gameserver.model.templates.item.ItemTemplate;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_CASTSPELL;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_CASTSPELL_END;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
 import com.aionemu.gameserver.restrictions.RestrictionsManager;
 import com.aionemu.gameserver.skillengine.SkillEngine;
 import com.aionemu.gameserver.skillengine.action.Action;
@@ -39,6 +40,7 @@ import com.aionemu.gameserver.skillengine.properties.Properties;
 import com.aionemu.gameserver.skillengine.properties.Property;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
+import com.aionemu.gameserver.utils.MathUtil;
 
 /**
  * @author ATracer
@@ -72,6 +74,8 @@ public class Skill
 	private float z;
 	
 	private int changeMpConsumptionValue;
+	
+	private int firstTargetRange;
 	
 	/**
 	 * Duration that depends on BOOST_CASTING_TIME
@@ -261,6 +265,18 @@ public class Skill
 		if(!effector.isCasting())
 			return;
 
+		// Check if target is out of skill range
+		if (!checkEndCast())
+		{
+			if (effector instanceof Player)
+			{
+				Player player = (Player)effector;
+				player.getController().cancelCurrentSkill();
+				PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.STR_ATTACK_TOO_FAR_FROM_TARGET());
+				return;
+			}
+		}
+		
 		//stop casting must be before preUsageCheck()
 		effector.setCasting(null);
 		
@@ -452,6 +468,29 @@ public class Skill
 	public int getChangeMpConsumption()
 	{
 		return changeMpConsumptionValue;
+	}
+	
+	/**
+	 * @return false if target is not in skill range anymore
+	 */
+	private boolean checkEndCast()
+	{
+		if (firstTargetRange == 0)
+			return true;
+		
+		if (effector == firstTarget)
+			return true;
+		if(!(MathUtil.isIn3dRange(effector, firstTarget, firstTargetRange + 4)))
+			return false;
+		return true;
+	}
+	
+	/**
+	 * @param value is the firstTargetRange value to set
+	 */
+	public void setFirstTargetRange(int value)
+	{
+		firstTargetRange = value;
 	}
 	
 	/**

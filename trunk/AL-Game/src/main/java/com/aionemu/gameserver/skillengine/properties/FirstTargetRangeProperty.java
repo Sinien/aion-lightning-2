@@ -60,6 +60,7 @@ public class FirstTargetRangeProperty extends Property
 		if (firstTarget.getPosition().getMapId() == 0)
 			log.warn("FirstTarget has mapId of 0. (" + firstTarget.getName() + ")");
 		
+		skill.setFirstTargetRange(value);
 		//here value +4 till better move controller developed
 		if(MathUtil.isIn3dRange(effector, firstTarget, value + 4))
 		{
