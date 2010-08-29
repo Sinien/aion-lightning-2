@@ -104,16 +104,16 @@ public final class HTMLCache
 
 		if(deleteCacheFile && cacheFile.exists())
 		{
-			log.info("Cache[HTML]: Deleting cache file...");
+			log.info("Cache[HTML]: Deleting cache file... OK.");
 
 			cacheFile.delete();
 		}
 
-		log.info("Cache[HTML]: Caching started...");
+		log.info("Cache[HTML]: Caching started... OK.");
 
 		if(cacheFile.exists())
 		{
-			log.info("Cache[HTML]: Using cache file...");
+			log.info("Cache[HTML]: Using cache file... OK.");
 
 			ObjectInputStream ois = null;
 			try
@@ -153,7 +153,7 @@ public final class HTMLCache
 		}
 		else
 		{
-			log.info("Cache[HTML]: Compacting htmls...");
+			log.info("Cache[HTML]: Compacting htmls... OK.");
 
 			final StringBuilder sb = new StringBuilder(8192);
 
@@ -184,14 +184,14 @@ public final class HTMLCache
 		}
 		else
 		{
-			log.info("Cache[HTML]: Validating htmls...");
+			log.info("Cache[HTML]: Validating htmls... OK.");
 
 			validate();
 		}
 
 		if(!cacheFile.exists())
 		{
-			log.info("Cache[HTML]: Creating cache file...");
+			log.info("Cache[HTML]: Creating cache file... OK.");
 
 			ObjectOutputStream oos = null;
 			try
