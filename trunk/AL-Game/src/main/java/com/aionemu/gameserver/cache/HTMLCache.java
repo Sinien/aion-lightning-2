@@ -51,7 +51,7 @@ public final class HTMLCache
 			@Override
 			public boolean accept(File file)
 			{
-				return file.isDirectory() || file.getName().endsWith(".html");
+				return file.isDirectory() || file.getName().endsWith(".xhtml");
 			}
 	};
 
