@@ -28,6 +28,7 @@ import com.aionemu.commons.network.NioServer;
 import com.aionemu.commons.network.ServerCfg;
 import com.aionemu.commons.services.LoggingService;
 import com.aionemu.commons.utils.AEInfos;
+import com.aionemu.gameserver.cache.HTMLCache;
 import com.aionemu.gameserver.configs.Config;
 import com.aionemu.gameserver.configs.main.GSConfig;
 import com.aionemu.gameserver.configs.main.OptionsConfig;
@@ -183,6 +184,9 @@ public class GameServer
 		
 		AEInfos.printSection("ChatHandlers");
 		ChatHandlers.getInstance();
+		
+		AEInfos.printSection("HTMLs");
+		HTMLCache.getInstance();
 
 		AEInfos.printSection("System");
 		VersionningService.printFullVersionInfo();

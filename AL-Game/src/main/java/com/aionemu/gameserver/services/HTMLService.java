@@ -40,7 +40,7 @@ public class HTMLService
 			sendData(ply, messageId, html);
 	}
 
-	public static void pushHTML(Player player, String html)
+	public static void showHTML(Player player, String html)
 	{
 		sendData(player, IDFactory.getInstance().nextId(), html);
 	}
