@@ -27,22 +27,65 @@
 		</locations>
 	</teleporter_template>
 	<!-- Pandaemonium City Teleports -->
-	<teleporter_template npc_id="730018" name="DC1_SPOT_Street" teleportId="202" type="REGULAR">
-		<locations>
-			<telelocation loc_id="33" price="200"/>
-			<telelocation loc_id="106" price="800"/>
-		</locations>
-	</teleporter_template>
 	<teleporter_template npc_id="730017" name="DC1_SPOT_Bridge" teleportId="201" type="REGULAR">
 		<locations>
 			<telelocation loc_id="34" price="200"/>
-			<telelocation loc_id="106" price="800"/>
+			<telelocation loc_id="106" price="1000"/>
+		</locations>
+	</teleporter_template>
+	<teleporter_template npc_id="730018" name="DC1_SPOT_Street" teleportId="202" type="REGULAR">
+		<locations>
+			<telelocation loc_id="33" price="200"/>
+			<telelocation loc_id="106" price="1000"/>
 		</locations>
 	</teleporter_template>
 	<teleporter_template npc_id="730267" name="DC1_SPOT_Westside" teleportId="214" type="REGULAR">
 		<locations>
 			<telelocation loc_id="33" price="1000"/>
 			<telelocation loc_id="34" price="800"/>
+		</locations>
+	</teleporter_template>
+	<!-- Pandaemonium - Marchutan Sanctuary Teleports
+	<teleporter_template npc_id="730268" name="DC1_Airport_ZONE_Entrance" teleportId="58" type="REGULAR">
+		<locations>
+			<telelocation loc_id="110" price="0"/>
+		</locations>
+	</teleporter_template> -->
+	<!-- Marchutan Sanctuary - Pandaemonium Teleports
+	<teleporter_template npc_id="730269" name="DC2_Airport_ZONE_Entrance" teleportId="59" type="REGULAR">
+		<locations>
+			<telelocation loc_id="109" price="0"/>
+		</locations>
+	</teleporter_template> -->
+	<!-- Pandaemonium - Gelkmaros Teleports
+	<teleporter_template npc_id="730219" name="DC1_DF4_TELEPORT" teleportId="56" type="REGULAR">
+		<locations>
+			<telelocation loc_id="98" price="9300"/>
+		</locations>
+	</teleporter_template> -->
+	<!-- Gelkmaros - Pandaemonium Teleports
+	<teleporter_template npc_id="730221" name="DF4_DC1_TELEPORT" teleportId="57" type="REGULAR">
+		<locations>
+			<telelocation loc_id="97" price="9300"/>
+		</locations>
+	</teleporter_template> -->
+	<!-- Gelkmaros Fortress-->
+	<teleporter_template npc_id="799201" name="DF4_SUB_OP" teleportId="215" type="FLIGHT">
+		<locations>
+			<telelocation loc_id="103" teleportid="102001" price="2500"/>
+			<telelocation loc_id="104" teleportid="96001" price="2100"/>
+		</locations>
+	</teleporter_template>
+	<teleporter_template npc_id="799260" name="DF4_SUB_Town" teleportId="216" type="REGULAR">
+		<locations>
+			<telelocation loc_id="102" teleportid="103001" price="2500"/>
+			<telelocation loc_id="93" price="11600"/>
+			<telelocation loc_id="94" price="14200"/>
+		</locations>
+	</teleporter_template>
+	<teleporter_template npc_id="799370" name="DF4_SUB_B6spot" teleportId="217" type="FLIGHT">
+		<locations>
+			<telelocation loc_id="102" teleportid="97001" price="2100"/>
 		</locations>
 	</teleporter_template>
 	<!-- Ishalgen -->
@@ -74,30 +117,30 @@
 	</teleporter_template>
 	<teleporter_template npc_id="203561" name="Lenat" teleportId="205" type="FLIGHT">
 		<locations>
-			<telelocation loc_id="32" teleportid="15001" price="500"/>
-			<telelocation loc_id="20" teleportid="13001" price="700"/>
+			<telelocation loc_id="20" teleportid="13001" price="560"/>
+			<telelocation loc_id="32" teleportid="15001" price="400"/>
 			<telelocation loc_id="121" teleportid="124001" price="400"/>
 			<telelocation loc_id="122" teleportid="126001" price="250"/>
 		</locations>
 	</teleporter_template>
+	<teleporter_template npc_id="205258" name="Petesson" teleportId="218" type="FLIGHT">
+		<locations>
+			<telelocation loc_id="19" teleportid="125001" price="400"/>
+		</locations>
+	</teleporter_template>
+	<teleporter_template npc_id="205259" name="Lemel" teleportId="219" type="FLIGHT">
+		<locations>
+			<telelocation loc_id="19" teleportid="127001" price="250"/>
+		</locations>
+	</teleporter_template>
 	<teleporter_template npc_id="203678" name="Latunin" teleportId="206" type="FLIGHT">
 		<locations>
-			<telelocation loc_id="19" teleportid="14001" price="700"/>
+			<telelocation loc_id="19" teleportid="2" price="700"/>
 		</locations>
 	</teleporter_template>
 	<teleporter_template npc_id="203683" name="Rubander" teleportId="207" type="FLIGHT">
 		<locations>
 			<telelocation loc_id="19" teleportid="16001" price="500"/>
-		</locations>
-	</teleporter_template>
-	<teleporter_template npc_id="798448" name="Petesson" teleportId="218" type="FLIGHT">
-		<locations>
-			<telelocation loc_id="19" teleportid="125001" price="400"/>
-		</locations>
-	</teleporter_template>
-	<teleporter_template npc_id="798449" name="Lemel" teleportId="219" type="FLIGHT">
-		<locations>
-			<telelocation loc_id="19" teleportid="127001" price="250"/>
 		</locations>
 	</teleporter_template>
 	<!-- Morheim -->
@@ -111,15 +154,35 @@
 	</teleporter_template>
 	<teleporter_template npc_id="204319" name="Yornduf" teleportId="208" type="FLIGHT">
 		<locations>
-			<telelocation loc_id="65" teleportid="25001" price="1600"/>
-			<telelocation loc_id="64" teleportid="24001" price="1000"/>
+			<telelocation loc_id="64" teleportid="24001" price="800"/>
+			<telelocation loc_id="65" teleportid="25001" price="1280"/>
 			<telelocation loc_id="123" teleportid="128001" price="880"/>
+		</locations>
+	</teleporter_template>
+	<teleporter_template npc_id="205260" name="Gruntvi" teleportId="220" type="FLIGHT">
+		<locations>
+			<telelocation loc_id="63" teleportid="129001" price="880"/>
+		</locations>
+	</teleporter_template>
+	<teleporter_template npc_id="205261" name="Severin" teleportId="221" type="FLIGHT">
+		<locations>
+			<telelocation loc_id="64" teleportid="131001" price="1000"/>
+		</locations>
+	</teleporter_template>
+	<teleporter_template npc_id="205262" name="Belhaven" teleportId="222" type="FLIGHT">
+		<locations>
+			<telelocation loc_id="65" teleportid="133001" price="1200"/>
+		</locations>
+	</teleporter_template>
+	<teleporter_template npc_id="205263" name="Olav" teleportId="223" type="FLIGHT">
+		<locations>
+			<telelocation loc_id="65" teleportid="135001" price="1200"/>
 		</locations>
 	</teleporter_template>
 	<teleporter_template npc_id="204334" name="Grander" teleportId="209" type="FLIGHT">
 		<locations>
-			<telelocation loc_id="63" teleportid="26001" price="1000"/>
-			<telelocation loc_id="65" teleportid="27001" price="1800"/>
+			<telelocation loc_id="63" teleportid="26001" price="800"/>
+			<telelocation loc_id="65" teleportid="27001" price="1440"/>
 			<telelocation loc_id="124" teleportid="130001" price="1000"/>
 		</locations>
 	</teleporter_template>
@@ -131,28 +194,7 @@
 			<telelocation loc_id="126" teleportid="134001" price="1200"/>
 		</locations>
 	</teleporter_template>
-	<teleporter_template npc_id="798450" name="Gruntvi" teleportId="220" type="FLIGHT">
-		<locations>
-			<telelocation loc_id="63" teleportid="129001" price="880"/>
-		</locations>
-	</teleporter_template>
-	<teleporter_template npc_id="798451" name="Severin" teleportId="221" type="FLIGHT">
-		<locations>
-			<telelocation loc_id="64" teleportid="131001" price="1000"/>
-		</locations>
-	</teleporter_template>
-	<teleporter_template npc_id="798452" name="Belhaven" teleportId="222" type="FLIGHT">
-		<locations>
-			<telelocation loc_id="65" teleportid="133001" price="1200"/>
-		</locations>
-	</teleporter_template>
-	<teleporter_template npc_id="798453" name="Olav" teleportId="223" type="FLIGHT">
-		<locations>
-			<telelocation loc_id="65" teleportid="135001" price="1200"/>
-		</locations>
-	</teleporter_template>
 	<!-- Beluslan -->
-	<!-- player spawn are not in front of teleporters, search and you will find teleporters -->
 	<teleporter_template npc_id="204724" name="Eda" teleportId="55" type="REGULAR">
 		<locations>
 			<telelocation loc_id="7" price="100"/>
@@ -163,9 +205,14 @@
 	</teleporter_template>
 	<teleporter_template npc_id="204718" name="Gylfi" teleportId="211" type="FLIGHT">
 		<locations>
-			<telelocation loc_id="79" teleportid="48001" price="1400"/>
-			<telelocation loc_id="80" teleportid="50001" price="1900"/>
+			<telelocation loc_id="79" teleportid="48001" price="1120"/>
+			<telelocation loc_id="80" teleportid="50001" price="1520"/>
 			<telelocation loc_id="129" teleportid="108001" price="700"/>
+		</locations>
+	</teleporter_template>
+	<teleporter_template npc_id="205266" name="Suomi" teleportId="226" type="FLIGHT">
+		<locations>
+			<telelocation loc_id="78" teleportid="109001" price="700"/>
 		</locations>
 	</teleporter_template>
 	<teleporter_template npc_id="204747" name="Kunbernan" teleportId="212" type="FLIGHT">
@@ -176,23 +223,18 @@
 	</teleporter_template>
 	<teleporter_template npc_id="204756" name="Boudica" teleportId="213" type="FLIGHT">
 		<locations>
-			<telelocation loc_id="78" teleportid="51001" price="1900"/>
-			<telelocation loc_id="79" teleportid="53001" price="2100"/>
+			<telelocation loc_id="78" teleportid="51001" price="1520"/>
+			<telelocation loc_id="79" teleportid="53001" price="1680"/>
 			<telelocation loc_id="130" teleportid="110001" price="1000"/>
 			<telelocation loc_id="131" teleportid="112001" price="1100"/>
 		</locations>
 	</teleporter_template>
-	<teleporter_template npc_id="798456" name="Suomi" teleportId="226" type="FLIGHT">
-		<locations>
-			<telelocation loc_id="78" teleportid="109001" price="700"/>
-		</locations>
-	</teleporter_template>
-	<teleporter_template npc_id="798457" name="Berta" teleportId="227" type="FLIGHT">
+	<teleporter_template npc_id="205267" name="Berta" teleportId="227" type="FLIGHT">
 		<locations>
 			<telelocation loc_id="80" teleportid="111001" price="1000"/>
 		</locations>
 	</teleporter_template>
-	<teleporter_template npc_id="798458" name="Konradin" teleportId="228" type="FLIGHT">
+	<teleporter_template npc_id="205268" name="Konradin" teleportId="228" type="FLIGHT">
 		<locations>
 			<telelocation loc_id="80" teleportid="113001" price="1100"/>
 		</locations>
@@ -214,14 +256,26 @@
 	</teleporter_template>
 	<teleporter_template npc_id="205145" name="Billeten" teleportId="610" type="FLIGHT">
 		<locations>
-			<telelocation loc_id="86" teleportid="66001" price="2300"/>
-			<telelocation loc_id="88" teleportid="67001" price="3300"/>
+			<telelocation loc_id="86" teleportid="66001" price="1840"/>
+			<telelocation loc_id="88" teleportid="67001" price="2640"/>
+			<telelocation loc_id="127" teleportid="106001" price="1800"/>
+			<telelocation loc_id="128" teleportid="104001" price="1800"/>
 		</locations>
 	</teleporter_template>
 	<teleporter_template npc_id="205174" name="Svan" teleportId="611" type="FLIGHT">
 		<locations>
 			<telelocation loc_id="86" teleportid="69001" price="2900"/>
 			<telelocation loc_id="87" teleportid="68001" price="3300"/>
+		</locations>
+	</teleporter_template>
+	<teleporter_template npc_id="205264" name="Ivar" teleportId="224" type="FLIGHT">
+		<locations>
+			<telelocation loc_id="87" teleportid="107001" price="1800"/>
+		</locations>
+	</teleporter_template>
+	<teleporter_template npc_id="205265" name="Juvik" teleportId="225" type="FLIGHT">
+		<locations>
+			<telelocation loc_id="87" teleportid="105001" price="1800"/>
 		</locations>
 	</teleporter_template>
 	<!-- ELYOS -->
@@ -256,19 +310,19 @@
 	<teleporter_template npc_id="730015" name="LC1_Airport_SPOT_Bank" teleportId="101" type="REGULAR">
 		<locations>
 			<telelocation loc_id="25" price="200"/>
-			<telelocation loc_id="105" price="800"/>
+			<telelocation loc_id="105" price="1000"/>
 		</locations>
 	</teleporter_template>
 	<teleporter_template npc_id="730016" name="LC1_Airport_SPOT_Library" teleportId="102" type="REGULAR">
 		<locations>
 			<telelocation loc_id="24" price="200"/>
-			<telelocation loc_id="105" price="800"/>
+			<telelocation loc_id="105" price="1000"/>
 		</locations>
 	</teleporter_template>
 	<teleporter_template npc_id="730264" name="LC1_Airport_SPOT_Dock" teleportId="115" type="REGULAR">
 		<locations>
-			<telelocation loc_id="25" price="1000"/>
-			<telelocation loc_id="24" price="800"/>
+			<telelocation loc_id="24" price="1000"/>
+			<telelocation loc_id="25" price="800"/>
 		</locations>
 	</teleporter_template>
 	<teleporter_template npc_id="203895" name="Lamid" teleportId="102" type="REGULAR">
@@ -305,12 +359,12 @@
 			<telelocation loc_id="14" teleportid="10001" price="700"/>
 		</locations>
 	</teleporter_template>
-	<teleporter_template npc_id="798438" name="Nestos" teleportId="119" type="FLIGHT">
+	<teleporter_template npc_id="205248" name="Nestos" teleportId="119" type="FLIGHT">
 		<locations>
 			<telelocation loc_id="14" teleportid="115001" price="239"/>
 		</locations>
 	</teleporter_template>
-	<teleporter_template npc_id="798439" name="Archemenes" teleportId="120" type="FLIGHT">
+	<teleporter_template npc_id="205249" name="Achemenes" teleportId="120" type="FLIGHT">
 		<locations>
 			<telelocation loc_id="14" teleportid="117001" price="683"/>
 		</locations>
@@ -318,46 +372,46 @@
 	<!-- Eltnen -->
 	<teleporter_template npc_id="203919" name="Onesimus" teleportId="4" type="REGULAR">
 		<locations>
-			<telelocation loc_id="2" price="1500"/>
-			<telelocation loc_id="4" price="1700"/>
-			<telelocation loc_id="6" price="3200"/>
-			<telelocation loc_id="81" price="2000"/>
+			<telelocation loc_id="2" price="750"/>
+			<telelocation loc_id="4" price="850"/>
+			<telelocation loc_id="6" price="1600"/>
+			<telelocation loc_id="81" price="1000"/>
 		</locations>
 	</teleporter_template>
 	<teleporter_template npc_id="203920" name="Naomi" teleportId="108" type="FLIGHT">
 		<locations>
-			<telelocation loc_id="22" teleportid="18001" price="1200"/>
-			<telelocation loc_id="23" teleportid="20001" price="1500"/>
-			<telelocation loc_id="113" teleportid="118001" price="1500"/>
+			<telelocation loc_id="22" teleportid="18001" price="480"/>
+			<telelocation loc_id="23" teleportid="20001" price="600"/>
+			<telelocation loc_id="113" teleportid="118001" price="300"/>
+		</locations>
+	</teleporter_template>
+	<teleporter_template npc_id="205250" name="Cyrus" teleportId="121" type="FLIGHT">
+		<locations>
+			<telelocation loc_id="21" teleportid="119001" price="300"/>
 		</locations>
 	</teleporter_template>
 	<teleporter_template npc_id="203986" name="Navilreas" teleportId="109" type="FLIGHT">
 		<locations>
-			<telelocation loc_id="21" teleportid="21001" price="1200"/>
-			<telelocation loc_id="23" teleportid="22001" price="1800"/>
-			<telelocation loc_id="114" teleportid="120001" price="1800"/>
+			<telelocation loc_id="21" teleportid="21001" price="480"/>
+			<telelocation loc_id="23" teleportid="22001" price="720"/>
+			<telelocation loc_id="114" teleportid="120001" price="400"/>
+		</locations>
+	</teleporter_template>
+	<teleporter_template npc_id="205251" name="Riu" teleportId="122" type="FLIGHT">
+		<locations>
+			<telelocation loc_id="22" teleportid="121001" price="400"/>
 		</locations>
 	</teleporter_template>
 	<teleporter_template npc_id="203962" name="Tareash" teleportId="110" type="FLIGHT">
 		<locations>
-			<telelocation loc_id="21" teleportid="19001" price="1500"/>
-			<telelocation loc_id="22" teleportid="23001" price="1800"/>
-			<telelocation loc_id="115" teleportid="122001" price="1800"/>
+			<telelocation loc_id="21" teleportid="19001" price="600"/>
+			<telelocation loc_id="22" teleportid="23001" price="720"/>
+			<telelocation loc_id="115" teleportid="122001" price="450"/>
 		</locations>
 	</teleporter_template>
-	<teleporter_template npc_id="798440" name="Cyrus" teleportId="121" type="FLIGHT">
+	<teleporter_template npc_id="205252" name="Orius" teleportId="123" type="FLIGHT">
 		<locations>
-			<telelocation loc_id="21" teleportid="119001" price="1500"/>
-		</locations>
-	</teleporter_template>
-	<teleporter_template npc_id="798441" name="Rius" teleportId="122" type="FLIGHT">
-		<locations>
-			<telelocation loc_id="22" teleportid="121001" price="1500"/>
-		</locations>
-	</teleporter_template>
-	<teleporter_template npc_id="798442" name="Orius" teleportId="123" type="FLIGHT">
-		<locations>
-			<telelocation loc_id="23" teleportid="123001" price="1500"/>
+			<telelocation loc_id="23" teleportid="123001" price="450"/>
 		</locations>
 	</teleporter_template>
 	<!-- Heiron -->
@@ -396,17 +450,17 @@
 			<telelocation loc_id="120" teleportid="144001" price="2800"/>
 		</locations>
 	</teleporter_template>
-	<teleporter_template npc_id="798445" name="Euphrosyne" teleportId="126" type="FLIGHT">
+	<teleporter_template npc_id="205255" name="Euphrosyne" teleportId="126" type="FLIGHT">
 		<locations>
 			<telelocation loc_id="28" teleportid="141001" price="2300"/>
 		</locations>
 	</teleporter_template>
-	<teleporter_template npc_id="798446" name="Nikipe" teleportId="127" type="FLIGHT">
+	<teleporter_template npc_id="205256" name="Nikipe" teleportId="127" type="FLIGHT">
 		<locations>
 			<telelocation loc_id="31" teleportid="143001" price="2300"/>
 		</locations>
 	</teleporter_template>
-	<teleporter_template npc_id="798447" name="Erdina" teleportId="128" type="FLIGHT">
+	<teleporter_template npc_id="205257" name="Erdina" teleportId="128" type="FLIGHT">
 		<locations>
 			<telelocation loc_id="31" teleportid="145001" price="2300"/>
 		</locations>
@@ -440,12 +494,12 @@
 			<telelocation loc_id="84" teleportid="62001" price="3300"/>
 		</locations>
 	</teleporter_template>
-	<teleporter_template npc_id="798443" name="Danais" teleportId="124" type="FLIGHT">
+	<teleporter_template npc_id="205253" name="Danais" teleportId="124" type="FLIGHT">
 		<locations>
 			<telelocation loc_id="84" teleportid="137001" price="3300"/>
 		</locations>
 	</teleporter_template>
-	<teleporter_template npc_id="798444" name="Idmene" teleportId="125" type="FLIGHT">
+	<teleporter_template npc_id="205254" name="Idmene" teleportId="125" type="FLIGHT">
 		<locations>
 			<telelocation loc_id="84" teleportid="139001" price="3300"/>
 		</locations>
@@ -456,8 +510,8 @@
 			<telelocation loc_id="36" price="2300"/>
 			<telelocation loc_id="37" price="3000"/>
 			<telelocation loc_id="39" price="3000"/>
-			<telelocation loc_id="40" price="4500"/>
-			<telelocation loc_id="42" price="1500"/>
+			<telelocation loc_id="40" price="1500"/>
+			<telelocation loc_id="42" price="4500"/>
 			<telelocation loc_id="44" price="4500"/>
 			<telelocation loc_id="45" price="5200"/>
 			<telelocation loc_id="46" price="6000"/>
@@ -493,11 +547,11 @@
 			<telelocation loc_id="54" price="3800"/>
 			<telelocation loc_id="55" price="3000"/>
 			<telelocation loc_id="56" price="3000"/>
-			<telelocation loc_id="57" price="6000"/>
-			<telelocation loc_id="58" price="6000"/>
-			<telelocation loc_id="59" price="5200"/>
 			<telelocation loc_id="60" price="4500"/>
 			<telelocation loc_id="62" price="7500"/>
+			<telelocation loc_id="75" price="6000"/>
+			<telelocation loc_id="76" price="6000"/>
+			<telelocation loc_id="77" price="5200"/>
 		</locations>
 	</teleporter_template>
 	<teleporter_template npc_id="278014" name="Mure" teleportId="515" type="FLIGHT">
