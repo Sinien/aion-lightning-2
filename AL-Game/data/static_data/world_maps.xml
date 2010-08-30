@@ -19,7 +19,7 @@
 	<map id="300010000" name="IDAbPro" death_level="0" water_level="16"/>
 	<map id="300020000" name="IDTest_Dungeon" death_level="0" water_level="16"/>
 	<map id="300030000" name="NochsanaTrainingCamp" instance="true" death_level="0" water_level="16" world_type="ABYSS"/>
-	<map id="300040000" name="DarkPoeta" instance="true" death_level="0" water_level="16"/>
+	<map id="300040000" name="DarkPoeta" instance="true" death_level="0" water_level="16" world_type="ABYSS"/>
 	<map id="300050000" name="AstreiaChamber" instance="true" death_level="0" water_level="16" world_type="ABYSS"/>
 	<map id="300060000" name="SulfurTreeNest" instance="true" death_level="0" water_level="16" world_type="ABYSS"/>
 	<map id="300070000" name="ChamberOfRoah" instance="true" death_level="0" water_level="16" world_type="ABYSS"/>
@@ -30,6 +30,14 @@
 	<map id="300120000" name="KysisChamber" instance="true" death_level="0" water_level="16" world_type="ABYSS"/>
 	<map id="300130000" name="MirenChamber" instance="true" death_level="0" water_level="16" world_type="ABYSS"/>
 	<map id="300140000" name="KrotanChamber" instance="true" death_level="0" water_level="16" world_type="ABYSS"/>
+	<map id="300150000" name="IDTemple_Up" instance="true" death_level="0" water_level="16"/>
+	<map id="300160000" name="IDTemple_Low" instance="true" death_level="0" water_level="16"/>
+	<map id="300170000" name="IDCatacombs" instance="true" death_level="0" water_level="16" world_type="ABYSS"/>
+	<map id="300190000" name="IDElim" instance="true" death_level="0" water_level="16"/>
+	<map id="300200000" name="IDNovice" instance="true" death_level="0" water_level="16"/>
+	<map id="300210000" name="IDDreadgion_02" instance="true" death_level="0" water_level="16" world_type="ABYSS"/>
+	<map id="300220000" name="IDAbRe_Core" instance="true" death_level="0" water_level="16" world_type="ABYSS"/>
+	<map id="300230000" name="IDCromede" death_level="0" water_level="16"/>
 	<map id="310010000" name="IDAbProL1" instance="true" death_level="0" water_level="16"/>
 	<map id="310020000" name="IDAbProL2" instance="true" death_level="0" water_level="16"/>
 	<map id="310030000" name="IDAbGateL1" instance="true" death_level="0" water_level="16"/>
@@ -59,7 +67,9 @@
 	<map id="400010000" name="Ab1" death_level="500" water_level="16" world_type="ABYSS"/>
 	<map id="510010000" prison="true" name="LF_Prison" death_level="0" water_level="16"/>
 	<map id="520010000" prison="true" name="DF_Prison" death_level="0" water_level="16"/>
+	<map id="600010000" name="Silentera" death_level="0" water_level="16" world_type="ABYSS"/>
 	<map id="900020000" twin_count="10" name="Test_Basic" death_level="0" water_level="16"/>
 	<map id="900030000" twin_count="5" name="Test_Server" death_level="0" water_level="1"/>
 	<map id="900100000" name="Test_GiantMonster" death_level="0" water_level="16"/>
+	<map id="900110000" name="Housing_barrack" death_level="0" water_level="16"/>
 </world_maps>
