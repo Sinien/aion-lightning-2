@@ -27,6 +27,7 @@ import com.aionemu.gameserver.world.WorldMapType;
  * Admin moveto command
  * 
  * @author Dwarfpicker
+ * @author 2.0 Magenik
  */
 
 public class GoTo extends AdminCommand
@@ -305,7 +306,6 @@ public class GoTo extends AdminCommand
 			TeleportService.teleportTo(admin, 300100000, 237, 505, 949, 0);
 			PacketSendUtility.sendMessage(admin, "Teleported to Steel Rake.");
 		}
-		/*
 		else if(params[0].toLowerCase().equals("inggison"))
 		{
 			TeleportService.teleportTo(admin, 210050000, 1335, 276, 590, 0);
@@ -313,10 +313,9 @@ public class GoTo extends AdminCommand
 		}
 		else if(params[0].toLowerCase().equals("gelkmaros"))
 		{
-			TeleportService.teleportTo(admin, 220070000, 795, 1684, 362, 0);
+			TeleportService.teleportTo(admin, 220070000, 1764, 2911, 555, 16);	//retail Player_Spawn 1764.28 2911.25 554.7982 16
 			PacketSendUtility.sendMessage(admin, "Teleported to Gelkmaros.");
 		}
-		*/
 		else if(params[0].toLowerCase().equals("kaisinel"))
 		{
 			TeleportService.teleportTo(admin, 110020000, 2155, 1567, 1205, 0);
@@ -327,6 +326,67 @@ public class GoTo extends AdminCommand
 			TeleportService.teleportTo(admin, 120020000, 1557, 1429, 266, 0);
 			PacketSendUtility.sendMessage(admin, "Teleported to Marchutan.");
 		}
+		
+		else if(params[0].toLowerCase().equals("templeup"))
+		{
+			TeleportService.teleportTo(admin, 300150000, 562, 190, 136, 0);
+			PacketSendUtility.sendMessage(admin, "Teleported to Temple Up.");
+		}
+		
+		else if(params[0].toLowerCase().equals("silentera_eastgate"))
+		{
+			TeleportService.teleportTo(admin, 600010000, 480, 1094, 335, 21); //retail Player_Spawn 480.0 1094.0 334.65295 21
+			PacketSendUtility.sendMessage(admin, "Teleported to Silentera Eastgate.");
+		}
+		
+		else if(params[0].toLowerCase().equals("silentera_westgate"))
+		{
+			TeleportService.teleportTo(admin, 600010000, 480, 449, 329, 21);
+			PacketSendUtility.sendMessage(admin, "Teleported to Silentera Westgate.");
+		}
+		
+		else if(params[0].toLowerCase().equals("catacombs"))
+		{
+			TeleportService.teleportTo(admin, 300170000, 1298, 288, 247, 0);
+			PacketSendUtility.sendMessage(admin, "Teleported to Catacombs.");
+		}
+		
+		else if(params[0].toLowerCase().equals("elim"))
+		{
+			TeleportService.teleportTo(admin, 300190000, 202, 215, 1099, 0);
+			PacketSendUtility.sendMessage(admin, "Teleported to Elim.");
+		}
+		
+		else if(params[0].toLowerCase().equals("novice"))
+		{
+			TeleportService.teleportTo(admin, 300200000, 180, 20, 144, 0);
+			PacketSendUtility.sendMessage(admin, "Teleported to Novice.");
+		}
+		
+		else if(params[0].toLowerCase().equals("dredgion02_ely"))
+		{
+			TeleportService.teleportTo(admin, 300210000, 559, 186, 432, 0);
+			PacketSendUtility.sendMessage(admin, "Teleported to Dredgion 02 Elyos Side.");
+		}
+		
+		else if(params[0].toLowerCase().equals("dredgion02_asmo"))
+		{
+			TeleportService.teleportTo(admin, 300210000, 410, 186, 432, 0);
+			PacketSendUtility.sendMessage(admin, "Teleported to Dredgion 02 Asmo Side.");
+		}
+		
+		else if(params[0].toLowerCase().equals("core"))
+		{
+			TeleportService.teleportTo(admin, 300220000, 702, 154, 453, 0);
+			PacketSendUtility.sendMessage(admin, "Teleported to Abre Core.");
+		}
+		
+		else if(params[0].toLowerCase().equals("cromede"))
+		{
+			TeleportService.teleportTo(admin, 300230000, 591, 640, 209, 0);
+			PacketSendUtility.sendMessage(admin, "Teleported to Cromede.");
+		}
+		
 		else 
 			PacketSendUtility.sendMessage(admin, "Target location was not found!");
 	}
