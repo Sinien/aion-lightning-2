@@ -38,7 +38,7 @@ public class NpcWalkExporter {
 	}
 
 	public void parse() {
-		String filename = "npcspawns_" + sessionName + ".xml";
+		String filename = "npcwalker_" + sessionName + ".xml";
 		Long start = System.currentTimeMillis();
 
 		try {
@@ -85,8 +85,8 @@ public class NpcWalkExporter {
 							generalized.add(lst);
 					}
 				}
-				
-				//TODO: Write XML
+
+				// TODO: Write XML
 			}
 
 			Transformer serializer = TransformerFactory.newInstance().newTransformer();
