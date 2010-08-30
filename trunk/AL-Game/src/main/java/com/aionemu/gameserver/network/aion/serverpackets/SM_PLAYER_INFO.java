@@ -80,6 +80,7 @@ public class SM_PLAYER_INFO extends AionServerPacket
 		 */
 		writeD(buf, player.getTransformedModelId() == 0 ? pcd.getTemplateId() : player.getTransformedModelId());
 
+		writeC(buf, 0x00); // new 2.0 Packet --- probably pet info?
 		writeC(buf, enemy ? 0x00 : 0x26);
 
 		writeC(buf, raceId); // race
