@@ -86,4 +86,11 @@ public class CustomConfig
 	@Property(key = "pvp.maxkills", defaultValue = "5")
 	public static int		MAX_DAILY_PVP_KILLS;
 
+	/**
+	 * Enable the HTML Welcome Message Window on Player Login
+	 */
+
+	@Property(key = "enable.html.welcome", defaultValue = "false")
+	public static boolean	ENABLE_HTML_WELCOME;
+
 }

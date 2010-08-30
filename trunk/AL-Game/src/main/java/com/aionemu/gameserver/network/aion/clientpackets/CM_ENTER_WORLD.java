@@ -18,6 +18,8 @@ package com.aionemu.gameserver.network.aion.clientpackets;
 
 import java.util.List;
 
+import com.aionemu.gameserver.cache.HTMLCache;
+import com.aionemu.gameserver.configs.main.CustomConfig;
 import com.aionemu.gameserver.configs.main.GSConfig;
 import com.aionemu.gameserver.model.account.Account;
 import com.aionemu.gameserver.model.account.PlayerAccountData;
@@ -52,6 +54,7 @@ import com.aionemu.gameserver.services.BrokerService;
 import com.aionemu.gameserver.services.ChatService;
 import com.aionemu.gameserver.services.ClassChangeService;
 import com.aionemu.gameserver.services.GroupService;
+import com.aionemu.gameserver.services.HTMLService;
 import com.aionemu.gameserver.services.KiskService;
 import com.aionemu.gameserver.services.LegionService;
 import com.aionemu.gameserver.services.MailService;
@@ -252,6 +255,9 @@ public class CM_ENTER_WORLD extends AionClientPacket
 			 * Trigger restore services on login.
 			 */
 			player.getLifeStats().updateCurrentStats();
+			
+			if(CustomConfig.ENABLE_HTML_WELCOME)
+				HTMLService.showHTML(player, HTMLCache.getInstance().getHTML("welcome.xhtml"));
 		}
 		else
 		{
