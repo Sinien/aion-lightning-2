@@ -43,7 +43,7 @@ import com.sun.org.apache.xpath.internal.XPathAPI;
 /**
  * Exports the seen Gathering in a Aion-Lightning compatible XML file
  * 
- * @author Magenik (based on lhw NpcSpawbExporter)
+ * @author Magenik (based on lhw NpcSpawnExporter)
  * 
  */
 public class NpcGatherExporter {

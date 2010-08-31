@@ -68,6 +68,11 @@
 				<include name="*.*"/>
 			</fileset>
 		</copy>
+		<copy todir="${build.dist}/data">
+			<fileset dir="${src}/../dist/data">
+				<include name="*.*"/>
+			</fileset>
+		</copy>
 		<zip destfile="${build}/al_packetsamurai-dist.zip" basedir="${build.dist}"/>
 	</target>
 	<target name="clean" description="Remove the output directories">
