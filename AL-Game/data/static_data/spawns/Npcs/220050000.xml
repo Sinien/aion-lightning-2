@@ -43,8 +43,8 @@
 		<object x="701.35" y="2454.81" z="101.65936" h="27"/>
 	</spawn>
 	<!-- Adma Stronghold Entrance (Object Normal lvl:1)-->
-	<spawn map="220050000" npcid="730165" pool="1" interval="295">
-		<object x="2345.68" y="160.37" z="246.45" h="60"/>
+	<spawn interval="295" map="220050000" npcid="730165" pool="1">
+		<object h="60" staticid="445" x="2345.6782" y="160.3676" z="246.44734"/>
 	</spawn>
 	<!-- Adma Stronghold Secret Passage (Object Normal lvl:1)-->
 	<spawn map="220050000" npcid="730151" pool="1" interval="295">
