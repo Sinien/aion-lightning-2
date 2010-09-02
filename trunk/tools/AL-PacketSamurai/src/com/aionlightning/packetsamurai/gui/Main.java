@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.nio.BufferUnderflowException;
 import java.util.Set;
 
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
@@ -67,6 +68,7 @@ public class Main implements IUserInterface {
 	private JMenuItem _itemSearchNext;
 	private JMenuItem _itemGoto;
 	private JMenuItem _itemFilter;
+	private JCheckBoxMenuItem _itemRecording;
 
 	private ProtocolEditor _pEditor;
 
@@ -110,7 +112,7 @@ public class Main implements IUserInterface {
 		_itemCloseAll.setEnabled(false);
 		_itemCloseAll.setActionCommand("CloseAll");
 		_itemCloseAll.addActionListener(_menuListener);
-
+		
 		JMenuItem itemExit = new JMenuItem("Exit");
 		itemExit.setActionCommand("Exit");
 		itemExit.addActionListener(_menuListener);
@@ -164,6 +166,10 @@ public class Main implements IUserInterface {
 		
 		
 		// Tools
+		_itemRecording = new JCheckBoxMenuItem("Record Stream");
+		_itemRecording.setState(true);
+		_toolsMenu.add(_itemRecording);
+		
 		JMenuItem itemSelectInterface = new JMenuItem("Select Interface");
 		itemSelectInterface.setActionCommand("SelectInterface");
 		itemSelectInterface.addActionListener(_menuListener);
@@ -547,5 +553,8 @@ public class Main implements IUserInterface {
 		if (getViewerTab().getComponentCount() == 0) {
 			this.toggleSessionItems(false);
 		}
+	}
+	public boolean isRecording() {
+		return _itemRecording.getState();
 	}
 }
