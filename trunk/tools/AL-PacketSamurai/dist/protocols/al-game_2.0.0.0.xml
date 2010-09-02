@@ -1130,7 +1130,15 @@
 			<part name="playerObjId" type="d"/>
 			<part name="rankId" type="d"/>
 		</packet>
-		<packet id="0xa6" name="SM_ABYSS_PLAYERS_RANK_LIST"/>
+		<packet id="0xa6" name="SM_ABYSS_PLAYERS_RANK_LIST">
+			<part name="raceRank(0=ely,1=asmo)" type="c"/>
+			<part name="0x00" type="c"/>
+			<part name="0x00" type="c"/>
+			<part name="0x00" type="c"/>
+			<part name="0x20247E4C01" type="f"/>
+			<part name="0x01" type="d"/>
+			<part name="0x01" type="d"/>
+		</packet>
 		<packet id="0xa7" name="SM_MAY_LOGIN_INTO_GAME">
 			<part name="result" type="d"/>
 		</packet>
