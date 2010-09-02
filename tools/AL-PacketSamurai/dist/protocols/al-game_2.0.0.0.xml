@@ -1367,7 +1367,7 @@
 				<part name="objectId" type="d"/>
 				<part name="characterName" type="Ss" size="44"/>
 				<part name="gender(0=female,1=male)" type="d"/>
-				<part name="race(0=asmo,1=elys)" type="d"/>
+				<part name="race(0=ely,1=asmo)" type="d"/>
 				<part name="classId" type="d"/>
 				<part name="voice" type="d"/>
 				<part name="skinRGB" type="d">
@@ -1553,7 +1553,7 @@
 			<part name="objectId" type="d"/>
 			<part name="characterName" type="Ss"/>
 			<part name="gender(0=female,1=male)" type="d"/>
-			<part name="race(0=asmo,1=elys)" type="d"/>
+			<part name="race(0=ely,1=asmo)" type="d"/>
 			<part name="classId" type="d"/>
 			<part name="voice" type="d"/>
 			<part name="skinRGB" type="d">
@@ -2042,7 +2042,7 @@
 			<part name="account" type="S"/>
 			<part name="nick" type="Ss"/>
 			<part name="sex(0=male,1=female)" type="d"/>
-			<part name="race(0=asmo,1=elys)" type="d"/>
+			<part name="race(0=ely,1=asmo)" type="d"/>
 			<part name="classId" type="d"/>
 			<part name="voice" type="d"/>
 			<part name="skinRGB" type="d">
@@ -2140,7 +2140,9 @@
 		</packet>
 		<packet id="0x24" name="CM_DISTRIBUTION_SETTINGS"/>
 		<packet id="0x25" name="CM_MAY_LOGIN_INTO_GAME"/>		
-		<packet id="0x27" name="CM_ABYSS_PLAYERS_RANK_LIST"/>
+		<packet id="0x27" name="CM_ABYSS_PLAYERS_RANK_LIST">
+			<part name="race(0=ely,1=asmo)" type="c"/>
+		</packet>
 		<packet id="0x28" name="CM_SHOW_BRAND"/>
 		<packet id="0x2a" name="CM_RECONNECT_AUTH"/>
 		<packet id="0x2f" name="CM_SHOW_MAP"/>
