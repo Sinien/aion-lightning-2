@@ -44,8 +44,8 @@ import com.aionlightning.packetsamurai.session.DataPacket;
 import com.aionlightning.packetsamurai.session.GameSessionTable;
 import com.aionlightning.packetsamurai.session.Session;
 import com.aionlightning.packetsamurai.utils.NpcGatherExporter;
+import com.aionlightning.packetsamurai.utils.NpcInfoExporter;
 import com.aionlightning.packetsamurai.utils.NpcSpawnExporter;
-import com.aionlightning.packetsamurai.utils.NpcTitleExporter;
 
 /**
  * @author Ulysses R. Ribeiro
@@ -159,8 +159,8 @@ public class Main implements IUserInterface {
 		exportGather.addActionListener(_menuListener);
 		_utilsMenu.add(exportGather);
 		
-		JMenuItem exportTitles = new JMenuItem("Export Npc Titles");
-		exportTitles.setActionCommand("ExportNpcTitles");
+		JMenuItem exportTitles = new JMenuItem("Export Npc Infos");
+		exportTitles.setActionCommand("ExportNpcInfo");
 		exportTitles.addActionListener(_menuListener);
 		_utilsMenu.add(exportTitles);
 		
@@ -347,7 +347,7 @@ public class Main implements IUserInterface {
 			if (pane != null) {
 				String sessionName = pane.getGameSessionViewer().getSession().getSessionName();
 				FastList<DataPacket> packets = pane.getGameSessionViewer().getSession().getPackets();
-				new NpcTitleExporter(packets, sessionName).parse();
+				new NpcInfoExporter(packets, sessionName).parse();
 			}
 		}
 	}
@@ -451,7 +451,7 @@ public class Main implements IUserInterface {
 				showAboutDialog();
 			} else if (actionCmd.equals("EditProtocol")) {
 				toggleProtocolEditor();
-			} else if (actionCmd.equals("ExportNpcTitles")){
+			} else if (actionCmd.equals("ExportNpcInfo")){
 				exportNpcTitles();
 			} else if (actionCmd.equals("ExportNpcSpawns")){
 				exportNpcSpawns();
