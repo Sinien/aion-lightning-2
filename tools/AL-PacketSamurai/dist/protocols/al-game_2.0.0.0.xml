@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited by Magenik -->
-<protocol crypt="AionGame" name="al-game_2.0.0.0" port="7777" sizebytes="2" checksumSize="2" strictlength="false" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="aion-protocol.xsd">
+<protocol crypt="AionGame" name="al-game_2.0.0.0" port="7777" sizebytes="2" checksumSize="2" strictlength="false" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="al-game_2.0.0.0.xsd">
 	<packetfamilly switchtype="c" way="ServerPackets" name="Server Messages">
 		<packet id="0x00" name="SM_STATUPDATE_MP">
 			<part name="currentMp" type="d"/>
@@ -1130,9 +1130,11 @@
 			<part name="playerObjId" type="d"/>
 			<part name="rankId" type="d"/>
 		</packet>
+		<packet id="0xa6" name="SM_ABYSS_PLAYERS_RANK_LIST"/>
 		<packet id="0xa7" name="SM_MAY_LOGIN_INTO_GAME">
 			<part name="result" type="d"/>
 		</packet>
+		<packet id="0xa9" name="SM_ABYSS_LEGION_RANK_LIST"/>
 		<packet id="0xaa" name="SM_PONG">
 			<part name="unk" type="c"/>
 			<part name="unk" type="c"/>
@@ -1250,11 +1252,11 @@
 			</switch>
 		</packet>
 		<packet id="0xbd" name="SM_QUESTIONNAIRE">
-			<part name="objId" type="d" />
-			<part name="chunk" type="c" />
-			<part name="count" type="c" />
-			<part name="length" type="h" />
-			<part name="html" type="b" />
+			<part name="objId" type="d"/>
+			<part name="chunk" type="c"/>
+			<part name="count" type="c"/>
+			<part name="length" type="h"/>
+			<part name="html" type="b"/>
 		</packet>
 		<packet id="0xbe" name="SM_RESURRECT"/>
 		<packet id="0xbf" name="SM_DIE">
@@ -2137,7 +2139,8 @@
 			<part name="position" type="c"/>
 		</packet>
 		<packet id="0x24" name="CM_DISTRIBUTION_SETTINGS"/>
-		<packet id="0x25" name="CM_MAY_LOGIN_INTO_GAME"/>
+		<packet id="0x25" name="CM_MAY_LOGIN_INTO_GAME"/>		
+		<packet id="0x27" name="CM_ABYSS_PLAYERS_RANK_LIST"/>
 		<packet id="0x28" name="CM_SHOW_BRAND"/>
 		<packet id="0x2a" name="CM_RECONNECT_AUTH"/>
 		<packet id="0x2f" name="CM_SHOW_MAP"/>
@@ -2212,6 +2215,7 @@
 			<part name="targetObjectId" type="d"/>
 		</packet>
 		<packet id="0x66" name="CM_BROKER_LIST"/>
+		<packet id="0x69" name="CM_ABYSS_LEGION_RANK_LIST"/>
 		<packet id="0x6a" name="CM_PRIVATE_STORE"/>
 		<packet id="0x6b" name="CM_PRIVATE_STORE_NAME"/>
 		<packet id="0x6D" name="CM_BROKER_SETTLE_ACCOUNT"/>
@@ -2234,10 +2238,14 @@
 		<packet id="0x7b" name="CM_GET_MAIL_ATTACHMENT"/>
 		<packet id="0x7c" name="CM_QUESTIONNAIRE">
 			<part name="objId" type="d"/>
-			<part name="unk" type="h" /> <!-- 0x22 -->
-			<part name="unk" type="h" /> <!-- 0x31 -->
-			<part name="unk" type="h" /> <!-- 0x22 -->
-			<part name="unk" type="h" /> <!-- 0x00 -->
+			<part name="unk" type="h"/>
+			<!-- 0x22 -->
+			<part name="unk" type="h"/>
+			<!-- 0x31 -->
+			<part name="unk" type="h"/>
+			<!-- 0x22 -->
+			<part name="unk" type="h"/>
+			<!-- 0x00 -->
 		</packet>
 		<packet id="0x7f" name="CM_TELEPORT_SELECT">
 			<part name="targetObjId" type="d"/>
