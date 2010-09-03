@@ -62,4 +62,7 @@
 	<!-- Reshanta -->
 	<bind_point name="TeminonFortresss" npcid="730071" bindid="43" mapid="400010000" posX="2986.6" posY="899.1" posZ="1545.5" price="30000"/>
 	<bind_point name="PrimumFortress" npcid="700401" bindid="44" mapid="400010000" posX="926.4" posY="3002.9" posZ="1655.3525" price="30000"/>
+	<!-- Inggison -->
+	<bind_point name="Inggison Illusion Fortress" npcid="700400" bindid="45" mapid="210050000" posX="1386.1403" posY="308.86548" posZ="589.4792" price="12750"/>
 </bind_points>
+
