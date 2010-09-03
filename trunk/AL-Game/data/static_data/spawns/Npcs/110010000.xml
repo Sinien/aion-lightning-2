@@ -502,9 +502,9 @@
 		<object x="1801.1094" y="2117.772" z="527.9299" h="8"/>
 	</spawn>
 	<!-- Kaisinel's Teleport Statue-->
-	<spawn map="110010000" npcid="730265" pool="1" interval="300">
-		<object x="1366.3525" y="1549.0107" z="569.0382" h="86"/>
-	</spawn>
+	<spawn interval="295" map="110010000" npcid="730265" pool="1">
+      <object h="63" staticid="1136" x="1366.4565" y="1543.7913" z="569.0382"/>
+   </spawn>
 	<!-- Kalipyerk (sells rented items) -->
 	<spawn map="110010000" npcid="798420" pool="1" interval="105">
 		<object x="1517.1406" y="1426.4303" z="573.063" h="24"/>
@@ -1104,5 +1104,78 @@
 	<!-- Zumia (NPC Normal lvl:50)-->
 	<spawn map="110010000" npcid="203775" pool="1" interval="295">
 		<object x="1873.80880" y="1592.37100" z="590.06683" h="31"/>
+	</spawn>
+	<spawn interval="295" map="110010000" npcid="700018" pool="1">
+      <object h="0" staticid="134" x="1473.8394" y="1597.9053" z="573.5586"/>
+    </spawn>
+    <spawn interval="295" map="110010000" npcid="700588" pool="3">
+      <object h="0" x="1907.0" y="1553.14" z="590.23987"/>
+      <object h="0" x="1907.0" y="1483.36" z="590.24146"/>
+      <object h="0" x="1907.0" y="1475.29" z="590.2391"/>
+    </spawn>
+    <spawn interval="295" map="110010000" npcid="700571" pool="3">
+      <object h="0" x="1907.0" y="1557.79" z="590.23975"/>
+      <object h="0" x="1907.0" y="1549.13" z="590.23987"/>
+      <object h="0" x="1907.0" y="1479.0" z="590.2402"/>
+	</spawn>
+	<spawn interval="295" map="110010000" npcid="798439" pool="1">
+      <object h="40" x="1566.6324" y="1431.7997" z="573.0368"/>
+    </spawn>
+    <spawn interval="295" map="110010000" npcid="798438" pool="1">
+      <object h="30" x="1561.3983" y="1428.9276" z="573.03357"/>
+    </spawn>
+	<spawn interval="295" map="110010000" npcid="799732" pool="1">
+      <object h="40" x="1568.2806" y="1431.6027" z="573.03613"/>
+   </spawn>
+   <spawn interval="295" map="110010000" npcid="799723" pool="1">
+      <object h="102" x="1552.8069" y="1456.2921" z="572.87195"/>
+   </spawn>
+    <spawn interval="295" map="110010000" npcid="799731" pool="1">
+      <object h="115" x="1558.9481" y="1448.5133" z="572.87164"/>
+   </spawn>
+   <spawn interval="295" map="110010000" npcid="799735" pool="1">
+      <object h="54" x="1561.5939" y="1444.4807" z="572.8715"/>
+   </spawn>
+   <spawn interval="295" map="110010000" npcid="799734" pool="1">
+      <object h="101" x="1559.0833" y="1449.5416" z="572.8717"/>
+   </spawn>
+   <spawn interval="295" map="110010000" npcid="799733" pool="1">
+      <object h="111" x="1565.2848" y="1450.6498" z="572.99396"/>
+   </spawn>
+   <spawn interval="295" map="110010000" npcid="799737" pool="1">
+      <object h="72" x="1559.9521" y="1433.2477" z="573.0316"/>
+   </spawn>
+   <spawn interval="295" map="110010000" npcid="799729" pool="1">
+      <object h="17" x="1556.3696" y="1435.4299" z="573.02386"/>
+   </spawn>
+   <spawn interval="295" map="110010000" npcid="799736" pool="1">
+      <object h="19" x="1558.9813" y="1436.9474" z="573.0272"/>
+   </spawn>
+   <spawn interval="295" map="110010000" npcid="799726" pool="1">
+      <object h="39" x="1550.3466" y="1456.0034" z="572.87195"/>
+   </spawn>
+   <spawn interval="295" map="110010000" npcid="799724" pool="1">
+      <object h="32" x="1547.7089" y="1453.3644" z="572.8718"/>
+   </spawn>
+   <spawn interval="295" map="110010000" npcid="799725" pool="1">
+      <object h="85" x="1550.2316" y="1456.2809" z="572.87195"/>
+   </spawn>
+   <spawn interval="295" map="110010000" npcid="799728" pool="1">
+      <object h="86" x="1550.7142" y="1454.262" z="572.8719"/>
+   </spawn>
+   <spawn interval="295" map="110010000" npcid="798440" pool="1">
+      <object h="90" x="1551.1426" y="1457.9706" z="572.87195"/>
+   </spawn>
+   <spawn map="110010000" npcid="798398" pool="1" interval="295">
+		<object h="63" x="1528.0" y="1511.0" z="565.8933"/>
+	</spawn>
+	<spawn map="110010000" npcid="799705" pool="1" interval="295">
+		<object h="30" x="1535.4037" y="1496.5366" z="565.91974"/>
+	</spawn>
+	<spawn map="110010000" npcid="799704" pool="1" interval="295">
+		<object h="30" x="1532.0792" y="1496.442" z="565.9188"/>
+	</spawn>
+	<spawn map="110010000" npcid="799706" pool="1" interval="295">
+		<object h="30" x="1529.3643" y="1494.4314" z="565.92426"/>
 	</spawn>
 </spawns>
