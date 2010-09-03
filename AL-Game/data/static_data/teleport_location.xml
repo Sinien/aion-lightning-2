@@ -12,7 +12,7 @@
 	<teleloc_template loc_id="81" mapid="210060000" name="Theobomos" posX="1398" posY="1557" posZ="31" heading="0"/>
 	<teleloc_template loc_id="24" mapid="110010000" name="LC1_Airport_SPOT_Bank" posX="1458.3" posY="1448.8" posZ="572.9" heading="0"/>
 	<teleloc_template loc_id="25" mapid="110010000" name="LC1_Airport_SPOT_Library" posX="1931.6" posY="1516.9" posZ="590.0" heading="0"/>
-    <teleloc_template loc_id="105" mapid="110010000" name="LC1_Airport_SPOT_Dock" posX="1817" posY="2157" posZ="527" heading="0"/>
+    <teleloc_template loc_id="105" mapid="110010000" name="LC1_Airport_SPOT_Dock" posX="1813.01" posY="2158.59" posZ="527.92" heading="0"/>
     <teleloc_template loc_id="95" mapid="110010000" name="LC1_Airport_ZONE_Port" posX="1743.5588" posY="2059.158" posZ="518.0106" heading="0"/>
     <teleloc_template loc_id="96" mapid="210050000" name="LF4_Airport_ZONE" posX="1324.7362" posY="261.8812" posZ="591.36" heading="0"/>
 	
@@ -23,41 +23,44 @@
 	<teleloc_template loc_id="10" mapid="220020000" name="Morheim" posX="308" posY="2274" posZ="449" heading="0"/>
 	<teleloc_template loc_id="11" mapid="220040000" name="Beluslan" posX="325" posY="336" posZ="229" heading="0"/>
 	<teleloc_template loc_id="82" mapid="220050000" name="Brusthonin" posX="2917" posY="2421" posZ="15" heading="0"/>
-	<teleloc_template loc_id="33" mapid="120010000" name="DC1_SPOT_Street" posX="1602.7" posY="1413.7" posZ="193.1" heading="0"/>	
-	<teleloc_template loc_id="34" mapid="120010000" name="DC1_SPOT_Bridge" posX="1042.8" posY="1480.2" posZ="213.5" heading="0"/>
-	<teleloc_template loc_id="106" mapid="120010000" name="DC1_SPOT_Westside" posX="1174" posY="1165" posZ="207" heading="0"/>
+	<teleloc_template loc_id="33" mapid="120010000" name="DC1_SPOT_Bridge" posX="1602.7" posY="1413.7" posZ="193.1" heading="0"/>
+	<teleloc_template loc_id="34" mapid="120010000" name="DC1_SPOT_Street" posX="1036.6" posY="1476.1" posZ="213.5" heading="0"/>
+	<teleloc_template loc_id="106" mapid="120010000" name="DC1_SPOT_Westside" posX="1179.9" posY="1173.2" posZ="208.0" heading="0"/>
 	<teleloc_template loc_id="109" mapid="120010000" name="DC1_Airport_ZONE_Entrance" posX="1609.9" posY="1390.7" posZ="193.1" heading="0"/>
     <teleloc_template loc_id="110" mapid="120020000" name="DC2_Airport_ZONE_Entrance" posX="1559.2" posY="1426.9" posZ="265.7" heading="0"/>
     <teleloc_template loc_id="97" mapid="120010000" name="DC1_Airport_ZONE_Port" posX="943.9" posY="1126.1" posZ="206.9" heading="0"/>
     <teleloc_template loc_id="98" mapid="220070000" name="DF4_Airport_ZONE" posX="1771.5" posY="2892.2" posZ="548.8" heading="0"/>
 
 	<!-- ELYOS -->   
-	<teleloc_template loc_id="36" mapid="400010000" name="Siels Western Fortress" posX="2984" posY="2596" posZ="1489" heading="33"/>
-	<teleloc_template loc_id="37" mapid="400010000" name="Siels Eastern Fortess" posX="2802" posY="3212" posZ="1472" heading="33"/>
-	<teleloc_template loc_id="39" mapid="400010000" name="Sulfur Archipelago" posX="1402" posY="1179" posZ="1514" heading="0"/>
+	<teleloc_template loc_id="37" mapid="400010000" name="Siels Western Fortress" posX="0" posY="0" posZ="0" heading="0"/>
+	<teleloc_template loc_id="39" mapid="400010000" name="Siels Eastern Fortess" posX="0" posY="0" posZ="0" heading="0"/>
+	<teleloc_template loc_id="36" mapid="400010000" name="Sulfur Archipelago" posX="0" posY="0" posZ="0" heading="0"/>
 	<teleloc_template loc_id="40" mapid="400010000" name="Eastern Shard of Latesran" posX="1642" posY="3042" posZ="1669" heading="0"/>   
 	<teleloc_template loc_id="42" mapid="400010000" name="Western Shard of Latesran" posX="2098" posY="754" posZ="1569" heading="0"/>
-	<teleloc_template loc_id="44" mapid="400010000" name="Roah Fortress" posX="2734" posY="803" posZ="2893" heading="0"/>
-	<teleloc_template loc_id="45" mapid="400010000" name="Krotan Refuge" posX="2061" posY="1274" posZ="2986" heading="0"/>
-	<teleloc_template loc_id="46" mapid="400010000" name="Kysis Fortress" posX="2530" posY="2094" posZ="3049" heading="93"/>
-	<teleloc_template loc_id="47" mapid="400010000" name="Miren Fortress" posX="1770" posY="2259" posZ="2949" heading="0"/>	
-	<teleloc_template loc_id="48" mapid="400010000" name="Asteria Fortress" posX="718" posY="2957" posZ="2920" heading="0"/>
+	<teleloc_template loc_id="48" mapid="400010000" name="Roah Fortress" posX="0" posY="0" posZ="0" heading="0"/>
+	<teleloc_template loc_id="47" mapid="400010000" name="Krotan Refuge" posX="0" posY="0" posZ="0" heading="0"/>
+	<teleloc_template loc_id="46" mapid="400010000" name="Kysis Fortress" posX="0" posY="0" posZ="0" heading="0"/>
+	<teleloc_template loc_id="45" mapid="400010000" name="Miren Fortress" posX="0" posY="0" posZ="0" heading="0"/>
+	<teleloc_template loc_id="44" mapid="400010000" name="Asteria Fortress" posX="0" posY="0" posZ="0" heading="0"/>
 	
 	<!-- ASMODIANS -->   
 	<teleloc_template loc_id="50" mapid="400010000" name="Eastern Shard of Latesran" posX="1644" posY="2881" posZ="1667" heading="0"/>
 	<teleloc_template loc_id="52" mapid="400010000" name="Western Shard of Latesran" posX="2100" posY="593" posZ="1567" heading="0"/>   
-	<teleloc_template loc_id="54" mapid="400010000" name="Siels Western Fortress" posX="2984" posY="2596" posZ="1489" heading="33"/>
-	<teleloc_template loc_id="55" mapid="400010000" name="Siels Eastern Fortess" posX="2802" posY="3212" posZ="1472" heading="0"/>
-	<teleloc_template loc_id="56" mapid="400010000" name="Sulfur Archipelago" posX="1402" posY="1179" posZ="1514" heading="0"/>   
+	<teleloc_template loc_id="55" mapid="400010000" name="Siels Western Fortress" posX="0" posY="0" posZ="0" heading="0"/>
+	<teleloc_template loc_id="56" mapid="400010000" name="Siels Eastern Fortess" posX="0" posY="0" posZ="0" heading="0"/>
+	<teleloc_template loc_id="54" mapid="400010000" name="Sulfur Archipelago" posX="0" posY="0" posZ="0" heading="0"/>
 	<teleloc_template loc_id="57" mapid="400010000" name="Krotan Refuge" posX="2061" posY="1274" posZ="2986" heading="0"/>
 	<teleloc_template loc_id="58" mapid="400010000" name="Kysis Fortress" posX="2530" posY="2094" posZ="3049" heading="93"/>
 	<teleloc_template loc_id="59" mapid="400010000" name="Miren Fortress" posX="1770" posY="2259" posZ="2949" heading="0"/>	   
-	<teleloc_template loc_id="60" mapid="400010000" name="Asteria Fortress" posX="718" posY="2957" posZ="2920" heading="0"/>
-	<teleloc_template loc_id="62" mapid="400010000" name="Roah Fortress" posX="2734" posY="803" posZ="2893" heading="0"/>
+	<teleloc_template loc_id="62" mapid="400010000" name="Asteria Fortress" posX="0" posY="0" posZ="0" heading="0"/>
+	<teleloc_template loc_id="60" mapid="400010000" name="Roah Fortress" posX="0" posY="0" posZ="0" heading="0"/>
 	<teleloc_template loc_id="75" mapid="400010000" name="Miren Fortress" posX="0" posY="0" posZ="0" heading="0"/>
     <teleloc_template loc_id="76" mapid="400010000" name="Kysis Fortress" posX="0" posY="0" posZ="0" heading="0"/>
     <teleloc_template loc_id="77" mapid="400010000" name="Krotan Refuge" posX="0" posY="0" posZ="0" heading="0"/>
-
+	<teleloc_template loc_id="102" mapid="220070000" name="DF4_SUB_OP" posX="1889" posY="2863" posZ="556" heading="0"/>
+	<teleloc_template loc_id="93" mapid="220070000" name="DF4_Dyn_D_3011" posX="1272" posY="932" posZ="316" heading="90"/>
+	<teleloc_template loc_id="94" mapid="220070000" name="DF4_Dyn_D_3021" posX="1953" posY="1170" posZ="333" heading="93"/>
+	
 	<!-- Flying Teleport-->
 	
 	<!-- ELYOS -->
