@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+    Debris of Abyss
+   @Spawn AION AV2 Devs
+-->
+<spawns>
+    <!-- Airo Horn (Monster Elite lvl:55) -->
+    <spawn map="300220000" npcid="281909" pool="5" interval="295">
+        <object x="651.3524" y="326.42554" z="465.52426" h="8"/>
+        <object x="666.6054" y="314.49654" z="465.39426" h="27"/>
+        <object x="685.5894" y="342.95554" z="465.90926" h="68"/>
+        <object x="651.3224" y="346.55454" z="465.56426" h="111"/>
+        <object x="666.0074" y="351.08354" z="466.06426" h="91"/>
+    </spawn>
+   <!-- Airo (Monster Legendary lvl:55) -->
+    <spawn map="300220000" npcid="281900" pool="1" interval="295">
+        <object x="669.1624" y="334.75854" z="465.89826" h="74"/>
+    </spawn>
+    <!-- Ametgolem Of Guarding (Monster Hero lvl:55) -->
+    <spawn map="300220000" npcid="281892" pool="6" interval="295">
+        <object x="647.1854" y="236.85734" z="461.72426" h="95"/>
+        <object x="641.2854" y="235.28454" z="461.53726" h="99"/>
+        <object x="647.1854" y="270.85734" z="462.72426" h="95"/>
+        <object x="641.2854" y="269.28454" z="462.53726" h="99"/>
+        <object x="651.0494" y="305.85734" z="465.44926" h="91"/>
+        <object x="641.2854" y="305.28454" z="465.54826" h="95"/>
+    </spawn>
+    <!-- Atra (Monster Legendary lvl:55) -->
+    <spawn map="300220000" npcid="281898" pool="1" interval="295">
+        <object x="302.2014" y="735.15954" z="199.37726" h="17"/>
+    </spawn>
+    <!-- Corridor Of Summoning (Object lvl:3) -->
+    <spawn map="300220000" npcid="281906" pool="1" interval="295">
+        <object x="706.3924" y="159.45154" z="453.42126" h="67"/>
+    </spawn>
+    <!-- Enos Watcher (Monster Hero lvl:55) -->
+    <spawn map="300220000" npcid="281894" pool="4" interval="295">
+        <object x="642.6394" y="152.13954" z="449.39826" h="11"/>
+        <object x="577.4354" y="636.90954" z="419.11826" h="75"/>
+        <object x="559.6954" y="653.43954" z="424.04926" h="99"/>
+        <object x="520.7534" y="666.50754" z="428.08226" h="0"/>
+    </spawn>
+    <!-- Kaluva's Egg (Monster Hero lvl:55) -->
+    <spawn map="300220000" npcid="281902" pool="4" interval="295">
+        <object x="663.3224" y="556.73154" z="424.29526" h="64"/>
+        <object x="643.7084" y="524.02554" z="423.08326" h="27"/>
+        <object x="611.1394" y="539.66154" z="423.42926" h="21"/>
+        <object x="628.3244" y="585.42454" z="424.35326" h="97"/>
+    </spawn>
+    <!-- Kaluva's Fragment (Monster Elite lvl:55) -->
+    <spawn map="300220000" npcid="281911" pool="8" interval="295">
+        <object x="688.1324" y="497.75754" z="458.97826" h="94"/>
+        <object x="701.4964" y="496.07754" z="458.33226" h="82"/>
+        <object x="710.8384" y="527.87254" z="458.05526" h="80"/>
+        <object x="747.4584" y="564.47254" z="462.87326" h="75"/>
+        <object x="741.2964" y="578.98154" z="462.77326" h="88"/>
+        <object x="769.5264" y="613.36554" z="460.35226" h="79"/>
+        <object x="799.1124" y="615.44154" z="454.44126" h="62"/>
+        <object x="769.3574" y="649.81454" z="448.86626" h="3"/>
+        <object x="709.7774" y="621.96454" z="430.95626" h="23"/>
+    </spawn>
+   <!-- Kaluva (Monster Legendary lvl:55) -->
+    <spawn map="300220000" npcid="281899" pool="1" interval="295">
+        <object x="629.9674" y="549.25454" z="423.00526" h="27"/>
+    </spawn>
+   <!-- Lukril (Monster Legendary lvl:55) -->
+    <spawn map="300220000" npcid="281897" pool="1" interval="295">
+        <object x="334.1974" y="708.12554" z="199.67726" h="32"/>
+    </spawn>
+    <!-- Summoned Orkanimum (Monster Elite lvl:55) -->
+    <spawn map="300220000" npcid="281903" pool="3" interval="295">
+        <object x="644.7134" y="233.20554" z="461.17826" h="95"/>
+        <object x="644.7084" y="267.34454" z="462.16326" h="90"/>
+        <object x="646.6524" y="304.34454" z="465.58326" h="89"/>
+    </spawn>
+   <!-- The Schizophrenic (Monster Legendary lvl:55) -->
+    <spawn map="300220000" npcid="282010" pool="1" interval="295">
+        <object x="446.8844" y="696.27154" z="433.29326" h="114"/>
+    </spawn>
+   <!-- Yamenes (Monster Legendary lvl:55) -->
+    <spawn map="300220000" npcid="281901" pool="1" interval="295">
+        <object x="329.8374" y="733.58954" z="197.61626" h="75"/>
+    </spawn>
+   <!-- teleportation device -->	
+	<spawn map="300220000" npcid="281905" pool="3" interval="295">		
+	    <object x="302.2014" y="735.15954" z="197.66826" h="17"/>		
+	    <object x="334.0014" y="707.73554" z="197.77924" h="32"/>		
+	    <object x="362.1924" y="741.59154" z="197.30126" h="67"/>		
+	</spawn>
+   <!-- corridor of summoning -->
+    <spawn map="300220000" npcid="281906" pool="1" interval="295">
+		<object x="706.3924" y="159.45154" z="453.42126" h="67"/>
+	</spawn>
+</spawns>
