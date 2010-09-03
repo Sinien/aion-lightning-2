@@ -2049,4 +2049,14 @@
 	<tradelist_template npc_id="278521" name="tenoeril" count="1">
 		<tradelist id="233"/>
 	</tradelist_template>
+	<tradelist_template npc_id="798438" name="Unos" count="3">
+        	<tradelist id="1047"/>
+        	<tradelist id="1049"/>
+        	<tradelist id="1051"/>
+	</tradelist_template>
+	<tradelist_template npc_id="798441" name="Katin" count="3">
+        	<tradelist id="1046"/>
+        	<tradelist id="1048"/>
+        	<tradelist id="1050"/>
+    </tradelist_template>
 </npc_trade_list>
