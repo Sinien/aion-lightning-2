@@ -427,7 +427,7 @@
 	</portal>
 	
 	<!-- Morheim to Abyss -->
-	<portal npcid="700183" minlevel="25" maxlevel="55" instance="false" group="false" race="ASMODIANS">
+	<portal npcid="730063" minlevel="25" maxlevel="55" instance="false" group="false" race="ASMODIANS">
 		<entrypoint mapid="220020000" x="0" y="0" z="0" race="ASMODIANS"/>
 		<exitpoint mapid="400010000" x="1078" y="2839" z="1636"/>
 	</portal>
@@ -439,7 +439,7 @@
 	</portal>
 	
 	<!-- Altgard to Abyss -->
-	<portal npcid="700089" minlevel="25" maxlevel="55" instance="false" group="false" race="ASMODIANS">
+	<<portal npcid="730062" minlevel="25" maxlevel="55" instance="false" group="false" race="ASMODIANS">
 		<entrypoint mapid="220030000" x="0" y="0" z="0" race="ASMODIANS"/>
 		<exitpoint mapid="400010000" x="1078" y="2839" z="1636"/>
 	</portal>
