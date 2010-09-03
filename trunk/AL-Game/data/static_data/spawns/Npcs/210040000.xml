@@ -1,22 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!--
-	This file is part of aion-unique <aion-unique.org>.
-
-	aion-unique is free software: you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-	aion-unique is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
-
-	You should have received a copy of the GNU General Public License
-	along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
 	
 	Heiron
 	@author Atomix
+	Contribuitor Bluecrime (AE_AV2_dEV) 
  -->
 <spawns>
 	<!-- Aetherogenetics Lab Entrance (Object Normal lvl:1)-->
@@ -505,7 +492,7 @@
 	</spawn>
 	<!-- Jukabe (NPC Normal lvl:50)-->
 	<spawn map="210040000" npcid="204523" pool="1" interval="295">
-		<object x="2440.06150" y="403.68420" z="412.59830" h="110"/>
+		<object x="2439.5994" y="402.80905" z="412.59766" h="106"/>
 	</spawn>
 	<!-- Kacias (NPC Normal lvl:41)-->
 	<spawn map="210040000" npcid="204625" pool="1" interval="295">
@@ -541,7 +528,7 @@
 	</spawn>
 	<!-- Kelber (NPC Normal lvl:50)-->
 	<spawn map="210040000" npcid="204524" pool="1" interval="295">
-		<object x="2445.20730" y="405.04184" z="412.59830" h="85"/>
+		<object x="2440.8591" y="403.8477" z="412.5977" h="101"/>
 	</spawn>
 	<!-- Kirenne's Corpse (Object Normal lvl:1)-->
 	<spawn map="210040000" npcid="700196" pool="1" interval="295">
@@ -1164,4 +1151,93 @@
 	<spawn map="210040000" npcid="204607" pool="1" interval="295">
 		<object x="973.54016" y="699.42110" z="136.00000" h="93"/>
 	</spawn>
+	<!-- Scout leader (NPC Hero lvl:50)-->
+	<spawn map="210040000" npcid="207575" pool="1" interval="295">
+		<object x="2495.6562" y="362.0312" z="408.66602" h="12"/>
+	</spawn>
+	<!-- Medic Leader (NPC Hero lvl:50)-->
+	<spawn map="210040000" npcid="207581" pool="2" interval="295">
+		<object x="2492.8696" y="358.84277" z="408.875" h="5"/>
+		<object fly="0" staticid="0" x="2442.6377" y="243.4063" z="421.75235" h="15" w="0" rw="0"/>
+	</spawn>
+	<!-- Support Leader (NPC Hero lvl:50)-->
+	<spawn map="210040000" npcid="207578" pool="1" interval="295">
+		<object x="2491.6963" y="362.63782" z="408.875" h="7"/>
+	</spawn>
+	<!-- Typhon (NPC Normal lvl:50)-->
+	<spawn map="210040000" npcid="799803" pool="1" interval="295">
+		<object x="2516.9133" y="348.89822" z="409.01083" h="54"/>
+	</spawn>
+    <spawn rw="0" map="210040000" npcid="799805" pool="1" interval="295">
+        <object fly="0" staticid="0" x="2514.1084" y="347.31378" z="409.02933" h="42" w="0" rw="0"/>
+    </spawn>
+    <spawn rw="0" map="210040000" npcid="799809" pool="1" interval="295">
+        <object fly="0" staticid="0" x="2507.1323" y="345.37296" z="409.8826" h="47" w="0" rw="0"/>
+    </spawn>
+    <spawn rw="0" map="210040000" npcid="799808" pool="1" interval="295">
+        <object fly="0" staticid="0" x="2505.677" y="343.69238" z="410.14423" h="44" w="0" rw="0"/>
+    </spawn>
+    <spawn rw="0" map="210040000" npcid="799814" pool="1" interval="295">
+        <object fly="0" staticid="0" x="2503.731" y="342.1943" z="410.46823" h="45" w="0" rw="0"/>
+    </spawn>
+    <spawn rw="0" map="210040000" npcid="799807" pool="1" interval="295">
+        <object fly="0" staticid="0" x="2502.1133" y="340.10376" z="410.84787" h="49" w="0" rw="0"/>
+    </spawn>
+    <spawn rw="0" map="210040000" npcid="207580" pool="8" interval="295">
+        <object fly="0" staticid="0" x="2520.849" y="379.34412" z="408.55307" h="9" w="0" rw="0"/>
+        <object fly="0" staticid="0" x="2527.3647" y="366.91904" z="408.75" h="9" w="0" rw="0"/>
+        <object fly="0" staticid="0" x="2461.7683" y="307.76782" z="415.18732" h="23" w="0" rw="0"/>
+        <object fly="0" staticid="0" x="2478.3398" y="302.09576" z="415.18732" h="25" w="0" rw="0"/>
+        <object fly="0" staticid="0" x="2450.079" y="324.22873" z="415.10367" h="21" w="0" rw="0"/>
+        <object fly="0" staticid="0" x="2439.7322" y="329.1685" z="415.1037" h="16" w="0" rw="0"/>
+        <object fly="0" staticid="0" x="2606.9602" y="416.31357" z="399.0" h="8" w="0" rw="0"/>
+        <object fly="0" staticid="0" x="2608.1775" y="414.2391" z="399.0" h="10" w="0" rw="0"/>
+    </spawn>
+    <spawn rw="0" map="210040000" npcid="207568" pool="6" interval="295">
+        <object fly="0" staticid="0" x="2480.8132" y="372.7561" z="407.82776" h="102" w="0" rw="0"/>
+        <object fly="0" staticid="0" x="2489.2212" y="379.13806" z="407.75" h="103" w="0" rw="0"/>
+        <object fly="0" staticid="0" x="2529.9038" y="337.33432" z="412.87973" h="29" w="0" rw="0"/>
+        <object fly="0" staticid="0" x="2522.4648" y="338.03168" z="412.88663" h="29" w="0" rw="0"/>
+        <object fly="0" staticid="0" x="2436.473" y="348.7901" z="415.19208" h="1" w="0" rw="0"/>
+        <object fly="0" staticid="0" x="2467.9233" y="284.87146" z="421.17456" h="23" w="0" rw="0"/>
+    </spawn>
+    <spawn rw="0" map="210040000" npcid="700573" pool="4" interval="295">
+        <object fly="0" staticid="0" x="2474.107" y="377.6427" z="408.94196" h="79" w="0" rw="0"/>
+        <object fly="0" staticid="0" x="2471.407" y="378.4918" z="409.14194" h="83" w="0" rw="0"/>
+        <object fly="0" staticid="0" x="2464.5376" y="377.85944" z="410.0578" h="113" w="0" rw="0"/>
+        <object fly="0" staticid="0" x="2463.6843" y="375.43298" z="410.1999" h="113" w="0" rw="0"/>
+    </spawn>
+    <spawn rw="0" map="210040000" npcid="207577" pool="3" interval="295">
+        <object fly="0" staticid="0" x="2526.3586" y="316.68262" z="415.92325" h="20" w="0" rw="0"/>
+        <object fly="0" staticid="0" x="2461.836" y="270.2239" z="421.17456" h="24" w="0" rw="0"/>
+        <object fly="0" staticid="0" x="2456.2827" y="272.41568" z="421.17456" h="24" w="0" rw="0"/>
+    </spawn>
+    <spawn rw="0" map="210040000" npcid="798386" pool="1" interval="295">
+        <object fly="0" staticid="0" x="2524.1106" y="314.47507" z="415.91635" h="53" w="0" rw="0"/>
+    </spawn>
+    <spawn rw="0" map="210040000" npcid="207661" pool="1" interval="295">
+        <object fly="0" staticid="0" x="2507.4453" y="312.68634" z="415.92773" h="7" w="0" rw="0"/>
+    </spawn>
+    <spawn rw="0" map="210040000" npcid="207571" pool="5" interval="295">
+        <object fly="0" staticid="0" x="2480.4827" y="298.6607" z="415.18732" h="23" w="0" rw="0"/>
+        <object fly="0" staticid="0" x="2457.6934" y="305.50888" z="415.16983" h="22" w="0" rw="0"/>
+        <object fly="0" staticid="0" x="2425.7249" y="336.82913" z="415.12805" h="7" w="0" rw="0"/>
+        <object fly="0" staticid="0" x="2489.7747" y="408.26007" z="411.71725" h="0" w="0" rw="0"/>
+        <object fly="0" staticid="0" x="2509.9158" y="388.26572" z="408.54996" h="91" w="0" rw="0"/>
+    </spawn>
+    <spawn rw="0" map="210040000" npcid="798479" pool="1" interval="295">
+        <object fly="0" staticid="0" x="2420.563" y="355.95282" z="415.4011" h="92" w="0" rw="0"/>
+    </spawn>
+    <spawn rw="0" map="210040000" npcid="207574" pool="1" interval="295">
+        <object fly="0" staticid="0" x="2449.7559" y="367.28036" z="414.58444" h="118" w="0" rw="0"/>
+    </spawn>
+    <spawn rw="0" map="210040000" npcid="798428" pool="1" interval="295">
+        <object fly="0" staticid="0" x="2445.2786" y="405.43527" z="412.59967" h="74" w="0" rw="0"/>
+    </spawn>
+    <spawn rw="0" map="210040000" npcid="798429" pool="1" interval="295">
+        <object fly="0" staticid="0" x="2446.547" y="404.23178" z="412.59967" h="75" w="0" rw="0"/>
+    </spawn>
+    <spawn rw="0" map="210040000" npcid="207569" pool="1" interval="295">
+        <object fly="0" staticid="0" x="2609.0989" y="416.2217" z="399.0" h="11" w="0" rw="0"/>
+    </spawn>
 </spawns>
