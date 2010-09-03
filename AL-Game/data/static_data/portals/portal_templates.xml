@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<portal_templates xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:noNamespaceSchemaLocation="portal_templates.xsd">
+<portal_templates xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="portal_templates.xsd">
 	
 	<!-- INSTANCES -->
 	
